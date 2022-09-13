@@ -13,8 +13,6 @@ function App() {
         <Route path="/game" element={<Game />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/item" element={<Item />} />
-      </Routes>
-      <Routes>
         <Route path="/information" element={<Information />} />
       </Routes>
     </Router>

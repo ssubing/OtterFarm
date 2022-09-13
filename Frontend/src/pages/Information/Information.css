@@ -1,0 +1,32 @@
+.information {
+  font-family: "neo";
+  background-color: #fffaf4;
+}
+.description {
+  padding: 3%;
+}
+.title {
+  color: white;
+  font-size: 40px;
+  -webkit-text-stroke: 1.5px black;
+  margin-top: 40px;
+}
+
+.line {
+  background-color: black;
+  height: 1px;
+  margin-top: 10px;
+}
+
+.content {
+  font-size: 20px;
+  margin-bottom: 7%;
+}
+
+.game {
+  display: flex;
+}
+
+.game-thumbnail {
+  padding: 15px;
+}

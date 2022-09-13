@@ -6,6 +6,8 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @DynamicInsert
 @DynamicUpdate
@@ -26,4 +28,7 @@ public class Item {
 
     @Column(nullable = false)
     private int rgb;
+
+    @OneToMany(mappedBy = "item")
+    private List<Inventory> inventories = new ArrayList<>();
 }

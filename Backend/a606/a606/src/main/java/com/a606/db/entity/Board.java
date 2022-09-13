@@ -7,6 +7,8 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @DynamicInsert
 @DynamicUpdate
@@ -36,5 +38,8 @@ public class Board {
     //first_price
     @Column(nullable = false)
     private double first_price;
+
+    @OneToMany(mappedBy = "board")
+    private List<BidLog> bidLogs = new ArrayList<>();
 
 }

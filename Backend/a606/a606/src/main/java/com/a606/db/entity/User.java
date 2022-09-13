@@ -9,6 +9,8 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @DynamicInsert
 @DynamicUpdate
@@ -43,5 +45,36 @@ public class User {
     //is_delete
     @Column(nullable = false, columnDefinition = "TINYINT(1) DEFAULT 0")
     private boolean isDelete;
+
+    //OneToOne
+    //UserPage
+    @OneToOne(mappedBy = "user")
+    private UserPage userPage;
+    //Profile
+    @OneToOne(mappedBy = "user")
+    private Profile profile;
+    //Avatar
+    @OneToOne(mappedBy = "user")
+    private Avatar avatar;
+
+    //OneToMany
+    //Inventory
+    @OneToMany(mappedBy = "user")
+    private List<Inventory> inventories = new ArrayList<>();
+    //Letter
+    @OneToMany(mappedBy = "user")
+    private List<Letter> letters = new ArrayList<>();
+    //Likes
+    @OneToMany(mappedBy = "user")
+    private List<Likes> likes = new ArrayList<>();
+    //Appeal
+    @OneToMany(mappedBy = "user")
+    private List<Appeal> appeals = new ArrayList<>();
+    //BidLog
+    @OneToMany(mappedBy = "user")
+    private List<BidLog> bidLogs = new ArrayList<>();
+    //Board
+    @OneToMany(mappedBy = "user")
+    private List<Board> boards = new ArrayList<>();
 
 }

@@ -6,6 +6,8 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @DynamicInsert
 @DynamicUpdate
@@ -23,7 +25,7 @@ public class NFT {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private UserPage user;
+    private UserPage userPage;
 
     @Column(nullable = false)
     private boolean is_saled;
@@ -33,4 +35,23 @@ public class NFT {
 
     @Column(nullable = false)
     private int like;
+
+    @OneToOne(mappedBy = "nft")
+    private Profile profile;
+
+
+    //OneToMany
+    //Likes
+    @OneToMany(mappedBy = "nft")
+    private List<Likes> likes = new ArrayList<>();
+    //Appeal
+    @OneToMany(mappedBy = "nft")
+    private List<Appeal> appeals = new ArrayList<>();
+    //BidLog
+    @OneToMany(mappedBy = "nft")
+    private List<BidLog> bidLogs = new ArrayList<>();
+    //Board
+    @OneToMany(mappedBy = "nft")
+    private List<Board> boards = new ArrayList<>();
+
 }

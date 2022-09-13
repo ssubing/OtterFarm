@@ -6,6 +6,8 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @DynamicInsert
 @DynamicUpdate
@@ -18,6 +20,6 @@ public class UserPage {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
-    private NFT nft;
+    @OneToMany(mappedBy = "userPage")
+    private List<NFT> nfts = new ArrayList<>();
 }

@@ -1,7 +1,13 @@
 import React from "react";
 
+const title = "AirCraft";
+
 function Game() {
-  return <div>Game Page</div>;
+  return (
+    <div>
+      {title}
+    </div>
+  );
 }
 
 export default Game;

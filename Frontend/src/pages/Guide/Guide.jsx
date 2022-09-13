@@ -1,10 +1,10 @@
 import Navbar from "../../components/Navbar/Navbar";
-import "./Information.css";
+import "./Guide.css";
 import Button from "@material-ui/core/Button";
 import game from "../../assets/images/game.png";
-const Information = () => {
+const Guide = () => {
   return (
-    <div className="information">
+    <div className="guide">
       <Navbar></Navbar>
       <div className="description">
         <div className="title">수달농장</div>
@@ -47,4 +47,4 @@ const Information = () => {
   );
 };
 
-export default Information;
+export default Guide;

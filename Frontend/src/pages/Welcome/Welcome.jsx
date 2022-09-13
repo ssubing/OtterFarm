@@ -2,7 +2,11 @@ import React from "react";
 import "./Welcome.css";
 import logo from "../../assets/images/logo.png";
 import { Link } from "react-router-dom";
+import useSound from "../../hooks/useSound";
+import sound from '../../assets/audios/main.mp3'
+
 const Welcome = () => {
+  useSound(sound, 0.1, 2000);
   return (
     <div className="back">
       <h1>

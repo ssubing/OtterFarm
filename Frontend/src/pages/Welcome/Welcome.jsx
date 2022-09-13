@@ -4,7 +4,7 @@ import logo from "../../assets/images/logo.png";
 import { Link } from "react-router-dom";
 const Welcome = () => {
   return (
-    <div>
+    <div className="back">
       <div>
         <h1>
           <div className="waviy">

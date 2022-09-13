@@ -1,4 +1,36 @@
 package com.a606.db.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
+import javax.persistence.*;
+
+@DynamicInsert
+@DynamicUpdate
+@Entity
+@Getter
+@Setter
 public class NFT {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
+    private Long id = null;
+
+    @Column(nullable = false)
+    private String tokenURI;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserPage user;
+
+    @Column(nullable = false)
+    private boolean is_saled;
+
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
+    private int like;
 }

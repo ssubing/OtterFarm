@@ -1,0 +1,116 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 배경 이미지 */
+body::after {
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    background-image: url("../../assets/images/main.jpg");
+    opacity: 0.5;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#root {
+    -webkit-font-smoothing: antialiased;
+    font-family: 'neo'
+}
+
+/* 수달농장 */
+h1 {
+    height: 100px;
+}
+h1 span {
+    position: relative;
+    top: 20px;
+    display: inline-block;
+    animation: bounce .3s ease infinite alternate;
+    font-size: 80px;
+    color: #5E3023;
+    text-shadow: 0 1px 0 #FFFAF4,
+                 0 2px 0 #FFFAF4,
+                 0 3px 0 #C08552,
+                 0 4px 0 #C08552,
+                 0 5px 0 #C08552,
+                 0 6px 0 transparent,
+                 0 7px 0 transparent,
+                 0 8px 0 transparent,
+                 0 9px 0 transparent,
+                 0 10px 10px rgba(0, 0, 0, .4);
+}
+
+h1 span:nth-child(2) { animation-delay: .1s; }
+h1 span:nth-child(3) { animation-delay: .2s; }
+h1 span:nth-child(4) { animation-delay: .3s; }
+h1 span:nth-child(5) { animation-delay: .4s; }
+h1 span:nth-child(6) { animation-delay: .5s; }
+h1 span:nth-child(7) { animation-delay: .6s; }
+h1 span:nth-child(8) { animation-delay: .7s; }
+
+@keyframes bounce {
+    100% {
+      top: -20px;
+      text-shadow: 0 1px 0 #FFFAF4,
+                   0 2px 0 #FFFAF4,
+                   0 3px 0 #C08552,
+                   0 4px 0 #C08552,
+                   0 5px 0 #C08552,
+                   0 6px 0 #C08552,
+                   0 7px 0 #C08552,
+                   0 8px 0 #C08552,
+                   0 9px 0 #C08552,
+                   0 50px 25px rgba(0, 0, 0, .2);
+    }
+}
+
+.mainBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #DAB49D;
+    background-color: #DAB49D;
+    width: 200px;
+    height: 65px;
+    font-size: 24px;
+    border-radius: 10px;
+    font-family: 'neo';
+    margin: 0 auto;
+}
+
+.mainBtn > a {
+    color: black;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+.mainBtn > a > img {
+    height: 60px;
+}
+
+.mainBtn:hover {
+    background-color: #5E3023;
+    color: white;
+}
+
+.mainBtn:hover > a {
+    color: white;
+}
+
+@font-face {
+    font-family: 'neo';
+    src: url('../../assets/fonts/neodgm.woff') format("truetype")
+}

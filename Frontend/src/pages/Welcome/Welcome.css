@@ -1,14 +1,8 @@
-html, body {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    z-index: 1;
-}
-
-body {
+.back {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 
 /* 배경 이미지 */
@@ -31,10 +25,10 @@ body {
 }
 
 /* 수달농장 */
-h1 {
+.home-title {
     height: 100px;
 }
-h1 span {
+.home-title span {
     position: relative;
     top: 20px;
     display: inline-block;
@@ -53,10 +47,10 @@ h1 span {
                 0 10px 10px rgba(0, 0, 0, .4);
 }
 
-h1 span:nth-child(2) { animation-delay: .1s; }
-h1 span:nth-child(3) { animation-delay: .2s; }
-h1 span:nth-child(4) { animation-delay: .3s; }
-h1 span:nth-child(5) { animation-delay: .4s; }
+.home-title span:nth-child(2) { animation-delay: .1s; }
+.home-title span:nth-child(3) { animation-delay: .2s; }
+.home-title span:nth-child(4) { animation-delay: .3s; }
+.home-title span:nth-child(5) { animation-delay: .4s; }
 
 @keyframes bounce {
     100% {
@@ -74,7 +68,7 @@ h1 span:nth-child(5) { animation-delay: .4s; }
     }
 }
 
-.mainBtn {
+.main-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,22 +82,22 @@ h1 span:nth-child(5) { animation-delay: .4s; }
     margin: 0 auto;
 }
 
-.mainBtn > a {
+.main-btn > a {
     color: black;
     text-decoration: none;
     display: flex;
     align-items: center;
 }
-.mainBtn > a > img {
+.main-btn > a > img {
     height: 60px;
 }
 
-.mainBtn:hover {
+.main-btn:hover {
     background-color: #5E3023;
     color: white;
 }
 
-.mainBtn:hover > a {
+.main-btn:hover > a {
     color: white;
 }
 

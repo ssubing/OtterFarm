@@ -47,19 +47,33 @@ contract SudalFarm is ERC721URIStorage, Ownable {
         return newItemId;
     }
 
-    function getSudals() public view returns(Sudal[] memory) {
-        return sudals;
+    function getSudals() external view returns(string[] memory, uint[] memory, uint[] memory) {
+        string[] memory names = new string[](sudals.length);
+        uint[] memory ids = new uint[](sudals.length);
+        uint[] memory dnas = new uint[](sudals.length);
+        uint256 count = 0;
+        for (uint i = 0; i < sudals.length; i++){
+            names[count] = sudals[i].name;
+            ids[count] = sudals[i].id;
+            dnas[count] = sudals[i].dna;
+            count++;
+        }
+        return (names, ids, dnas);
     }
 
-    function _getSudalsByOwner(address _owner) public view returns(Sudal[] memory) {
-        Sudal[] memory result = new Sudal[](balanceOf(_owner));
+    function getSudalsByOwner(address _owner) external view returns(string[] memory, uint[] memory, uint[] memory) {
+        string[] memory names = new string[](balanceOf(_owner));
+        uint[] memory ids = new uint[](balanceOf(_owner));
+        uint[] memory dnas = new uint[](balanceOf(_owner));
         uint256 count = 0;
         for (uint i = 0; i < sudals.length; i++){
             if (ownerOf(i) == _owner) {
-                result[count] = sudals[i];
+                names[count] = sudals[i].name;
+                ids[count] = sudals[i].id;
+                dnas[count] = sudals[i].dna;
                 count++;
             }
         }
-        return result;
+        return (names, ids, dnas);
     }
 }

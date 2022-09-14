@@ -30,6 +30,37 @@
 }
 
 .card {
+  font-family: "neo";
+}
+
+.sale {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  width: 100px;
+  height: 40px;
+  background-color: #5e3023;
+  border-radius: 3px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100px;
+  font-size: 20px;
+}
+
+.owner {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
 }

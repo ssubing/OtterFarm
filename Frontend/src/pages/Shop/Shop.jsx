@@ -11,11 +11,13 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
 
 import avatar from "../../assets/images/avatar.png";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
+
+import ShowSale from "../../components/Card/ShowSale";
+import Like from "../../components/Card/Like";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -45,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     height: 450,
-    border: "1px solid",
+    border: "2px solid",
     borderRadius: "10px",
     backgroundColor: "#ffffff",
   },
@@ -56,31 +58,36 @@ const datas = [
     img: avatar,
     isOnSale: true,
     title: "벌크업 수달",
-    price: "0.04 SSF",
+    price: "0.04",
+    owner: "수빙수",
   },
   {
     img: avatar,
     isOnSale: false,
     title: "벌크업 수달",
-    price: "0.04 SSF",
+    price: "0.04",
+    owner: "수빙수",
   },
   {
     img: avatar,
     isOnSale: true,
     title: "벌크업 수달",
-    price: "0.04 SSF",
+    price: "0.04",
+    owner: "수빙수",
   },
   {
     img: avatar,
     isOnSale: true,
     title: "벌크업 수달",
-    price: "0.04 SSF",
+    price: "0.04",
+    owner: "수빙수",
   },
   {
     img: avatar,
     isOnSale: true,
     title: "벌크업 수달",
-    price: "0.04 SSF",
+    price: "0.04",
+    owner: "수빙수",
   },
 ];
 
@@ -145,25 +152,20 @@ function Shop() {
                       image={data.img}
                       title="avatar sample"
                     />
-                    <CardContent>
-                      {data.isOnSale ? (
-                        <Typography gutterBottom variant="h5" component="h2">
-                          분양중
-                        </Typography>
-                      ) : (
-                        <Typography gutterBottom variant="h5" component="h2">
-                          미분양
-                        </Typography>
-                      )}
-                      <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        component="p"
-                      >
-                        {data.title}
-                        <br />
-                        {data.price} ~
-                      </Typography>
+                    <CardContent className="card">
+                      <div className="card-header">
+                        <ShowSale isOnSale={data.isOnSale}></ShowSale>
+                        <Like likeCnt={10}></Like>
+                      </div>
+                      <div className="card-body">
+                        <div>{data.title}</div>
+                        <div>{data.price} SSF ~</div>
+                        <div className="line"></div>
+                        <div className="owner">
+                          <div>소유자</div>
+                          <div>{data.owner}</div>
+                        </div>
+                      </div>
                     </CardContent>
                   </CardActionArea>
                 </Card>

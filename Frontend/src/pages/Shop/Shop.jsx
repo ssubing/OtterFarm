@@ -18,7 +18,7 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import avatar from "../../assets/images/찐수달.png";
+import avatar from "../../assets/images/otter.png";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 
@@ -131,7 +131,7 @@ function Shop() {
     <div>
       <Navbar></Navbar>
       <div className="shop">
-        <div className="title">수달샵</div>
+        <div className="shop-title">수달샵</div>
         <div className="line"></div>
         <div className="wrap">
           {/* 왼쪽 탭 */}

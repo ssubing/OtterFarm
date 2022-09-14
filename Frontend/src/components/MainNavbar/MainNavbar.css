@@ -1,0 +1,28 @@
+@font-face {
+    font-family: "neo";
+    src: url("../../assets/fonts/neodgm.woff");
+  }
+  .mainNavbar {
+    background-color: #c08552;
+    font-family: "neo";
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+   
+    align-items: center;
+    z-index:10;
+  }
+  .main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+  }
+ 
+  .logoImg {
+    width: 80px;
+    padding : 10px;
+  }
+  

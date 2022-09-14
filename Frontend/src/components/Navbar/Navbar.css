@@ -10,13 +10,14 @@
   justify-content: space-between;
   padding: 10px;
   font-size: 24px;
-  cursor: pointer;
+
   align-items: center;
 }
 .main {
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
 }
 .menu {
   font-family: "neo";
@@ -27,9 +28,10 @@
 .menuItem {
   padding-right: 130px;
   font-size: 30px;
-  color: white;
+  color: black;  
   text-decoration: none;
-  -webkit-text-stroke: 1.5px black;
+
+
 }
 
 .logo {

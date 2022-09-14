@@ -1,0 +1,29 @@
+.pageBox {
+   display: flex;
+   background-color: #fffaf4;
+   flex-direction: column;
+  height : 100%;
+}
+
+.itemPage {
+    display :flex;
+    flex-direction: row;
+    
+    justify-content: flex-end;
+}
+
+.myNft {
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.otter {
+    margin-top : 10%;
+    width : 20%;
+    height : 50%;
+    border-color:black;
+    border: 2px solid;
+}
+

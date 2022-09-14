@@ -24,6 +24,8 @@ const Guide = () => {
           게임하기
           <Button
             style={{
+              fontFamily: "neo",
+              fontWeight: "bold",
               backgroundColor: "#DAB49D",
               marginLeft: "10px",
             }}

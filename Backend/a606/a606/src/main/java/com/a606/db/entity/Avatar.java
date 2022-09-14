@@ -6,13 +6,14 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @DynamicInsert
 @DynamicUpdate
 @Entity
 @Getter
 @Setter
-public class Avatar {
+public class Avatar implements Serializable {
 
     @Id
     @OneToOne

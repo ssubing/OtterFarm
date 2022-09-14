@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "neo";
+  src: url("../../assets/fonts/neodgm.woff");
+}
+.shop {
+  font-family: "neo";
+  background-color: #fffaf4;
+  padding: 3%;
+}
+.title {
+  font-size: 40px;
+}
+
+.line {
+  background-color: black;
+  height: 1px;
+  margin-top: 10px;
+}
+
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tab {
+  min-width: 200px;
+  display: flex;
+  justify-content: inherit;
+}
+
+.card {
+  display: flex;
+  justify-content: space-around;
+}

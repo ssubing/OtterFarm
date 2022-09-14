@@ -1,64 +1,70 @@
 import React from "react";
 import "./Main.css";
 import sign from "../../assets/images/sign.png";
+import MainNavbar from "../../components/MainNavbar/MainNavbar"
+import{motion} from "framer-motion";
 function Main() {
   return (
-    <div className="mainPage">
-      <div className="shopContainer">
-        <div className="shopBox">
+    
+    <div className="mainPage" style={{display:"flex", flexDirection:"column"}}>
+      <MainNavbar/>
+      <div className="menuDiv">
+        <motion.div className="shopBox"  onClick={() => {
+              window.location.href = "/shop";
+            }}
+            whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.9 }}>
           <img src={sign} alt="shopSign" className="shopSign" />
           <span
             className="shopBtn"
-            onClick={() => {
-              window.location.href = "/shop";
-            }}
           >
             수달샵
           </span>
-        </div>
-      </div>
-      <div className="gameContainer">
-        <div className="gaemBox">
+      </motion.div>
+      <motion.div className="gameBox"  onClick={() => {
+              window.location.href = "/game";
+            }}
+            whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.9 }}>
           <img src={sign} alt="gameSign" className="gameSign" />
           <span
             className="gameBtn"
-            onClick={() => {
-              window.location.href = "/game";
-            }}
+           
           >
             게임하기
           </span>
-        </div>
-      </div>
-      <div className="itemContainer">
-        <div className="itemBox">
+      </motion.div>
+      <motion.div className="itemBox"  onClick={() => {
+              window.location.href = "/item";
+            }}
+            whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.9 }}>
           <img src={sign} alt="itemSign" className="itemSign" />
           <span
             className="itemBtn"
-            onClick={() => {
-              window.location.href = "/item";
-            }}
+           
           >
-            수달
-            <br />
+            수달<br/>
             꾸미기
           </span>
-        </div>
-      </div>
-      <div className="guideContainer">
-        <div className="guideBox">
+      </motion.div>
+      <motion.div className="guideBox" onClick={() => {
+              window.location.href = "/guide";
+            }}
+            whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.9 }}>
           <img src={sign} alt="guideSign" className="guideSign" />
           <span
             className="guideBtn"
-            onClick={() => {
-              window.location.href = "/guide";
-            }}
+            
           >
             이용안내
           </span>
-        </div>
+      </motion.div>
       </div>
-    </div>
+      </div>
+
+    
   );
 }
 

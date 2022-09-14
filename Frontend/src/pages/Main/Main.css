@@ -3,6 +3,7 @@
   src: url("../../assets/fonts/neodgm.woff");
 }
 
+
 .mainPage {
   background-image: url("../../assets/images/main.jpeg");
   background-size: 100% 100%;
@@ -12,104 +13,118 @@
   display: flex;
   font-family: "neo";
   z-index: -1;
+  
 }
-
-.shopContainer {
-  display: flex;
-  align-items: flex-end;
-  position: relative;
-  left: 10%;
-  bottom: 5%;
-}
-.shopSign {
-  transform: scaleX(-1);
+.menuDiv{
+  position:absolute;
+  width : 100%;
   height: 100%;
 }
-.shopBtn {
-  position: absolute;
-  top: 50%;
-  left: 57%;
-  width: 100%;
-  font-size: 2.5vw;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.gameContainer {
-  margin-left: 15%;
-  position: relative;
-  right: 5%;
-  top: 30%;
-  height: 20%;
-}
-
-.gameBtn {
-  position: absolute;
-  top: 80%;
-  left: 50%;
-  width: 100%;
-  font-size: 2.5vw;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.itemContainer {
-  display: flex;
-  align-items: flex-end;
-  position: relative;
-  right: 20%;
-}
-.itemSign {
-  transform: scaleX(-1);
-  height: 100%;
-}
-.itemBtn {
-  position: absolute;
-  top: 39%;
-  left: 51%;
-  width: 100%;
-  height: 10%;
-  font-size: 2.5vw;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.guideContainer {
-  display: flex;
-  align-items: flex-end;
-  position: relative;
-  right: 15%;
-  width: 10vw;
-}
+/* shop */
 .shopBox {
   position: relative;
-  width: 25vw;
-  height: 20vw;
+ width:20%;
+ height:20%;
+  top: 70%;
+ left : 10%;
+ padding : 10px;
+ cursor:pointer;
 }
-.guideBox {
-  position: relative;
-  width: 25vw;
-  height: 20vw;
+
+.shopBox > img{
+  position : absolute;
+  width : 100%;
+  height: 100%;
+
 }
+
+.shopBox > span {
+  position : absolute;
+  transform: translate(-50%, -50%);
+  left: 55%;
+  top :50%;
+  text-align: center;
+  font-size: 2vw ;
+}
+/* game */
 .gameBox {
-  position: relative;
-  width: 25vw;
-  height: 20vw;
+ position: relative;
+ width:20%;
+ height:20%;
+ top:15%;
+ left: 40%;
+ padding : 10px;
+ cursor:pointer;
 }
+
+.gameBox > img{
+  position : absolute;
+  width : 100%;
+  height: 100%;
+  transform: scaleX(-1);
+  
+}
+
+.gameBox > span {
+  position : absolute;
+  transform: translate(-50%, -50%);
+  left: 54%;
+  top :50%;
+  text-align: center;
+  font-size: 2vw;
+
+}
+
+/* item */
 .itemBox {
   position: relative;
-  width: 25vw;
-  height: 20vw;
+ width:20%;
+ height:20%;
+top:20%;
+ left : 50%;
+ padding : 10px;
+ cursor:pointer;
 }
-.guideSign {
+
+.itemBox > img{
+  position : absolute;
+  width : 100%;
   height: 100%;
-  width: 100%;
+  
 }
-.guideBtn {
-  position: absolute;
-  top: 40%;
-  left: 55%;
-  width: 30%;
-  font-size: 2.5vw;
+
+.itemBox > span {
+  position : absolute;
   transform: translate(-50%, -50%);
+  left: 55%;
+  top :50%;
+  text-align: center;
+  font-size: 2vw;
+}
+
+.guideBox {
+  position: relative;
+ width:20%;
+ height:20%;
+  top : -10%;
+ left: 70%;
+ padding : 10px;
+ cursor:pointer;
+}
+
+.guideBox > img{
+  position : absolute;
+  width : 100%;
+  height: 100%;
+  transform: scaleX(-1);
+ 
+}
+
+.guideBox > span {
+  position : absolute;
+  transform: translate(-50%, -50%);
+  left: 54%;
+  top :50%;
+  text-align: center;
+  font-size: 2vw;
 }

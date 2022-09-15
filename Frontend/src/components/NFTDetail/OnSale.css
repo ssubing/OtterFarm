@@ -13,10 +13,15 @@
     margin: 30px 0;
 }
 
-.current, .bid, .bid-title {
+.current, .bid, .bid-title, .sell-end-date {
     font-size: 20px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.sell-end-date {
+    margin: 20px 0;
 }
 
 .current {
@@ -28,13 +33,19 @@
 }
 
 .bid-input {
-    height: 25px;
-    border: 1px solid #DAB49D;
+    height: 30px;
+    border: 1px solid #895737;
     margin-right: 12px;
+    border-radius: 5px;
+}
+
+.bid-input:focus {
+    outline: 0;
+    background-color: #f2d5c3;
 }
 
 /* 입찰버튼 */
-.bid-btn {
+.bid-btn, .request-btn {
     width: 70px;
     height: 35px;
     font-size: 15px;
@@ -43,6 +54,10 @@
     border: 1px solid #DAB49D;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.request-btn{
+    width: 95px;
 }
 
 .bid-tr {

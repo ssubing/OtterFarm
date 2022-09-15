@@ -8,6 +8,7 @@ buildscript{
 		querydslPluginVer = '1.0.10'
 		springDependencyMgmtVer = '1.0.11'
 		springLoadedVer = '1.2.8'
+		web3jVer = '4.8.7'
 	}
 	repositories {
 		mavenCentral()
@@ -24,6 +25,7 @@ plugins {
 	id 'java'
 	id 'idea'
 	id 'org.springframework.boot' version "${springBootVer}"
+	id "org.web3j" version "${web3jVer}"
 }
 
 apply plugin: 'io.spring.dependency-management'
@@ -167,6 +169,20 @@ dependencies {
 	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 
 
+	// web3j okhttp
+	// added to overcome the okhttp issue - https://github.com/web3j/web3j/issues/1271
+	// https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
+	implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.9.3'
+
+}
+
+node {
+	nodeModulesDir = file("${project.projectDir}/src/main/node")
+	version  = '16.16.0'
+	download = false
+	distBaseUrl = 'http://nodejs.org/dist'
+	npmWorkDir = file("${project.projectDir}/src/main/node")
+	workDir = file("${project.projectDir}/src/main/node")
 }
 
 test {

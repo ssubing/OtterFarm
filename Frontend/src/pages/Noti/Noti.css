@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "neo";
+  src: url("../../assets/fonts/neodgm.woff");
+}
+.noti {
+  font-family: "neo";
+  background-color: #fffaf4;
+  padding: 5%;
+}
+
+.noti-list {
+  padding: 3%;
+}
+
+.noti-item {
+  font-family: "neo";
+  font-size: 25px;
+  margin-left: 20px;
+}

@@ -1,3 +1,18 @@
-.content {
+.detail-content {
     display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+    min-width: 1023px;
+}
+
+/* 전체 높이 */
+.avatar-wrap {
+    height: 100vh;
+    background-color: #fffaf4;
+}
+
+.sale-wrap {
+    margin-left: 70px;
+    width: 460px;
 }

@@ -34,7 +34,7 @@ public class NFT {
     private String name;
 
     @Column(nullable = false)
-    private int like;
+    private int like_count;
 
     @OneToOne(mappedBy = "nft")
     private Profile profile;

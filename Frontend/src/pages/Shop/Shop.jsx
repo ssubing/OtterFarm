@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Shop.css";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 
 // tab
 import AppBar from "@material-ui/core/AppBar";
@@ -170,46 +171,48 @@ function Shop() {
           </div>
         </div>
         {/* NFT 카드 */}
-        <div className={classes.gridRoot}>
-          <GridList cellHeight={200} className={classes.gridList} spacing={10}>
-            {datas.map((data) => (
-              <GridListTile
-                cols={1}
-                style={{
-                  height: "auto",
-                  width: "450px",
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                <Card className={classes.root}>
-                  <CardActionArea>
-                    <CardMedia
-                      className={classes.media}
-                      image={data.img}
-                      title="avatar sample"
-                    />
-                    <CardContent className="card">
-                      <div className="card-header">
-                        <ShowSale isOnSale={data.isOnSale}></ShowSale>
-                        <Like likeCnt={10}></Like>
-                      </div>
-                      <div className="card-body">
-                        <div>{data.title}</div>
-                        <div>{data.price} SSF ~</div>
-                        <div className="line"></div>
-                        <div className="owner">
-                          <div>소유자</div>
-                          <div>{data.owner}</div>
+        <Link to="/detail">
+          <div className={classes.gridRoot}>
+            <GridList cellHeight={200} className={classes.gridList} spacing={10}>
+              {datas.map((data) => (
+                <GridListTile
+                  cols={1}
+                  style={{
+                    height: "auto",
+                    width: "450px",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Card className={classes.root}>
+                    <CardActionArea>
+                      <CardMedia
+                        className={classes.media}
+                        image={data.img}
+                        title="avatar sample"
+                      />
+                      <CardContent className="card">
+                        <div className="card-header">
+                          <ShowSale isOnSale={data.isOnSale}></ShowSale>
+                          <Like likeCnt={10}></Like>
                         </div>
-                      </div>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </GridListTile>
-            ))}
-          </GridList>
-        </div>
+                        <div className="card-body">
+                          <div>{data.title}</div>
+                          <div>{data.price} SSF ~</div>
+                          <div className="line"></div>
+                          <div className="owner">
+                            <div>소유자</div>
+                            <div>{data.owner}</div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </GridListTile>
+              ))}
+            </GridList>
+          </div>
+        </Link>
       </div>
     </div>
   );

@@ -32,6 +32,9 @@ function Noti() {
       <div className="noti">
         <div className="shop-title">알림내용</div>
         <div className="noti-list">
+          {noties.length === 0 && (
+            <div className="noti-item">알림이 없습니다.</div>
+          )}
           {noties.map((noti) => (
             <FormGroup style={{ marginBottom: "40px" }}>
               <FormControlLabel

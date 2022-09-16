@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import "../Noti/Noti.css";
 
@@ -7,25 +7,72 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
+// Pagination
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+
 const noties = [
   {
-    userId: "최수빈",
+    userId: "1최수빈",
     nftName: "벌크업 수달",
     msg: "좋아요를 눌렀습니다.",
   },
   {
-    userId: "이선민",
+    userId: "2이선민",
     nftName: "벌크업 수달",
     msg: "분양요청을 하였습니다.",
   },
   {
-    userId: "최수빈",
+    userId: "3최수빈",
+    nftName: "벌크업 수달",
+    msg: "좋아요를 눌렀습니다.",
+  },
+  {
+    userId: "4최수빈",
+    nftName: "벌크업 수달",
+    msg: "좋아요를 눌렀습니다.",
+  },
+  {
+    userId: "5이선민",
+    nftName: "벌크업 수달",
+    msg: "분양요청을 하였습니다.",
+  },
+  {
+    userId: "6최수빈",
+    nftName: "벌크업 수달",
+    msg: "좋아요를 눌렀습니다.",
+  },
+  {
+    userId: "7최수빈",
+    nftName: "벌크업 수달",
+    msg: "좋아요를 눌렀습니다.",
+  },
+  {
+    userId: "8이선민",
+    nftName: "벌크업 수달",
+    msg: "분양요청을 하였습니다.",
+  },
+  {
+    userId: "9최수빈",
     nftName: "벌크업 수달",
     msg: "좋아요를 눌렀습니다.",
   },
 ];
-
+// 현재 페이지에 보여줄 데이터 목록
+function currentData(currentPage, itemsPerPage) {
+  const begin = (currentPage - 1) * itemsPerPage;
+  const end = begin + itemsPerPage;
+  return noties.slice(begin, end);
+}
 function Noti() {
+  const itemsPerPage = 3;
+  const [currentPage, setCurrentPage] = useState(1);
+  const maxPage = Math.ceil(noties.length / itemsPerPage);
+  const currentNoti = currentData(currentPage, itemsPerPage);
+
+  const handlePage = (event, value) => {
+    setCurrentPage(value);
+  };
   return (
     <div>
       <Navbar></Navbar>
@@ -35,8 +82,8 @@ function Noti() {
           {noties.length === 0 && (
             <div className="noti-item">알림이 없습니다.</div>
           )}
-          {noties.map((noti) => (
-            <FormGroup style={{ marginBottom: "40px" }}>
+          {currentNoti.map((noti, index) => (
+            <FormGroup key={index} style={{ marginBottom: "40px" }}>
               <FormControlLabel
                 control={
                   <Checkbox
@@ -55,6 +102,9 @@ function Noti() {
             </FormGroup>
           ))}
         </div>
+        <Stack spacing={2} alignItems="center">
+          <Pagination count={maxPage} size="large" onChange={handlePage} />
+        </Stack>
       </div>
     </div>
   );

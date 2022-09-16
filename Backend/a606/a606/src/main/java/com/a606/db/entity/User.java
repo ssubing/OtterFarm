@@ -47,12 +47,7 @@ public class User {
     private boolean isDelete;
 
     //OneToOne
-    //UserPage
-    @OneToOne(mappedBy = "user")
-    private UserPage userPage;
-    //Profile
-    @OneToOne(mappedBy = "user")
-    private Profile profile;
+
     //Avatar
     @OneToOne(mappedBy = "user")
     private Avatar avatar;

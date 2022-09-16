@@ -21,11 +21,8 @@ public class NFT {
     private Long id = null;
 
     @Column(nullable = false)
-    private String tokenURI;
+    private String tokenId;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private UserPage userPage;
 
     @Column(nullable = false)
     private boolean is_saled;
@@ -36,9 +33,8 @@ public class NFT {
     @Column(nullable = false)
     private int like_count;
 
-    @OneToOne(mappedBy = "nft")
-    private Profile profile;
-
+    @Column(nullable = false)
+    private boolean is_profile;
 
     //OneToMany
     //Likes

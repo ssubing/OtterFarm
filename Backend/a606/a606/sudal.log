@@ -1,807 +1,43 @@
-2022-09-09 15:51:21.341  INFO 10836 --- [Test worker] com.a606.A606ApplicationTests            : Starting A606ApplicationTests using Java 1.8.0_192 on DESKTOP-PTCLTV4 with PID 10836 (started by hwi in C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606)
-2022-09-09 15:51:21.344  INFO 10836 --- [Test worker] com.a606.A606ApplicationTests            : No active profile set, falling back to default profiles: default
-2022-09-09 15:51:21.408 DEBUG 10836 --- [Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@757d6814
-2022-09-09 15:51:23.103  INFO 10836 --- [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-09-09 15:51:23.131  INFO 10836 --- [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 JPA repository interfaces.
-2022-09-09 15:51:24.185  INFO 10836 --- [Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-09-09 15:51:24.275  INFO 10836 --- [Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.30.Final
-2022-09-09 15:51:24.537  INFO 10836 --- [Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-09-09 15:51:24.713  INFO 10836 --- [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-09-09 15:51:25.086  INFO 10836 --- [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-09-09 15:51:25.120  INFO 10836 --- [Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-09-09 15:51:25.548  INFO 10836 --- [Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-09-09 15:51:25.565  INFO 10836 --- [Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-09-09 15:51:26.135  WARN 10836 --- [Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-09-09 15:51:26.637 DEBUG 10836 --- [Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 7 mappings in 'requestMappingHandlerMapping'
-2022-09-09 15:51:26.959  INFO 10836 --- [Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2022-09-09 15:51:27.790  INFO 10836 --- [Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2022-09-09 15:51:27.815 DEBUG 10836 --- [Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2022-09-09 15:51:28.086 DEBUG 10836 --- [Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/] in 'viewControllerHandlerMapping'
-2022-09-09 15:51:29.330 DEBUG 10836 --- [Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/**, /webjars/**, /**] in 'resourceHandlerMapping'
-2022-09-09 15:51:29.362 DEBUG 10836 --- [Test worker] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
-2022-09-09 15:51:30.538  INFO 10836 --- [Test worker] .s.s.UserDetailsServiceAutoConfiguration : 
-
-Using generated security password: 42cdd5d2-30de-430c-91de-c45ebd423b93
-
-2022-09-09 15:51:31.269  INFO 10836 --- [Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3cfab340, org.springframework.security.web.context.SecurityContextPersistenceFilter@123c48d0, org.springframework.security.web.header.HeaderWriterFilter@4f2d8175, org.springframework.security.web.csrf.CsrfFilter@24cbf894, org.springframework.security.web.authentication.logout.LogoutFilter@3855b27e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2697c156, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@2b1a1a37, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@3387ab0, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@234ce7ff, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1203d787, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5454be, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@470f0637, org.springframework.security.web.session.SessionManagementFilter@2b15ba1a, org.springframework.security.web.access.ExceptionTranslationFilter@72d16d6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7aab98b6]
-2022-09-09 15:51:32.296  INFO 10836 --- [Test worker] com.a606.A606ApplicationTests            : Started A606ApplicationTests in 11.375 seconds (JVM running for 13.483)
-2022-09-09 15:51:32.497 DEBUG 10836 --- [SpringContextShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@757d6814, started on Fri Sep 09 15:51:21 KST 2022
-2022-09-09 15:51:32.503  INFO 10836 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-2022-09-09 15:51:32.509  INFO 10836 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-09-09 15:51:32.513  INFO 10836 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-09-09 15:51:32.526  INFO 10836 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2022-09-09 16:03:29.968  INFO 13400 --- [Test worker] com.a606.A606ApplicationTests            : Starting A606ApplicationTests using Java 1.8.0_192 on DESKTOP-PTCLTV4 with PID 13400 (started by hwi in C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606)
-2022-09-09 16:03:29.972  INFO 13400 --- [Test worker] com.a606.A606ApplicationTests            : No active profile set, falling back to default profiles: default
-2022-09-09 16:03:30.026 DEBUG 13400 --- [Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@757d6814
-2022-09-09 16:03:31.814  INFO 13400 --- [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-09-09 16:03:31.842  INFO 13400 --- [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 0 JPA repository interfaces.
-2022-09-09 16:03:32.859  INFO 13400 --- [Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-09-09 16:03:32.945  INFO 13400 --- [Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.30.Final
-2022-09-09 16:03:33.192  INFO 13400 --- [Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-09-09 16:03:33.377  INFO 13400 --- [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-09-09 16:03:33.754  INFO 13400 --- [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-09-09 16:03:33.787  INFO 13400 --- [Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-09-09 16:03:34.236  INFO 13400 --- [Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-09-09 16:03:34.254  INFO 13400 --- [Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-09-09 16:03:35.187  WARN 13400 --- [Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-09-09 16:03:35.710 DEBUG 13400 --- [Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 7 mappings in 'requestMappingHandlerMapping'
-2022-09-09 16:03:35.977  INFO 13400 --- [Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2022-09-09 16:03:36.966  INFO 13400 --- [Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2022-09-09 16:03:36.995 DEBUG 13400 --- [Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2022-09-09 16:03:37.128 DEBUG 13400 --- [Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/] in 'viewControllerHandlerMapping'
-2022-09-09 16:03:37.993 DEBUG 13400 --- [Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/resources/**, /swagger-ui.html, /webjars/**, /css/**, /fonts/**, /icons/**, /img/**, /js/**, /swagger-ui/**, /**] in 'resourceHandlerMapping'
-2022-09-09 16:03:38.019 DEBUG 13400 --- [Test worker] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
-2022-09-09 16:03:38.633  INFO 13400 --- [Test worker] .s.s.UserDetailsServiceAutoConfiguration : 
-
-Using generated security password: 1e429cf4-18a0-43a0-b13a-cf94146cebf9
-
-2022-09-09 16:03:39.118  INFO 13400 --- [Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4af606e9, org.springframework.security.web.context.SecurityContextPersistenceFilter@1736273c, org.springframework.security.web.header.HeaderWriterFilter@7d82ca56, org.springframework.security.web.csrf.CsrfFilter@48f4264e, org.springframework.security.web.authentication.logout.LogoutFilter@25c8c71e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3093b9ff, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1a7a21d0, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@17dbca0a, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5b2ff4df, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@36eb8e07, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@361f1647, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@33765d22, org.springframework.security.web.session.SessionManagementFilter@5a58db42, org.springframework.security.web.access.ExceptionTranslationFilter@2ae5580, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@759f45f1]
-2022-09-09 16:03:39.717  INFO 13400 --- [Test worker] com.a606.A606ApplicationTests            : Started A606ApplicationTests in 10.21 seconds (JVM running for 12.285)
-2022-09-09 16:03:39.910 DEBUG 13400 --- [SpringContextShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@757d6814, started on Fri Sep 09 16:03:30 KST 2022
-2022-09-09 16:03:39.916  INFO 13400 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-2022-09-09 16:03:39.924  INFO 13400 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-09-09 16:03:39.927  INFO 13400 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-09-09 16:03:39.940  INFO 13400 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2022-09-09 16:05:31.398  INFO 13248 --- [restartedMain] com.a606.A606Application                 : Starting A606Application using Java 1.8.0_192 on DESKTOP-PTCLTV4 with PID 13248 (C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606\build\classes\java\main started by hwi in C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606)
-2022-09-09 16:05:31.402  INFO 13248 --- [restartedMain] com.a606.A606Application                 : No active profile set, falling back to default profiles: default
-2022-09-09 16:05:31.471  INFO 13248 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-09-09 16:05:31.472  INFO 13248 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-09-09 16:05:33.326  INFO 13248 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-09-09 16:05:33.349  INFO 13248 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 0 JPA repository interfaces.
-2022-09-09 16:05:34.764  INFO 13248 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-09-09 16:05:34.780  INFO 13248 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-09-09 16:05:34.781  INFO 13248 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.45]
-2022-09-09 16:05:34.969  INFO 13248 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-09-09 16:05:34.970  INFO 13248 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3497 ms
-2022-09-09 16:05:35.237 DEBUG 13248 --- [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'commonsRequestLoggingFilter' configured for use
-2022-09-09 16:05:35.430  INFO 13248 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-09-09 16:05:35.527  INFO 13248 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.30.Final
-2022-09-09 16:05:35.814  INFO 13248 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-09-09 16:05:35.994  INFO 13248 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-09-09 16:05:36.324  INFO 13248 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-09-09 16:05:36.354  INFO 13248 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-09-09 16:05:36.805  INFO 13248 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-09-09 16:05:36.818  INFO 13248 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-09-09 16:05:36.837  INFO 13248 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-09-09 16:05:37.262  WARN 13248 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-09-09 16:05:37.416 DEBUG 13248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 7 mappings in 'requestMappingHandlerMapping'
-2022-09-09 16:05:37.529  INFO 13248 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2022-09-09 16:05:37.769  INFO 13248 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2022-09-09 16:05:37.784 DEBUG 13248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2022-09-09 16:05:37.863 DEBUG 13248 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/] in 'viewControllerHandlerMapping'
-2022-09-09 16:05:38.641 DEBUG 13248 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/resources/**, /swagger-ui.html, /webjars/**, /css/**, /fonts/**, /icons/**, /img/**, /js/**, /swagger-ui/**, /**] in 'resourceHandlerMapping'
-2022-09-09 16:05:38.655 DEBUG 13248 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
-2022-09-09 16:05:39.084  INFO 13248 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
-
-Using generated security password: 2261d7fd-5da5-40c2-8c0f-9930f9eb50a3
-
-2022-09-09 16:05:39.313  INFO 13248 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2a977feb, org.springframework.security.web.context.SecurityContextPersistenceFilter@2c49d446, org.springframework.security.web.header.HeaderWriterFilter@333dfb6e, org.springframework.security.web.csrf.CsrfFilter@2d693497, org.springframework.security.web.authentication.logout.LogoutFilter@65634a66, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@57fcbe69, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@2b7a4569, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@387a6ba4, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@15657de4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@617f59fe, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2df902ca, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@64ebb12, org.springframework.security.web.session.SessionManagementFilter@4885f376, org.springframework.security.web.access.ExceptionTranslationFilter@3f7da98f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1231336e]
-2022-09-09 16:05:39.552  INFO 13248 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-09-09 16:05:39.634  INFO 13248 --- [restartedMain] com.a606.A606Application                 : Started A606Application in 8.841 seconds (JVM running for 9.651)
-2022-09-09 16:05:50.912  INFO 13248 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-09-09 16:05:50.912  INFO 13248 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-09-09 16:05:50.913 DEBUG 13248 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
-2022-09-09 16:05:50.913 DEBUG 13248 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
-2022-09-09 16:05:50.913 DEBUG 13248 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
-2022-09-09 16:05:50.915 DEBUG 13248 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@2d17e9a1
-2022-09-09 16:05:50.915 DEBUG 13248 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@15c15d95
-2022-09-09 16:05:50.916 DEBUG 13248 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
-2022-09-09 16:05:50.916  INFO 13248 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
-2022-09-09 16:11:36.040  INFO 13460 --- [restartedMain] com.a606.A606Application                 : Starting A606Application using Java 1.8.0_192 on DESKTOP-PTCLTV4 with PID 13460 (C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606\build\classes\java\main started by hwi in C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606)
-2022-09-09 16:11:36.044  INFO 13460 --- [restartedMain] com.a606.A606Application                 : No active profile set, falling back to default profiles: default
-2022-09-09 16:11:36.113  INFO 13460 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-09-09 16:11:36.113  INFO 13460 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-09-09 16:11:37.954  INFO 13460 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-09-09 16:11:37.981  INFO 13460 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 0 JPA repository interfaces.
-2022-09-09 16:11:39.543  INFO 13460 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-09-09 16:11:39.559  INFO 13460 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-09-09 16:11:39.560  INFO 13460 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.45]
-2022-09-09 16:11:39.789  INFO 13460 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-09-09 16:11:39.789  INFO 13460 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3675 ms
-2022-09-09 16:11:40.058 DEBUG 13460 --- [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'commonsRequestLoggingFilter' configured for use
-2022-09-09 16:11:40.254  INFO 13460 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-09-09 16:11:40.340  INFO 13460 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.30.Final
-2022-09-09 16:11:40.578  INFO 13460 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-09-09 16:11:40.768  INFO 13460 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-09-09 16:11:41.129  INFO 13460 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-09-09 16:11:41.165  INFO 13460 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-09-09 16:11:41.621  INFO 13460 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-09-09 16:11:41.636  INFO 13460 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-09-09 16:11:41.657  INFO 13460 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-09-09 16:11:42.109  WARN 13460 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-09-09 16:11:42.248 DEBUG 13460 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 7 mappings in 'requestMappingHandlerMapping'
-2022-09-09 16:11:42.384  INFO 13460 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2022-09-09 16:11:42.662  INFO 13460 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2022-09-09 16:11:42.681 DEBUG 13460 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2022-09-09 16:11:42.774 DEBUG 13460 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/] in 'viewControllerHandlerMapping'
-2022-09-09 16:11:43.623 DEBUG 13460 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/resources/**, /swagger-ui.html, /webjars/**, /css/**, /fonts/**, /icons/**, /img/**, /js/**, /swagger-ui/**, /**] in 'resourceHandlerMapping'
-2022-09-09 16:11:43.640 DEBUG 13460 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
-2022-09-09 16:11:44.113  INFO 13460 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
-
-Using generated security password: f398007d-22d6-41ca-b3cf-0f651609d91f
-
-2022-09-09 16:11:44.393  INFO 13460 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@736419be, org.springframework.security.web.context.SecurityContextPersistenceFilter@34aaee1d, org.springframework.security.web.header.HeaderWriterFilter@2744f4a0, org.springframework.security.web.csrf.CsrfFilter@675fffad, org.springframework.security.web.authentication.logout.LogoutFilter@99cf4c7, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@34926b35, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@5ec88727, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@2bd06a92, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@635c75a7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3477d58, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@9437c08, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2b21c302, org.springframework.security.web.session.SessionManagementFilter@2514229b, org.springframework.security.web.access.ExceptionTranslationFilter@2cb29d64, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@18b07839]
-2022-09-09 16:11:44.664  INFO 13460 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-09-09 16:11:44.749  INFO 13460 --- [restartedMain] com.a606.A606Application                 : Started A606Application in 9.391 seconds (JVM running for 10.416)
-2022-09-09 16:11:48.632  INFO 13460 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-09-09 16:11:48.633  INFO 13460 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-09-09 16:11:48.633 DEBUG 13460 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
-2022-09-09 16:11:48.633 DEBUG 13460 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
-2022-09-09 16:11:48.634 DEBUG 13460 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
-2022-09-09 16:11:48.635 DEBUG 13460 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@3a10ef91
-2022-09-09 16:11:48.636 DEBUG 13460 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@832c3f4
-2022-09-09 16:11:48.637 DEBUG 13460 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
-2022-09-09 16:11:48.637  INFO 13460 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
-2022-09-09 16:18:07.084  INFO 3016 --- [restartedMain] com.a606.A606Application                 : Starting A606Application using Java 1.8.0_192 on DESKTOP-PTCLTV4 with PID 3016 (C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606\build\classes\java\main started by hwi in C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606)
-2022-09-09 16:18:07.088  INFO 3016 --- [restartedMain] com.a606.A606Application                 : No active profile set, falling back to default profiles: default
-2022-09-09 16:18:07.160  INFO 3016 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-09-09 16:18:07.160  INFO 3016 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-09-09 16:18:08.955  INFO 3016 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-09-09 16:18:08.975  INFO 3016 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 JPA repository interfaces.
-2022-09-09 16:18:10.531  INFO 3016 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-09-09 16:18:10.549  INFO 3016 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-09-09 16:18:10.550  INFO 3016 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.45]
-2022-09-09 16:18:10.762  INFO 3016 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-09-09 16:18:10.763  INFO 3016 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3602 ms
-2022-09-09 16:18:11.178  INFO 3016 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-09-09 16:18:11.281  INFO 3016 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.30.Final
-2022-09-09 16:18:11.561  INFO 3016 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-09-09 16:18:11.760  INFO 3016 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-09-09 16:18:12.128  INFO 3016 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-09-09 16:18:12.168  INFO 3016 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-09-09 16:18:12.601  INFO 3016 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-09-09 16:18:12.616  INFO 3016 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-09-09 16:18:12.636  INFO 3016 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-09-09 16:18:13.131  WARN 3016 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-09-09 16:18:13.276 DEBUG 3016 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 7 mappings in 'requestMappingHandlerMapping'
-2022-09-09 16:18:13.410  INFO 3016 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2022-09-09 16:18:13.658  INFO 3016 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2022-09-09 16:18:13.671 DEBUG 3016 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2022-09-09 16:18:13.745 DEBUG 3016 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/] in 'viewControllerHandlerMapping'
-2022-09-09 16:18:14.701 DEBUG 3016 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/**, /webjars/**, /**] in 'resourceHandlerMapping'
-2022-09-09 16:18:14.722 DEBUG 3016 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
-2022-09-09 16:18:15.243  INFO 3016 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
-
-Using generated security password: f5484793-e0d3-4a8d-92e5-79a7c0d723e1
-
-2022-09-09 16:18:15.518  INFO 3016 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@164d6241, org.springframework.security.web.context.SecurityContextPersistenceFilter@17fb0c31, org.springframework.security.web.header.HeaderWriterFilter@2dc72a2e, org.springframework.security.web.csrf.CsrfFilter@380c6aa6, org.springframework.security.web.authentication.logout.LogoutFilter@5ea27ed0, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@60ae793a, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@fa0dc73, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@aedf3f9, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@6bb5201f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@27179247, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@72d80c9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@489a9f63, org.springframework.security.web.session.SessionManagementFilter@7b22da9, org.springframework.security.web.access.ExceptionTranslationFilter@2c787f80, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5f4e031c]
-2022-09-09 16:18:15.775  INFO 3016 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-09-09 16:18:15.878  INFO 3016 --- [restartedMain] com.a606.A606Application                 : Started A606Application in 9.42 seconds (JVM running for 10.383)
-2022-09-09 16:18:26.129  INFO 3016 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-09-09 16:18:26.130  INFO 3016 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-09-09 16:18:26.131 DEBUG 3016 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
-2022-09-09 16:18:26.131 DEBUG 3016 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
-2022-09-09 16:18:26.132 DEBUG 3016 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
-2022-09-09 16:18:26.133 DEBUG 3016 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@757d8aaf
-2022-09-09 16:18:26.134 DEBUG 3016 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@4074586d
-2022-09-09 16:18:26.134 DEBUG 3016 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
-2022-09-09 16:18:26.134  INFO 3016 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
-2022-09-09 16:20:13.450  INFO 33036 --- [restartedMain] com.a606.A606Application                 : Starting A606Application using Java 1.8.0_192 on DESKTOP-PTCLTV4 with PID 33036 (C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606\build\classes\java\main started by hwi in C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606)
-2022-09-09 16:20:13.455  INFO 33036 --- [restartedMain] com.a606.A606Application                 : No active profile set, falling back to default profiles: default
-2022-09-09 16:20:13.526  INFO 33036 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-09-09 16:20:13.526  INFO 33036 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-09-09 16:20:15.329  INFO 33036 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-09-09 16:20:15.351  INFO 33036 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 JPA repository interfaces.
-2022-09-09 16:20:16.892  INFO 33036 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-09-09 16:20:16.909  INFO 33036 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-09-09 16:20:16.910  INFO 33036 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.45]
-2022-09-09 16:20:17.115  INFO 33036 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-09-09 16:20:17.115  INFO 33036 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3587 ms
-2022-09-09 16:20:17.522  INFO 33036 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-09-09 16:20:17.631  INFO 33036 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.30.Final
-2022-09-09 16:20:17.840  INFO 33036 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-09-09 16:20:18.015  INFO 33036 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-09-09 16:20:18.343  INFO 33036 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-09-09 16:20:18.375  INFO 33036 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-09-09 16:20:18.780  INFO 33036 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-09-09 16:20:18.795  INFO 33036 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-09-09 16:20:18.817  INFO 33036 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-09-09 16:20:19.314  WARN 33036 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-09-09 16:20:19.470 DEBUG 33036 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 7 mappings in 'requestMappingHandlerMapping'
-2022-09-09 16:20:19.614  INFO 33036 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2022-09-09 16:20:19.897  INFO 33036 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2022-09-09 16:20:19.910 DEBUG 33036 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2022-09-09 16:20:19.981 DEBUG 33036 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/] in 'viewControllerHandlerMapping'
-2022-09-09 16:20:20.987 DEBUG 33036 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/**, /webjars/**, /**] in 'resourceHandlerMapping'
-2022-09-09 16:20:21.000 DEBUG 33036 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
-2022-09-09 16:20:21.434  INFO 33036 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
-
-Using generated security password: b7eb77a5-cf5f-409f-8963-80cee5d4237d
-
-2022-09-09 16:20:21.675  INFO 33036 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@e164ad8, org.springframework.security.web.context.SecurityContextPersistenceFilter@73656613, org.springframework.security.web.header.HeaderWriterFilter@50ac88a8, org.springframework.security.web.csrf.CsrfFilter@56e7b5ac, org.springframework.security.web.authentication.logout.LogoutFilter@76f4d79c, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1254d74d, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@6dfde3d7, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@1b4f06d2, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@387b933f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@e4bb540, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3d816ee4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7fc99cef, org.springframework.security.web.session.SessionManagementFilter@747374ff, org.springframework.security.web.access.ExceptionTranslationFilter@6e55f277, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6f87b9f0]
-2022-09-09 16:20:21.928  INFO 33036 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-09-09 16:20:22.020  INFO 33036 --- [restartedMain] com.a606.A606Application                 : Started A606Application in 9.184 seconds (JVM running for 10.121)
-2022-09-09 16:20:28.490  INFO 33036 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-09-09 16:20:28.491  INFO 33036 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-09-09 16:20:28.491 DEBUG 33036 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
-2022-09-09 16:20:28.491 DEBUG 33036 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
-2022-09-09 16:20:28.492 DEBUG 33036 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
-2022-09-09 16:20:28.494 DEBUG 33036 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@635e0fce
-2022-09-09 16:20:28.495 DEBUG 33036 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@6f5dcbfd
-2022-09-09 16:20:28.495 DEBUG 33036 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
-2022-09-09 16:20:28.496  INFO 33036 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
-2022-09-09 16:23:40.893  INFO 10712 --- [restartedMain] com.a606.A606Application                 : Starting A606Application using Java 1.8.0_192 on DESKTOP-PTCLTV4 with PID 10712 (C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606\build\classes\java\main started by hwi in C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606)
-2022-09-09 16:23:40.898  INFO 10712 --- [restartedMain] com.a606.A606Application                 : No active profile set, falling back to default profiles: default
-2022-09-09 16:23:40.973  INFO 10712 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-09-09 16:23:40.974  INFO 10712 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-09-09 16:23:42.822  INFO 10712 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-09-09 16:23:42.845  INFO 10712 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 JPA repository interfaces.
-2022-09-09 16:23:44.513  INFO 10712 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-09-09 16:23:44.531  INFO 10712 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-09-09 16:23:44.532  INFO 10712 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.45]
-2022-09-09 16:23:44.763  INFO 10712 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-09-09 16:23:44.764  INFO 10712 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3789 ms
-2022-09-09 16:23:45.031 DEBUG 10712 --- [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'commonsRequestLoggingFilter' configured for use
-2022-09-09 16:23:45.224  INFO 10712 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-09-09 16:23:45.334  INFO 10712 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.30.Final
-2022-09-09 16:23:45.589  INFO 10712 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-09-09 16:23:45.808  INFO 10712 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-09-09 16:23:46.139  INFO 10712 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-09-09 16:23:46.167  INFO 10712 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-09-09 16:23:46.569  INFO 10712 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-09-09 16:23:46.583  INFO 10712 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-09-09 16:23:46.602  INFO 10712 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-09-09 16:23:47.043  WARN 10712 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-09-09 16:23:47.203 DEBUG 10712 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 8 mappings in 'requestMappingHandlerMapping'
-2022-09-09 16:23:47.328  INFO 10712 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2022-09-09 16:23:47.579  INFO 10712 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2022-09-09 16:23:47.595 DEBUG 10712 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2022-09-09 16:23:47.677 DEBUG 10712 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/] in 'viewControllerHandlerMapping'
-2022-09-09 16:23:48.375 DEBUG 10712 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/resources/**, /swagger-ui.html, /webjars/**, /css/**, /fonts/**, /icons/**, /img/**, /js/**, /swagger-ui/**, /**] in 'resourceHandlerMapping'
-2022-09-09 16:23:48.387 DEBUG 10712 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
-2022-09-09 16:23:48.811  INFO 10712 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
-
-Using generated security password: 8ef5596f-00f0-46f9-bfe9-c9d477a52230
-
-2022-09-09 16:23:49.017  INFO 10712 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4b16df51, org.springframework.security.web.context.SecurityContextPersistenceFilter@303d0461, org.springframework.security.web.header.HeaderWriterFilter@253b6108, org.springframework.security.web.csrf.CsrfFilter@1c643940, org.springframework.security.web.authentication.logout.LogoutFilter@60dad672, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2698a63b, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1ab1cd3a, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@28b966e, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@24e25ba2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@b013af6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7df98d60, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3482e2d6, org.springframework.security.web.session.SessionManagementFilter@357d8f13, org.springframework.security.web.access.ExceptionTranslationFilter@2b7a4569, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1663cb6d]
-2022-09-09 16:23:49.232  INFO 10712 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-09-09 16:23:49.419  INFO 10712 --- [restartedMain] com.a606.A606Application                 : Started A606Application in 9.205 seconds (JVM running for 10.161)
-2022-09-09 16:24:04.787  INFO 10712 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-09-09 16:24:04.789  INFO 10712 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-09-09 16:24:04.790 DEBUG 10712 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
-2022-09-09 16:24:04.791 DEBUG 10712 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
-2022-09-09 16:24:04.791 DEBUG 10712 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
-2022-09-09 16:24:04.792 DEBUG 10712 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@46bf57e8
-2022-09-09 16:24:04.793 DEBUG 10712 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@39bc379e
-2022-09-09 16:24:04.794 DEBUG 10712 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
-2022-09-09 16:24:04.794  INFO 10712 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
-2022-09-09 16:26:03.411  INFO 31680 --- [restartedMain] com.a606.A606Application                 : Starting A606Application using Java 1.8.0_192 on DESKTOP-PTCLTV4 with PID 31680 (C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606\build\classes\java\main started by hwi in C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606)
-2022-09-09 16:26:03.415  INFO 31680 --- [restartedMain] com.a606.A606Application                 : No active profile set, falling back to default profiles: default
-2022-09-09 16:26:03.485  INFO 31680 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-09-09 16:26:03.486  INFO 31680 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-09-09 16:26:05.563  INFO 31680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-09-09 16:26:05.594  INFO 31680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 0 JPA repository interfaces.
-2022-09-09 16:26:06.278  INFO 31680 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@2ed7476a' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-09-09 16:26:06.289  INFO 31680 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-09-09 16:26:07.404  INFO 31680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-09-09 16:26:07.421  INFO 31680 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-09-09 16:26:07.422  INFO 31680 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.45]
-2022-09-09 16:26:07.653  INFO 31680 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-09-09 16:26:07.654  INFO 31680 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4167 ms
-2022-09-09 16:26:07.930 DEBUG 31680 --- [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'commonsRequestLoggingFilter' configured for use
-2022-09-09 16:26:08.127  INFO 31680 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-09-09 16:26:08.228  INFO 31680 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.30.Final
-2022-09-09 16:26:08.496  INFO 31680 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-09-09 16:26:08.687  INFO 31680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-09-09 16:26:09.043  INFO 31680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-09-09 16:26:09.081  INFO 31680 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-09-09 16:26:09.520  INFO 31680 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-09-09 16:26:09.538  INFO 31680 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-09-09 16:26:09.567  INFO 31680 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-09-09 16:26:09.752  WARN 31680 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-09-09 16:26:10.358 DEBUG 31680 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 8 mappings in 'requestMappingHandlerMapping'
-2022-09-09 16:26:10.516  INFO 31680 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2022-09-09 16:26:10.788  WARN 31680 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springSecurityFilterChain' defined in class path resource [org/springframework/security/config/annotation/web/configuration/WebSecurityConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authenticationProvider' defined in class path resource [com/a606/config/SecurityConfig.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: A UserDetailsService must be set
-2022-09-09 16:26:10.793  INFO 31680 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-09-09 16:26:10.799  INFO 31680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-09-09 16:26:10.812  INFO 31680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2022-09-09 16:26:10.817  INFO 31680 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2022-09-09 16:26:10.839  INFO 31680 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+2022-09-16 10:27:01.679  INFO 30952 --- [restartedMain] com.a606.A606Application                 : Starting A606Application using Java 1.8.0_192 on DESKTOP-PTCLTV4 with PID 30952 (C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606\build\classes\java\main started by hwi in C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606)
+2022-09-16 10:27:01.693  INFO 30952 --- [restartedMain] com.a606.A606Application                 : No active profile set, falling back to default profiles: default
+2022-09-16 10:27:01.755  INFO 30952 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-09-16 10:27:01.756  INFO 30952 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-09-16 10:27:02.246  WARN 30952 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-09-16 10:27:03.838  INFO 30952 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-16 10:27:04.004  INFO 30952 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 149 ms. Found 4 JPA repository interfaces.
+2022-09-16 10:27:05.475  INFO 30952 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-09-16 10:27:05.487  INFO 30952 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-09-16 10:27:05.489  INFO 30952 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.45]
+2022-09-16 10:27:05.721  INFO 30952 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-09-16 10:27:05.722  INFO 30952 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3965 ms
+2022-09-16 10:27:05.930 DEBUG 30952 --- [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'commonsRequestLoggingFilter' configured for use
+2022-09-16 10:27:06.189  INFO 30952 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-16 10:27:06.269  INFO 30952 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.30.Final
+2022-09-16 10:27:06.483  INFO 30952 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-16 10:27:06.637  INFO 30952 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-09-16 10:27:06.920  INFO 30952 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-09-16 10:27:06.942  INFO 30952 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-09-16 10:27:07.605  WARN 30952 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): com.a606.db.entity.Avatar
+2022-09-16 10:27:07.605  WARN 30952 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): com.a606.db.entity.Avatar
+2022-09-16 10:27:07.607  WARN 30952 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): com.a606.db.entity.UserPage
+2022-09-16 10:27:07.608  WARN 30952 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): com.a606.db.entity.UserPage
+2022-09-16 10:27:07.609  WARN 30952 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): com.a606.db.entity.Profile
+2022-09-16 10:27:07.610  WARN 30952 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): com.a606.db.entity.Profile
+2022-09-16 10:27:08.609  INFO 30952 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-16 10:27:08.624  INFO 30952 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-16 10:27:08.646  INFO 30952 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-09-16 10:27:09.000  WARN 30952 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-09-16 10:27:09.122 DEBUG 30952 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 19 mappings in 'requestMappingHandlerMapping'
+2022-09-16 10:27:09.208  INFO 30952 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2022-09-16 10:27:10.005  WARN 30952 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerAdapter' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]: Factory method 'requestMappingHandlerAdapter' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'querydslPredicateArgumentResolver' defined in class path resource [org/springframework/data/web/config/QuerydslWebConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.data.web.querydsl.QuerydslPredicateArgumentResolver]: Factory method 'querydslPredicateArgumentResolver' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'querydslBindingsFactory' defined in class path resource [org/springframework/data/web/config/QuerydslWebConfiguration.class]: Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userPageRepository' defined in com.a606.db.repository.UserPageRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: This class [class com.a606.db.entity.UserPage] does not define an IdClass
+2022-09-16 10:27:10.011  INFO 30952 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-09-16 10:27:10.015  INFO 30952 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-09-16 10:27:10.027  INFO 30952 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-09-16 10:27:10.031  INFO 30952 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-09-16 10:27:10.057  INFO 30952 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2022-09-09 16:26:10.877 ERROR 31680 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
-
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springSecurityFilterChain' defined in class path resource [org/springframework/security/config/annotation/web/configuration/WebSecurityConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authenticationProvider' defined in class path resource [com/a606/config/SecurityConfig.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: A UserDetailsService must be set
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:658) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1334) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:564) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:944) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.6.jar:5.3.6]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.6.jar:5.3.6]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:144) ~[spring-boot-2.4.5.jar:2.4.5]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:782) [spring-boot-2.4.5.jar:2.4.5]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:774) [spring-boot-2.4.5.jar:2.4.5]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) [spring-boot-2.4.5.jar:2.4.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:339) [spring-boot-2.4.5.jar:2.4.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1340) [spring-boot-2.4.5.jar:2.4.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1329) [spring-boot-2.4.5.jar:2.4.5]
-	at com.a606.A606Application.main(A606Application.java:10) [main/:na]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_192]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_192]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_192]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_192]
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.4.5.jar:2.4.5]
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authenticationProvider' defined in class path resource [com/a606/config/SecurityConfig.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: A UserDetailsService must be set
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.6.jar:5.3.6]
-	... 27 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authenticationProvider' defined in class path resource [com/a606/config/SecurityConfig.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: A UserDetailsService must be set
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.resolveBeanReference(ConfigurationClassEnhancer.java:362) ~[spring-context-5.3.6.jar:5.3.6]
-	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:334) ~[spring-context-5.3.6.jar:5.3.6]
-	at com.a606.config.SecurityConfig$$EnhancerBySpringCGLIB$$e5aff622.authenticationProvider(<generated>) ~[main/:na]
-	at com.a606.config.SecurityConfig.configure(SecurityConfig.java:51) ~[main/:na]
-	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.authenticationManager(WebSecurityConfigurerAdapter.java:264) ~[spring-security-config-5.4.6.jar:5.4.6]
-	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.getHttp(WebSecurityConfigurerAdapter.java:204) ~[spring-security-config-5.4.6.jar:5.4.6]
-	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.init(WebSecurityConfigurerAdapter.java:315) ~[spring-security-config-5.4.6.jar:5.4.6]
-	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.init(WebSecurityConfigurerAdapter.java:93) ~[spring-security-config-5.4.6.jar:5.4.6]
-	at com.a606.config.SecurityConfig$$EnhancerBySpringCGLIB$$e5aff622.init(<generated>) ~[main/:na]
-	at org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder.init(AbstractConfiguredSecurityBuilder.java:338) ~[spring-security-config-5.4.6.jar:5.4.6]
-	at org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder.doBuild(AbstractConfiguredSecurityBuilder.java:300) ~[spring-security-config-5.4.6.jar:5.4.6]
-	at org.springframework.security.config.annotation.AbstractSecurityBuilder.build(AbstractSecurityBuilder.java:38) ~[spring-security-config-5.4.6.jar:5.4.6]
-	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration.springSecurityFilterChain(WebSecurityConfiguration.java:127) ~[spring-security-config-5.4.6.jar:5.4.6]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_192]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_192]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_192]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_192]
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.3.6.jar:5.3.6]
-	... 28 common frames omitted
-Caused by: java.lang.IllegalArgumentException: A UserDetailsService must be set
-	at org.springframework.util.Assert.notNull(Assert.java:201) ~[spring-core-5.3.6.jar:5.3.6]
-	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.doAfterPropertiesSet(DaoAuthenticationProvider.java:85) ~[spring-security-core-5.4.6.jar:5.4.6]
-	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.afterPropertiesSet(AbstractUserDetailsAuthenticationProvider.java:119) ~[spring-security-core-5.4.6.jar:5.4.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1845) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782) ~[spring-beans-5.3.6.jar:5.3.6]
-	... 52 common frames omitted
-
-2022-09-09 16:28:42.126  INFO 33488 --- [Test worker] com.a606.A606ApplicationTests            : Starting A606ApplicationTests using Java 1.8.0_192 on DESKTOP-PTCLTV4 with PID 33488 (started by hwi in C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606)
-2022-09-09 16:28:42.130  INFO 33488 --- [Test worker] com.a606.A606ApplicationTests            : No active profile set, falling back to default profiles: default
-2022-09-09 16:28:42.195 DEBUG 33488 --- [Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@4648ce9
-2022-09-09 16:28:44.185  INFO 33488 --- [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-09-09 16:28:44.219  INFO 33488 --- [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 0 JPA repository interfaces.
-2022-09-09 16:28:45.289  INFO 33488 --- [Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-09-09 16:28:45.405  INFO 33488 --- [Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.30.Final
-2022-09-09 16:28:45.666  INFO 33488 --- [Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-09-09 16:28:45.908  INFO 33488 --- [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-09-09 16:28:46.271  INFO 33488 --- [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-09-09 16:28:46.310  INFO 33488 --- [Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-09-09 16:28:46.914  INFO 33488 --- [Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-09-09 16:28:46.932  INFO 33488 --- [Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-09-09 16:28:47.887  WARN 33488 --- [Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-09-09 16:28:48.466 DEBUG 33488 --- [Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 8 mappings in 'requestMappingHandlerMapping'
-2022-09-09 16:28:48.771  INFO 33488 --- [Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2022-09-09 16:28:51.428  INFO 33488 --- [Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2022-09-09 16:28:51.459 DEBUG 33488 --- [Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2022-09-09 16:28:51.605 DEBUG 33488 --- [Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/] in 'viewControllerHandlerMapping'
-2022-09-09 16:28:52.874 DEBUG 33488 --- [Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/resources/**, /swagger-ui.html, /webjars/**, /css/**, /fonts/**, /icons/**, /img/**, /js/**, /swagger-ui/**, /**] in 'resourceHandlerMapping'
-2022-09-09 16:28:52.950 DEBUG 33488 --- [Test worker] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
-2022-09-09 16:28:55.116  INFO 33488 --- [Test worker] com.a606.A606ApplicationTests            : Started A606ApplicationTests in 13.42 seconds (JVM running for 15.566)
-2022-09-09 16:28:55.601 DEBUG 33488 --- [SpringContextShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@4648ce9, started on Fri Sep 09 16:28:42 KST 2022
-2022-09-09 16:28:55.611  INFO 33488 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-2022-09-09 16:28:55.622  INFO 33488 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-09-09 16:28:55.627  INFO 33488 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-09-09 16:28:55.640  INFO 33488 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2022-09-09 16:29:24.316  INFO 30296 --- [restartedMain] com.a606.A606Application                 : Starting A606Application using Java 1.8.0_192 on DESKTOP-PTCLTV4 with PID 30296 (C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606\build\classes\java\main started by hwi in C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606)
-2022-09-09 16:29:24.320  INFO 30296 --- [restartedMain] com.a606.A606Application                 : No active profile set, falling back to default profiles: default
-2022-09-09 16:29:24.409  INFO 30296 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-09-09 16:29:24.410  INFO 30296 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-09-09 16:29:26.382  INFO 30296 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-09-09 16:29:26.411  INFO 30296 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 0 JPA repository interfaces.
-2022-09-09 16:29:27.847  INFO 30296 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-09-09 16:29:27.866  INFO 30296 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-09-09 16:29:27.867  INFO 30296 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.45]
-2022-09-09 16:29:28.135  INFO 30296 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-09-09 16:29:28.135  INFO 30296 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3724 ms
-2022-09-09 16:29:28.511 DEBUG 30296 --- [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'commonsRequestLoggingFilter' configured for use
-2022-09-09 16:29:28.691  INFO 30296 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-09-09 16:29:28.793  INFO 30296 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.30.Final
-2022-09-09 16:29:29.008  INFO 30296 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-09-09 16:29:29.192  INFO 30296 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-09-09 16:29:29.557  INFO 30296 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-09-09 16:29:29.603  INFO 30296 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-09-09 16:29:30.007  INFO 30296 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-09-09 16:29:30.022  INFO 30296 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-09-09 16:29:30.042  INFO 30296 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-09-09 16:29:30.473  WARN 30296 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-09-09 16:29:30.624 DEBUG 30296 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 8 mappings in 'requestMappingHandlerMapping'
-2022-09-09 16:29:30.752  INFO 30296 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2022-09-09 16:29:30.996  INFO 30296 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2022-09-09 16:29:31.011 DEBUG 30296 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2022-09-09 16:29:31.088 DEBUG 30296 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/] in 'viewControllerHandlerMapping'
-2022-09-09 16:29:31.817 DEBUG 30296 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/resources/**, /swagger-ui.html, /webjars/**, /css/**, /fonts/**, /icons/**, /img/**, /js/**, /swagger-ui/**, /**] in 'resourceHandlerMapping'
-2022-09-09 16:29:31.833 DEBUG 30296 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
-2022-09-09 16:29:32.307  INFO 30296 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-09-09 16:29:32.678  INFO 30296 --- [restartedMain] com.a606.A606Application                 : Started A606Application in 9.026 seconds (JVM running for 9.968)
-2022-09-09 16:29:38.844  INFO 30296 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-09-09 16:29:38.845  INFO 30296 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-09-09 16:29:38.845 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
-2022-09-09 16:29:38.846 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
-2022-09-09 16:29:38.846 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
-2022-09-09 16:29:38.849 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@3ddd97da
-2022-09-09 16:29:38.849 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@6a23fa1c
-2022-09-09 16:29:38.850 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
-2022-09-09 16:29:38.850  INFO 30296 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
-2022-09-09 16:29:38.866 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/", parameters={}
-2022-09-09 16:29:38.877 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ParameterizableViewController [view="forward:/swagger-ui/index.html"]
-2022-09-09 16:29:38.970 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8]
-2022-09-09 16:29:38.970 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.w.servlet.view.InternalResourceView  : View name 'forward:', model {}
-2022-09-09 16:29:38.972 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.w.servlet.view.InternalResourceView  : Forwarding to [/swagger-ui/index.html]
-2022-09-09 16:29:38.981 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : "FORWARD" dispatch for GET "/swagger-ui/index.html", parameters={}
-2022-09-09 16:29:38.985 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
-2022-09-09 16:29:39.013 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "FORWARD" dispatch, status 200
-2022-09-09 16:29:39.019 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2022-09-09 16:29:39.078 DEBUG 30296 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui.css?v=3.0.0", parameters={masked}
-2022-09-09 16:29:39.078 DEBUG 30296 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/springfox.css?v=3.0.0", parameters={masked}
-2022-09-09 16:29:39.082 DEBUG 30296 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
-2022-09-09 16:29:39.083 DEBUG 30296 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui-bundle.js?v=3.0.0", parameters={masked}
-2022-09-09 16:29:39.083 DEBUG 30296 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui-standalone-preset.js?v=3.0.0", parameters={masked}
-2022-09-09 16:29:39.083 DEBUG 30296 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/springfox.js?v=3.0.0", parameters={masked}
-2022-09-09 16:29:39.083 DEBUG 30296 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
-2022-09-09 16:29:39.084 DEBUG 30296 --- [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
-2022-09-09 16:29:39.084 DEBUG 30296 --- [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
-2022-09-09 16:29:39.084 DEBUG 30296 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
-2022-09-09 16:29:39.095 DEBUG 30296 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2022-09-09 16:29:39.100 DEBUG 30296 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2022-09-09 16:29:39.102 DEBUG 30296 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2022-09-09 16:29:39.123 DEBUG 30296 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2022-09-09 16:29:39.175 DEBUG 30296 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2022-09-09 16:29:39.362 DEBUG 30296 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/favicon-32x32.png?v=3.0.0", parameters={masked}
-2022-09-09 16:29:39.364 DEBUG 30296 --- [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
-2022-09-09 16:29:39.371 DEBUG 30296 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2022-09-09 16:29:39.468 DEBUG 30296 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/swagger-resources/configuration/ui", parameters={}
-2022-09-09 16:29:39.470 DEBUG 30296 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to springfox.documentation.swagger.web.ApiResourceController#uiConfiguration()
-2022-09-09 16:29:39.490 DEBUG 30296 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json]
-2022-09-09 16:29:39.563 DEBUG 30296 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [springfox.documentation.swagger.web.UiConfiguration@45831d5a]
-2022-09-09 16:29:39.585 DEBUG 30296 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2022-09-09 16:29:39.592 DEBUG 30296 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/swagger-resources/configuration/security", parameters={}
-2022-09-09 16:29:39.593 DEBUG 30296 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to springfox.documentation.swagger.web.ApiResourceController#securityConfiguration()
-2022-09-09 16:29:39.593 DEBUG 30296 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json]
-2022-09-09 16:29:39.599 DEBUG 30296 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [springfox.documentation.swagger.web.SecurityConfiguration@1fe18865]
-2022-09-09 16:29:39.601 DEBUG 30296 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2022-09-09 16:29:39.607 DEBUG 30296 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/swagger-resources", parameters={}
-2022-09-09 16:29:39.608 DEBUG 30296 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to springfox.documentation.swagger.web.ApiResourceController#swaggerResources()
-2022-09-09 16:29:39.609 DEBUG 30296 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json]
-2022-09-09 16:29:39.612 DEBUG 30296 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[springfox.documentation.swagger.web.SwaggerResource@60aaa040]]
-2022-09-09 16:29:39.616 DEBUG 30296 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2022-09-09 16:29:39.662 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/v2/api-docs", parameters={}
-2022-09-09 16:29:39.663 DEBUG 30296 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)
-2022-09-09 16:29:39.771 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, */*] and supported [application/json, application/hal+json]
-2022-09-09 16:29:39.774 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [springfox.documentation.spring.web.json.Json@65b0b861]
-2022-09-09 16:29:39.776 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2022-09-09 16:29:49.841 DEBUG 30296 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/test/, client=0:0:0:0:0:0:0:1, headers=[host:"localhost:8080", connection:"keep-alive", content-length:"0", sec-ch-ua:""Google Chrome";v="105", "Not)A;Brand";v="8", "Chromium";v="105"", accept:"*/*", sec-ch-ua-mobile:"?0", user-agent:"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36", sec-ch-ua-platform:""Windows"", origin:"http://localhost:8080", sec-fetch-site:"same-origin", sec-fetch-mode:"cors", sec-fetch-dest:"empty", referer:"http://localhost:8080/swagger-ui/", accept-encoding:"gzip, deflate, br", accept-language:"ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7", cookie:"user=pizzaman@naver.com; JSESSIONID=2D030348F8B0E4472E396A5F6588ABA0"]]
-2022-09-09 16:29:49.842 DEBUG 30296 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/test/", parameters={}
-2022-09-09 16:29:49.843 DEBUG 30296 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.a606.api.controller.TestController#test()
-2022-09-09 16:29:49.848 DEBUG 30296 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'text/plain', given [*/*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
-2022-09-09 16:29:49.849 DEBUG 30296 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Writing ["Test"]
-2022-09-09 16:29:49.850 DEBUG 30296 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2022-09-09 16:29:49.851 DEBUG 30296 --- [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/test/, client=0:0:0:0:0:0:0:1, headers=[host:"localhost:8080", connection:"keep-alive", content-length:"0", sec-ch-ua:""Google Chrome";v="105", "Not)A;Brand";v="8", "Chromium";v="105"", accept:"*/*", sec-ch-ua-mobile:"?0", user-agent:"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36", sec-ch-ua-platform:""Windows"", origin:"http://localhost:8080", sec-fetch-site:"same-origin", sec-fetch-mode:"cors", sec-fetch-dest:"empty", referer:"http://localhost:8080/swagger-ui/", accept-encoding:"gzip, deflate, br", accept-language:"ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7", cookie:"user=pizzaman@naver.com; JSESSIONID=2D030348F8B0E4472E396A5F6588ABA0"]]
-2022-09-09 16:54:03.585 DEBUG 30296 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/", parameters={}
-2022-09-09 16:54:03.587 DEBUG 30296 --- [http-nio-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/], Classpath [resources/], Classpath [static/], Classpath [public/], ServletContext [/]]
-2022-09-09 16:54:03.587 DEBUG 30296 --- [http-nio-8080-exec-9] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
-2022-09-09 16:54:03.588 DEBUG 30296 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
-2022-09-09 16:54:03.588 DEBUG 30296 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
-2022-09-09 16:54:03.591 DEBUG 30296 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
-2022-09-09 16:54:03.595 DEBUG 30296 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
-2022-09-09 16:54:03.595 DEBUG 30296 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Fri Sep 09 16:54:03 KST 2022, status=404, error=Not Found, message=No message available,  (truncated)...]
-2022-09-09 16:54:03.599 DEBUG 30296 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
-2022-09-09 16:54:03.951 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/", parameters={}
-2022-09-09 16:54:03.952 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/], Classpath [resources/], Classpath [static/], Classpath [public/], ServletContext [/]]
-2022-09-09 16:54:03.953 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
-2022-09-09 16:54:03.953 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
-2022-09-09 16:54:03.953 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
-2022-09-09 16:54:03.954 DEBUG 30296 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
-2022-09-09 16:54:03.955 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
-2022-09-09 16:54:03.956 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Fri Sep 09 16:54:03 KST 2022, status=404, error=Not Found, message=No message available,  (truncated)...]
-2022-09-09 16:54:03.958 DEBUG 30296 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
-2022-09-15 19:22:44.021  INFO 13344 --- [restartedMain] com.a606.A606Application                 : Starting A606Application using Java 1.8.0_192 on DESKTOP-PTCLTV4 with PID 13344 (C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606\build\classes\java\main started by hwi in C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606)
-2022-09-15 19:22:44.025  INFO 13344 --- [restartedMain] com.a606.A606Application                 : No active profile set, falling back to default profiles: default
-2022-09-15 19:22:44.073  INFO 13344 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-09-15 19:22:44.073  INFO 13344 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-09-15 19:22:44.418  WARN 13344 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
-2022-09-15 19:22:45.520  INFO 13344 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-09-15 19:22:45.650  INFO 13344 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 119 ms. Found 4 JPA repository interfaces.
-2022-09-15 19:22:46.900  INFO 13344 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-09-15 19:22:46.912  INFO 13344 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-09-15 19:22:46.912  INFO 13344 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.45]
-2022-09-15 19:22:47.105  INFO 13344 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-09-15 19:22:47.106  INFO 13344 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3032 ms
-2022-09-15 19:22:47.262 DEBUG 13344 --- [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'commonsRequestLoggingFilter' configured for use
-2022-09-15 19:22:47.451  INFO 13344 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-09-15 19:22:47.518  INFO 13344 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.30.Final
-2022-09-15 19:22:47.700  INFO 13344 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-09-15 19:22:47.833  INFO 13344 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-09-15 19:22:48.059  INFO 13344 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-09-15 19:22:48.078  INFO 13344 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-09-15 19:22:48.536  WARN 13344 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): com.a606.db.entity.Avatar
-2022-09-15 19:22:48.537  WARN 13344 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): com.a606.db.entity.Avatar
-2022-09-15 19:22:48.538  WARN 13344 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): com.a606.db.entity.UserPage
-2022-09-15 19:22:48.538  WARN 13344 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): com.a606.db.entity.UserPage
-2022-09-15 19:22:48.538  WARN 13344 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): com.a606.db.entity.Profile
-2022-09-15 19:22:48.539  WARN 13344 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): com.a606.db.entity.Profile
-2022-09-15 19:22:49.134 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    create table appeal (
-       id bigint not null auto_increment,
-        date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        price double precision not null,
-        nft_id bigint,
-        user_id bigint,
-        primary key (id)
-    ) engine=InnoDB
-2022-09-15 19:22:49.204 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    create table avatar (
-       eyes bigint not null,
-        fashion bigint not null,
-        hands bigint not null,
-        head bigint not null,
-        mouth bigint not null,
-        user_id bigint not null,
-        primary key (user_id)
-    ) engine=InnoDB
-2022-09-15 19:22:49.252 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    create table bid_log (
-       id bigint not null auto_increment,
-        date datetime(6) not null,
-        price double precision not null,
-        board_id bigint,
-        nft_id bigint,
-        user_id bigint,
-        primary key (id)
-    ) engine=InnoDB
-2022-09-15 19:22:49.303 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table board 
-       add column end datetime(6) not null
-2022-09-15 19:22:49.417 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table board 
-       add column first_price double precision not null
-2022-09-15 19:22:49.452 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table board 
-       add column start datetime(6) not null
-2022-09-15 19:22:49.551 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table board 
-       add column nft_id bigint
-2022-09-15 19:22:49.584 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    create table inventory (
-       id bigint not null auto_increment,
-        number bigint not null,
-        item_id bigint,
-        user_id bigint,
-        primary key (id)
-    ) engine=InnoDB
-2022-09-15 19:22:49.635 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    create table issued_avatar (
-       id bigint not null auto_increment,
-        eyes bigint not null,
-        fashion bigint not null,
-        hands bigint not null,
-        head bigint not null,
-        mouth bigint not null,
-        primary key (id)
-    ) engine=InnoDB
-2022-09-15 19:22:49.682 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    create table item (
-       id bigint not null auto_increment,
-        number integer not null,
-        rgb integer not null,
-        type integer not null,
-        primary key (id)
-    ) engine=InnoDB
-2022-09-15 19:22:49.725 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    create table letter (
-       id bigint not null auto_increment,
-        date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        msg varchar(255) not null,
-        user_id bigint,
-        primary key (id)
-    ) engine=InnoDB
-2022-09-15 19:22:49.773 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    create table likes (
-       id bigint not null auto_increment,
-        nft_id bigint,
-        user_id bigint,
-        primary key (id)
-    ) engine=InnoDB
-2022-09-15 19:22:49.821 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    create table nft (
-       id bigint not null auto_increment,
-        is_saled bit not null,
-        like_count integer not null,
-        name varchar(255) not null,
-        tokenuri varchar(255) not null,
-        user_id bigint,
-        primary key (id)
-    ) engine=InnoDB
-2022-09-15 19:22:49.867 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    create table profile (
-       user_id bigint not null,
-        nft_id bigint,
-        primary key (user_id)
-    ) engine=InnoDB
-2022-09-15 19:22:49.912 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table user 
-       add column game_point BIGINT(20) DEFAULT 0 not null
-2022-09-15 19:22:50.001 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table user 
-       add column is_delete TINYINT(1) DEFAULT 0 not null
-2022-09-15 19:22:50.145 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table user 
-       add column wallet varchar(255) not null
-2022-09-15 19:22:50.305 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    create table user_page (
-       user_id bigint not null,
-        primary key (user_id)
-    ) engine=InnoDB
-2022-09-15 19:22:50.466 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table user 
-       drop index UK_USER_WALLET
-2022-09-15 19:22:50.475 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table user 
-       add constraint UK_USER_WALLET unique (wallet)
-2022-09-15 19:22:50.523 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table appeal 
-       add constraint FKlr7st6wfv22cicgbses5ynnp4 
-       foreign key (nft_id) 
-       references nft (id)
-2022-09-15 19:22:50.639 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table appeal 
-       add constraint FKghfyutrsur9fwg8fnschdw6mc 
-       foreign key (user_id) 
-       references user (id)
-2022-09-15 19:22:50.759 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table avatar 
-       add constraint FK424996avyt89fp16dknjxyda 
-       foreign key (user_id) 
-       references user (id)
-2022-09-15 19:22:50.863 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table bid_log 
-       add constraint FKi23pwk8acygoubcbt4trn9rjo 
-       foreign key (board_id) 
-       references board (id)
-2022-09-15 19:22:50.983 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table bid_log 
-       add constraint FKp3xolt5v4bk5dvp7ip6ytm8y1 
-       foreign key (nft_id) 
-       references nft (id)
-2022-09-15 19:22:51.447 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table bid_log 
-       add constraint FKkakq7pldgo61h37ebhxvv3nkr 
-       foreign key (user_id) 
-       references user (id)
-2022-09-15 19:22:51.635 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table board 
-       add constraint FKrqx3q89y8nhjmxt1b9n1llsb6 
-       foreign key (nft_id) 
-       references nft (id)
-2022-09-15 19:22:51.767 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table inventory 
-       add constraint FKrflym5lxj6xhmu4ok3ohmun5a 
-       foreign key (item_id) 
-       references item (id)
-2022-09-15 19:22:51.883 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table inventory 
-       add constraint FK86u2qtuaxn5uph2u9olsxk2ic 
-       foreign key (user_id) 
-       references user (id)
-2022-09-15 19:22:51.987 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table letter 
-       add constraint FK9tgknmmyr2kafs9bvfw5k9n84 
-       foreign key (user_id) 
-       references user (id)
-2022-09-15 19:22:52.606 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table likes 
-       add constraint FKpxbm19ij2flwu5jvqoxoyc8y3 
-       foreign key (nft_id) 
-       references nft (id)
-2022-09-15 19:22:52.777 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table likes 
-       add constraint FKi2wo4dyk4rok7v4kak8sgkwx0 
-       foreign key (user_id) 
-       references user (id)
-2022-09-15 19:22:53.014 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table nft 
-       add constraint FK3f1lta5ej1dp0rjiwxtcnjv9c 
-       foreign key (user_id) 
-       references user_page (user_id)
-2022-09-15 19:22:53.755 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table profile 
-       add constraint FKawh070wpue34wqvytjqr4hj5e 
-       foreign key (user_id) 
-       references user (id)
-2022-09-15 19:22:53.931 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table profile 
-       add constraint FKkcjlvhjm9njdv35s6v9v14x3n 
-       foreign key (nft_id) 
-       references nft (id)
-2022-09-15 19:22:54.154 DEBUG 13344 --- [restartedMain] org.hibernate.SQL                        : 
-    
-    alter table user_page 
-       add constraint FK1osjnxtle2ta8dypxtpet64n9 
-       foreign key (user_id) 
-       references user (id)
-2022-09-15 19:22:54.280  INFO 13344 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-09-15 19:22:54.293  INFO 13344 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-09-15 19:22:54.308  INFO 13344 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-09-15 19:22:54.607  WARN 13344 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-09-15 19:22:54.712 DEBUG 13344 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 19 mappings in 'requestMappingHandlerMapping'
-2022-09-15 19:22:54.784  INFO 13344 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2022-09-15 19:22:55.518  WARN 13344 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerAdapter' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]: Factory method 'requestMappingHandlerAdapter' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'querydslPredicateArgumentResolver' defined in class path resource [org/springframework/data/web/config/QuerydslWebConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.data.web.querydsl.QuerydslPredicateArgumentResolver]: Factory method 'querydslPredicateArgumentResolver' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'querydslBindingsFactory' defined in class path resource [org/springframework/data/web/config/QuerydslWebConfiguration.class]: Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userPageRepository' defined in com.a606.db.repository.UserPageRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: This class [class com.a606.db.entity.UserPage] does not define an IdClass
-2022-09-15 19:22:55.522  INFO 13344 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-09-15 19:22:55.525  INFO 13344 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-09-15 19:22:55.532  INFO 13344 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2022-09-15 19:22:55.535  INFO 13344 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2022-09-15 19:22:55.552  INFO 13344 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2022-09-15 19:22:55.588 ERROR 13344 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+2022-09-16 10:27:10.104 ERROR 30952 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerAdapter' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]: Factory method 'requestMappingHandlerAdapter' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'querydslPredicateArgumentResolver' defined in class path resource [org/springframework/data/web/config/QuerydslWebConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.data.web.querydsl.QuerydslPredicateArgumentResolver]: Factory method 'querydslPredicateArgumentResolver' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'querydslBindingsFactory' defined in class path resource [org/springframework/data/web/config/QuerydslWebConfiguration.class]: Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userPageRepository' defined in com.a606.db.repository.UserPageRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: This class [class com.a606.db.entity.UserPage] does not define an IdClass
 	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:658) ~[spring-beans-5.3.6.jar:5.3.6]
@@ -913,243 +149,181 @@ Caused by: java.lang.IllegalArgumentException: This class [class com.a606.db.ent
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782) ~[spring-beans-5.3.6.jar:5.3.6]
 	... 74 common frames omitted
 
-2022-09-15 21:27:43.194  INFO 34968 --- [restartedMain] com.a606.A606Application                 : Starting A606Application using Java 1.8.0_192 on DESKTOP-PTCLTV4 with PID 34968 (C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606\build\classes\java\main started by hwi in C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606)
-2022-09-15 21:27:43.197  INFO 34968 --- [restartedMain] com.a606.A606Application                 : No active profile set, falling back to default profiles: default
-2022-09-15 21:27:43.245  INFO 34968 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-09-15 21:27:43.246  INFO 34968 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-09-15 21:27:43.584  WARN 34968 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
-2022-09-15 21:27:44.825  INFO 34968 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-09-15 21:27:44.955  INFO 34968 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 119 ms. Found 4 JPA repository interfaces.
-2022-09-15 21:27:46.363  INFO 34968 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-09-15 21:27:46.376  INFO 34968 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-09-15 21:27:46.376  INFO 34968 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.45]
-2022-09-15 21:27:46.551  INFO 34968 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-09-15 21:27:46.552  INFO 34968 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3305 ms
-2022-09-15 21:27:46.720 DEBUG 34968 --- [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'commonsRequestLoggingFilter' configured for use
-2022-09-15 21:27:46.949  INFO 34968 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-09-15 21:27:47.012  INFO 34968 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.30.Final
-2022-09-15 21:27:47.185  INFO 34968 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-09-15 21:27:47.314  INFO 34968 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-09-15 21:27:47.544  INFO 34968 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-09-15 21:27:47.560  INFO 34968 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-09-15 21:27:48.088  WARN 34968 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): com.a606.db.entity.Avatar
-2022-09-15 21:27:48.089  WARN 34968 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): com.a606.db.entity.Avatar
-2022-09-15 21:27:48.090  WARN 34968 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): com.a606.db.entity.UserPage
-2022-09-15 21:27:48.091  WARN 34968 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): com.a606.db.entity.UserPage
-2022-09-15 21:27:48.092  WARN 34968 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): com.a606.db.entity.Profile
-2022-09-15 21:27:48.092  WARN 34968 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): com.a606.db.entity.Profile
-2022-09-15 21:27:48.968  INFO 34968 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-09-15 21:27:48.980  INFO 34968 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-09-15 21:27:48.997  INFO 34968 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-09-15 21:27:49.363  WARN 34968 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-09-15 21:27:49.461 DEBUG 34968 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 19 mappings in 'requestMappingHandlerMapping'
-2022-09-15 21:27:49.544  INFO 34968 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2022-09-15 21:27:49.953  WARN 34968 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerAdapter' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]: Factory method 'requestMappingHandlerAdapter' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'querydslPredicateArgumentResolver' defined in class path resource [org/springframework/data/web/config/QuerydslWebConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.data.web.querydsl.QuerydslPredicateArgumentResolver]: Factory method 'querydslPredicateArgumentResolver' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'querydslBindingsFactory' defined in class path resource [org/springframework/data/web/config/QuerydslWebConfiguration.class]: Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'profileRepository' defined in com.a606.db.repository.ProfileRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: This class [class com.a606.db.entity.Profile] does not define an IdClass
-2022-09-15 21:27:49.957  INFO 34968 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-09-15 21:27:49.960  INFO 34968 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-09-15 21:27:49.968  INFO 34968 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2022-09-15 21:27:49.971  INFO 34968 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2022-09-15 21:27:49.990  INFO 34968 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2022-09-15 21:27:50.028 ERROR 34968 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
-
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerAdapter' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]: Factory method 'requestMappingHandlerAdapter' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'querydslPredicateArgumentResolver' defined in class path resource [org/springframework/data/web/config/QuerydslWebConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.data.web.querydsl.QuerydslPredicateArgumentResolver]: Factory method 'querydslPredicateArgumentResolver' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'querydslBindingsFactory' defined in class path resource [org/springframework/data/web/config/QuerydslWebConfiguration.class]: Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'profileRepository' defined in com.a606.db.repository.ProfileRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: This class [class com.a606.db.entity.Profile] does not define an IdClass
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:658) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:638) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1334) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:564) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:944) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.6.jar:5.3.6]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.6.jar:5.3.6]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:144) ~[spring-boot-2.4.5.jar:2.4.5]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:782) [spring-boot-2.4.5.jar:2.4.5]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:774) [spring-boot-2.4.5.jar:2.4.5]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) [spring-boot-2.4.5.jar:2.4.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:339) [spring-boot-2.4.5.jar:2.4.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1340) [spring-boot-2.4.5.jar:2.4.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1329) [spring-boot-2.4.5.jar:2.4.5]
-	at com.a606.A606Application.main(A606Application.java:10) [main/:na]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_192]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_192]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_192]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_192]
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.4.5.jar:2.4.5]
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]: Factory method 'requestMappingHandlerAdapter' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'querydslPredicateArgumentResolver' defined in class path resource [org/springframework/data/web/config/QuerydslWebConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.data.web.querydsl.QuerydslPredicateArgumentResolver]: Factory method 'querydslPredicateArgumentResolver' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'querydslBindingsFactory' defined in class path resource [org/springframework/data/web/config/QuerydslWebConfiguration.class]: Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'profileRepository' defined in com.a606.db.repository.ProfileRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: This class [class com.a606.db.entity.Profile] does not define an IdClass
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.6.jar:5.3.6]
-	... 25 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'querydslPredicateArgumentResolver' defined in class path resource [org/springframework/data/web/config/QuerydslWebConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.data.web.querydsl.QuerydslPredicateArgumentResolver]: Factory method 'querydslPredicateArgumentResolver' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'querydslBindingsFactory' defined in class path resource [org/springframework/data/web/config/QuerydslWebConfiguration.class]: Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'profileRepository' defined in com.a606.db.repository.ProfileRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: This class [class com.a606.db.entity.Profile] does not define an IdClass
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:658) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1334) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:564) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:213) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.data.web.config.QuerydslWebConfiguration.addArgumentResolvers(QuerydslWebConfiguration.java:82) ~[spring-data-commons-2.4.8.jar:2.4.8]
-	at org.springframework.web.servlet.config.annotation.WebMvcConfigurerComposite.addArgumentResolvers(WebMvcConfigurerComposite.java:123) ~[spring-webmvc-5.3.6.jar:5.3.6]
-	at org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.addArgumentResolvers(DelegatingWebMvcConfiguration.java:108) ~[spring-webmvc-5.3.6.jar:5.3.6]
-	at org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport.getArgumentResolvers(WebMvcConfigurationSupport.java:810) ~[spring-webmvc-5.3.6.jar:5.3.6]
-	at org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport.requestMappingHandlerAdapter(WebMvcConfigurationSupport.java:673) ~[spring-webmvc-5.3.6.jar:5.3.6]
-	at org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration.requestMappingHandlerAdapter(WebMvcAutoConfiguration.java:369) ~[spring-boot-autoconfigure-2.4.5.jar:2.4.5]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_192]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_192]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_192]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_192]
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.3.6.jar:5.3.6]
-	... 26 common frames omitted
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.data.web.querydsl.QuerydslPredicateArgumentResolver]: Factory method 'querydslPredicateArgumentResolver' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'querydslBindingsFactory' defined in class path resource [org/springframework/data/web/config/QuerydslWebConfiguration.class]: Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'profileRepository' defined in com.a606.db.repository.ProfileRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: This class [class com.a606.db.entity.Profile] does not define an IdClass
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.6.jar:5.3.6]
-	... 46 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'querydslBindingsFactory' defined in class path resource [org/springframework/data/web/config/QuerydslWebConfiguration.class]: Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'profileRepository' defined in com.a606.db.repository.ProfileRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: This class [class com.a606.db.entity.Profile] does not define an IdClass
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:610) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:213) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.data.web.config.QuerydslWebConfiguration.querydslPredicateArgumentResolver(QuerydslWebConfiguration.java:65) ~[spring-data-commons-2.4.8.jar:2.4.8]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_192]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_192]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_192]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_192]
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.3.6.jar:5.3.6]
-	... 47 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'profileRepository' defined in com.a606.db.repository.ProfileRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: This class [class com.a606.db.entity.Profile] does not define an IdClass
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:213) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1160) ~[spring-context-5.3.6.jar:5.3.6]
-	at org.springframework.data.repository.support.Repositories.cacheRepositoryFactory(Repositories.java:100) ~[spring-data-commons-2.4.8.jar:2.4.8]
-	at org.springframework.data.repository.support.Repositories.populateRepositoryFactoryInformation(Repositories.java:93) ~[spring-data-commons-2.4.8.jar:2.4.8]
-	at org.springframework.data.repository.support.Repositories.<init>(Repositories.java:86) ~[spring-data-commons-2.4.8.jar:2.4.8]
-	at org.springframework.data.querydsl.binding.QuerydslBindingsFactory.setApplicationContext(QuerydslBindingsFactory.java:75) ~[spring-data-commons-2.4.8.jar:2.4.8]
-	at org.springframework.context.support.ApplicationContextAwareProcessor.invokeAwareInterfaces(ApplicationContextAwareProcessor.java:128) ~[spring-context-5.3.6.jar:5.3.6]
-	at org.springframework.context.support.ApplicationContextAwareProcessor.postProcessBeforeInitialization(ApplicationContextAwareProcessor.java:102) ~[spring-context-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:422) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1778) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602) ~[spring-beans-5.3.6.jar:5.3.6]
-	... 58 common frames omitted
-Caused by: java.lang.IllegalArgumentException: This class [class com.a606.db.entity.Profile] does not define an IdClass
-	at org.hibernate.metamodel.model.domain.internal.AbstractIdentifiableType.getIdClassAttributes(AbstractIdentifiableType.java:194) ~[hibernate-core-5.4.30.Final.jar:5.4.30.Final]
-	at org.springframework.data.jpa.repository.support.JpaMetamodelEntityInformation$IdMetadata.<init>(JpaMetamodelEntityInformation.java:272) ~[spring-data-jpa-2.4.8.jar:2.4.8]
-	at org.springframework.data.jpa.repository.support.JpaMetamodelEntityInformation.<init>(JpaMetamodelEntityInformation.java:89) ~[spring-data-jpa-2.4.8.jar:2.4.8]
-	at org.springframework.data.jpa.repository.support.JpaEntityInformationSupport.getEntityInformation(JpaEntityInformationSupport.java:66) ~[spring-data-jpa-2.4.8.jar:2.4.8]
-	at org.springframework.data.jpa.repository.support.JpaRepositoryFactory.getEntityInformation(JpaRepositoryFactory.java:229) ~[spring-data-jpa-2.4.8.jar:2.4.8]
-	at org.springframework.data.jpa.repository.support.JpaRepositoryFactory.getTargetRepository(JpaRepositoryFactory.java:179) ~[spring-data-jpa-2.4.8.jar:2.4.8]
-	at org.springframework.data.jpa.repository.support.JpaRepositoryFactory.getTargetRepository(JpaRepositoryFactory.java:162) ~[spring-data-jpa-2.4.8.jar:2.4.8]
-	at org.springframework.data.jpa.repository.support.JpaRepositoryFactory.getTargetRepository(JpaRepositoryFactory.java:72) ~[spring-data-jpa-2.4.8.jar:2.4.8]
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport.getRepository(RepositoryFactorySupport.java:281) ~[spring-data-commons-2.4.8.jar:2.4.8]
-	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.lambda$afterPropertiesSet$5(RepositoryFactoryBeanSupport.java:323) ~[spring-data-commons-2.4.8.jar:2.4.8]
-	at org.springframework.data.util.Lazy.getNullable(Lazy.java:230) ~[spring-data-commons-2.4.8.jar:2.4.8]
-	at org.springframework.data.util.Lazy.get(Lazy.java:114) ~[spring-data-commons-2.4.8.jar:2.4.8]
-	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.afterPropertiesSet(RepositoryFactoryBeanSupport.java:329) ~[spring-data-commons-2.4.8.jar:2.4.8]
-	at org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean.afterPropertiesSet(JpaRepositoryFactoryBean.java:144) ~[spring-data-jpa-2.4.8.jar:2.4.8]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1845) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782) ~[spring-beans-5.3.6.jar:5.3.6]
-	... 74 common frames omitted
-
-2022-09-15 21:28:44.252  INFO 33888 --- [restartedMain] com.a606.A606Application                 : Starting A606Application using Java 1.8.0_192 on DESKTOP-PTCLTV4 with PID 33888 (C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606\build\classes\java\main started by hwi in C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606)
-2022-09-15 21:28:44.256  INFO 33888 --- [restartedMain] com.a606.A606Application                 : No active profile set, falling back to default profiles: default
-2022-09-15 21:28:44.312  INFO 33888 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-09-15 21:28:44.312  INFO 33888 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-09-15 21:28:44.687  WARN 33888 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
-2022-09-15 21:28:45.824  INFO 33888 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-09-15 21:28:45.965  INFO 33888 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 131 ms. Found 4 JPA repository interfaces.
-2022-09-15 21:28:47.294  INFO 33888 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-09-15 21:28:47.306  INFO 33888 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-09-15 21:28:47.307  INFO 33888 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.45]
-2022-09-15 21:28:47.475  INFO 33888 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-09-15 21:28:47.476  INFO 33888 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3163 ms
-2022-09-15 21:28:47.630 DEBUG 33888 --- [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'commonsRequestLoggingFilter' configured for use
-2022-09-15 21:28:47.843  INFO 33888 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-09-15 21:28:47.897  INFO 33888 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.30.Final
-2022-09-15 21:28:48.050  INFO 33888 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-09-15 21:28:48.164  INFO 33888 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-09-15 21:28:48.374  INFO 33888 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-09-15 21:28:48.390  INFO 33888 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-09-15 21:28:48.822  WARN 33888 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): com.a606.db.entity.Avatar
-2022-09-15 21:28:48.822  WARN 33888 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): com.a606.db.entity.Avatar
-2022-09-15 21:28:48.823  WARN 33888 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): com.a606.db.entity.UserPage
-2022-09-15 21:28:48.823  WARN 33888 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): com.a606.db.entity.UserPage
-2022-09-15 21:28:48.824  WARN 33888 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): com.a606.db.entity.Profile
-2022-09-15 21:28:48.824  WARN 33888 --- [restartedMain] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): com.a606.db.entity.Profile
-2022-09-15 21:28:49.091 ERROR 33888 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: broken column mapping for: profile.id of: com.a606.db.entity.NFT
-2022-09-15 21:28:49.092  WARN 33888 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: broken column mapping for: profile.id of: com.a606.db.entity.NFT
-2022-09-15 21:28:49.093  INFO 33888 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-09-15 21:28:49.103  INFO 33888 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2022-09-15 21:28:49.105  INFO 33888 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2022-09-15 21:28:49.122  INFO 33888 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2022-09-15 21:28:49.155 ERROR 33888 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
-
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: broken column mapping for: profile.id of: com.a606.db.entity.NFT
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) ~[spring-context-5.3.6.jar:5.3.6]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) ~[spring-context-5.3.6.jar:5.3.6]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.6.jar:5.3.6]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:144) ~[spring-boot-2.4.5.jar:2.4.5]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:782) [spring-boot-2.4.5.jar:2.4.5]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:774) [spring-boot-2.4.5.jar:2.4.5]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) [spring-boot-2.4.5.jar:2.4.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:339) [spring-boot-2.4.5.jar:2.4.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1340) [spring-boot-2.4.5.jar:2.4.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1329) [spring-boot-2.4.5.jar:2.4.5]
-	at com.a606.A606Application.main(A606Application.java:10) [main/:na]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_192]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_192]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_192]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_192]
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.4.5.jar:2.4.5]
-Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: broken column mapping for: profile.id of: com.a606.db.entity.NFT
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421) ~[spring-orm-5.3.6.jar:5.3.6]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-5.3.6.jar:5.3.6]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1845) ~[spring-beans-5.3.6.jar:5.3.6]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782) ~[spring-beans-5.3.6.jar:5.3.6]
-	... 22 common frames omitted
-Caused by: org.hibernate.MappingException: broken column mapping for: profile.id of: com.a606.db.entity.NFT
-	at org.hibernate.persister.entity.AbstractPropertyMapping.initPropertyPaths(AbstractPropertyMapping.java:311) ~[hibernate-core-5.4.30.Final.jar:5.4.30.Final]
-	at org.hibernate.persister.entity.AbstractPropertyMapping.initIdentifierPropertyPaths(AbstractPropertyMapping.java:404) ~[hibernate-core-5.4.30.Final.jar:5.4.30.Final]
-	at org.hibernate.persister.entity.AbstractPropertyMapping.initPropertyPaths(AbstractPropertyMapping.java:365) ~[hibernate-core-5.4.30.Final.jar:5.4.30.Final]
-	at org.hibernate.persister.entity.AbstractEntityPersister.initOrdinaryPropertyPaths(AbstractEntityPersister.java:2547) ~[hibernate-core-5.4.30.Final.jar:5.4.30.Final]
-	at org.hibernate.persister.entity.AbstractEntityPersister.initPropertyPaths(AbstractEntityPersister.java:2594) ~[hibernate-core-5.4.30.Final.jar:5.4.30.Final]
-	at org.hibernate.persister.entity.AbstractEntityPersister.postConstruct(AbstractEntityPersister.java:4260) ~[hibernate-core-5.4.30.Final.jar:5.4.30.Final]
-	at org.hibernate.persister.entity.SingleTableEntityPersister.<init>(SingleTableEntityPersister.java:452) ~[hibernate-core-5.4.30.Final.jar:5.4.30.Final]
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.8.0_192]
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:1.8.0_192]
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.8.0_192]
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[na:1.8.0_192]
-	at org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:96) ~[hibernate-core-5.4.30.Final.jar:5.4.30.Final]
-	at org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:77) ~[hibernate-core-5.4.30.Final.jar:5.4.30.Final]
-	at org.hibernate.metamodel.internal.MetamodelImpl.initialize(MetamodelImpl.java:181) ~[hibernate-core-5.4.30.Final.jar:5.4.30.Final]
-	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:303) ~[hibernate-core-5.4.30.Final.jar:5.4.30.Final]
-	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468) ~[hibernate-core-5.4.30.Final.jar:5.4.30.Final]
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259) ~[hibernate-core-5.4.30.Final.jar:5.4.30.Final]
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.3.6.jar:5.3.6]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.3.6.jar:5.3.6]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.6.jar:5.3.6]
-	... 26 common frames omitted
-
+2022-09-16 10:39:18.197  INFO 20376 --- [restartedMain] com.a606.A606Application                 : Starting A606Application using Java 1.8.0_192 on DESKTOP-PTCLTV4 with PID 20376 (C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606\build\classes\java\main started by hwi in C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606)
+2022-09-16 10:39:18.200  INFO 20376 --- [restartedMain] com.a606.A606Application                 : No active profile set, falling back to default profiles: default
+2022-09-16 10:39:18.262  INFO 20376 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-09-16 10:39:18.263  INFO 20376 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-09-16 10:39:18.635  WARN 20376 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-09-16 10:39:19.956  INFO 20376 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-16 10:39:20.125  INFO 20376 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 156 ms. Found 4 JPA repository interfaces.
+2022-09-16 10:39:21.640  INFO 20376 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-09-16 10:39:21.655  INFO 20376 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-09-16 10:39:21.656  INFO 20376 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.45]
+2022-09-16 10:39:21.854  INFO 20376 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-09-16 10:39:21.855  INFO 20376 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3591 ms
+2022-09-16 10:39:22.053 DEBUG 20376 --- [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'commonsRequestLoggingFilter' configured for use
+2022-09-16 10:39:22.292  INFO 20376 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-16 10:39:22.350  INFO 20376 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.30.Final
+2022-09-16 10:39:22.516  INFO 20376 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-16 10:39:22.644  INFO 20376 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-09-16 10:39:22.893  INFO 20376 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-09-16 10:39:22.912  INFO 20376 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-09-16 10:39:24.075 DEBUG 20376 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table avatar 
+       add column id bigint not null
+2022-09-16 10:39:24.137 DEBUG 20376 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table profile 
+       add column id bigint not null
+2022-09-16 10:39:24.176 DEBUG 20376 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table user_page 
+       add column id bigint not null
+2022-09-16 10:39:24.460  INFO 20376 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-16 10:39:24.479  INFO 20376 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-16 10:39:24.504  INFO 20376 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-09-16 10:39:24.919  WARN 20376 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-09-16 10:39:25.032 DEBUG 20376 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 19 mappings in 'requestMappingHandlerMapping'
+2022-09-16 10:39:25.125  INFO 20376 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2022-09-16 10:39:25.986  INFO 20376 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-09-16 10:39:26.002 DEBUG 20376 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-09-16 10:39:26.055 DEBUG 20376 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/] in 'viewControllerHandlerMapping'
+2022-09-16 10:39:26.531 DEBUG 20376 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/resources/**, /swagger-ui.html, /webjars/**, /css/**, /fonts/**, /icons/**, /img/**, /js/**, /swagger-ui/**, /**] in 'resourceHandlerMapping'
+2022-09-16 10:39:26.542 DEBUG 20376 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-09-16 10:39:26.849  INFO 20376 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-16 10:39:27.188  INFO 20376 --- [restartedMain] com.a606.A606Application                 : Started A606Application in 9.544 seconds (JVM running for 10.411)
+2022-09-16 10:39:39.799  INFO 20376 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-16 10:39:39.799  INFO 20376 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-09-16 10:39:39.800 DEBUG 20376 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2022-09-16 10:39:39.800 DEBUG 20376 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2022-09-16 10:39:39.800 DEBUG 20376 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2022-09-16 10:39:39.802 DEBUG 20376 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@7628ea82
+2022-09-16 10:39:39.803 DEBUG 20376 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@498e7ef2
+2022-09-16 10:39:39.803 DEBUG 20376 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2022-09-16 10:39:39.803  INFO 20376 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2022-09-16 10:39:39.822 DEBUG 20376 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/", parameters={}
+2022-09-16 10:39:39.833 DEBUG 20376 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ParameterizableViewController [view="forward:/swagger-ui/index.html"]
+2022-09-16 10:39:39.848 DEBUG 20376 --- [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8]
+2022-09-16 10:39:39.849 DEBUG 20376 --- [http-nio-8080-exec-2] o.s.w.servlet.view.InternalResourceView  : View name 'forward:', model {}
+2022-09-16 10:39:39.851 DEBUG 20376 --- [http-nio-8080-exec-2] o.s.w.servlet.view.InternalResourceView  : Forwarding to [/swagger-ui/index.html]
+2022-09-16 10:39:39.855 DEBUG 20376 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : "FORWARD" dispatch for GET "/swagger-ui/index.html", parameters={}
+2022-09-16 10:39:39.860 DEBUG 20376 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
+2022-09-16 10:39:39.883 DEBUG 20376 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Exiting from "FORWARD" dispatch, status 200
+2022-09-16 10:39:39.886 DEBUG 20376 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-16 10:39:39.963 DEBUG 20376 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/springfox.css?v=3.0.0", parameters={masked}
+2022-09-16 10:39:39.964 DEBUG 20376 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui.css?v=3.0.0", parameters={masked}
+2022-09-16 10:39:39.965 DEBUG 20376 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
+2022-09-16 10:39:39.965 DEBUG 20376 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
+2022-09-16 10:39:39.969 DEBUG 20376 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui-bundle.js?v=3.0.0", parameters={masked}
+2022-09-16 10:39:39.969 DEBUG 20376 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui-standalone-preset.js?v=3.0.0", parameters={masked}
+2022-09-16 10:39:39.969 DEBUG 20376 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/springfox.js?v=3.0.0", parameters={masked}
+2022-09-16 10:39:39.970 DEBUG 20376 --- [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
+2022-09-16 10:39:39.970 DEBUG 20376 --- [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
+2022-09-16 10:39:39.970 DEBUG 20376 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
+2022-09-16 10:39:39.972 DEBUG 20376 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-16 10:39:39.979 DEBUG 20376 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-16 10:39:39.986 DEBUG 20376 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-16 10:39:40.004 DEBUG 20376 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-16 10:39:40.071 DEBUG 20376 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-16 10:39:40.232 DEBUG 20376 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/favicon-32x32.png?v=3.0.0", parameters={masked}
+2022-09-16 10:39:40.234 DEBUG 20376 --- [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
+2022-09-16 10:39:40.240 DEBUG 20376 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2022-09-16 10:39:40.299 DEBUG 20376 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/swagger-resources/configuration/ui", parameters={}
+2022-09-16 10:39:40.301 DEBUG 20376 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to springfox.documentation.swagger.web.ApiResourceController#uiConfiguration()
+2022-09-16 10:39:40.324 DEBUG 20376 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json]
+2022-09-16 10:39:40.362 DEBUG 20376 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [springfox.documentation.swagger.web.UiConfiguration@5bdb7b14]
+2022-09-16 10:39:40.379 DEBUG 20376 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-16 10:39:40.387 DEBUG 20376 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/swagger-resources/configuration/security", parameters={}
+2022-09-16 10:39:40.388 DEBUG 20376 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to springfox.documentation.swagger.web.ApiResourceController#securityConfiguration()
+2022-09-16 10:39:40.389 DEBUG 20376 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json]
+2022-09-16 10:39:40.394 DEBUG 20376 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [springfox.documentation.swagger.web.SecurityConfiguration@4586af]
+2022-09-16 10:39:40.396 DEBUG 20376 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-16 10:39:40.402 DEBUG 20376 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/swagger-resources", parameters={}
+2022-09-16 10:39:40.403 DEBUG 20376 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to springfox.documentation.swagger.web.ApiResourceController#swaggerResources()
+2022-09-16 10:39:40.404 DEBUG 20376 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json]
+2022-09-16 10:39:40.407 DEBUG 20376 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[springfox.documentation.swagger.web.SwaggerResource@4ef856e1]]
+2022-09-16 10:39:40.413 DEBUG 20376 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-16 10:39:40.473 DEBUG 20376 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/v2/api-docs", parameters={}
+2022-09-16 10:39:40.474 DEBUG 20376 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)
+2022-09-16 10:39:40.639 DEBUG 20376 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, */*] and supported [application/json, application/hal+json]
+2022-09-16 10:39:40.643 DEBUG 20376 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [springfox.documentation.spring.web.json.Json@6de632a2]
+2022-09-16 10:39:40.648 DEBUG 20376 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-16 11:19:34.620  INFO 30140 --- [restartedMain] com.a606.A606Application                 : Starting A606Application using Java 1.8.0_192 on DESKTOP-PTCLTV4 with PID 30140 (C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606\build\classes\java\main started by hwi in C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606)
+2022-09-16 11:19:34.625  INFO 30140 --- [restartedMain] com.a606.A606Application                 : No active profile set, falling back to default profiles: default
+2022-09-16 11:19:34.684  INFO 30140 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-09-16 11:19:34.685  INFO 30140 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-09-16 11:19:35.095  WARN 30140 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-09-16 11:19:36.556  INFO 30140 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-16 11:19:36.730  INFO 30140 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 159 ms. Found 2 JPA repository interfaces.
+2022-09-16 11:19:38.360  INFO 30140 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-09-16 11:19:38.373  INFO 30140 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-09-16 11:19:38.373  INFO 30140 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.45]
+2022-09-16 11:19:38.642  INFO 30140 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-09-16 11:19:38.643  INFO 30140 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3956 ms
+2022-09-16 11:19:38.833 DEBUG 30140 --- [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'commonsRequestLoggingFilter' configured for use
+2022-09-16 11:19:39.090  INFO 30140 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-16 11:19:39.163  INFO 30140 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.30.Final
+2022-09-16 11:19:39.348  INFO 30140 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-16 11:19:39.502  INFO 30140 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-09-16 11:19:39.767  INFO 30140 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-09-16 11:19:39.791  INFO 30140 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-09-16 11:19:41.024 DEBUG 30140 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table nft 
+       add column is_profile bit not null
+2022-09-16 11:19:41.097 DEBUG 30140 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table nft 
+       add column token_id varchar(255) not null
+2022-09-16 11:19:41.346  INFO 30140 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-16 11:19:41.362  INFO 30140 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-16 11:19:41.386  INFO 30140 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-09-16 11:19:41.822  WARN 30140 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-09-16 11:19:41.963 DEBUG 30140 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 19 mappings in 'requestMappingHandlerMapping'
+2022-09-16 11:19:42.068  INFO 30140 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2022-09-16 11:19:42.959  INFO 30140 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-09-16 11:19:42.973 DEBUG 30140 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-09-16 11:19:43.026 DEBUG 30140 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/] in 'viewControllerHandlerMapping'
+2022-09-16 11:19:43.537 DEBUG 30140 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/resources/**, /swagger-ui.html, /webjars/**, /css/**, /fonts/**, /icons/**, /img/**, /js/**, /swagger-ui/**, /**] in 'resourceHandlerMapping'
+2022-09-16 11:19:43.549 DEBUG 30140 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-09-16 11:19:43.886  INFO 30140 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-16 11:19:44.221  INFO 30140 --- [restartedMain] com.a606.A606Application                 : Started A606Application in 10.176 seconds (JVM running for 11.156)
+2022-09-16 11:19:51.378  INFO 30140 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-16 11:19:51.379  INFO 30140 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-09-16 11:19:51.379 DEBUG 30140 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2022-09-16 11:19:51.380 DEBUG 30140 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2022-09-16 11:19:51.381 DEBUG 30140 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2022-09-16 11:19:51.383 DEBUG 30140 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@7a042382
+2022-09-16 11:19:51.384 DEBUG 30140 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@73c3f74
+2022-09-16 11:19:51.384 DEBUG 30140 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2022-09-16 11:19:51.384  INFO 30140 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2022-09-16 11:19:51.400 DEBUG 30140 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/", parameters={}
+2022-09-16 11:19:51.411 DEBUG 30140 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ParameterizableViewController [view="forward:/swagger-ui/index.html"]
+2022-09-16 11:19:51.429 DEBUG 30140 --- [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8]
+2022-09-16 11:19:51.430 DEBUG 30140 --- [http-nio-8080-exec-1] o.s.w.servlet.view.InternalResourceView  : View name 'forward:', model {}
+2022-09-16 11:19:51.431 DEBUG 30140 --- [http-nio-8080-exec-1] o.s.w.servlet.view.InternalResourceView  : Forwarding to [/swagger-ui/index.html]
+2022-09-16 11:19:51.446 DEBUG 30140 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : "FORWARD" dispatch for GET "/swagger-ui/index.html", parameters={}
+2022-09-16 11:19:51.452 DEBUG 30140 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
+2022-09-16 11:19:51.458 DEBUG 30140 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "FORWARD" dispatch, status 304
+2022-09-16 11:19:51.461 DEBUG 30140 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2022-09-16 11:19:51.624 DEBUG 30140 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/swagger-resources/configuration/ui", parameters={}
+2022-09-16 11:19:51.627 DEBUG 30140 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to springfox.documentation.swagger.web.ApiResourceController#uiConfiguration()
+2022-09-16 11:19:51.655 DEBUG 30140 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json]
+2022-09-16 11:19:51.689 DEBUG 30140 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [springfox.documentation.swagger.web.UiConfiguration@4b710f2a]
+2022-09-16 11:19:51.717 DEBUG 30140 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-16 11:19:51.725 DEBUG 30140 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/swagger-resources/configuration/security", parameters={}
+2022-09-16 11:19:51.726 DEBUG 30140 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to springfox.documentation.swagger.web.ApiResourceController#securityConfiguration()
+2022-09-16 11:19:51.727 DEBUG 30140 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json]
+2022-09-16 11:19:51.732 DEBUG 30140 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [springfox.documentation.swagger.web.SecurityConfiguration@6639aa9d]
+2022-09-16 11:19:51.734 DEBUG 30140 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-16 11:19:51.744 DEBUG 30140 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/swagger-resources", parameters={}
+2022-09-16 11:19:51.746 DEBUG 30140 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to springfox.documentation.swagger.web.ApiResourceController#swaggerResources()
+2022-09-16 11:19:51.750 DEBUG 30140 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json]
+2022-09-16 11:19:51.752 DEBUG 30140 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[springfox.documentation.swagger.web.SwaggerResource@3b83d602]]
+2022-09-16 11:19:51.757 DEBUG 30140 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-16 11:19:51.782 DEBUG 30140 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/v2/api-docs", parameters={}
+2022-09-16 11:19:51.782 DEBUG 30140 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)
+2022-09-16 11:19:51.937 DEBUG 30140 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, */*] and supported [application/json, application/hal+json]
+2022-09-16 11:19:51.941 DEBUG 30140 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [springfox.documentation.spring.web.json.Json@6bc6d052]
+2022-09-16 11:19:51.944 DEBUG 30140 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK

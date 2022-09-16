@@ -1,9 +1,8 @@
 package com.a606.api.service;
 
 import com.a606.api.dto.UserDto;
-import com.a606.db.entity.Profile;
+import com.a606.db.entity.NFT;
 import com.a606.db.entity.User;
-import com.a606.db.entity.UserPage;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,13 +18,13 @@ public interface UserService {
     User getUserPageByWallet(String userWallet);
 
     @Transactional
-    UserPage getUserPageById(long userId);
+    List<NFT> getUserPageById(long userId);
 
     @Transactional
-    Profile getProfileById(long userId);
+    NFT getProfileById(long userId);
 
     @Transactional
-    Profile updateProfile(long userId, long nftId);
+    NFT updateProfile(long userId, String nftTokenId);
 
     @Transactional
     String updateNickname(long userId, String nickname);

@@ -4,13 +4,10 @@ import com.a606.api.dto.NFTDto;
 import com.a606.api.dto.UserDto;
 import com.a606.api.service.UserService;
 import com.a606.db.entity.NFT;
-import com.a606.db.entity.Profile;
 import com.a606.db.entity.User;
-import com.a606.db.entity.UserPage;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -76,14 +73,14 @@ public class UserController {
     @GetMapping("user/{userId}")
     @ApiOperation(value = "userId로 마이페이지 조회", notes = "userId로 마이페이지 조회")
     public ResponseEntity<List<NFTDto>> myPage(@PathVariable long userId) {
-        UserPage userPage = userService.getUserPageById(userId);
+        List<NFT> nfts = userService.getUserPageById(userId);
         List<NFTDto> list = new ArrayList<>();
-        for(int i = 0; i < userPage.getNfts().size(); i++) {
+        for(int i = 0; i < nfts.size(); i++) {
             NFTDto nftDto = new NFTDto();
-            NFT nft = userPage.getNfts().get(i);
+            NFT nft = nfts.get(i);
 
             nftDto.setId(nft.getId());
-            nftDto.setTokenURI(nft.getTokenURI());
+            nftDto.setTokenURI(nft.getTokenId());
             nftDto.setSaled(nft.is_saled());
             nftDto.setName(nft.getName());
             nftDto.setLikeCount(nft.getLike_count());
@@ -93,36 +90,36 @@ public class UserController {
         return new ResponseEntity<List<NFTDto>>(list, HttpStatus.OK);
     }
 
+    //blockchain - 소유 아니면 defalut로 변경
     @GetMapping("user/profile/{userId}")
     @ApiOperation(value = "userId로 프로필 조회", notes = "userId로 프로필 조회")
     public ResponseEntity<NFTDto> getProfile(@PathVariable long userId) {
-        Profile profile = userService.getProfileById(userId);
-
+        NFT nft = userService.getProfileById(userId);
         NFTDto nftDto = new NFTDto();
 
-        nftDto.setId(profile.getNft().getId());
-        nftDto.setTokenURI(profile.getNft().getTokenURI());
-        nftDto.setSaled(profile.getNft().is_saled());
-        nftDto.setName(profile.getNft().getName());
-        nftDto.setLikeCount(profile.getNft().getLike_count());
+        nftDto.setId(nft.getId());
+        nftDto.setTokenURI(nft.getTokenId());
+        nftDto.setSaled(nft.is_saled());
+        nftDto.setName(nft.getName());
+        nftDto.setLikeCount(nft.getLike_count());
 
         return new ResponseEntity<NFTDto>(nftDto, HttpStatus.OK);
     }
 
-    //updateProfile
+    //updateProfile - blockchain
     @PostMapping("user/change/profile")
     public ResponseEntity<NFTDto> updateProfile(
             @RequestBody @ApiParam(value = "프로필 변경", required = true) @Valid UserDto.updateProfileRequest updateProfileRequest
     ) {
-        Profile profile = userService.updateProfile(updateProfileRequest.getUserId(), updateProfileRequest.getNftId());
+        NFT nft = userService.getProfileById(updateProfileRequest.getUserId());
 
         NFTDto nftDto = new NFTDto();
 
-        nftDto.setId(profile.getNft().getId());
-        nftDto.setTokenURI(profile.getNft().getTokenURI());
-        nftDto.setSaled(profile.getNft().is_saled());
-        nftDto.setName(profile.getNft().getName());
-        nftDto.setLikeCount(profile.getNft().getLike_count());
+        nftDto.setId(nft.getId());
+        nftDto.setTokenURI(nft.getTokenId());
+        nftDto.setSaled(nft.is_saled());
+        nftDto.setName(nft.getName());
+        nftDto.setLikeCount(nft.getLike_count());
 
         return new ResponseEntity<NFTDto>(nftDto, HttpStatus.OK);
     }

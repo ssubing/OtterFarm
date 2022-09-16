@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface NFTRepository extends JpaRepository<NFT, Long> {
     Optional<NFT> findById(long nftId);
+
+    Optional<NFT> findByTokenId(String tokenId);
 }

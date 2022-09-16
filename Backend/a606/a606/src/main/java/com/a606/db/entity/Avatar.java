@@ -16,6 +16,10 @@ import java.io.Serializable;
 public class Avatar implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
+    private Long id = null;
+
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;

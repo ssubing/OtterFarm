@@ -327,3 +327,35 @@ Caused by: java.lang.IllegalArgumentException: This class [class com.a606.db.ent
 2022-09-16 11:19:51.937 DEBUG 30140 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, */*] and supported [application/json, application/hal+json]
 2022-09-16 11:19:51.941 DEBUG 30140 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [springfox.documentation.spring.web.json.Json@6bc6d052]
 2022-09-16 11:19:51.944 DEBUG 30140 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-16 11:43:28.928  INFO 22184 --- [restartedMain] com.a606.A606Application                 : Starting A606Application using Java 1.8.0_192 on DESKTOP-PTCLTV4 with PID 22184 (C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606\build\classes\java\main started by hwi in C:\SSAFY\workspace\11_Project\S07P22A606\Backend\a606\a606)
+2022-09-16 11:43:28.933  INFO 22184 --- [restartedMain] com.a606.A606Application                 : No active profile set, falling back to default profiles: default
+2022-09-16 11:43:28.994  INFO 22184 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-09-16 11:43:28.994  INFO 22184 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-09-16 11:43:29.399  WARN 22184 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-09-16 11:43:30.655  INFO 22184 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-16 11:43:30.799  INFO 22184 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 131 ms. Found 2 JPA repository interfaces.
+2022-09-16 11:43:32.193  INFO 22184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-09-16 11:43:32.208  INFO 22184 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-09-16 11:43:32.209  INFO 22184 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.45]
+2022-09-16 11:43:32.421  INFO 22184 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-09-16 11:43:32.422  INFO 22184 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3426 ms
+2022-09-16 11:43:32.621 DEBUG 22184 --- [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'commonsRequestLoggingFilter' configured for use
+2022-09-16 11:43:32.868  INFO 22184 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-16 11:43:32.932  INFO 22184 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.30.Final
+2022-09-16 11:43:33.112  INFO 22184 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-16 11:43:33.252  INFO 22184 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-09-16 11:43:33.501  INFO 22184 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-09-16 11:43:33.517  INFO 22184 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-09-16 11:43:34.738  INFO 22184 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-16 11:43:34.752  INFO 22184 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-16 11:43:34.772  INFO 22184 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-09-16 11:43:35.141  WARN 22184 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-09-16 11:43:35.244 DEBUG 22184 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 19 mappings in 'requestMappingHandlerMapping'
+2022-09-16 11:43:35.353  INFO 22184 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2022-09-16 11:43:36.235  INFO 22184 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-09-16 11:43:36.252 DEBUG 22184 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-09-16 11:43:36.301 DEBUG 22184 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/] in 'viewControllerHandlerMapping'
+2022-09-16 11:43:36.938 DEBUG 22184 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/resources/**, /swagger-ui.html, /webjars/**, /css/**, /fonts/**, /icons/**, /img/**, /js/**, /swagger-ui/**, /**] in 'resourceHandlerMapping'
+2022-09-16 11:43:36.952 DEBUG 22184 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-09-16 11:43:37.301  INFO 22184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-16 11:43:37.661  INFO 22184 --- [restartedMain] com.a606.A606Application                 : Started A606Application in 9.33 seconds (JVM running for 10.201)

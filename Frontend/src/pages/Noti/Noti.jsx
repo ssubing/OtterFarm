@@ -73,6 +73,12 @@ function Noti() {
   const handlePage = (event, value) => {
     setCurrentPage(value);
   };
+
+  // 알림 클릭 시
+  const handleNoti = (event, value) => {
+    console.log(value);
+  };
+
   return (
     <div>
       <Navbar></Navbar>
@@ -90,6 +96,7 @@ function Noti() {
                     style={{
                       color: "#C08552",
                     }}
+                    onClick={(event) => handleNoti(event, { noti })}
                   />
                 }
                 label={

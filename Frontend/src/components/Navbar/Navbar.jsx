@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../../assets/images/logo.png";
+import { TransactionContext } from "../../context/TransactionContext";
+import Notice from "../Notice/Notice";
 const Navbar = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const { connectWallet, currentAccount } = useContext(TransactionContext);
   return (
     <nav className="navbar">
       <div className="main">
@@ -30,10 +32,23 @@ const Navbar = () => {
           </Link>
         </div>
       </div>
-      {isLogin ? (
-        <div onClick={() => setIsLogin(false)}>로그아웃</div>
+      {!currentAccount ? (
+        <div onClick={connectWallet} className="login">
+          계정연결
+        </div>
       ) : (
-        <div onClick={() => setIsLogin(true)}>로그인</div>
+        <div className="account">
+          <Link
+            to="/myPage"
+            className="myPage"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            수달하우스
+          </Link>
+          <Link to="/noti" className="noti">
+            <Notice />
+          </Link>
+        </div>
       )}
     </nav>
   );

@@ -18,7 +18,7 @@ function Item() {
     <Navbar/>
     <div className="itemPage">
     <div className="myNft">
-        <img src={otter} alt="basic otter" className="otter"/>
+        {/* <img src={otter} alt="basic otter" className="otter"/> */}
         <Canvas/>
       <div className="myItems">내가 가진 아이템</div>
     </div>

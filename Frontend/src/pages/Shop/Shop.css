@@ -1,9 +1,4 @@
-@font-face {
-  font-family: "neo";
-  src: url("../../assets/fonts/neodgm.woff");
-}
 .shop {
-  font-family: "neo";
   background-color: #fffaf4;
   padding: 5%;
 }
@@ -63,4 +58,9 @@
   display: flex;
   justify-content: space-between;
   font-size: 16px;
+}
+
+.shop > a {
+  text-decoration: none;
+  color: black;
 }

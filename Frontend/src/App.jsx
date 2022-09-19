@@ -6,6 +6,7 @@ import Item from "./pages/Item/Item";
 import Shop from "./pages/Shop/Shop";
 import Game from "./pages/Game/Game";
 import Guide from "./pages/Guide/Guide";
+import AvatarDetail from "./pages/Avatar/AvatarDetail"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/item" element={<Item />} />
         <Route path="/guide" element={<Guide />} />
+        <Route path="/detail" element={<AvatarDetail />} />
       </Routes>
     </Router>
   );

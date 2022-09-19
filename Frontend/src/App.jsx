@@ -6,6 +6,7 @@ import Item from "./pages/Item/Item";
 import Shop from "./pages/Shop/Shop";
 import Game from "./pages/Game/Game";
 import Guide from "./pages/Guide/Guide";
+
 function App() {
   return (
     <Router>

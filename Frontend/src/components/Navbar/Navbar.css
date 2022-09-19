@@ -1,10 +1,5 @@
-@font-face {
-  font-family: "neo";
-  src: url("../../assets/fonts/neodgm.woff");
-}
 .navbar {
   background-color: #c08552;
-  font-family: "neo";
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -22,8 +17,6 @@
   cursor: pointer;
 }
 .menu {
-  font-family: "neo";
-
   display: flex;
   flex-direction: row;
 }

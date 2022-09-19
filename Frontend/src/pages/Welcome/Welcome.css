@@ -19,11 +19,6 @@
     z-index: -1;
 }
 
-#root {
-    -webkit-font-smoothing: antialiased;
-    font-family: 'neo'
-}
-
 /* 수달농장 */
 .home-title {
     height: 100px;
@@ -101,7 +96,3 @@
     color: white;
 }
 
-@font-face {
-    font-family: 'neo';
-    src: url('../../assets/fonts/neodgm.woff') format("truetype")
-}

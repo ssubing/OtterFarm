@@ -1,9 +1,4 @@
-@font-face {
-  font-family: "neo";
-  src: url("../../assets/fonts/neodgm.woff");
-}
 .noti {
-  font-family: "neo";
   background-color: #fffaf4;
   padding: 5%;
 }

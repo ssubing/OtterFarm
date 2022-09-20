@@ -19,7 +19,7 @@ export const TransactionProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState("");
   const checkIfWalletIsConnected = async () => {
     try {
-      if (!ethereum) return alert("메타마스크를 설치해 주세요.");
+      if (!ethereum) return alert("메타마스크를 설치해 주세요!");
 
       const accounts = await ethereum.request({ method: "eth_accounts" });
       if (accounts.length) {

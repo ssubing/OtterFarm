@@ -1,26 +1,43 @@
-import React, { useEffect, useRef, useState } from 'react'
-import otter from "../../assets/images/otter.png"
-const Canvas = ()=> {
-    const canvasRef = useRef(null);
-    const contextRef = useRef(null);
+import React, { useEffect, useRef, useState } from "react";
 
-    const [ctx, setCtx] = useState();
+const Canvas = ({ url, width, height, url2 }) => {
+  const canvasRef = useRef(null);
+  const contextRef = useRef(null);
 
-    useEffect(()=>{
-        const canvas = canvasRef.current;
-        const context = canvas.getContext("2d");
-     
-        const image = new Image();
-        image.src =otter;
-        setCtx(contextRef.current);
+  const [ctx, setCtx] = useState();
 
-        image.onload= ()=> {
-          context.drawImage(image, 0,0, 200, 400);
-        }
-    })
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const context = canvas.getContext("2d");
+    console.log(url);
+    const image = new Image();
+    image.src = url;
+    setCtx(contextRef.current);
+
+    image.onload = () => {
+      context.drawImage(image, 0, 0, width, height);
+    };
+  }, []);
+
+  const addToCanvas = (ctx, image, x, y) => {
+    let img = new Image();
+    img.src = url2;
+    img.onload = function () {
+      ctx.drawImage(img, 9, 9);
+    };
+  };
+  useEffect(() => {
+    addToCanvas();
+    console.log("Added");
+  }, []);
   return (
-    <canvas ref ={canvasRef} width={200} height={400}></canvas>
-  )
-}
+    <canvas
+      id="myCanvas"
+      ref={canvasRef}
+      width={width}
+      height={height}
+    ></canvas>
+  );
+};
 
-export default Canvas
+export default Canvas;

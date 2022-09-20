@@ -6,8 +6,8 @@ import Item from "./pages/Item/Item";
 import Shop from "./pages/Shop/Shop";
 import Game from "./pages/Game/Game";
 import Guide from "./pages/Guide/Guide";
-import AvatarDetail from "./pages/Avatar/AvatarDetail"
-
+import AvatarDetail from "./pages/Avatar/AvatarDetail";
+import Noti from "./pages/Noti/Noti";
 function App() {
   return (
     <Router>
@@ -19,6 +19,7 @@ function App() {
         <Route path="/item" element={<Item />} />
         <Route path="/guide" element={<Guide />} />
         <Route path="/detail" element={<AvatarDetail />} />
+        <Route path="/noti" element={<Noti />}></Route>
       </Routes>
     </Router>
   );

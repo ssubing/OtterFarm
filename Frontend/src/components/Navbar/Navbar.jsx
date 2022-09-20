@@ -43,9 +43,9 @@ const Navbar = () => {
             className="myPage"
             style={{ textDecoration: "none", color: "black" }}
           >
-            수달하우스
+            unknown 님의 수달하우스
           </Link>
-          <Link to="/noti" className="noti">
+          <Link to="/noti" className="noti-icon">
             <Notice />
           </Link>
         </div>

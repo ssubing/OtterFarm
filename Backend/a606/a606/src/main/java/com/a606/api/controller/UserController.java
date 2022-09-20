@@ -4,6 +4,7 @@ import com.a606.api.dto.MyNFTDto;
 import com.a606.api.dto.UserDto;
 import com.a606.api.service.ContractService;
 import com.a606.api.service.UserService;
+import com.a606.common.util.JwtTokenUtil;
 import com.a606.common.util.SudalUserDetails;
 import com.a606.db.entity.User;
 import io.swagger.annotations.Api;
@@ -100,7 +101,8 @@ public class UserController {
         for(String recoveredKey : recoveredKeys) {
             if(recoveredKey.equalsIgnoreCase(userWallet)) {
                 // jwt 토큰 만들어서 주는 코드로 바꾸기
-                return ResponseEntity.status(200).body(user);
+                String jwtToken = JwtTokenUtil.getToken(userWallet);
+                return ResponseEntity.status(200).body(jwtToken);
             }
         }
 
@@ -129,8 +131,8 @@ public class UserController {
         if (authentication == null) return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         SudalUserDetails sudalUserDetails = (SudalUserDetails) authentication.getDetails();
         User user = sudalUserDetails.getUser();
-        System.out.println(user);
-        Long profile = userService.getProfileById(userId);
+        System.out.println(user.getId());
+        Long profile = userService.getProfileById(user.getId());
         // profile이 보유한 nft가 아닐 때
         if(profile == null){
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);

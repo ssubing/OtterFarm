@@ -9,7 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
-import org.web3j.protocol.core.methods.response.Web3ClientVersion;
+import org.web3j.protocol.admin.Admin;
+import org.web3j.protocol.admin.methods.response.PersonalListAccounts;
 import org.web3j.protocol.http.HttpService;
 import org.web3j.tuples.generated.Tuple3;
 import org.web3j.tx.FastRawTransactionManager;
@@ -44,12 +45,12 @@ public class Web3jTestController {
             @ApiResponse(code = 401, message = "unauthenticated"),
             @ApiResponse(code = 403, message = "unauthorized")
     })
-    public String web3ClientVersion() throws IOException {
-        Web3j web3j = Web3j.build(new HttpService("http://localhost:7545"));
-        Web3ClientVersion web3ClientVersion = web3j.web3ClientVersion().send();;
-        System.out.println(web3ClientVersion.getWeb3ClientVersion());
+    public List<String> web3ClientVersion() throws IOException {
+        Admin admin = Admin.build(new HttpService("http://20.196.209.2:8545"));
+        PersonalListAccounts personalListAccounts = admin.personalListAccounts().send();
+        List<String> addressList = personalListAccounts.getAccountIds();
 
-        return web3ClientVersion.getWeb3ClientVersion();
+        return addressList;
     }
 
     @GetMapping()
@@ -73,8 +74,8 @@ public class Web3jTestController {
             @ApiResponse(code = 403, message = "unauthorized")
     })
     public ResponseEntity<?> getWeb3Contract(@RequestParam String address) throws Exception {
-        String contract = "0x95fCd7ae8157f3Bf5a8e8a6be81FD8a4B6912250";     // 배포한 컨트랙트 주소
-        String key = "bc8ca22e16690ca3b56bd551e3b166338f2783c00ee91f42495a81bf9d90bf4b";
+        String contract = "0x71fEBBe570f91C1bc3711807A9041c19DcD98A3c";     // 배포한 컨트랙트 주소
+        String key = "583705a3b516ea8bc8672540ffdd9e2806e23c48e89e1fb4fa862242937e0ef1";
 
         Web3j web3j = Web3j.build(new HttpService("http://localhost:7545"));
         Credentials credentials = Credentials.create(key);
@@ -105,8 +106,8 @@ public class Web3jTestController {
             @ApiResponse(code = 403, message = "unauthorized")
     })
     public ResponseEntity<?> getWeb3SudalsByOwner() throws Exception {
-        String contract = "0x95fCd7ae8157f3Bf5a8e8a6be81FD8a4B6912250";
-        String key = "bc8ca22e16690ca3b56bd551e3b166338f2783c00ee91f42495a81bf9d90bf4b";
+        String contract = "0x71fEBBe570f91C1bc3711807A9041c19DcD98A3c";
+        String key = "583705a3b516ea8bc8672540ffdd9e2806e23c48e89e1fb4fa862242937e0ef1";
 
         Web3j web3j = Web3j.build(new HttpService("http://localhost:7545"));
         Credentials credentials = Credentials.create(key);
@@ -136,8 +137,8 @@ public class Web3jTestController {
             @ApiResponse(code = 403, message = "unauthorized")
     })
     public ResponseEntity<?> createNFT(@RequestParam String sudalName, String sudalDNA) throws Exception {
-        String contract = "0x95fCd7ae8157f3Bf5a8e8a6be81FD8a4B6912250";
-        String key = "bc8ca22e16690ca3b56bd551e3b166338f2783c00ee91f42495a81bf9d90bf4b";
+        String contract = "0x71fEBBe570f91C1bc3711807A9041c19DcD98A3c";
+        String key = "583705a3b516ea8bc8672540ffdd9e2806e23c48e89e1fb4fa862242937e0ef1";
 
         Web3j web3j = Web3j.build(new HttpService("http://localhost:7545"));
         Credentials credentials = Credentials.create(key);

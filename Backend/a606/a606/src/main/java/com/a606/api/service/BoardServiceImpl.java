@@ -19,7 +19,7 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public List<NFT> findNFTList(Long id) {
-        return nftRepository.findAllById(id);
+        return null;
     }
 
     @Override

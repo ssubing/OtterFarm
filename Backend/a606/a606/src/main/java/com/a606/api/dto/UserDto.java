@@ -53,6 +53,7 @@ public class UserDto implements Serializable {
     public static class LoginRequest {
         @ApiModelProperty(name = "지갑 주소")
         private String wallet;
+        private String message;
     }
 
     @Getter

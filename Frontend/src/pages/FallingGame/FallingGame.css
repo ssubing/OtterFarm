@@ -7,14 +7,14 @@
   text-align: center;
   width: 1325px;
   height: 750px;
-  padding: 25px 50px 25px 50px;
+  padding: 5px 50px;
   background-image: url(../../assets/images/falling-backgroud.jpg);
   background-size: cover;
 }
 /* Field params */
 .field {
   width: 100%;
-  height: 625px;
+  height: 612px;
   border: 2px solid black;
   position: relative;
   overflow: hidden;

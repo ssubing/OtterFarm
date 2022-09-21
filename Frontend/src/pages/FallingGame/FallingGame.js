@@ -18,6 +18,7 @@ import Control from "../../components/FallingGame/Control";
 import Item from "../../components/FallingGame/Item";
 import Score from "../../components/FallingGame/Score";
 import "./FallingGame.css";
+import otter from "../../assets/images/otter-basket.png";
 
 const FallingGame = () => {
   const [dots, updateDots] = useRecoilState(dotsState);
@@ -26,6 +27,12 @@ const FallingGame = () => {
   const intervalRef = useRef();
   const fieldRef = useRef();
   const requestRef = useRef();
+
+  const OtterStyle = {
+    position: "absolute",
+    bottom: 0,
+    height: "200px",
+  };
 
   const advanceStep = useCallback(() => {
     updateDots((oldDots) => {
@@ -95,6 +102,7 @@ const FallingGame = () => {
               />
             );
           })}
+          <img style={OtterStyle} src={otter} alt="basket otter" />
         </div>
       </div>
     </div>

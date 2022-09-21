@@ -6,7 +6,6 @@ const Item = (props) => {
     left: `${x}px`,
     top: `${y}px`,
   };
-  console.log(height, ", ", width);
   return (
     <div className="item" style={ItemStyle} onClick={() => onClick(index)}>
       <img

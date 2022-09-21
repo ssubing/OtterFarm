@@ -42,9 +42,6 @@ public class UserController {
     @Autowired
     private final UserService userService;
 
-    @Autowired
-    private final ContractService contractService;
-
     @GetMapping("user/nonce/{address}")
     @ApiOperation(value = "로그인 nonce, 회원 가입", notes = "지갑주소가 있으면 로그인 없으면 회원가입 후 nonce 반환")
     public ResponseEntity<String> loginNonce(@PathVariable String address){

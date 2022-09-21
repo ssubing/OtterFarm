@@ -55,3 +55,45 @@
 .chosen {
   background-color: blue;
 }
+
+.inventory{
+  background-color: #f3e9dc;
+  width:80%;
+  height:40vh;
+  border: 1px solid black;
+  
+}
+
+.base {
+  width:300px;
+  height: 400px;
+  z-index:1;
+}
+
+
+.head{
+  z-index:2;
+}
+.eye{
+  z-index:3;
+}
+.mouth{
+  z-index:4;
+}
+.hand {
+  z-index:4;
+}
+.cloth{
+  z-index:2;
+}
+
+.otterNft{
+  width:300px;
+  height: 400px;
+}
+
+.char {
+  position:absolute;
+  width:300px;
+  height:400px;
+}

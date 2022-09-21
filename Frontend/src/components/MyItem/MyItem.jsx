@@ -3,48 +3,45 @@ import ReactPaginate from "react-paginate";
 import "./MyItem.css";
 
 
-const imageUrl = "../../assets/images/items/Cloth/"
+
 const items = [
+  
   {
-    url :require("../../assets/images/items/Cloth/cloth_01.png"),
-    name : "cloth01"
+    url: require("../../assets/images/items/Head/head_01.png"),
+    name: "head01"
   },
   {
-    url:require("../../assets/images/items/Cloth/cloth_02.png"),
-    name:"cloth02"
+    url: require("../../assets/images/items/Head/head_02.png"),
+    name: "head02"
   },
   {
-    url :require("../../assets/images/items/Cloth/cloth_03.png"),
-    name : "cloth03"
+    url: require("../../assets/images/items/Head/head_03.png"),
+    name: "head03"
   },
   {
-    url :require("../../assets/images/items/Cloth/cloth_04.png"),
-    name : "cloth04"
+    url: require("../../assets/images/items/Head/head_04.png"),
+    name: "head04"
   },
   {
-    url :require("../../assets/images/items/Cloth/cloth_05.png"),
-    name : "cloth05"
+    url: require("../../assets/images/items/Head/head_05.png"),
+    name: "head05"
   },
   {
-    url :require("../../assets/images/items/Cloth/cloth_06.png"),
-    name : "cloth06"
+    url: require("../../assets/images/items/Head/head_06.png"),
+    name: "head06"
   },
   {
-    url :require("../../assets/images/items/Cloth/cloth_07.png"),
-    name : "cloth07"
+    url: require("../../assets/images/items/Head/head_07.png"),
+    name: "head07"
   },
   {
-    url :require("../../assets/images/items/Cloth/cloth_08.png"),
-    name : "cloth08"
-  },
-  {
-    url :require("../../assets/images/items/Cloth/cloth_09.png"),
-    name : "cloth09"
+    url: require("../../assets/images/items/Head/head_08.png"),
+    name: "head08"
   },
 ];
 
-function Cloth({ itemsPerPage,setUrl}) {
-  const [currentItems, setCurrentItems] = useState(items);
+function MyItem({ itemsPerPage,setUrl}) {
+  const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
 
@@ -68,14 +65,14 @@ function Cloth({ itemsPerPage,setUrl}) {
   return (
     <div className="inventory">
       <div className="items">
-     {currentItems.map((item)=>( <img className="parts" key={item.name} src={item.url} onClick={() => setUrl(item.url)}/>) )}
+     {items.map((item)=>( <img className="parts" src={item.url} onClick={() => setUrl(item.url)}/>) )}
      </div>
       <ReactPaginate
         className="paginate"
         breakLabel="..."
         nextLabel=">"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={8}
+        pageRangeDisplayed={1}
         pageCount={pageCount}
         previousLabel="<"
         renderOnZeroPageCount={null}
@@ -84,4 +81,4 @@ function Cloth({ itemsPerPage,setUrl}) {
   );
 }
 
-export default Cloth;
+export default MyItem;

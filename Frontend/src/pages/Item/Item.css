@@ -31,3 +31,27 @@
   border-color: black;
   border: 2px solid;
 }
+.select {
+  display: flex;
+  justify-content: flex-start;
+  width:100%;
+  margin-left:20%;
+  height:10vh;
+  margin-top:5%;
+}
+.part {
+  border: 1px solid black;
+  width:8%;
+  display:flex;
+  justify-content: center;
+  align-items: center; 
+  background-color: #f3e9dc;
+}
+
+.part:hover{
+  background-color:blue;
+}
+
+.chosen {
+  background-color: blue;
+}

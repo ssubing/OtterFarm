@@ -49,7 +49,7 @@ function Items({ currentItems, setUrl }) {
     </div>
   );
 }
-function MyItem({ itemsPerPage, settingUrl }) {
+function Head({ itemsPerPage, settingUrl }) {
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
@@ -90,4 +90,4 @@ function MyItem({ itemsPerPage, settingUrl }) {
   );
 }
 
-export default MyItem;
+export default Head;

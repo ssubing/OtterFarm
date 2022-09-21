@@ -1,4 +1,4 @@
-import { MAX_POINTS, TYPES } from "./constants";
+import { TYPES } from "./constants";
 export const createDot = () => {
   // pick random drop item
   const randIndex = Math.floor(Math.random() * TYPES.length);
@@ -18,6 +18,7 @@ export const createDot = () => {
   let x = Math.floor(Math.random() * 100);
   return {
     type,
+    randIndex,
     height,
     width,
     x,
@@ -30,5 +31,11 @@ export const removeDot = (dots, index) => {
   return newDots;
 };
 export const calculatePoints = (dot) => {
-  return MAX_POINTS - dot.size;
+  if (dot.randIndex === 0) {
+    return 50;
+  } else if (dot.randIndex === 1) {
+    return 100;
+  } else if (dot.randIndex === 2) {
+    return 150;
+  }
 };

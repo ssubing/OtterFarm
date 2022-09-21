@@ -25,7 +25,6 @@ import org.web3j.crypto.Sign;
 import org.web3j.utils.Numeric;
 import springfox.documentation.annotations.ApiIgnore;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -72,6 +71,9 @@ public class UserController {
         String message = loginInfo.getMessage();
 
         User user = userService.getUserByWallet(userWallet);
+        if (user == null){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
         String nonce = user.getNonce();
 
         System.out.println("nonce : " + nonce);
@@ -96,11 +98,9 @@ public class UserController {
             }
         }
 
-        System.out.println(recoveredKeys);
-
         for(String recoveredKey : recoveredKeys) {
             if(recoveredKey.equalsIgnoreCase(userWallet)) {
-                // jwt 토큰 만들어서 주는 코드로 바꾸기
+                userService.setNonce(user.getId());
                 String jwtToken = JwtTokenUtil.getToken(userWallet);
                 return ResponseEntity.status(200).body(jwtToken);
             }
@@ -109,29 +109,22 @@ public class UserController {
         return ResponseEntity.status(400).body(null);
     }
 
-    @PostMapping("user/logout")
-    @ApiOperation(value = "로그아웃", notes = "로그아웃을 한다")
-    public String logout(HttpSession session) {
-        session.invalidate();
-        return "redirect:/";
-    }
-
-    @GetMapping("user/{userId}")
-    @ApiOperation(value = "userId로 마이페이지 조회", notes = "userId로 마이페이지 조회")
-    public ResponseEntity<List<MyNFTDto>> myPage(@PathVariable long userId) throws Exception {
-        List<MyNFTDto> nfts = userService.getUserPageById(userId);
+    @GetMapping("user/mynft")
+    @ApiOperation(value = "보유 nft 조회", notes = "로그인 한 계정의 보유 nft 조회")
+    public ResponseEntity<List<MyNFTDto>> myPage(@ApiIgnore Authentication authentication) throws Exception {
+        if (authentication == null) return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+        User user = ((SudalUserDetails) authentication.getDetails()).getUser();
+        List<MyNFTDto> nfts = userService.getUserPageById(user.getId());
 
         return new ResponseEntity<>(nfts, HttpStatus.OK);
     }
 
     //blockchain - 소유 아니면 defalut로 변경
-    @GetMapping("user/profile/{userId}")
-    @ApiOperation(value = "userId로 프로필 조회", notes = "프로필인 NFT id 리턴")
-    public ResponseEntity<Long> getProfile(@ApiIgnore Authentication authentication, @PathVariable long userId) throws Exception {
-        if (authentication == null) return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
-        SudalUserDetails sudalUserDetails = (SudalUserDetails) authentication.getDetails();
-        User user = sudalUserDetails.getUser();
-        System.out.println(user.getId());
+    @GetMapping("user/profile/")
+    @ApiOperation(value = "프로필 조회", notes = "로그인 한 계정의 프로필인 NFT id 리턴")
+    public ResponseEntity<Long> getProfile(@ApiIgnore Authentication authentication) throws Exception {
+        if (authentication == null) return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+        User user = ((SudalUserDetails) authentication.getDetails()).getUser();
         Long profile = userService.getProfileById(user.getId());
         // profile이 보유한 nft가 아닐 때
         if(profile == null){
@@ -143,20 +136,25 @@ public class UserController {
 
     //updateProfile - blockchain
     @PostMapping("user/change/profile")
-    public ResponseEntity<?> updateProfile(
-            @RequestBody @ApiParam(value = "프로필 변경", required = true) @Valid UserDto.updateProfileRequest updateProfileRequest
-    ) {
-        User user = userService.updateProfile(updateProfileRequest.getUserId(), updateProfileRequest.getNftId());
+    public ResponseEntity<?> updateProfile(@ApiIgnore Authentication authentication,
+            @RequestBody @ApiParam(value = "프로필 변경", required = true) UserDto.updateProfileRequest updateProfileRequest) throws Exception {
+        if (authentication == null) return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+        User user = ((SudalUserDetails) authentication.getDetails()).getUser();
+        user = userService.updateProfile(user.getId(), updateProfileRequest.getNftId());
+        if (user == null){
+           return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     //updateNickname
     @PostMapping("user/change/nickname")
-    public ResponseEntity<String> updateNickname(
-            @RequestBody @ApiParam(value = "프로필 변경", required = true) @Valid UserDto.updateNicknameRequest updateNicknameRequest
-    ) {
-        return new ResponseEntity<String>(
-                userService.updateNickname(updateNicknameRequest.getUserId(), updateNicknameRequest.getNickname()), HttpStatus.OK);
+    public ResponseEntity<String> updateNickname(@ApiIgnore Authentication authentication,
+            @RequestBody @ApiParam(value = "프로필 변경", required = true) UserDto.updateNicknameRequest updateNicknameRequest) {
+        if (authentication == null) return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+        User user = ((SudalUserDetails) authentication.getDetails()).getUser();
+        return new ResponseEntity<>(
+                userService.updateNickname(user.getId(), updateNicknameRequest.getNickname()), HttpStatus.OK);
     }
 }

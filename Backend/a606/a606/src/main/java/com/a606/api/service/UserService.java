@@ -28,9 +28,12 @@ public interface UserService {
     Long getProfileById(long userId) throws Exception;
 
     @Transactional
-    User updateProfile(long userId, long nftTokenId);
+    User updateProfile(long userId, long nftTokenId) throws Exception;
 
     @Transactional
     String updateNickname(long userId, String nickname);
+
+    @Transactional
+    void setNonce(long userId);
 
 }

@@ -25,6 +25,10 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private ContractService contractService;
 
+    private String getRandomNonce() {
+        return String.valueOf((int)(Math.random()*1000000));
+    }
+
     @Override
     public String getNonceByWallet(String userWallet) {
         Optional<User> oUser = userRepository.findByWallet(userWallet);
@@ -42,7 +46,7 @@ public class UserServiceImpl implements UserService{
         user.setGamePoint(0l);
         user.setCreatedDate(LocalDateTime.now());
         user.setLastModifiedDate(LocalDateTime.now());
-        user.setNonce(String.valueOf((int)(Math.random()*1000000)));
+        user.setNonce(getRandomNonce());
         userRepository.save(user);
         return user;
     }
@@ -78,13 +82,18 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User getUserByWallet(String userWallet) {
-        User user = userRepository.findByWallet(userWallet).get();
-        return user;
+        Optional<User> user = userRepository.findByWallet(userWallet);
+        return user.orElse(null);
     }
 
     @Override
-    public User updateProfile(long userId, long nftTokenId) {
+    public User updateProfile(long userId, long nftTokenId) throws Exception {
         User user = userRepository.findById(userId).get();
+        NFT nft = nftRepository.findById(nftTokenId).get();
+        String address = contractService.getAddressbyTokenId(nft.getTokenId());
+        if (!address.equalsIgnoreCase(user.getWallet())) {
+            return null;
+        }
         user.setProfile(nftTokenId);
         user = userRepository.save(user);
 
@@ -98,5 +107,12 @@ public class UserServiceImpl implements UserService{
         user = userRepository.save(user);
 
         return user.getNickname();
+    }
+
+    @Override
+    public void setNonce(long userId) {
+        User user = userRepository.findById(userId).get();
+        user.setNonce(getRandomNonce());
+        userRepository.save(user);
     }
 }

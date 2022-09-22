@@ -27,5 +27,5 @@ public class Inventory {
     private Item item;
 
     @Column(nullable = false)
-    private Long number;
+    private int number;
 }

@@ -1,0 +1,24 @@
+package com.a606.api.service;
+
+import com.a606.db.entity.User;
+import com.a606.db.repository.UserRepository;
+import org.springframework.stereotype.Service;
+
+@Service
+public class GameServiceImpl implements GameService{
+    UserRepository userRepository;
+
+    @Override
+    public long getGamePointById(long userId) {
+        User user = userRepository.findById(userId).get();
+
+        return user.getGamePoint();
+    }
+
+    @Override
+    public long updateGamePointById(long userId, long gamePoint) {
+        User user = userRepository.findById(userId).get();
+        user.setGamePoint(user.getGamePoint() + gamePoint);
+        return user.getGamePoint();
+    }
+}

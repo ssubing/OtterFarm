@@ -13,7 +13,7 @@ import org.web3j.protocol.admin.Admin;
 import org.web3j.protocol.admin.methods.response.PersonalListAccounts;
 import org.web3j.protocol.http.HttpService;
 import org.web3j.tuples.generated.Tuple3;
-import org.web3j.tx.FastRawTransactionManager;
+import org.web3j.tx.*;
 import org.web3j.tx.gas.ContractGasProvider;
 import org.web3j.tx.gas.DefaultGasProvider;
 import org.web3j.tx.gas.StaticGasProvider;
@@ -74,10 +74,10 @@ public class Web3jTestController {
             @ApiResponse(code = 403, message = "unauthorized")
     })
     public ResponseEntity<?> getWeb3Contract(@RequestParam String address) throws Exception {
-        String contract = "0x71fEBBe570f91C1bc3711807A9041c19DcD98A3c";     // 배포한 컨트랙트 주소
-        String key = "583705a3b516ea8bc8672540ffdd9e2806e23c48e89e1fb4fa862242937e0ef1";
+        String contract = "0xCC7e82114aF80c36Bb815a92BF85a6A8f9155188";
+        String key = "2c835aeb997e4d1269513a83efadc44de96a30a56c1b58cb7f8ce8897511c79f";
 
-        Web3j web3j = Web3j.build(new HttpService("http://localhost:7545"));
+        Web3j web3j = Web3j.build(new HttpService("http://20.196.209.2:8545"));
         Credentials credentials = Credentials.create(key);
         ContractGasProvider gasProvider = new DefaultGasProvider();
         FastRawTransactionManager manager = new FastRawTransactionManager(web3j, credentials,
@@ -106,18 +106,18 @@ public class Web3jTestController {
             @ApiResponse(code = 403, message = "unauthorized")
     })
     public ResponseEntity<?> getWeb3SudalsByOwner() throws Exception {
-//        String contract = "0xCC7e82114aF80c36Bb815a92BF85a6A8f9155188";
-//        String key = "2c835aeb997e4d1269513a83efadc44de96a30a56c1b58cb7f8ce8897511c79f";
+        String contract = "0xCC7e82114aF80c36Bb815a92BF85a6A8f9155188";
+        String key = "2c835aeb997e4d1269513a83efadc44de96a30a56c1b58cb7f8ce8897511c79f";
 
-//        Web3j web3j = Web3j.build(new HttpService("http://20.196.209.2:8545"));
-        String contract = "0x71fEBBe570f91C1bc3711807A9041c19DcD98A3c";
-        String key = "7de9b804253e76a421515313536b138ca1addd3e9aaaf07152d9155b71edaafa";
-
-        Web3j web3j = Web3j.build(new HttpService("http://localhost:7545"));
+        Web3j web3j = Web3j.build(new HttpService("http://20.196.209.2:8545"));
+//        String contract = "0x71fEBBe570f91C1bc3711807A9041c19DcD98A3c";
+//        String key = "7de9b804253e76a421515313536b138ca1addd3e9aaaf07152d9155b71edaafa";
+//
+//        Web3j web3j = Web3j.build(new HttpService("http://localhost:7545"));
         Credentials credentials = Credentials.create(key);
-        ContractGasProvider gasProvider = new DefaultGasProvider();
         FastRawTransactionManager manager = new FastRawTransactionManager(web3j, credentials,
                 new PollingTransactionReceiptProcessor(web3j, 3000, 3));
+        ContractGasProvider gasProvider = new DefaultGasProvider();
 
         SudalFarm sudalFarm = SudalFarm.load(contract, web3j, manager, gasProvider);
         Tuple3 tuple3 = sudalFarm.getSudals().send();
@@ -141,12 +141,13 @@ public class Web3jTestController {
             @ApiResponse(code = 403, message = "unauthorized")
     })
     public ResponseEntity<?> createNFT(@RequestParam String sudalName, String sudalDNA) throws Exception {
-        String contract = "0x71fEBBe570f91C1bc3711807A9041c19DcD98A3c";
-        String key = "7de9b804253e76a421515313536b138ca1addd3e9aaaf07152d9155b71edaafa";
+        String contract = "0xCC7e82114aF80c36Bb815a92BF85a6A8f9155188";
+        String key = "2c835aeb997e4d1269513a83efadc44de96a30a56c1b58cb7f8ce8897511c79f";
 
-        Web3j web3j = Web3j.build(new HttpService("http://localhost:7545"));
+        Web3j web3j = Web3j.build(new HttpService("http://20.196.209.2:8545"));
         Credentials credentials = Credentials.create(key);
-        ContractGasProvider gasProvider = new StaticGasProvider(BigInteger.valueOf(22_000_000_000L), BigInteger.valueOf(4_300_000));
+//        ContractGasProvider gasProvider = new StaticGasProvider(BigInteger.valueOf(22_000_000_000_000L), BigInteger.valueOf(4_300_000_000L));
+        ContractGasProvider gasProvider = new StaticGasProvider(BigInteger.ZERO, DefaultGasProvider.GAS_LIMIT);
         FastRawTransactionManager manager = new FastRawTransactionManager(web3j, credentials,
                 new PollingTransactionReceiptProcessor(web3j, 3000, 3));
 

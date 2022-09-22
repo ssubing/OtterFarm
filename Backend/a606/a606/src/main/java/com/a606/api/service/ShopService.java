@@ -10,7 +10,6 @@ import java.util.List;
 @Service
 public interface ShopService {
 
-
     @Transactional
     List<InventoryDto> getInventory(long userId);
 

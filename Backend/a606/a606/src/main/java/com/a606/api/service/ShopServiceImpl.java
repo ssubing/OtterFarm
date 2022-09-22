@@ -1,17 +1,12 @@
 package com.a606.api.service;
 
-import com.a606.api.dto.AvatarDto;
 import com.a606.api.dto.InventoryDto;
 import com.a606.api.dto.ItemDto;
-import com.a606.db.entity.Avatar;
 import com.a606.db.entity.Inventory;
 import com.a606.db.entity.Item;
-import com.a606.db.repository.AvatarRepository;
 import com.a606.db.repository.InventoryRepository;
 import com.a606.db.repository.ItemRepository;
 import com.a606.db.repository.UserRepository;
-import jnr.ffi.annotations.In;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,39 +15,9 @@ import java.util.Random;
 
 @Service
 public class ShopServiceImpl implements ShopService{
-    AvatarRepository avatarRepository;
     InventoryRepository inventoryRepository;
     ItemRepository itemRepository;
     UserRepository userRepository;
-
-    @Override
-    public AvatarDto getAvatarById(long userId) {
-        AvatarDto avatarDto = new AvatarDto();
-        Avatar avatar = avatarRepository.findByUserId(userId);
-
-        avatarDto.setId(avatar.getId());
-        avatarDto.setUserId(userId);
-        avatarDto.setHead(itemRepository.findById(avatar.getHead()).get());
-        avatarDto.setEyes(itemRepository.findById(avatar.getEyes()).get());
-        avatarDto.setMouth(itemRepository.findById(avatar.getMouth()).get());
-        avatarDto.setHands(itemRepository.findById(avatar.getHands()).get());
-        avatarDto.setFashion(itemRepository.findById(avatar.getFashion()).get());
-
-        return avatarDto;
-    }
-
-    @Override
-    public void updateAvatarById(long userId, AvatarDto avatarDto) {
-        Avatar avatar = avatarRepository.findByUserId(userId);
-
-        avatar.setHead(avatarDto.getHead().getId());
-        avatar.setEyes(avatarDto.getEyes().getId());
-        avatar.setMouth(avatarDto.getMouth().getId());
-        avatar.setHands(avatarDto.getHands().getId());
-        avatar.setFashion(avatarDto.getFashion().getId());
-
-        avatarRepository.save(avatar);
-    }
 
     @Override
     public List<InventoryDto> getInventory(long userId) {

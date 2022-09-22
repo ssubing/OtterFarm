@@ -52,11 +52,6 @@ public class User {
     @Column(nullable = false)
     private Long profile;
 
-    //OneToOne
-
-    //Avatar
-    @OneToOne(mappedBy = "user")
-    private Avatar avatar;
 
     //OneToMany
     //Inventory

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import "./Item.css";
-import { Link } from "react-router-dom";
+
 import { useState } from "react";
 
 import MyItem from "../../components/MyItem/MyItem";
@@ -11,22 +11,9 @@ import Hands from "../../components/MyItem/Hands";
 import Cloth from "../../components/MyItem/Cloth";
 
 import RandomBox from "../../components/RandomBox/RandomBox";
-import { flexbox } from "@mui/system";
+
 import html2canvas from "html2canvas";
 function Item() {
-  const [itemNum, setItemNum] = useState(-1);
-  let data = [
-    "예쁜 눈알",
-    "좋은 눈알",
-    "멋진 눈알",
-    "멋진 선글라스",
-    "꽝",
-    "예쁜 선글라스",
-    "망가진 선글라스",
-    "초롱초롱한 눈알",
-    "멍청한 눈알",
-  ];
-
   const parts = ["머리", "눈", "입", "손", "옷"];
   const [selected, setSelected] = useState(Array(parts.length).fill(false));
   useEffect(() => {
@@ -48,11 +35,13 @@ function Item() {
   };
   const [showImg, setShowImg] = useState(false);
 
-  const nftHandler = () => {
-    html2canvas(document.querySelector(".char")).then((canvas) => {
+  const nftHandler = async () => {
+    await html2canvas(document.getElementById("otterImg")).then((canvas) => {
       let data = canvas.toDataURL();
       console.log("data" + data);
+      window.localStorage.setItem("nft", JSON.stringify(data));
     });
+    window.location.href = "/issue";
   };
   return (
     <div className="pageBox">

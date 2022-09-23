@@ -17,6 +17,8 @@ const getEthereumContract = () => {
 
 export const TransactionProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
+
   const checkIfWalletIsConnected = async () => {
     try {
       if (!ethereum) return alert("메타마스크를 설치해 주세요!");
@@ -51,7 +53,9 @@ export const TransactionProvider = ({ children }) => {
     checkIfWalletIsConnected();
   }, []);
   return (
-    <TransactionContext.Provider value={{ connectWallet, currentAccount }}>
+    <TransactionContext.Provider
+      value={{ connectWallet, currentAccount, setImgUrl, imgUrl }}
+    >
       {children}
     </TransactionContext.Provider>
   );

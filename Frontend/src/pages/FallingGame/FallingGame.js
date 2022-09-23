@@ -31,6 +31,7 @@ const FallingGame = () => {
   const OtterStyle = {
     position: "absolute",
     bottom: 0,
+    left: "630px",
     height: "200px",
   };
 
@@ -80,6 +81,32 @@ const FallingGame = () => {
     updateDots(removeDot(dots, index));
   };
 
+  // 수달 좌우로 움직이기
+  const otterRef = useRef();
+  let moveBy = 10;
+  useEffect(() => {
+    const moveOtter = (e) => {
+      switch (e.key) {
+        case "ArrowLeft":
+          otterRef.current.style.left =
+            parseInt(otterRef.current.style.left) - moveBy + "px";
+          break;
+        case "ArrowRight":
+          otterRef.current.style.left =
+            parseInt(otterRef.current.style.left) + moveBy + "px";
+          break;
+        default:
+          break;
+      }
+    };
+
+    document.addEventListener("keydown", moveOtter);
+
+    return () => {
+      document.removeEventListener("keydown", moveOtter);
+    };
+  }, []);
+
   return (
     <div className="falling-game">
       <div className="title">먹이 냠냠</div>
@@ -102,7 +129,12 @@ const FallingGame = () => {
               />
             );
           })}
-          <img style={OtterStyle} src={otter} alt="basket otter" />
+          <img
+            style={OtterStyle}
+            src={otter}
+            alt="basket otter"
+            ref={otterRef}
+          />
         </div>
       </div>
     </div>

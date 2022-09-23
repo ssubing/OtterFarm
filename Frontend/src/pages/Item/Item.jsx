@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import "./Item.css";
-
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import MyItem from "../../components/MyItem/MyItem";
@@ -12,6 +12,7 @@ import Cloth from "../../components/MyItem/Cloth";
 
 import RandomBox from "../../components/RandomBox/RandomBox";
 import { flexbox } from "@mui/system";
+import html2canvas from "html2canvas";
 function Item() {
   const [itemNum, setItemNum] = useState(-1);
   let data = [
@@ -47,22 +48,44 @@ function Item() {
   };
   const [showImg, setShowImg] = useState(false);
 
+  const nftHandler = () => {
+    html2canvas(document.querySelector(".char")).then((canvas) => {
+      let data = canvas.toDataURL();
+      console.log("data" + data);
+    });
+  };
   return (
     <div className="pageBox">
       <Navbar />
       <div className="itemPage">
         <div className="myNft">
           <div className="otterNft">
-            <img
-              className="char base"
-              src={require("../../assets/images/otter.png")}
-              alt="base"
-            />
-            <img className="char head" src={url} alt="head" />
-            <img className="char eye" src={eyeUrl} alt="eye" />
-            <img className="char mouth" src={mouthUrl} alt="mouth" />
-            <img className="char hand" src={handUrl} alt="hand" />
-            <img className="char cloth" src={clothUrl} alt="cloth" />
+            <div id="otterImg">
+              <img
+                className="char base"
+                src={require("../../assets/images/otter.png")}
+                alt="base"
+              />
+              <img className="char head" src={url} alt="head" />
+              <img className="char eye" src={eyeUrl} alt="eye" />
+              <img className="char mouth" src={mouthUrl} alt="mouth" />
+              <img className="char hand" src={handUrl} alt="hand" />
+              <img className="char cloth" src={clothUrl} alt="cloth" />
+            </div>
+            <button
+              style={{
+                zIndex: "5",
+                marginLeft: "80%",
+                height: "10%",
+                width: "20%",
+                marginTop: "90%",
+                backgroundColor: "#f3e9dc",
+                fontFamily: "neo",
+              }}
+              onClick={nftHandler}
+            >
+              발급하기
+            </button>
           </div>
           <div className="select">
             {parts.map((part, idx) => (

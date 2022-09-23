@@ -24,17 +24,24 @@ const RandomBox = ({ showBox, setShowBox, part, showImg, setShowImg }) => {
                 src={require("../../assets/images/present.png")}
               />
             ) : (
-              <div>
+              <div className="gottenItem">
                 <img
-                  className="gottenItem"
+                  className="itemImg"
                   src={require("../../assets/images/items/Cloth/cloth_01.png")}
                   alt="gottenItem"
+                />
+                <img
+                  className="lightImg"
+                  src={require("../../assets/images/light.png")}
+                  alt="light"
                 />
                 <button
                   onClick={() => {
                     setShowBox(false);
                     setShowImg(false);
                   }}
+                  className="btn"
+                  style={{ zIndex: "3" }}
                 >
                   확인
                 </button>

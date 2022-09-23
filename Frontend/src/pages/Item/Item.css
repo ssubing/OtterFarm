@@ -22,6 +22,12 @@
 
 .itemShop {
   width: 20%;
+
+  margin-right: 1%;
+
+  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .otter {
@@ -34,66 +40,69 @@
 .select {
   display: flex;
   justify-content: flex-start;
-  width:100%;
-  margin-left:20%;
-  height:10vh;
-  margin-top:5%;
+  width: 100%;
+  margin-left: 20%;
+  height: 10vh;
+  margin-top: 5%;
 }
 .part {
   border: 1px solid black;
-  width:8%;
-  display:flex;
+  width: 8%;
+  display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   background-color: #f3e9dc;
 }
 
-.part:hover{
-  background-color:blue;
+.part:hover {
+  background-color: blue;
 }
 
 .chosen {
   background-color: blue;
 }
 
-.inventory{
-  background-color: #f3e9dc;
-  width:80%;
-  height:40vh;
-  border: 1px solid black;
-  
-}
-
 .base {
-  width:300px;
+  width: 300px;
   height: 400px;
-  z-index:1;
+  z-index: 1;
 }
 
-
-.head{
-  z-index:2;
+.head {
+  z-index: 2;
 }
-.eye{
-  z-index:3;
+.eye {
+  z-index: 3;
 }
-.mouth{
-  z-index:4;
+.mouth {
+  z-index: 4;
 }
 .hand {
-  z-index:4;
+  z-index: 4;
 }
-.cloth{
-  z-index:2;
+.cloth {
+  z-index: 2;
 }
 
-.otterNft{
-  width:300px;
+.otterNft {
+  width: 300px;
   height: 400px;
 }
 
 .char {
-  position:absolute;
-  width:300px;
-  height:400px;
+  position: absolute;
+  width: 300px;
+  height: 400px;
+}
+
+.giftDiv {
+  margin-top: 10%;
+}
+
+.shopName {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.shoppart {
+  border: 1px solid;
 }

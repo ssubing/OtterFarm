@@ -107,6 +107,44 @@ const FallingGame = () => {
     };
   }, []);
 
+  const updateTime = 5;
+  const interval = useRef();
+  // 특정 시간 주기로 아이템 충돌 감지
+  useEffect(() => {
+    if (controlState.isRunning) {
+      console.log("isRunning");
+      interval.current = setInterval(() => {
+        // console.log(interval.current);
+        checkConflict();
+      }, updateTime);
+    }
+
+    return () => {
+      clearInterval(interval.current);
+    };
+  }, [controlState.isRunning]);
+
+  // 아이템을 먹었는지 체크
+  const checkConflict = () => {
+    dots.map((dot, index) => {
+      const dotX = ((fieldRef.current.offsetWidth - dot.height) * dot.x) / 100;
+      const y = dot.y + (SPEED_STEP * controlState.speed) / 60;
+      const otterX = parseInt(otterRef.current.style.left.slice(0, -2));
+
+      if (
+        Math.abs(dotX - otterX) <= otterRef.current.offsetWidth &&
+        y >=
+          fieldRef.current.offsetHeight -
+            otterRef.current.offsetHeight -
+            dot.height / 2
+      ) {
+        // console.log("머거!!!");
+        setScore(score + calculatePoints(dots[index]));
+        updateDots(removeDot(dots, index));
+      }
+    });
+  };
+
   return (
     <div className="falling-game">
       <div className="title">먹이 냠냠</div>

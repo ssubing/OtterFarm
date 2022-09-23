@@ -33,4 +33,8 @@ public class IssuedAvatar {
     //fashion
     @Column(nullable = false)
     private Long fashion;
+    @Column(nullable = false)
+    private Long nftId;
+    @Column(nullable = false)
+    private Long firstUserId;
 }

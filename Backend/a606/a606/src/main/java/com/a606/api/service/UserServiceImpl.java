@@ -93,7 +93,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public User updateProfile(long userId, long nftTokenId) throws Exception {
         User user = userRepository.findById(userId).get();
-        NFT nft = nftRepository.findById(nftTokenId).get();
+        Optional<NFT> oNft = nftRepository.findById(nftTokenId);
+        if (!oNft.isPresent()) {
+            return null;
+        }
+        NFT nft = oNft.get();
         String address = contractService.getAddressbyTokenId(nft.getTokenId());
         if (!address.equalsIgnoreCase(user.getWallet())) {
             return null;

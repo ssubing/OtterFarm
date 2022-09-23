@@ -86,18 +86,24 @@ const FallingGame = () => {
   let moveBy = 10;
   useEffect(() => {
     const moveOtter = (e) => {
+      let newLeft;
       switch (e.key) {
         case "ArrowLeft":
-          otterRef.current.style.left =
-            parseInt(otterRef.current.style.left) - moveBy + "px";
+          newLeft = parseInt(otterRef.current.style.left) - moveBy;
+          if (newLeft < 0) {
+            newLeft = 0;
+          }
           break;
         case "ArrowRight":
-          otterRef.current.style.left =
-            parseInt(otterRef.current.style.left) + moveBy + "px";
+          newLeft = parseInt(otterRef.current.style.left) + moveBy;
+          if (newLeft > fieldRef.current.offsetWidth * 0.9) {
+            newLeft = fieldRef.current.offsetWidth * 0.9;
+          }
           break;
         default:
           break;
       }
+      otterRef.current.style.left = `${newLeft}px`;
     };
 
     document.addEventListener("keydown", moveOtter);

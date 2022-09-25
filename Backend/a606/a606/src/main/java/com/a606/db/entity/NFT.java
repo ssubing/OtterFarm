@@ -25,13 +25,13 @@ public class NFT {
 
 
     @Column(nullable = false)
-    private boolean is_saled;
+    private boolean isSaled;
 
     @Column(nullable = false)
     private String name;
 
     @Column(nullable = false)
-    private int like_count;
+    private int likeCount;
 
     //OneToMany
     //Likes

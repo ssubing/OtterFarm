@@ -144,9 +144,9 @@ public class ShopServiceImpl implements ShopService{
 
         NFT nft = new NFT();
         nft.setTokenId(tokenId);
-        nft.set_saled(false);
+        nft.setSaled(false);
         nft.setName(name);
-        nft.setLike_count(0);
+        nft.setLikeCount(0);
         nft = nftRepository.save(nft);
 
         IssuedAvatar issuedAvatar = new IssuedAvatar();

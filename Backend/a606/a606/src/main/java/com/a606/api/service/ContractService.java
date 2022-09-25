@@ -10,5 +10,7 @@ public interface ContractService {
 
     String getAddressbyTokenId(String tokenId) throws Exception;
 
+    String getTokenURIbyTokenId(String tokenId) throws Exception;
+
     String createNFT(String toAddress, String sudalDNA, String tokenURI) throws Exception;
 }

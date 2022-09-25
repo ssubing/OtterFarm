@@ -83,6 +83,20 @@ public class ContractServiceImpl implements ContractService{
     }
 
     @Override
+    public String getTokenURIbyTokenId(String tokenId) throws Exception {
+        Web3j web3j = Web3j.build(new HttpService(url));
+        Credentials credentials = Credentials.create(key);
+        ContractGasProvider gasProvider = new DefaultGasProvider();
+        FastRawTransactionManager manager = new FastRawTransactionManager(web3j, credentials,
+                new PollingTransactionReceiptProcessor(web3j, 3000, 3));
+
+        SudalFarm sudalFarm = SudalFarm.load(contract, web3j, manager, gasProvider);
+
+        String address = sudalFarm.tokenURI(new BigInteger(tokenId)).send();
+        return address;
+    }
+
+    @Override
     public String createNFT(String toAddress, String sudalDNA, String tokenURI) throws Exception {
         Web3j web3j = Web3j.build(new HttpService(url));
         Credentials credentials = Credentials.create(key);

@@ -62,9 +62,9 @@ public class UserServiceImpl implements UserService{
         for(MyNFTDto myNFT : nfts) {
             NFT nft = nftRepository.findByTokenId(myNFT.getTokenId()).get();
             myNFT.setId(nft.getId());
-            myNFT.setLikeCount(nft.getLike_count());
+            myNFT.setLikeCount(nft.getLikeCount());
             myNFT.setName(nft.getName());
-            myNFT.setSaled(nft.is_saled());
+            myNFT.setSaled(nft.isSaled());
         }
 
         return nfts;

@@ -70,6 +70,7 @@ function Item() {
                 marginTop: "90%",
                 backgroundColor: "#f3e9dc",
                 fontFamily: "neo",
+                cursor: "pointer",
               }}
               onClick={nftHandler}
             >

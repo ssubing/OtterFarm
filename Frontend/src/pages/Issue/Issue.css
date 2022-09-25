@@ -37,6 +37,7 @@
   margin-right: 5%;
   font-size: 2vw;
   margin-left: 3%;
+  cursor: pointer;
 }
 .setting {
   position: relative;

@@ -62,9 +62,9 @@ public class UserServiceImpl implements UserService{
         for(MyNFTDto myNFT : nfts) {
             NFT nft = nftRepository.findByTokenId(myNFT.getTokenId()).get();
             myNFT.setId(nft.getId());
-            myNFT.setLikeCount(nft.getLike_count());
+            myNFT.setLikeCount(nft.getLikeCount());
             myNFT.setName(nft.getName());
-            myNFT.setSaled(nft.is_saled());
+            myNFT.setSaled(nft.isSaled());
         }
 
         return nfts;
@@ -73,8 +73,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public Long getProfileById(long userId) throws Exception {
         User user = userRepository.findById(userId).get();
-        NFT nft = nftRepository.findById(user.getProfile()).get();
-        String address = contractService.getAddressbyTokenId(nft.getTokenId());
+        Optional<NFT> nft = nftRepository.findById(user.getProfile());
+        if (!nft.isPresent()) {
+            return null;
+        }
+        String address = contractService.getAddressbyTokenId(nft.get().getTokenId());
         if(address.equalsIgnoreCase(user.getWallet())){
             return user.getProfile();
         }
@@ -90,7 +93,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public User updateProfile(long userId, long nftTokenId) throws Exception {
         User user = userRepository.findById(userId).get();
-        NFT nft = nftRepository.findById(nftTokenId).get();
+        Optional<NFT> oNft = nftRepository.findById(nftTokenId);
+        if (!oNft.isPresent()) {
+            return null;
+        }
+        NFT nft = oNft.get();
         String address = contractService.getAddressbyTokenId(nft.getTokenId());
         if (!address.equalsIgnoreCase(user.getWallet())) {
             return null;

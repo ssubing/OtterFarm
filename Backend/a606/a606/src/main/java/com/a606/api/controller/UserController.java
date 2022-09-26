@@ -2,7 +2,6 @@ package com.a606.api.controller;
 
 import com.a606.api.dto.MyNFTDto;
 import com.a606.api.dto.UserDto;
-import com.a606.api.service.ContractService;
 import com.a606.api.service.UserService;
 import com.a606.common.util.JwtTokenUtil;
 import com.a606.common.util.SudalUserDetails;
@@ -135,11 +134,11 @@ public class UserController {
     @PostMapping("user/change/profile")
     public ResponseEntity<?> updateProfile(@ApiIgnore Authentication authentication,
             @RequestBody @ApiParam(value = "프로필 변경", required = true) UserDto.updateProfileRequest updateProfileRequest) throws Exception {
-        if (authentication == null) return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+        if (authentication == null) return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         User user = ((SudalUserDetails) authentication.getDetails()).getUser();
         user = userService.updateProfile(user.getId(), updateProfileRequest.getNftId());
         if (user == null){
-           return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+           return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
         return new ResponseEntity<>(HttpStatus.OK);

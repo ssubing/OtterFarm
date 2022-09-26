@@ -9,4 +9,8 @@ public interface ContractService {
     List<MyNFTDto> getNFTbyAddress(String Address) throws Exception;
 
     String getAddressbyTokenId(String tokenId) throws Exception;
+
+    String getTokenURIbyTokenId(String tokenId) throws Exception;
+
+    String createNFT(String toAddress, String sudalDNA, String tokenURI) throws Exception;
 }

@@ -12,4 +12,5 @@ public interface ItemService {
     List<ItemDto> getAllItems();
     void updateItem(long itemId, int type, int number, int rgb, int rare);
     void deleteItem(long itemId);
+    ItemDto getRandomItem(int type);
 }

@@ -55,4 +55,36 @@ public class ItemServiceImpl implements ItemService{
     public void deleteItem(long itemId) {
         itemRepository.deleteById(itemId);
     }
+
+    @Override
+    public ItemDto getRandomItem(int type) {
+        List<Item> items = itemRepository.findByType(type);
+        List<ItemDto> list1 = new ArrayList<>();
+        List<ItemDto> list2 = new ArrayList<>();
+        List<ItemDto> list3 = new ArrayList<>();
+        for(Item i : items) {
+            ItemDto itemDto = new ItemDto();
+            itemDto.setId(i.getId());
+            itemDto.setType(i.getType());
+            itemDto.setNumber(i.getNumber());
+            itemDto.setRgb(i.getRgb());
+            itemDto.setRare(i.getRare());
+            if(i.getRare() == 1) list1.add(itemDto);
+            if(i.getRare() == 2) list2.add(itemDto);
+            if(i.getRare() == 3) list3.add(itemDto);
+        }
+        int random = (int) (Math.random() * 10 + 1);
+        if(1 <= random && random <= 5) {
+            int randomItem = (int) (Math.random() * list1.size());
+            return list1.get(randomItem);
+        }
+        else if(6 <= random && random <= 9) {
+            int randomItem = (int) (Math.random() * list2.size());
+            return list2.get(randomItem);
+        }
+        else {
+            int randomItem = (int) (Math.random() * list3.size());
+            return list3.get(randomItem);
+        }
+    }
 }

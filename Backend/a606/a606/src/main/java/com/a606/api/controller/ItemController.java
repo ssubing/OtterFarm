@@ -44,4 +44,32 @@ public class ItemController {
     public void deleteItem(@RequestBody ItemDto itemDto) {
         itemService.deleteItem(itemDto.getId());
     }
+
+    @GetMapping("item/{type}")
+    public ResponseEntity<ItemDto> getRandomItem(@PathVariable int type) {
+        return new ResponseEntity<ItemDto>(itemService.getRandomItem(type), HttpStatus.OK);
+    }
+
+//    @GetMapping("item/test/inputRandom10Items")
+//    public void inputRandom10Items() {
+//        for(int i = 0; i < 10; i++) {
+//            int type = getRandomInt(1, 5);
+//            int number = getRandomInt(1, 100);
+//            int rgb = getRandomInt(1, 100);
+//            int rare = getRandomInt(1, 3);
+//            itemService.createItem(type, number, rgb, rare);
+//        }
+//    }
+//
+//    @GetMapping("item/deleteAll")
+//    public void deleteAll() {
+//        List<ItemDto> itemDtos = itemService.getAllItems();
+//        for(ItemDto i : itemDtos) {
+//            itemService.deleteItem(i.getId());
+//        }
+//    }
+
+    public static int getRandomInt(int start, int end) {
+        return (int) (Math.random() * (end - start + 1) + start);
+    }
 }

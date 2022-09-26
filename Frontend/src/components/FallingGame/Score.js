@@ -1,14 +1,14 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
+// import { useRecoilValue } from "recoil";
 
-import { scoreState } from "./atom";
+// import { scoreState } from "./atom";
 
-const Score = () => {
-  const score = useRecoilValue(scoreState);
+const Score = (props) => {
+  // const score = useRecoilValue(scoreState);
 
   return (
     <div className="score">
-      <p>{`Score: ${score}`}</p>
+      <p>{`Score: ${props.score}`}</p>
     </div>
   );
 };

@@ -20,6 +20,7 @@ import Score from "../../components/FallingGame/Score";
 import Timer from "../../components/FallingGame/Timer";
 import "./FallingGame.css";
 import otter from "../../assets/images/otter-basket.png";
+import Button from "@material-ui/core/Button";
 
 const FallingGame = () => {
   const [dots, updateDots] = useRecoilState(dotsState);
@@ -99,7 +100,7 @@ const FallingGame = () => {
   const clear = useCallback(() => {
     setControlState({ ...controlState, isRunning: false, speed: 5 });
     updateDots([]);
-    // setScore(0);
+    setScore(0);
     setTime(10);
   }, [setControlState, updateDots, controlState, setTime]);
 
@@ -180,6 +181,18 @@ const FallingGame = () => {
           <div>
             <h1>Game Over!!!</h1>
             <Score style={{ fontSize: "50px" }} score={score} />
+            <Button
+              style={{
+                fontFamily: "neo",
+                fontWeight: "bold",
+                backgroundColor: "#DAB49D",
+                marginLeft: "10px",
+              }}
+              variant="contained"
+              onClick={clear}
+            >
+              다시하기
+            </Button>
           </div>
         </div>
       </div>

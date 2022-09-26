@@ -70,7 +70,7 @@ function Issue() {
 
       try{
         const created = await client.add(file);
-        const url = `https://infura-ipfs.io/ipfs/${created.path}`;
+        const url = `https://www.infura-ipfs.io/ipfs/${created.path}`;
         console.log(url)
       }
       catch(error){

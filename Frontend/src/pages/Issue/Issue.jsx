@@ -122,7 +122,7 @@ function Issue() {
           <span>컨트랙트주소</span>
         </div>
         <div className="setting">
-          <form className="forsale" onSubmit={handleSubmit()}>
+          <form className="forsale" onSubmit={handleSubmit}>
             <div className="saleornot">
               <input
                 id="ForSale"

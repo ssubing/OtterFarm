@@ -47,3 +47,8 @@
 .item {
   position: absolute;
 }
+
+.score {
+  font-size: xx-large;
+  position: relative;
+}

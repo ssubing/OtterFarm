@@ -9,12 +9,7 @@ import {
   dotsState,
   timeState,
 } from "../../components/FallingGame/atom";
-import {
-  createDot,
-  removeDot,
-  calculatePoints,
-} from "../../components/FallingGame/utils";
-import Control from "../../components/FallingGame/Control";
+import { createDot, calculatePoints } from "../../components/FallingGame/utils";
 import Item from "../../components/FallingGame/Item";
 import Score from "../../components/FallingGame/Score";
 import Timer from "../../components/FallingGame/Timer";
@@ -79,6 +74,11 @@ const FallingGame = () => {
     requestRef.current = requestAnimationFrame(advanceStep);
   }, [controlState.speed, updateDots]);
 
+  // 게임 시작
+  const onStart = useCallback(() => {
+    setControlState({ ...controlState, isRunning: true });
+  }, [controlState, setControlState]);
+
   const spawnDot = useCallback(() => {
     updateDots((oldDots) => [...oldDots, createDot()]);
   }, [updateDots]);
@@ -98,11 +98,11 @@ const FallingGame = () => {
   }, [controlState.isRunning, advanceStep, spawnDot]);
 
   const clear = useCallback(() => {
-    setControlState({ ...controlState, isRunning: false, speed: 5 });
+    setControlState({ ...controlState, isRunning: false, speed: 10 });
     updateDots([]);
     setScore(0);
-    setTime(10);
-  }, [setControlState, updateDots, controlState, setTime]);
+    setTime(5);
+  }, [setControlState, setScore, updateDots, controlState, setTime]);
 
   // 수달 좌우로 움직이기
   const otterRef = useRef();
@@ -136,6 +136,7 @@ const FallingGame = () => {
     };
   }, []);
 
+  // 1초씩 제한시간 감소
   useEffect(() => {
     if (controlState.isRunning) {
       const interval = setInterval(() => {
@@ -146,57 +147,103 @@ const FallingGame = () => {
     }
   }, [controlState.isRunning, time]);
 
-  if (time > 0) {
-    return (
-      <div className="falling-game">
-        <div className="title">먹이 냠냠</div>
-        <div className="game-main">
-          <div className="panel">
-            <Control onClear={clear} />
-            <Score score={score} />
-            <Timer />
-          </div>
-          <div className="field" ref={fieldRef}>
-            {dots.map((dot, index) => {
-              const x =
-                ((fieldRef.current.offsetWidth - dot.height) * dot.x) / 100;
-              return <Item key={`dot-${index}`} {...dot} x={x} index={index} />;
-            })}
-            <img
-              style={OtterStyle}
-              src={otter}
-              alt="basket otter"
-              ref={otterRef}
-            />
-          </div>
-        </div>
-      </div>
-    );
-  } else {
+  // 게임 시작 전
+  if (!controlState.isRunning) {
     return (
       <div className="falling-game">
         <div className="title">먹이 냠냠</div>
         <div className="game-over-wrap">
           <div className="game-over"></div>
           <div>
-            <h1>Game Over!!!</h1>
-            <Score style={{ fontSize: "50px" }} score={score} />
-            <Button
-              style={{
-                fontFamily: "neo",
-                fontWeight: "bold",
-                backgroundColor: "#DAB49D",
-                marginLeft: "10px",
-              }}
-              variant="contained"
-              onClick={clear}
-            >
-              다시하기
-            </Button>
+            <h1>수달은 아직도 배고프다</h1>
+            <div className="game-button-wrap">
+              <Button
+                style={{
+                  fontFamily: "neo",
+                  fontWeight: "bold",
+                  backgroundColor: "#DAB49D",
+                  marginLeft: "10px",
+                }}
+                variant="contained"
+                onClick={clear}
+              >
+                게임방법
+              </Button>
+              <Button
+                style={{
+                  fontFamily: "neo",
+                  fontWeight: "bold",
+                  backgroundColor: "#DAB49D",
+                  marginLeft: "10px",
+                }}
+                variant="contained"
+                onClick={onStart}
+              >
+                시작하기
+              </Button>
+            </div>
           </div>
         </div>
       </div>
     );
+  } else {
+    // 게임 시작 후
+
+    // 게임중
+    if (time > 0) {
+      return (
+        <div className="falling-game">
+          <div className="title">먹이 냠냠</div>
+          <div className="game-main">
+            <div className="panel">
+              <Score score={score} />
+              <Timer />
+            </div>
+            <div className="field" ref={fieldRef}>
+              {dots.map((dot, index) => {
+                const x =
+                  ((fieldRef.current.offsetWidth - dot.height) * dot.x) / 100;
+                return (
+                  <Item key={`dot-${index}`} {...dot} x={x} index={index} />
+                );
+              })}
+              <img
+                style={OtterStyle}
+                src={otter}
+                alt="basket otter"
+                ref={otterRef}
+              />
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      // 게임 종료
+      return (
+        <div className="falling-game">
+          <div className="title">먹이 냠냠</div>
+          <div className="game-over-wrap">
+            <div className="game-over"></div>
+            <div>
+              <h1>Game Over!!!</h1>
+              <Score style={{ fontSize: "50px" }} score={score} />
+              <Button
+                style={{
+                  fontFamily: "neo",
+                  fontWeight: "bold",
+                  backgroundColor: "#DAB49D",
+                  marginLeft: "10px",
+                }}
+                variant="contained"
+                onClick={clear}
+              >
+                다시하기
+              </Button>
+            </div>
+          </div>
+        </div>
+      );
+    }
   }
 };
 

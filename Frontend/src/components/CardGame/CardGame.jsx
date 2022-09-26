@@ -34,74 +34,60 @@ function CardGame() {
     let cardSrc = ''
     let cardSrc2 = ''
 
-    const cardRef = useRef();
-
     function createRandom(min, max) {
         let ranNum = Math.floor(Math.random() * (max-min+1)) + min;
         return ranNum
     }
+
     //카드 세팅
     const cardSetting = () => {
         let result = [];
         for(let i = 0; i < 16; i++) {
             let idx = createRandom(0, 15-i)
             let img = cardList.splice(idx, 1)
-            result.push(<div className="card-wrap" onClick={cardClick}><img className={`image${i}`} src={img}/></div>)
+            result.push(<div className="card-wrap">
+                <div className="card">
+                    <div className="card-front" onClick={cardClick}></div>
+                    <img className={`card-back img${i}`} src={img} alt="sudal"/>
+                </div>
+            </div>)
         }
         return result
     }
 
+    //카드 클릭했을 경우
     function cardClick(e) {
-        console.log(e)
-        // console.log(e.target.children[0].src)
-        // e.target.classList.add("visible")
-        //첫번째 카드
-        if(!openCard) {
-            openCard = e.target.children[0]
-            cardSrc = e.target.children[0].src
-            console.log("첫번째")
-            console.log(cardSrc)
-            e.target.children[0].classList.add("visible")
+        let imgClass = e.target.nextSibling.classList[1]
+        //첫 카드 뒤집기
+        if(!cardSrc) {
+            openCard = document.querySelector(`.${imgClass}`)
+            cardSrc = e.target.nextSibling.src
+            e.target.parentElement.classList.add("flip-front")
         }
-        else if(openCard && !openCard2) {
-            openCard2 = e.target.children[0]
-            cardSrc2 = e.target.children[0].src
-            console.log("두번째")
-            console.log(cardSrc2)
-            e.target.children[0].classList.add("visible")
-            if(cardSrc === cardSrc2) {
-                console.log("둘이 같아")
-            } else {
-                openCard.classList.remove("visible")
-                openCard2.classList.remove("visible")
-                openCard = ''
-                openCard2 = ''
+        //두 번째 카드 뒤집기
+        else if(cardSrc && !cardSrc2) {
+            openCard2 = document.querySelector(`.${imgClass}`)
+            cardSrc2 = e.target.nextSibling.src
+            e.target.parentElement.classList.add("flip-front")
+            if(cardSrc && cardSrc2 && cardSrc === cardSrc2) {
                 cardSrc = ''
                 cardSrc2 = ''
-                console.log("둘이 달라")
+            }
+            //두 카드가 같은 카드가 아닐 경우
+            else if(cardSrc && cardSrc2 && cardSrc !== cardSrc2) {
+                console.log("second");
+                openCard.parentElement.classList.remove("flip-front")
+                openCard2.parentElement.classList.remove("flip-front")
+                cardSrc = ''
+                cardSrc2 = ''
             }
         }
-        else {
-            console.log("놉!")
-        }
-            // const card = document.querySelector('.image0')
-        // cardRef.current.className += "hide"
-        // cardRef.current.className = "hide"
-        // console.log(e.target.className)
-        // cardRef.current.style = "width:300px; height:300px; background:red;"
-        // if(!openCard) {
-            
-            
-           
-        //     // document.querySelector(e.target.className).classList.add('hide')
-        // }
-        // else if(openCard && ! openCard2) {
-        //     openCard2 = e.target
-        // }
     }
+
     return(
         <div>
             <h1>같은 그림 찾기</h1>
+            <h4>점수 : {score}</h4>
             <button>시작하기</button>
             <div className="card-game-wrap">
                 <div className="card-game-flex">

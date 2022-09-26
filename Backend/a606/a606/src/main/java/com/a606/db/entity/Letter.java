@@ -30,4 +30,7 @@ public class Letter {
     @CreatedDate
     @Column(updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime date;
+
+    @Column(nullable = false)
+    private boolean isRead;
 }

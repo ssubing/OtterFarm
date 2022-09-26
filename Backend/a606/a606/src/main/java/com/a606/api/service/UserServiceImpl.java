@@ -47,6 +47,7 @@ public class UserServiceImpl implements UserService{
         user.setCreatedDate(LocalDateTime.now());
         user.setLastModifiedDate(LocalDateTime.now());
         user.setNonce(getRandomNonce());
+        user.setProfile(0l);
         userRepository.save(user);
         return user;
     }

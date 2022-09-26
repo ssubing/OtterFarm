@@ -1,4 +1,12 @@
 package com.a606.db.repository;
 
-public interface BoardRepository {
+import com.a606.db.entity.Board;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface BoardRepository extends JpaRepository<Board, Long> {
+
 }

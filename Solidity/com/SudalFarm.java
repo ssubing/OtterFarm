@@ -1,4 +1,4 @@
-package com.a606.contract;
+package com;
 
 import io.reactivex.Flowable;
 import io.reactivex.functions.Function;
@@ -132,9 +132,9 @@ public class SudalFarm extends Contract {
     }
 
     public List<ApprovalEventResponse> getApprovalEvents(TransactionReceipt transactionReceipt) {
-        List<EventValuesWithLog> valueList = extractEventParametersWithLog(APPROVAL_EVENT, transactionReceipt);
+        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(APPROVAL_EVENT, transactionReceipt);
         ArrayList<ApprovalEventResponse> responses = new ArrayList<ApprovalEventResponse>(valueList.size());
-        for (EventValuesWithLog eventValues : valueList) {
+        for (Contract.EventValuesWithLog eventValues : valueList) {
             ApprovalEventResponse typedResponse = new ApprovalEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.owner = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -149,7 +149,7 @@ public class SudalFarm extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, ApprovalEventResponse>() {
             @Override
             public ApprovalEventResponse apply(Log log) {
-                EventValuesWithLog eventValues = extractEventParametersWithLog(APPROVAL_EVENT, log);
+                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(APPROVAL_EVENT, log);
                 ApprovalEventResponse typedResponse = new ApprovalEventResponse();
                 typedResponse.log = log;
                 typedResponse.owner = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -167,9 +167,9 @@ public class SudalFarm extends Contract {
     }
 
     public List<ApprovalForAllEventResponse> getApprovalForAllEvents(TransactionReceipt transactionReceipt) {
-        List<EventValuesWithLog> valueList = extractEventParametersWithLog(APPROVALFORALL_EVENT, transactionReceipt);
+        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(APPROVALFORALL_EVENT, transactionReceipt);
         ArrayList<ApprovalForAllEventResponse> responses = new ArrayList<ApprovalForAllEventResponse>(valueList.size());
-        for (EventValuesWithLog eventValues : valueList) {
+        for (Contract.EventValuesWithLog eventValues : valueList) {
             ApprovalForAllEventResponse typedResponse = new ApprovalForAllEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.owner = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -184,7 +184,7 @@ public class SudalFarm extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, ApprovalForAllEventResponse>() {
             @Override
             public ApprovalForAllEventResponse apply(Log log) {
-                EventValuesWithLog eventValues = extractEventParametersWithLog(APPROVALFORALL_EVENT, log);
+                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(APPROVALFORALL_EVENT, log);
                 ApprovalForAllEventResponse typedResponse = new ApprovalForAllEventResponse();
                 typedResponse.log = log;
                 typedResponse.owner = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -202,9 +202,9 @@ public class SudalFarm extends Contract {
     }
 
     public List<NewSudalEventResponse> getNewSudalEvents(TransactionReceipt transactionReceipt) {
-        List<EventValuesWithLog> valueList = extractEventParametersWithLog(NEWSUDAL_EVENT, transactionReceipt);
+        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(NEWSUDAL_EVENT, transactionReceipt);
         ArrayList<NewSudalEventResponse> responses = new ArrayList<NewSudalEventResponse>(valueList.size());
-        for (EventValuesWithLog eventValues : valueList) {
+        for (Contract.EventValuesWithLog eventValues : valueList) {
             NewSudalEventResponse typedResponse = new NewSudalEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.owner = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -219,7 +219,7 @@ public class SudalFarm extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, NewSudalEventResponse>() {
             @Override
             public NewSudalEventResponse apply(Log log) {
-                EventValuesWithLog eventValues = extractEventParametersWithLog(NEWSUDAL_EVENT, log);
+                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(NEWSUDAL_EVENT, log);
                 NewSudalEventResponse typedResponse = new NewSudalEventResponse();
                 typedResponse.log = log;
                 typedResponse.owner = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -237,9 +237,9 @@ public class SudalFarm extends Contract {
     }
 
     public List<OwnershipTransferredEventResponse> getOwnershipTransferredEvents(TransactionReceipt transactionReceipt) {
-        List<EventValuesWithLog> valueList = extractEventParametersWithLog(OWNERSHIPTRANSFERRED_EVENT, transactionReceipt);
+        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(OWNERSHIPTRANSFERRED_EVENT, transactionReceipt);
         ArrayList<OwnershipTransferredEventResponse> responses = new ArrayList<OwnershipTransferredEventResponse>(valueList.size());
-        for (EventValuesWithLog eventValues : valueList) {
+        for (Contract.EventValuesWithLog eventValues : valueList) {
             OwnershipTransferredEventResponse typedResponse = new OwnershipTransferredEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.previousOwner = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -253,7 +253,7 @@ public class SudalFarm extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, OwnershipTransferredEventResponse>() {
             @Override
             public OwnershipTransferredEventResponse apply(Log log) {
-                EventValuesWithLog eventValues = extractEventParametersWithLog(OWNERSHIPTRANSFERRED_EVENT, log);
+                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(OWNERSHIPTRANSFERRED_EVENT, log);
                 OwnershipTransferredEventResponse typedResponse = new OwnershipTransferredEventResponse();
                 typedResponse.log = log;
                 typedResponse.previousOwner = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -270,9 +270,9 @@ public class SudalFarm extends Contract {
     }
 
     public List<TransferEventResponse> getTransferEvents(TransactionReceipt transactionReceipt) {
-        List<EventValuesWithLog> valueList = extractEventParametersWithLog(TRANSFER_EVENT, transactionReceipt);
+        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(TRANSFER_EVENT, transactionReceipt);
         ArrayList<TransferEventResponse> responses = new ArrayList<TransferEventResponse>(valueList.size());
-        for (EventValuesWithLog eventValues : valueList) {
+        for (Contract.EventValuesWithLog eventValues : valueList) {
             TransferEventResponse typedResponse = new TransferEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.from = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -287,7 +287,7 @@ public class SudalFarm extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, TransferEventResponse>() {
             @Override
             public TransferEventResponse apply(Log log) {
-                EventValuesWithLog eventValues = extractEventParametersWithLog(TRANSFER_EVENT, log);
+                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(TRANSFER_EVENT, log);
                 TransferEventResponse typedResponse = new TransferEventResponse();
                 typedResponse.log = log;
                 typedResponse.from = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -307,30 +307,30 @@ public class SudalFarm extends Contract {
     public RemoteFunctionCall<TransactionReceipt> approve(String to, BigInteger tokenId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_APPROVE, 
-                Arrays.<Type>asList(new Address(to),
-                new Uint256(tokenId)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(to), 
+                new org.web3j.abi.datatypes.generated.Uint256(tokenId)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<BigInteger> balanceOf(String owner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_BALANCEOF, 
-                Arrays.<Type>asList(new Address(owner)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(owner)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
 
     public RemoteFunctionCall<String> getApproved(BigInteger tokenId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETAPPROVED, 
-                Arrays.<Type>asList(new Uint256(tokenId)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(tokenId)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
 
     public RemoteFunctionCall<Boolean> isApprovedForAll(String owner, String operator) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ISAPPROVEDFORALL, 
-                Arrays.<Type>asList(new Address(owner),
-                new Address(operator)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(owner), 
+                new org.web3j.abi.datatypes.Address(operator)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
@@ -351,7 +351,7 @@ public class SudalFarm extends Contract {
 
     public RemoteFunctionCall<String> ownerOf(BigInteger tokenId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_OWNEROF, 
-                Arrays.<Type>asList(new Uint256(tokenId)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(tokenId)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
@@ -367,9 +367,9 @@ public class SudalFarm extends Contract {
     public RemoteFunctionCall<TransactionReceipt> safeTransferFrom(String from, String to, BigInteger tokenId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_safeTransferFrom, 
-                Arrays.<Type>asList(new Address(from),
-                new Address(to),
-                new Uint256(tokenId)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(from), 
+                new org.web3j.abi.datatypes.Address(to), 
+                new org.web3j.abi.datatypes.generated.Uint256(tokenId)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -377,9 +377,9 @@ public class SudalFarm extends Contract {
     public RemoteFunctionCall<TransactionReceipt> safeTransferFrom(String from, String to, BigInteger tokenId, byte[] data) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_safeTransferFrom, 
-                Arrays.<Type>asList(new Address(from),
-                new Address(to),
-                new Uint256(tokenId),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(from), 
+                new org.web3j.abi.datatypes.Address(to), 
+                new org.web3j.abi.datatypes.generated.Uint256(tokenId), 
                 new org.web3j.abi.datatypes.DynamicBytes(data)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
@@ -388,15 +388,15 @@ public class SudalFarm extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setApprovalForAll(String operator, Boolean approved) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETAPPROVALFORALL, 
-                Arrays.<Type>asList(new Address(operator),
-                new Bool(approved)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(operator), 
+                new org.web3j.abi.datatypes.Bool(approved)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<Tuple2<BigInteger, BigInteger>> sudals(BigInteger param0) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_SUDALS, 
-                Arrays.<Type>asList(new Uint256(param0)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(param0)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}, new TypeReference<Uint256>() {}));
         return new RemoteFunctionCall<Tuple2<BigInteger, BigInteger>>(function,
                 new Callable<Tuple2<BigInteger, BigInteger>>() {
@@ -426,7 +426,7 @@ public class SudalFarm extends Contract {
 
     public RemoteFunctionCall<String> tokenURI(BigInteger tokenId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_TOKENURI, 
-                Arrays.<Type>asList(new Uint256(tokenId)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(tokenId)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
@@ -434,9 +434,9 @@ public class SudalFarm extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferFrom(String from, String to, BigInteger tokenId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFERFROM, 
-                Arrays.<Type>asList(new Address(from),
-                new Address(to),
-                new Uint256(tokenId)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(from), 
+                new org.web3j.abi.datatypes.Address(to), 
+                new org.web3j.abi.datatypes.generated.Uint256(tokenId)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -444,7 +444,7 @@ public class SudalFarm extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferOwnership(String newOwner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFEROWNERSHIP, 
-                Arrays.<Type>asList(new Address(newOwner)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(newOwner)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -460,9 +460,9 @@ public class SudalFarm extends Contract {
     public RemoteFunctionCall<TransactionReceipt> createSudal(String _to, BigInteger _dna, String _tokenURI) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_CREATESUDAL, 
-                Arrays.<Type>asList(new Address(_to),
-                new Uint256(_dna),
-                new Utf8String(_tokenURI)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(_to), 
+                new org.web3j.abi.datatypes.generated.Uint256(_dna), 
+                new org.web3j.abi.datatypes.Utf8String(_tokenURI)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -485,7 +485,7 @@ public class SudalFarm extends Contract {
 
     public RemoteFunctionCall<Tuple2<List<BigInteger>, List<BigInteger>>> getSudalsByOwner(String _owner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETSUDALSBYOWNER, 
-                Arrays.<Type>asList(new Address(_owner)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(_owner)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<DynamicArray<Uint256>>() {}, new TypeReference<DynamicArray<Uint256>>() {}));
         return new RemoteFunctionCall<Tuple2<List<BigInteger>, List<BigInteger>>>(function,
                 new Callable<Tuple2<List<BigInteger>, List<BigInteger>>>() {

@@ -14,7 +14,6 @@ contract SudalFarm is ERC721URIStorage, Ownable {
     Counters.Counter private _tokenIds;
 
     struct Sudal {
-        string name;
         uint id;
         uint dna;
     }
@@ -29,51 +28,47 @@ contract SudalFarm is ERC721URIStorage, Ownable {
         _owner.transfer(address(this).balance);
     }
 
-    function _createSudal(string memory _name, uint _dna)
+    function createSudal(address _to, uint _dna, string memory _tokenURI)
         public onlyOwner
         returns (uint256)
     {
-        Sudal memory newSudal = Sudal(_name, _tokenIds.current(), _dna);
+        Sudal memory newSudal = Sudal(_tokenIds.current(), _dna);
         sudals.push(newSudal);
 
         uint256 newItemId = _tokenIds.current();
-        _safeMint(msg.sender, newItemId);
-//        _setTokenURI(newItemId, tokenURI);
+        _safeMint(_to, newItemId);
+        _setTokenURI(newItemId, _tokenURI);
 
-        emit NewSudal(msg.sender, newItemId, _dna);
+        emit NewSudal(_to, newItemId, _dna);
 
         _tokenIds.increment();
 
         return newItemId;
     }
 
-    function getSudals() external view returns(string[] memory, uint[] memory, uint[] memory) {
-        string[] memory names = new string[](sudals.length);
+    function getSudals() external view returns(uint[] memory, uint[] memory) {
         uint[] memory ids = new uint[](sudals.length);
         uint[] memory dnas = new uint[](sudals.length);
         uint256 count = 0;
         for (uint i = 0; i < sudals.length; i++){
-            names[count] = sudals[i].name;
             ids[count] = sudals[i].id;
             dnas[count] = sudals[i].dna;
             count++;
         }
-        return (names, ids, dnas);
+        return (ids, dnas);
     }
 
-    function getSudalsByOwner(address _owner) external view returns(string[] memory, uint[] memory, uint[] memory) {
-        string[] memory names = new string[](balanceOf(_owner));
+    function getSudalsByOwner(address _owner) external view returns(uint[] memory, uint[] memory) {
         uint[] memory ids = new uint[](balanceOf(_owner));
         uint[] memory dnas = new uint[](balanceOf(_owner));
         uint256 count = 0;
         for (uint i = 0; i < sudals.length; i++){
             if (ownerOf(i) == _owner) {
-                names[count] = sudals[i].name;
                 ids[count] = sudals[i].id;
                 dnas[count] = sudals[i].dna;
                 count++;
             }
         }
-        return (names, ids, dnas);
+        return (ids, dnas);
     }
 }

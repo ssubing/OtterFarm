@@ -8,6 +8,8 @@ import Game from "./pages/Game/Game";
 import Guide from "./pages/Guide/Guide";
 import AvatarDetail from "./pages/Avatar/AvatarDetail";
 import Noti from "./pages/Noti/Noti";
+import CardGame from "./components/CardGame/CardGame"
+
 function App() {
   return (
     <Router>
@@ -20,6 +22,7 @@ function App() {
         <Route path="/guide" element={<Guide />} />
         <Route path="/detail" element={<AvatarDetail />} />
         <Route path="/noti" element={<Noti />}></Route>
+        <Route path="/cardGame" element={<CardGame />}></Route>
       </Routes>
     </Router>
   );

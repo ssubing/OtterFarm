@@ -5,7 +5,7 @@ import { timeState } from "./atom";
 
 function Timer() {
   const time = useRecoilValue(timeState);
-  return <div>Timer : {time}s</div>;
+  return <div className="timer">Timer : {time}s</div>;
 }
 
 export default Timer;

@@ -30,7 +30,7 @@ const FallingGame = () => {
     position: "absolute",
     bottom: 0,
     left: "630px",
-    height: "200px",
+    height: "150px",
   };
 
   const advanceStep = useCallback(() => {
@@ -101,12 +101,12 @@ const FallingGame = () => {
     setControlState({ ...controlState, isRunning: false, speed: 10 });
     updateDots([]);
     setScore(0);
-    setTime(5);
+    setTime(60);
   }, [setControlState, setScore, updateDots, controlState, setTime]);
 
   // 수달 좌우로 움직이기
   const otterRef = useRef();
-  let moveBy = 10;
+  let moveBy = 15;
   useEffect(() => {
     const moveOtter = (e) => {
       let newLeft;

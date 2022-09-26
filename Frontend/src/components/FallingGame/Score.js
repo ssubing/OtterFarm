@@ -6,11 +6,7 @@ import React from "react";
 const Score = (props) => {
   // const score = useRecoilValue(scoreState);
 
-  return (
-    <div className="score">
-      <p>{`Score: ${props.score}`}</p>
-    </div>
-  );
+  return <div className="score">{`Score: ${props.score}`}</div>;
 };
 
 export default React.memo(Score);

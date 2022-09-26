@@ -4,7 +4,7 @@ export const controlOptions = atom({
   key: "controlOptions",
   default: {
     isRunning: false,
-    speed: 5,
+    speed: 10,
   },
 });
 // List of dots in the game - empty by default
@@ -20,5 +20,5 @@ export const scoreState = atom({
 
 export const timeState = atom({
   key: "timeState",
-  default: 10,
+  default: 60,
 });

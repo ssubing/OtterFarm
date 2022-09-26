@@ -11,6 +11,30 @@
   background-image: url(../../assets/images/falling-backgroud.jpg);
   background-size: cover;
 }
+.game-over-wrap {
+  margin: 20px auto;
+  text-align: center;
+  width: 80%;
+  height: 75vh;
+  padding: 5px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.game-over {
+  background-image: url(../../assets/images/falling-backgroud.jpg);
+  background-size: cover;
+  opacity: 0.5;
+  position: absolute;
+  width: inherit;
+  height: inherit;
+}
+.game-over-wrap h1 {
+  text-align: center;
+  position: relative;
+  font-size: xxx-large;
+}
+
 /* Field params */
 .field {
   width: 100%;

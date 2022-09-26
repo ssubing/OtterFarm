@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
-import Web3 from 'web3';
-import axios from 'axios';
+import Web3 from "web3";
+import axios from "axios";
 
 export const TransactionContext = React.createContext();
 
@@ -18,11 +18,11 @@ const getEthereumContract = () => {
 };
 let web3 = new Web3(window.ethereum);
 web3 = new Web3(window.web3.currentProvider);
-const apiUrl="https://j7a606.p.ssafy.io/";
+const apiUrl = "https://j7a606.p.ssafy.io/";
 
 export const TransactionProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState("");
-  const [message, setMessage]= useState();
+  const [message, setMessage] = useState();
   const [imgUrl, setImgUrl] = useState("");
 
   const checkIfWalletIsConnected = async () => {
@@ -43,30 +43,31 @@ export const TransactionProvider = ({ children }) => {
   };
 
   const connectWallet = async () => {
-    let message="";
+    let message = "";
     let web3 = new Web3(window.ethereum);
     web3 = new Web3(window.web3.currentProvider);
     const accounts = await web3.eth.requestAccounts();
     console.log(accounts);
-    axios.get(apiUrl+`api/user/nonce/${accounts[0]}`).then(res=> {
-      console.log("hi")
-      console.log(typeof(res.data))
-     message= web3.eth.sign(
+    axios.get(apiUrl + `api/user/nonce/${accounts[0]}`).then(async (res) => {
+      console.log("hi");
+      console.log(typeof res.data);
+      message = await web3.eth.sign(
         web3.utils.sha3(res.data.toString()),
         accounts[0]
-      )
-     
-    },
-    await axios.post(apiUrl+"api/user", {params :{message:message, wallet:accounts[0]}}).then(res=> console.log("final", res)))
-    
+      );
+      axios
+        .post(apiUrl + "api/user", { message: message, wallet: accounts[0] })
+        .then((res) => console.log("final", res));
+    });
+
     // const message = await web3.eth.sign(
     //   web3.utils.sha3("675319"),
     //   accounts[0]
     // );
 
-setCurrentAccount(accounts[0]);
-setMessage(message);
-    
+    setCurrentAccount(accounts[0]);
+    setMessage(message);
+
     // try {
     //   if (!ethereum) return alert("메타마스크를 설치해주세요.");
     //   const accounts = await ethereum.request({
@@ -76,7 +77,7 @@ setMessage(message);
     // //   const response =await axios.get(apiUrl+`api/user/nonce/${accounts[0]}`).then((res)=> {
     // //     setMessage(web3.eth.sign(web3.utils.sha3(res)), accounts[0])
     // // }).then(console.log(message))
-  
+
     // } catch (error) {
     //   console.log(error);
     //   throw new Error("No etheruem object");

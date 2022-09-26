@@ -3,10 +3,29 @@ import Navbar from "../../components/Navbar/Navbar";
 import { Buffer } from "buffer";
 import "./Issue.css";
 import { create } from "ipfs-http-client";
+
+
 // import ipfsApi from "ipfs-api";
 import html2canvas from "html2canvas";
+import { internal_processStyles } from "@mui/styled-engine";
 function Issue() {
+
   let imgUrl = JSON.parse(window.localStorage.getItem("nft")).split(",")[1];
+  const dataURLtoFile=(dataurl, fileName)=> {
+    let arr = dataurl.split(',') ,
+    mime = arr[0].match(/:(.*?);/)[1],
+    bstr = atob(arr[1]),
+    n = bstr.length,
+    u8arr = new Uint8Array(n);
+
+    while(n--){
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], fileName, {type:mime});
+
+  }
+  let file = dataURLtoFile(JSON.parse(window.localStorage.getItem("nft")),"otterNft.png");
+  
   const [disabled, setDisabled] = useState(false);
   const disableHandler = () => {
     if (disabled) {
@@ -34,6 +53,33 @@ function Issue() {
     let blob = new Blob(byteArrays, { type: contentType });
     return blob;
   };
+  const projectId = "2FHqbLTE55XfCP0BjQ8er0prKtE";
+  const projectSecret = "0291ff7b1c1bd3704962f9cd27e9fba8";
+  const auth = 'Basic ' +Buffer.from(projectId+':'+projectSecret).toString('base64')
+  const client = create({
+    host:"ipfs.infura.io",
+    port:5001,
+    protocol:"https",
+    apiPath:"/api/v0",
+    headers:{
+        authorization:auth,
+    }
+  })
+  const handleSubmit = async (e) => {
+  console.log(auth)
+
+      try{
+        const created = await client.add(file);
+        const url = `https://infura-ipfs.io/ipfs/${created.path}`;
+        console.log(url)
+      }
+      catch(error){
+        console.log(error)
+      }
+
+      
+    
+  };
   const makenft = async () => {
     await html2canvas(document.getElementById("comp")).then((canvas) => {
       let data = canvas.toDataURL("image/png");
@@ -49,13 +95,12 @@ function Issue() {
       reader.onloadend = () => {
         setBuffer(Buffer(reader.result));
       };
+      handleSubmit();
     });
   };
-  const client = create("http://localhost:5001");
-  const handleSubmit = async () => {
-    const result = await client.add(buffer);
-    console.log(result);
-  };
+
+  
+  
   // let ipfs = ipfsApi("localhost", "5001", { protocol: "https" });
   const [saleDisabled, setSaleDisabled] = useState(true);
   const [selected, setSelected] = useState(true);

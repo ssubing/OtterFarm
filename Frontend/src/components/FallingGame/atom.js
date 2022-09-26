@@ -17,3 +17,8 @@ export const scoreState = atom({
   key: "scoreState",
   default: 0,
 });
+
+export const timeState = atom({
+  key: "timeState",
+  default: 10,
+});

@@ -29,6 +29,9 @@ public class Item {
     @Column(nullable = false)
     private int rgb;
 
+    @Column(nullable = false)
+    private int rare;
+
     @OneToMany(mappedBy = "item")
     private List<Inventory> inventories = new ArrayList<>();
 }

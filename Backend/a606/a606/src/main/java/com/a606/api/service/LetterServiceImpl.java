@@ -3,12 +3,15 @@ package com.a606.api.service;
 import com.a606.db.entity.Letter;
 import com.a606.db.entity.User;
 import com.a606.db.repository.LetterRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class LetterServiceImpl implements LetterService{
-
+    @Autowired
     LetterRepository letterRepository;
 
     @Override

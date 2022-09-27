@@ -38,7 +38,7 @@ public class BoardServiceImpl implements BoardService{
     ContractService contractService;
 
     @Override
-    public List<NFTDto> getNFTList(String tab, String order, int asc, int pageNo, int pageSize) throws Exception {
+    public List<NFTDto> getNFTList(String tab, String order, boolean isDesc, int pageNo, int pageSize) throws Exception {
         String properties = "";
         switch (order) {
             case "likeCount":
@@ -51,7 +51,7 @@ public class BoardServiceImpl implements BoardService{
                 return null;
         }
         Sort sort = Sort.by(properties);
-        if (asc == 1) {
+        if (isDesc) {
             sort = sort.descending();
         }
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);

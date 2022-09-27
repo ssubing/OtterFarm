@@ -2,17 +2,14 @@ import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import "./MyItem.css";
 
-
-
 const items = [
-
- {
-  url:require("../../assets/images/items/Eye/eye_01.png"),
-  name:"eye01"
- },
+  {
+    url: require("../../assets/images/items/Eye/02_01_01_01.png"),
+    name: "eye01",
+  },
 ];
 
-function Eyes({ itemsPerPage,setUrl}) {
+function Eyes({ itemsPerPage, setUrl }) {
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
@@ -23,7 +20,6 @@ function Eyes({ itemsPerPage,setUrl}) {
     setCurrentItems(items.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(items.length / itemsPerPage));
   }, [itemOffset, itemsPerPage]);
-
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % items.length;
@@ -37,8 +33,14 @@ function Eyes({ itemsPerPage,setUrl}) {
   return (
     <div className="inventory">
       <div className="items">
-     {items.map((item)=>( <img className="parts" src={item.url} onClick={() => setUrl(item.url)}/>) )}
-     </div>
+        {items.map((item) => (
+          <img
+            className="parts"
+            src={item.url}
+            onClick={() => setUrl(item.url)}
+          />
+        ))}
+      </div>
       <ReactPaginate
         className="paginate"
         breakLabel="..."

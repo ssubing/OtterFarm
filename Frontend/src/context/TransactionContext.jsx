@@ -84,7 +84,9 @@ export const TransactionProvider = ({ children }) => {
     //   throw new Error("No etheruem object");
     // }
   };
-
+  useEffect(() => {
+    window.localStorage.setItem("token", token);
+  }, [token]);
   useEffect(() => {
     checkIfWalletIsConnected();
   }, []);

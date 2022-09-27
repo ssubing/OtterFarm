@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./RandomBox.css";
+import axios from "axios";
 const backdrop = {
   visible: { opacity: 1 },
   hidden: { opacity: 0 },
@@ -27,7 +28,7 @@ const RandomBox = ({ showBox, setShowBox, part, showImg, setShowImg }) => {
               <div className="gottenItem">
                 <img
                   className="itemImg"
-                  src={require("../../assets/images/items/Cloth/cloth_01.png")}
+                  src={require("../../assets/images/items/Cloth/05_01_01_01.png")}
                   alt="gottenItem"
                 />
                 <img

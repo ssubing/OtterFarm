@@ -3,29 +3,30 @@ import Navbar from "../../components/Navbar/Navbar";
 import "./Item.css";
 
 import { useState } from "react";
-
+import { Buffer } from "buffer";
 import MyItem from "../../components/MyItem/MyItem";
 import Eyes from "../../components/MyItem/Eyes";
 import Mouth from "../../components/MyItem/Mouth";
 import Hands from "../../components/MyItem/Hands";
 import Cloth from "../../components/MyItem/Cloth";
-
+import { useNavigate } from "react-router-dom";
 import RandomBox from "../../components/RandomBox/RandomBox";
-
+import { create } from "ipfs-http-client";
 import html2canvas from "html2canvas";
+import axios from "axios";
 function Item() {
   const parts = ["머리", "눈", "입", "손", "옷"];
   const [selected, setSelected] = useState(Array(parts.length).fill(false));
   useEffect(() => {
     setSelected([false, false, false, false, true]);
   }, []);
-
-  const [url, setUrl] = useState();
-  const [eyeUrl, setEyeUrl] = useState();
-  const [mouthUrl, setMouthUrl] = useState();
-  const [handUrl, setHandUrl] = useState();
-  const [clothUrl, setClothUrl] = useState();
-
+  const navigate = useNavigate();
+  const [url, setUrl] = useState(null);
+  const [eyeUrl, setEyeUrl] = useState(null);
+  const [mouthUrl, setMouthUrl] = useState(null);
+  const [handUrl, setHandUrl] = useState(null);
+  const [clothUrl, setClothUrl] = useState(null);
+  const apiUrl = "http://j7a606.p.ssafy.io:8080/";
   const [showBox, setShowBox] = useState(false);
   const [part, setPart] = useState("");
   const onClick = (idx) => {
@@ -34,15 +35,95 @@ function Item() {
     setSelected(newArr);
   };
   const [showImg, setShowImg] = useState(false);
+  const projectId = "2FHqbLTE55XfCP0BjQ8er0prKtE";
+  const projectSecret = "0291ff7b1c1bd3704962f9cd27e9fba8";
+  const auth =
+    "Basic " + Buffer.from(projectId + ":" + projectSecret).toString("base64");
+  const client = create({
+    host: "ipfs.infura.io",
+    port: 5001,
+    protocol: "https",
+    apiPath: "/api/v0",
+    headers: {
+      authorization: auth,
+    },
+  });
+  const [name, setName] = useState("");
+  const dataURLtoFile = (dataurl, fileName) => {
+    let arr = dataurl.split(","),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
 
-  const nftHandler = async () => {
-    await html2canvas(document.getElementById("otterImg")).then((canvas) => {
-      let data = canvas.toDataURL();
-      console.log("data" + data);
-      window.localStorage.setItem("nft", JSON.stringify(data));
-    });
-    window.location.href = "/issue";
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], fileName, { type: mime });
   };
+  const getIndex = (imgurl) => {
+    //이미지 경로를 넣으면 split해서 몇번째 아이템인지 아이디를 가져오는 함수
+    if (imgurl !== null) {
+      return imgurl.split("/")[3].split("_")[1][1];
+    } else {
+      return 0;
+    }
+  };
+  const token = window.localStorage.getItem("token");
+  const nftHandler = async (e) => {
+    e.preventDefault();
+    let file = "";
+    if (name.length !== 0) {
+      await html2canvas(document.getElementById("otterImg")).then((canvas) => {
+        let data = canvas.toDataURL();
+        console.log("data" + data);
+
+        file = dataURLtoFile(data, "otterNft");
+        // window.localStorage.setItem("nft", JSON.stringify(data));
+      });
+
+      const created = await client.add(file);
+      const tokenURI = `https://www.infura-ipfs.io/ipfs/${created.path}`;
+      // console.log(tokenURI);
+      console.log(token);
+      const eyes = getIndex(eyeUrl);
+      const fashion = getIndex(clothUrl);
+      const hands = getIndex(handUrl);
+      const head = getIndex(url);
+      const mouth = getIndex(mouthUrl);
+      const params = {
+        eyes: eyes,
+        fashion: fashion,
+        hands: hands,
+        head: head,
+        mouth: mouth,
+        name: name,
+        tokenURI: tokenURI,
+      };
+      axios
+        .put(
+          apiUrl + "api/shop/nft",
+
+          params,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+          { withCredentials: true }
+        )
+        .then((res) => console.log(res));
+
+      // navigate("/main");
+      // alert("발급 완료! 메인페이지로 넘어갑니다!");
+    } else {
+      alert("수달 이름을 정해주세요");
+    }
+  };
+  const handleInput = (e) => {
+    setName(e.target.value);
+  };
+  const onSubmit = () => {};
   return (
     <div className="pageBox">
       <Navbar />
@@ -55,27 +136,46 @@ function Item() {
                 src={require("../../assets/images/otter.png")}
                 alt="base"
               />
-              <img className="char head" src={url} alt="head" />
-              <img className="char eye" src={eyeUrl} alt="eye" />
-              <img className="char mouth" src={mouthUrl} alt="mouth" />
-              <img className="char hand" src={handUrl} alt="hand" />
-              <img className="char cloth" src={clothUrl} alt="cloth" />
+              <img className="char head" src={url} alt="" title="head" />
+              <img className="char eye" src={eyeUrl} alt="" title="eye" />
+              <img className="char mouth" src={mouthUrl} alt="" title="mouth" />
+              <img className="char hand" src={handUrl} alt="" title="hand" />
+              <img className="char cloth" src={clothUrl} alt="" title="cloth" />
             </div>
-            <button
+
+            <form
               style={{
-                zIndex: "5",
-                marginLeft: "80%",
                 height: "10%",
-                width: "20%",
                 marginTop: "90%",
-                backgroundColor: "#f3e9dc",
-                fontFamily: "neo",
-                cursor: "pointer",
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
               }}
-              onClick={nftHandler}
+              onSubmit={onSubmit}
             >
-              발급하기
-            </button>
+              <input
+                id="otterName"
+                placeholder="수달이름"
+                style={{ marginRight: "10%", width: "90%" }}
+                onChange={handleInput}
+              />
+              <button
+                type="submit"
+                style={{
+                  zIndex: "5",
+                  // marginLeft: "80%",
+                  // // height: "10%",
+                  width: "30%",
+                  // marginTop: "90%",
+                  backgroundColor: "#f3e9dc",
+                  fontFamily: "neo",
+                  cursor: "pointer",
+                }}
+                onClick={nftHandler}
+              >
+                발급하기
+              </button>
+            </form>
           </div>
           <div className="select">
             {parts.map((part, idx) => (

@@ -24,6 +24,7 @@ export const TransactionProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState("");
   const [message, setMessage] = useState();
   const [imgUrl, setImgUrl] = useState("");
+  const [token, setToken] = useState("");
 
   const checkIfWalletIsConnected = async () => {
     try {
@@ -57,7 +58,7 @@ export const TransactionProvider = ({ children }) => {
       );
       axios
         .post(apiUrl + "api/user", { message: message, wallet: accounts[0] })
-        .then((res) => console.log("final", res));
+        .then((res) => setToken(res.data));
     });
 
     // const message = await web3.eth.sign(
@@ -89,7 +90,7 @@ export const TransactionProvider = ({ children }) => {
   }, []);
   return (
     <TransactionContext.Provider
-      value={{ connectWallet, currentAccount, setImgUrl, imgUrl }}
+      value={{ connectWallet, currentAccount, setImgUrl, imgUrl, token }}
     >
       {children}
     </TransactionContext.Provider>

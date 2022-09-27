@@ -44,31 +44,63 @@ class Player extends Component {
         }
     }
     
-    /**@todo animate 작성해야 함 */
     public animate(gameState: any) {
-        
+        let turnTreshold = 10;
+        if (this.state.velocity.x < -turnTreshold) {
+            this.state.turnDirection = "player-turn-right";
+        } else if (this.state.velocity.x > turnTreshold) {
+            this.state.turnDirection = "player-turn-left";
+        } else {
+            this.state.turnDirection = "player-no-turn";
+        }
     }
 
-    /**@todo move 작성해야 함 */
     public move(gameState: any) {
+        let axis = { x: gameState.input.axis.x, y: gameState.input.axis.y - 50 };
+        let dir = VectorUtils.subtract(axis, this.state.position);
+        let distance = VectorUtils.magnitude(dir);
+        const arriveDistance = 50;
 
+        let speed = 0;
+        if (distance < arriveDistance) {
+            speed = this.state.maxSpeed * (distance / arriveDistance);
+        } else {
+            speed = this.state.maxSpeed;
+        }
+        let desired = VectorUtils.normalize(dir, speed);
+        let steer = VectorUtils.subtract(desired, this.state.velocity);
+
+        let newVelocity = VectorUtils.normalize(VectorUtils.add(steer, this.state.velocity), speed);
+        let newPosition = VectorUtils.add(this.state.position, newVelocity);
+
+        this.setState({
+            velocity: newVelocity,
+            position: newPosition
+        });
     }
 
-    restart(){
-
+    restart() {
+        App.Instance.gameRestart();
     }
 
     public collidesWith(sprite: any) {
-
+        if (sprite.props.name == "Enemy") {
+            GameGlobals.Stage.addSprite(<Explosion name="Kaboom" position={this.state.position} onEnd={this.restart.bind(this)}></Explosion>);
+            GameGlobals.Stage.removeSprite(sprite);
+            GameGlobals.Stage.removeSprite(this);
+        }
     }
 
     constructor(public props: any) {
         super(props);
-
+        if (this.props.position) {
+            this.state.position = this.props.position;
+        }
+        GameGlobals.Player = this;
     }
 
     render() {
-
+        return <Sprite name="Player" dimensions={this.state.dimensions} position={this.state.position} flip={true} className={['player', this.state.turnDirection].join('')} ></Sprite>;
     }
 }
 

@@ -15,10 +15,8 @@ import Item from "../../components/FallingGame/Item";
 import Score from "../../components/FallingGame/Score";
 import Timer from "../../components/FallingGame/Timer";
 import "./FallingGame.css";
+import Header from "../../components/FallingGame/GameHeader";
 import otter from "../../assets/images/otter-basket.png";
-// import item1 from "../../assets/images/falling-item1.png";
-// import item2 from "../../assets/images/falling-item2.png";
-// import item3 from "../../assets/images/falling-item3.png";
 import Button from "@material-ui/core/Button";
 
 const FallingGame = () => {
@@ -160,15 +158,16 @@ const FallingGame = () => {
     setGuide(true);
   };
 
-  // 게임 시작 전
-  if (!controlState.isRunning) {
-    if (!showGuide) {
-      return (
-        <div className="falling-game">
-          <div className="title">먹이 냠냠</div>
-          <div className="game-background-wrap">
-            <div className="game-background"></div>
+  return (
+    <div className="falling-game">
+      <Header title={"수달은 아직도 배고프다"} />
+      {/* 게임 시작 전 */}
+      {!controlState.isRunning ? (
+        <div className="game-background-wrap">
+          <div className="game-background"></div>
+          {!showGuide ? (
             <div>
+              {/* 첫 화면 */}
               <h1>수달은 아직도 배고프다</h1>
               <div className="game-button-wrap">
                 <Button
@@ -197,16 +196,9 @@ const FallingGame = () => {
                 </Button>
               </div>
             </div>
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <div className="falling-game">
-          <div className="title">먹이 냠냠</div>
-          <div className="game-background-wrap">
-            <div className="game-background"></div>
+          ) : (
             <div className="game-guide-content">
+              {/* 게임 방법 화면 */}
               <div className="game-title">수달은 아직도 배고프다</div>
               <h3>게임설명</h3>
               <p className="game-guide">
@@ -255,69 +247,60 @@ const FallingGame = () => {
                 시작하기
               </Button>
             </div>
-          </div>
+          )}
         </div>
-      );
-    }
-  } else {
-    // 게임 시작 후
-
-    // 게임중
-    if (time > 0) {
-      return (
-        <div className="falling-game">
-          <div className="title">먹이 냠냠</div>
-          <div className="game-main">
-            <div className="panel">
-              <Score score={score} />
-              <Timer />
+      ) : (
+        <div>
+          {/* 게임 시작 후 */}
+          {time > 0 ? (
+            <div className="game-main">
+              {/* 게임중 */}
+              <div className="panel">
+                <Score score={score} />
+                <Timer />
+              </div>
+              <div className="field" ref={fieldRef}>
+                {dots.map((dot, index) => {
+                  const x =
+                    ((fieldRef.current.offsetWidth - dot.height) * dot.x) / 100;
+                  return (
+                    <Item key={`dot-${index}`} {...dot} x={x} index={index} />
+                  );
+                })}
+                <img
+                  style={OtterStyle}
+                  src={otter}
+                  alt="basket otter"
+                  ref={otterRef}
+                />
+              </div>
             </div>
-            <div className="field" ref={fieldRef}>
-              {dots.map((dot, index) => {
-                const x =
-                  ((fieldRef.current.offsetWidth - dot.height) * dot.x) / 100;
-                return (
-                  <Item key={`dot-${index}`} {...dot} x={x} index={index} />
-                );
-              })}
-              <img
-                style={OtterStyle}
-                src={otter}
-                alt="basket otter"
-                ref={otterRef}
-              />
+          ) : (
+            <div className="game-background-wrap">
+              {/* 게임 종료 */}
+              <div className="game-background"></div>
+              <div>
+                <h1>Game Over!!!</h1>
+                <Score style={{ fontSize: "50px" }} score={score} />
+                <Button
+                  style={{
+                    fontFamily: "neo",
+                    fontWeight: "bold",
+                    backgroundColor: "#DAB49D",
+                    marginLeft: "10px",
+                  }}
+                  variant="contained"
+                  onClick={clear}
+                >
+                  다시하기
+                </Button>
+              </div>
             </div>
-          </div>
+          )}
         </div>
-      );
-    } else {
-      // 게임 종료
-      return (
-        <div className="falling-game">
-          <div className="title">먹이 냠냠</div>
-          <div className="game-background-wrap">
-            <div className="game-background"></div>
-            <div>
-              <h1>Game Over!!!</h1>
-              <Score style={{ fontSize: "50px" }} score={score} />
-              <Button
-                style={{
-                  fontFamily: "neo",
-                  fontWeight: "bold",
-                  backgroundColor: "#DAB49D",
-                  marginLeft: "10px",
-                }}
-                variant="contained"
-                onClick={clear}
-              >
-                다시하기
-              </Button>
-            </div>
-          </div>
-        </div>
-      );
-    }
-  }
+      )}
+    </div>
+  );
 };
 
 export default FallingGame;

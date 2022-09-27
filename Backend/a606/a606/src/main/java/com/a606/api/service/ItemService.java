@@ -13,4 +13,6 @@ public interface ItemService {
     void updateItem(long itemId, int type, int number, int rgb, int rare);
     void deleteItem(long itemId);
     ItemDto getRandomItem(int type);
+
+    Item getItem(long itemId);
 }

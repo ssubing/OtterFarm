@@ -1,29 +1,115 @@
 .pageBox {
-   display: flex;
-   background-color: #fffaf4;
-   flex-direction: column;
-  height : 100%;
+  display: flex;
+  background-color: #fffaf4;
+  flex-direction: column;
+  height: 100%;
 }
 
 .itemPage {
-    display :flex;
-    flex-direction: row;
-    
-    justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
 }
 
 .myNft {
-    display : flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+  width: 100%;
+}
+
+.itemShop {
+  width: 20%;
+
+  margin-right: 1%;
+
+  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .otter {
-    margin-top : 10%;
-    width : 20%;
-    height : 50%;
-    border-color:black;
-    border: 2px solid;
+  margin-top: 10%;
+  width: 20%;
+  height: 50%;
+  border-color: black;
+  border: 2px solid;
+}
+.select {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-left: 20%;
+  height: 10vh;
+  margin-top: 5%;
+}
+.part {
+  border: 1px solid black;
+  width: 8%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3e9dc;
 }
 
+.part:hover {
+  background-color: blue;
+}
+
+.chosen {
+  background-color: blue;
+}
+
+.base {
+  width: 300px;
+  height: 400px;
+  z-index: 1;
+}
+
+.head {
+  z-index: 2;
+}
+.eye {
+  z-index: 3;
+}
+.mouth {
+  z-index: 4;
+}
+.hand {
+  z-index: 4;
+}
+.cloth {
+  z-index: 2;
+}
+
+.otterNft {
+  width: 400px;
+  height: 400px;
+  display: flex;
+}
+
+.char {
+  position: absolute;
+  width: 300px;
+  height: 400px;
+}
+
+.giftDiv {
+  margin-top: 10%;
+}
+
+.shopName {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.shoppart {
+  border: 1px solid;
+}
+
+#otterImg {
+  position: absolute;
+  width: 300px;
+  height: 400px;
+}

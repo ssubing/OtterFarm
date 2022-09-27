@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { RecoilRoot } from "recoil";
 import Welcome from "./pages/Welcome/Welcome";
 import Main from "./pages/Main/Main";
 import Item from "./pages/Item/Item";
@@ -10,6 +11,7 @@ import AvatarDetail from "./pages/Avatar/AvatarDetail";
 import Noti from "./pages/Noti/Noti";
 import Issue from "./pages/Issue/Issue";
 import Test from "./pages/test";
+import FallingGame from "./pages/FallingGame/FallingGame";
 function App() {
   return (
     <Router>
@@ -25,6 +27,11 @@ function App() {
         <Route path="/issue" element={<Issue />} />
         <Route path="/test/" element={<Test/>}/>
       </Routes>
+      <RecoilRoot>
+        <Routes>
+          <Route path="/fallingGame" element={<FallingGame />}></Route>
+        </Routes>
+      </RecoilRoot>
     </Router>
   );
 }

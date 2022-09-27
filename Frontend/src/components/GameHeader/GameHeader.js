@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "0 auto",
   },
 }));
+
 function GameHeader(props) {
   const classes = useStyles();
   return (

@@ -15,7 +15,7 @@ import Item from "../../components/FallingGame/Item";
 import Score from "../../components/FallingGame/Score";
 import Timer from "../../components/FallingGame/Timer";
 import "./FallingGame.css";
-import Header from "../../components/FallingGame/GameHeader";
+import Header from "../../components/GameHeader/GameHeader";
 import otter from "../../assets/images/otter-basket.png";
 import Button from "@material-ui/core/Button";
 

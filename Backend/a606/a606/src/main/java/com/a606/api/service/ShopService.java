@@ -13,15 +13,6 @@ import java.util.List;
 @Service
 public interface ShopService {
 
-    @Transactional
-    List<InventoryDto> getInventory(long userId);
-
-    @Transactional
-    ItemDto getRandomItem();
-
-    @Transactional
-    List<InventoryDto> updateInventory(long userId, ItemDto itemDto);
-
     Long checkDuplicated(long head, long eyes, long mouth, long hands, long fashion);
 
     boolean checkItems(User user, List<Long> itemIds);

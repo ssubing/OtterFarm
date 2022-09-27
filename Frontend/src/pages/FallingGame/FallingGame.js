@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import {
+  TYPES,
   SPEED_STEP,
   SPAWN_INTERVAL,
 } from "../../components/FallingGame/constants";
@@ -15,13 +16,17 @@ import Score from "../../components/FallingGame/Score";
 import Timer from "../../components/FallingGame/Timer";
 import "./FallingGame.css";
 import otter from "../../assets/images/otter-basket.png";
+// import item1 from "../../assets/images/falling-item1.png";
+// import item2 from "../../assets/images/falling-item2.png";
+// import item3 from "../../assets/images/falling-item3.png";
 import Button from "@material-ui/core/Button";
 
 const FallingGame = () => {
   const [dots, updateDots] = useRecoilState(dotsState);
   const [controlState, setControlState] = useRecoilState(controlOptions);
-  const [score, setScore] = useState(0);
   const [time, setTime] = useRecoilState(timeState);
+  const [score, setScore] = useState(0);
+  const [showGuide, setGuide] = useState(false);
   const intervalRef = useRef();
   const fieldRef = useRef();
   const requestRef = useRef();
@@ -104,6 +109,7 @@ const FallingGame = () => {
     updateDots([]);
     setScore(0);
     setTime(30);
+    setGuide(false);
   }, [setControlState, setScore, updateDots, controlState, setTime]);
 
   // 수달 좌우로 움직이기
@@ -149,28 +155,93 @@ const FallingGame = () => {
     }
   }, [controlState.isRunning, time]);
 
+  // 게임 방법 화면 제어
+  const handleGuide = () => {
+    setGuide(true);
+  };
+
   // 게임 시작 전
   if (!controlState.isRunning) {
-    return (
-      <div className="falling-game">
-        <div className="title">먹이 냠냠</div>
-        <div className="game-over-wrap">
-          <div className="game-over"></div>
-          <div>
-            <h1>수달은 아직도 배고프다</h1>
-            <div className="game-button-wrap">
-              <Button
-                style={{
-                  fontFamily: "neo",
-                  fontWeight: "bold",
-                  backgroundColor: "#DAB49D",
-                  marginLeft: "10px",
-                }}
-                variant="contained"
-                onClick={clear}
-              >
-                게임방법
-              </Button>
+    if (!showGuide) {
+      return (
+        <div className="falling-game">
+          <div className="title">먹이 냠냠</div>
+          <div className="game-background-wrap">
+            <div className="game-background"></div>
+            <div>
+              <h1>수달은 아직도 배고프다</h1>
+              <div className="game-button-wrap">
+                <Button
+                  style={{
+                    fontFamily: "neo",
+                    fontWeight: "bold",
+                    backgroundColor: "#DAB49D",
+                    marginLeft: "10px",
+                  }}
+                  variant="contained"
+                  onClick={handleGuide}
+                >
+                  게임방법
+                </Button>
+                <Button
+                  style={{
+                    fontFamily: "neo",
+                    fontWeight: "bold",
+                    backgroundColor: "#DAB49D",
+                    marginLeft: "10px",
+                  }}
+                  variant="contained"
+                  onClick={onStart}
+                >
+                  시작하기
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="falling-game">
+          <div className="title">먹이 냠냠</div>
+          <div className="game-background-wrap">
+            <div className="game-background"></div>
+            <div className="game-guide-content">
+              <div className="game-title">수달은 아직도 배고프다</div>
+              <h3>게임설명</h3>
+              <p className="game-guide">
+                안녕 나 애기 수달
+                <br />
+                나는 언제나 배가 고프지🍴
+                <br />
+                <strong>좌, 우 방향키</strong>로 나를 움직여서
+                <br />
+                <span style={{ color: "red" }}>제한 시간</span>동안 더 많은
+                먹이를 먹게 해줘
+                <br />
+                그러면 보답으로 얻은 <strong>점수만큼의 수달머니</strong>를 줄게
+                <br />
+              </p>
+              <h3>아이템 별 점수</h3>
+              <div className="game-guide-item">
+                {TYPES.map((item, index) => {
+                  return (
+                    <div>
+                      <img
+                        style={{ width: "60px" }}
+                        src={item}
+                        alt={`item${index}`}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="game-guide-item">
+                <div>조개 : 20점</div>
+                <div>가재 : 50점</div>
+                <div>물고기 : 70점</div>
+              </div>
+
               <Button
                 style={{
                   fontFamily: "neo",
@@ -186,8 +257,8 @@ const FallingGame = () => {
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   } else {
     // 게임 시작 후
 
@@ -224,8 +295,8 @@ const FallingGame = () => {
       return (
         <div className="falling-game">
           <div className="title">먹이 냠냠</div>
-          <div className="game-over-wrap">
-            <div className="game-over"></div>
+          <div className="game-background-wrap">
+            <div className="game-background"></div>
             <div>
               <h1>Game Over!!!</h1>
               <Score style={{ fontSize: "50px" }} score={score} />

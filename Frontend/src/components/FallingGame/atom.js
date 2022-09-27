@@ -20,5 +20,5 @@ export const scoreState = atom({
 
 export const timeState = atom({
   key: "timeState",
-  default: 60,
+  default: 30,
 });

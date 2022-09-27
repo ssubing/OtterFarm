@@ -32,10 +32,10 @@ export const removeDot = (dots, index) => {
 };
 export const calculatePoints = (dot) => {
   if (dot.randIndex === 0) {
-    return 50;
+    return 20;
   } else if (dot.randIndex === 1) {
-    return 100;
+    return 50;
   } else if (dot.randIndex === 2) {
-    return 150;
+    return 70;
   }
 };

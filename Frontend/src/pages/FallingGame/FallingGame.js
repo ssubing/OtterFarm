@@ -33,6 +33,7 @@ const FallingGame = () => {
     height: "150px",
   };
 
+  // 아이템 컨트롤
   const advanceStep = useCallback(() => {
     const addScore = (dot) => {
       setScore((prev) => prev + calculatePoints(dot));
@@ -97,11 +98,12 @@ const FallingGame = () => {
     return () => stop();
   }, [controlState.isRunning, advanceStep, spawnDot]);
 
+  // 리셋
   const clear = useCallback(() => {
     setControlState({ ...controlState, isRunning: false, speed: 10 });
     updateDots([]);
     setScore(0);
-    setTime(60);
+    setTime(30);
   }, [setControlState, setScore, updateDots, controlState, setTime]);
 
   // 수달 좌우로 움직이기

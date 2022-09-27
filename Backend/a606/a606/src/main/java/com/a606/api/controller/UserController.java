@@ -66,6 +66,10 @@ public class UserController {
         String userWallet = loginInfo.getWallet();
         String message = loginInfo.getMessage();
 
+
+        System.out.println("address : " + userWallet);
+        System.out.println(message);
+
         User user = userService.getUserByWallet(userWallet);
         if (user == null){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -152,5 +156,19 @@ public class UserController {
         User user = ((SudalUserDetails) authentication.getDetails()).getUser();
         return new ResponseEntity<>(
                 userService.updateNickname(user.getId(), updateNicknameRequest.getNickname()), HttpStatus.OK);
+    }
+
+    @GetMapping("user/nickname")
+    public ResponseEntity<String> getNickname(@ApiIgnore Authentication authentication) {
+        if (authentication == null) return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+        User user = ((SudalUserDetails) authentication.getDetails()).getUser();
+        return new ResponseEntity<String>(userService.getNickname(user.getId()), HttpStatus.OK);
+    }
+
+    @GetMapping("user/point")
+    public ResponseEntity<Long> getSudalPoint(@ApiIgnore Authentication authentication) {
+        if (authentication == null) return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+        User user = ((SudalUserDetails) authentication.getDetails()).getUser();
+        return new ResponseEntity<Long>(userService.getPoint(user.getId()), HttpStatus.OK);
     }
 }

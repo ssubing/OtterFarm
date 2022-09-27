@@ -64,7 +64,7 @@ function Item() {
   const getIndex = (imgurl) => {
     //이미지 경로를 넣으면 split해서 몇번째 아이템인지 아이디를 가져오는 함수
     if (imgurl !== null) {
-      return imgurl.split("/")[3].split("_")[1][1];
+      return parseInt(imgurl.split("/")[3].split("_")[1][1], 10);
     } else {
       return 0;
     }
@@ -84,7 +84,7 @@ function Item() {
 
       const created = await client.add(file);
       const tokenURI = `https://www.infura-ipfs.io/ipfs/${created.path}`;
-      // console.log(tokenURI);
+      console.log(tokenURI);
       console.log(token);
       const eyes = getIndex(eyeUrl);
       const fashion = getIndex(clothUrl);
@@ -233,6 +233,16 @@ function Item() {
                   setTimeout(() => {
                     setShowImg(true);
                   }, 4000);
+                  console.log(typeof 1);
+                  try {
+                    axios
+                      .get(apiUrl + `api/item/${1}`, {
+                        headers: { Authorization: `Bearer ${token}` },
+                      })
+                      .then((res) => console.log(res.data));
+                  } catch (error) {
+                    console.log(error);
+                  }
                 }}
               >
                 뽑기

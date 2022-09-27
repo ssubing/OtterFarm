@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import card01 from '../../assets/images/CardGame/card01.png'
 import card02 from '../../assets/images/CardGame/card02.png'
@@ -67,12 +67,21 @@ function CardGame() {
     //시작할 경우 카드를 잠깐 보여줘야 한다
     function cardGameStart() {
         setStartFlag(true)
-        console.log("게임 시작")
     }
 
     let cardNum = 0;
-    
-
+    useEffect(() => {
+        if(startFlag === true) {
+            const test = document.querySelector('.card-game-flex')
+            console.log(test.childNodes[0].childNodes[0])
+            for(let i = 0; i < 18; i++) {
+                setTimeout(() => {
+                    test.childNodes[i].childNodes[0].classList.remove("flip-front")
+                }, 2800);
+                test.childNodes[i].childNodes[0].classList.add("flip-front")
+            }
+        }
+    })
     //카드 클릭했을 경우
     function cardClick(e) {
         let imgClass = e.target.nextSibling.classList[1]
@@ -112,7 +121,7 @@ function CardGame() {
             <div>
                 <h1>같은 수달 찾기</h1>
                 <div className="card-game-before" ref={cardRef}>
-                    <button className="card-start-btn" nClick={cardGameStart}>시작하기</button>
+                    <button className="card-start-btn" onClick={cardGameStart}>시작하기</button>
                     <img src={start} alt="시작전"/>
                 </div>
             </div>

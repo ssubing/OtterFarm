@@ -123,4 +123,16 @@ public class UserServiceImpl implements UserService{
         user.setNonce(getRandomNonce());
         userRepository.save(user);
     }
+
+    @Override
+    public Long getPoint(long userId) {
+        User user = userRepository.findById(userId).get();
+        return user.getGamePoint();
+    }
+
+    @Override
+    public String getNickname(long userId) {
+        User user = userRepository.findById(userId).get();
+        return user.getNickname();
+    }
 }

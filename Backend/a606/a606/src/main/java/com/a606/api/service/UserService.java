@@ -36,4 +36,7 @@ public interface UserService {
     @Transactional
     void setNonce(long userId);
 
+    Long getPoint(long userId);
+
+    String getNickname(long userId);
 }

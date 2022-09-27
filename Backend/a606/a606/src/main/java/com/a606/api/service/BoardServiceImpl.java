@@ -1,8 +1,10 @@
 package com.a606.api.service;
 
+import com.a606.api.dto.BidBoardDto;
+import com.a606.api.dto.LogsDto;
 import com.a606.api.dto.NFTDto;
-import com.a606.db.entity.NFT;
-import com.a606.db.entity.User;
+import com.a606.db.entity.*;
+import com.a606.db.repository.AppealRepository;
 import com.a606.db.repository.BoardRepository;
 import com.a606.db.repository.NFTRepository;
 import com.a606.db.repository.UserRepository;
@@ -12,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +24,9 @@ public class BoardServiceImpl implements BoardService{
 
     @Autowired
     BoardRepository boardRepository;
+
+    @Autowired
+    AppealRepository appealRepository;
 
     @Autowired
     NFTRepository nftRepository;
@@ -117,5 +123,38 @@ public class BoardServiceImpl implements BoardService{
         }
 
         return nftDto;
+    }
+
+    @Override
+    public BidBoardDto getBid(Long nftId) {
+        Optional<NFT> oNft = nftRepository.findById(nftId);
+        if (!oNft.isPresent()) { return null; }
+        Optional<Board> oBoard = boardRepository.findByNftAndStartBeforeAndEndAfter(oNft.get(), LocalDateTime.now(), LocalDateTime.now());
+        if (!oBoard.isPresent()) { return null; }
+        Board board = oBoard.get();
+        BidBoardDto bidBoardDto = new BidBoardDto();
+        bidBoardDto.setId(board.getId());
+        bidBoardDto.setStart(board.getStart());
+        bidBoardDto.setEnd(board.getEnd());
+        bidBoardDto.setFirst_price(board.getFirst_price());
+        List<LogsDto> bidLogsDtos = new ArrayList<>();
+        for (BidLog log : board.getBidLogs()) {
+            bidLogsDtos.add(new LogsDto(log.getDate(), log.getPrice()));
+        }
+        bidBoardDto.setBidLogs(bidLogsDtos);
+
+        return bidBoardDto;
+    }
+
+    @Override
+    public List<LogsDto> getAppeals(Long nftId) {
+        Optional<NFT> oNft = nftRepository.findById(nftId);
+        if (!oNft.isPresent()) { return null; }
+        List<Appeal> appeals = appealRepository.findAllByNft(oNft.get());
+        List<LogsDto> logsDtos = new ArrayList<>();
+        for (Appeal appeal : appeals) {
+            logsDtos.add(new LogsDto(appeal.getDate(), appeal.getPrice()));
+        }
+        return logsDtos;
     }
 }

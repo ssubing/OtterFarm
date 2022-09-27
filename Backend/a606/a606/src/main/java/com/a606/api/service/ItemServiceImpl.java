@@ -87,4 +87,9 @@ public class ItemServiceImpl implements ItemService{
             return list3.get(randomItem);
         }
     }
+
+    @Override
+    public Item getItem(long itemId) {
+        return itemRepository.findById(itemId).get();
+    }
 }

@@ -54,7 +54,8 @@ public class ShopController {
         itemIds.add(avatarDto.getHands());
         itemIds.add(avatarDto.getFashion());
         if (!shopService.checkItems(user, itemIds)) {
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+            // 테스트 동안 주석
+//            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
         Long nftId = shopService.createNFT(user, itemIds, avatarDto.getTokenURI(), avatarDto.getName());
 

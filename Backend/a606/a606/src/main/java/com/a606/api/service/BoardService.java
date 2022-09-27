@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface BoardService {
 
-    List<NFTDto> getNFTList(String tab, String order, int asc, int pageNo, int npp) throws Exception;
+    List<NFTDto> getNFTList(String tab, String order, boolean isDesc, int pageNo, int npp) throws Exception;
 
     NFTDto getNFTDetail(Long nftId) throws Exception;
 

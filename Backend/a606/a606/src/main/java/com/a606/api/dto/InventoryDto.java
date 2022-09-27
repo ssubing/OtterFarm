@@ -12,6 +12,10 @@ import lombok.*;
 public class InventoryDto {
     private long id;
     private long userId;
-    private Item item;
+    private long itemId;
+    private int type;
     private int number;
+    private int rgb;
+    private int rare;
+    private int howMany;
 }

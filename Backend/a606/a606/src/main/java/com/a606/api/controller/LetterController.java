@@ -1,16 +1,20 @@
 package com.a606.api.controller;
 
 import com.a606.api.service.LetterService;
+import com.a606.common.util.SudalUserDetails;
 import com.a606.db.entity.Letter;
+import com.a606.db.entity.User;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
 
@@ -22,9 +26,12 @@ import java.util.List;
 public class LetterController {
     LetterService letterService;
 
-    @GetMapping("letter/user/{userId}")
-    public ResponseEntity<List<Letter>> getLetters(@PathVariable long userId) {
-        return new ResponseEntity<List<Letter>>(letterService.getAllLetters(userId), HttpStatus.OK);
+    @GetMapping("letter")
+    public ResponseEntity<List<Letter>> getLetters(@ApiIgnore Authentication authentication) {
+        if (authentication == null) return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+        User user = ((SudalUserDetails) authentication.getDetails()).getUser();
+
+        return new ResponseEntity<List<Letter>>(letterService.getAllLetters(user.getId()), HttpStatus.OK);
     }
 
     @GetMapping("letter/{letterId}")

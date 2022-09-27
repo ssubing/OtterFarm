@@ -17,7 +17,6 @@ public class GameServiceImpl implements GameService{
         return user.getGamePoint();
     }
 
-    @Override
     public long updateGamePointById(long userId, long gamePoint) {
         User user = userRepository.findById(userId).get();
         user.setGamePoint(user.getGamePoint() + gamePoint);

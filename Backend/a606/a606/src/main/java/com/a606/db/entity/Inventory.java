@@ -27,5 +27,5 @@ public class Inventory {
     private Item item;
 
     @Column(nullable = false)
-    private int number;
+    private int howMany;
 }

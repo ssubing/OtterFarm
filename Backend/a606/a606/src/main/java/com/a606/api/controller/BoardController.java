@@ -1,5 +1,7 @@
 package com.a606.api.controller;
 
+import com.a606.api.dto.BidBoardDto;
+import com.a606.api.dto.LogsDto;
 import com.a606.api.dto.NFTDto;
 import com.a606.api.service.BoardService;
 import io.swagger.annotations.Api;
@@ -7,7 +9,6 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Api(value = "Board API", tags = {"Board."})
@@ -28,8 +29,22 @@ public class BoardController {
     @GetMapping("/details/{nftId}")
     @ApiOperation(value = "NFT 상세 조회",
             notes = "nftId로 NFT 상세 정보를 조회한다.")
-    public NFTDto searchList(@PathVariable Long nftId) throws Exception {
+    public NFTDto getNFTDetails(@PathVariable Long nftId) throws Exception {
         return boardService.getNFTDetail(nftId);
+    }
+
+    @GetMapping("/bid/{nftId}")
+    @ApiOperation(value = "분양중인 NFT 분양 정보 조회",
+            notes = "nftId로 NFT 분양 정보를 조회한다.")
+    public BidBoardDto getBid(@PathVariable Long nftId) throws Exception {
+        return boardService.getBid(nftId);
+    }
+
+    @GetMapping("/appeal/{nftId}")
+    @ApiOperation(value = "미분양중인 NFT 요청 내역 정보 조회",
+            notes = "nftId로 NFT 분양 정보를 조회한다.")
+    public List<LogsDto> getAppeals(@PathVariable Long nftId) throws Exception {
+        return boardService.getAppeals(nftId);
     }
 
 }

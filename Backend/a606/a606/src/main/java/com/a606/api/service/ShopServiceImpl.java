@@ -59,14 +59,14 @@ public class ShopServiceImpl implements ShopService{
     @Override
     public Long createNFT(User user, List<Long> itemIds, String tokenURI, String name) throws Exception {
         StringBuilder stringBuilder = new StringBuilder();
-        for(Long itemId : itemIds){
-            Item item = itemRepository.findById(itemId).get();
-            Inventory inventory = inventoryRepository.findByUserAndItem(user, item).get();
-            inventory.setHowMany(inventory.getHowMany() - 1);
-            inventoryRepository.save(inventory);
-            stringBuilder.append(String.format("%02d", item.getNumber())).append(String.format("%02d", item.getRgb()));
-        }
-        System.out.println("dna : " + stringBuilder.toString());
+        // 테스트 동안 주석
+//        for(Long itemId : itemIds){
+//            Item item = itemRepository.findById(itemId).get();
+//            Inventory inventory = inventoryRepository.findByUserAndItem(user, item).get();
+//            inventory.setHowMany(inventory.getHowMany() - 1);
+//            inventoryRepository.save(inventory);
+//            stringBuilder.append(String.format("%02d", item.getNumber())).append(String.format("%02d", item.getRgb()));
+//        }
         String tokenId = contractService.createNFT(user.getWallet(), stringBuilder.toString(), tokenURI);
         if (tokenId.equals("")) {
             return null;

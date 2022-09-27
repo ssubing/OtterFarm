@@ -21,7 +21,8 @@
 }
 
 .card-front {
-    background: rgb(238, 105, 105);
+    /* background: lightcoral; */
+    background: #895737;
 }
 
 .card-front, .card-back {
@@ -30,14 +31,6 @@
     height: 100%;
     backface-visibility: hidden;
 }
-
-/* .card-back { 
-    transform: rotateY(180deg);
-}
-
-.card-wrap:hover .card {
-    transform: rotateY(180deg);
-} */
 
 .card-back { 
     transform: rotateY(180deg);
@@ -48,9 +41,13 @@
 }
 
 .card-game-wrap {
-    width: 1000px;
-    height: 800px;
-    margin: 0 auto;
+    width: 1400px;
+    height: 900px;
+    display: flex;
+    margin: 50px auto;
+    align-items: center;
+    /* background-color: rgb(251, 201, 201); */
+    background-color: #DAB49D;
 }
 
 .card-game-flex {

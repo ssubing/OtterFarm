@@ -24,5 +24,6 @@
 }
 
 .game-thumbnail {
+  width: 250px;
   padding: 15px;
 }

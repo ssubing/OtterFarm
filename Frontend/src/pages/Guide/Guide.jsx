@@ -1,7 +1,8 @@
 import Navbar from "../../components/Navbar/Navbar";
 import "./Guide.css";
 import Button from "@material-ui/core/Button";
-import game from "../../assets/images/game.png";
+import fallingGame from "../../assets/images/falling-game-thumbnail.png";
+import { Link } from "react-router-dom";
 const Guide = () => {
   return (
     <div className="guide">
@@ -37,11 +38,14 @@ const Guide = () => {
         </div>
         <div className="line"></div>
         <div className="game">
-          <img src={game} alt="game" className="game-thumbnail"></img>
+          <Link to="/fallingGame">
+            <img src={fallingGame} alt="game" className="game-thumbnail"></img>
+          </Link>
           <p className="content">
-            뿌슝빠슝
+            <strong>수달은 아직도 배고프다</strong>
             <br />
-            <br />이 게임은 뿌슝빠슝 합니다 😎
+            <br />
+            하늘에서 떨어지는 먹이를 받아 수달을 배부르게 해주세요🍴
           </p>
         </div>
       </div>

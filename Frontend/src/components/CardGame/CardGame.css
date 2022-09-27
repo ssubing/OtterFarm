@@ -40,6 +40,7 @@
     transform: rotateY(180deg);
 }
 
+/* 게임 시작후 배경 */
 .card-game-wrap {
     width: 1400px;
     height: 900px;
@@ -48,6 +49,28 @@
     align-items: center;
     /* background-color: rgb(251, 201, 201); */
     background-color: #DAB49D;
+}
+/* 시작전 배경 */
+.card-game-before {
+    width: 1400px;
+    height: 900px;
+    position: relative;
+    margin: 50px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #dab49d;
+}
+/* 시작하기 버튼 */
+.card-start-btn {
+    position: absolute;
+    width: 200px;
+    height: 65px;
+    font-family: 'neo';
+    font-size: 28px;
+    background: #dab49d;
+    border: 1px solid #895737;
+    border-radius: 5px;
 }
 
 .card-game-flex {

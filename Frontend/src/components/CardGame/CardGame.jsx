@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import card01 from '../../assets/images/CardGame/card01.png'
 import card02 from '../../assets/images/CardGame/card02.png'
@@ -10,13 +10,15 @@ import card07 from '../../assets/images/CardGame/card07.png'
 import card08 from '../../assets/images/CardGame/card08.png'
 import card09 from '../../assets/images/CardGame/card09.png'
 
+import start from '../../assets/images/CardGame/start.png'
+
 import "./CardGame.css"
 
 function CardGame() {
     //점수
     const [score, setScore] = useState(0)
     //맞힌 카드 개수
-    const [cardNum, setCardNum] = useState(0)
+    // const [cardNum, setCardNum] = useState(0)
     //카드 목록
     const cardList = [
         card01, card01,
@@ -36,6 +38,11 @@ function CardGame() {
     let cardSrc = ''
     let cardSrc2 = ''
 
+    //게임 시작 여부
+    // let startFlag = false
+    const [startFlag, setStartFlag] = useState(false)
+
+    //난수 생성
     function createRandom(min, max) {
         let ranNum = Math.floor(Math.random() * (max-min+1)) + min;
         return ranNum
@@ -56,7 +63,15 @@ function CardGame() {
         }
         return result
     }
-    let test = 0;
+    const cardRef = useRef()
+    //시작할 경우 카드를 잠깐 보여줘야 한다
+    function cardGameStart() {
+        setStartFlag(true)
+        console.log("게임 시작")
+    }
+
+    let cardNum = 0;
+    
 
     //카드 클릭했을 경우
     function cardClick(e) {
@@ -75,6 +90,7 @@ function CardGame() {
             //뒤집은 카드가 2개 존재하고 그 두 개의 카드가 같을 경우
             if(cardSrc && cardSrc2 && cardSrc === cardSrc2) {
                 cardSrc = cardSrc2 = ''
+                cardNum += 1;
                 // setScore((prev) => prev + 50);
                 // setScore(score + 50)
             }
@@ -88,23 +104,33 @@ function CardGame() {
                     //이미 선택한 카드가 뒤집어질때까지 다른 카드를 선택할 수 없게 한다
                     cardSrc = cardSrc2 = ''
                 }, 400);
-                
             }
         }
     }
-
-    return(
-        <div>
-            <h1>같은 수달 찾기</h1>
-            <h4>점수 : {score}</h4>
-            <button>시작하기</button>
-            <div className="card-game-wrap">
-                <div className="card-game-flex">
-                    {cardSetting()}
+    if(!startFlag) { 
+        return(
+            <div>
+                <h1>같은 수달 찾기</h1>
+                <div className="card-game-before" ref={cardRef}>
+                    <button className="card-start-btn" nClick={cardGameStart}>시작하기</button>
+                    <img src={start} alt="시작전"/>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
+    else {
+        return(
+            <div>
+                <h1>같은 수달 찾기</h1>
+                <h4>점수 : {score}</h4>
+                <div className="card-game-wrap" ref={cardRef}>
+                    <div className="card-game-flex">
+                        {cardSetting()}
+                    </div>
+                </div>
+            </div>
+        )
+    }
 }
 
 export default React.memo(CardGame);

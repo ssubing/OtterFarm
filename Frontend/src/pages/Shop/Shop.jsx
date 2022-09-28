@@ -84,9 +84,37 @@ function Shop() {
   const nftList = useSelector((state: any) => state.nftList);
   const dispatch = useDispatch();
   // const [nftList, setNftList] = useState([]);
+  let currentTab = "all";
+  let currentOrder = "id";
 
   const handleOrder = (event) => {
     setOrder(event.target.value);
+    // console.log(event.target.value);
+    const params = {
+      isDesc: false,
+      order: "",
+      pageNo: 1,
+      pageSize: 15,
+      tab: currentTab,
+    };
+    switch (event.target.value) {
+      case "likeCount":
+        params.order = currentOrder = "likeCount";
+        break;
+      case "id":
+        params.order = currentOrder = "id";
+        break;
+      default:
+        break;
+    }
+    shop
+      .nftList(params)
+      .then((result) => {
+        dispatch(setNftList(result.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const [value, setValue] = useState(0);
@@ -96,20 +124,20 @@ function Shop() {
     // console.log(newValue);
     const params = {
       isDesc: false,
-      order: "id",
+      order: currentOrder,
       pageNo: 1,
       pageSize: 15,
       tab: "",
     };
     switch (newValue) {
       case 0:
-        params.tab = "all";
+        params.tab = currentTab = "all";
         break;
       case 1:
-        params.tab = "saled";
+        params.tab = currentTab = "saled";
         break;
       case 2:
-        params.tab = "unsaled";
+        params.tab = currentTab = "unsaled";
         break;
       default:
         break;
@@ -127,10 +155,10 @@ function Shop() {
   useEffect(() => {
     const params = {
       isDesc: false,
-      order: "id",
+      order: currentOrder,
       pageNo: 1,
       pageSize: 15,
-      tab: "all",
+      tab: currentTab,
     };
     shop
       .nftList(params)
@@ -178,9 +206,8 @@ function Shop() {
                 onChange={handleOrder}
                 label="order"
               >
-                <MenuItem value={10}>좋아요순</MenuItem>
-                <MenuItem value={20}>높은 가격순</MenuItem>
-                <MenuItem value={30}>최신 등록순</MenuItem>
+                <MenuItem value={"likeCount"}>좋아요순</MenuItem>
+                <MenuItem value={"id"}>최신 등록순</MenuItem>
               </Select>
             </FormControl>
           </div>

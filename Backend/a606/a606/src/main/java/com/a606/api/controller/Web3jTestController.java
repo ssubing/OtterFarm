@@ -109,9 +109,9 @@ public class Web3jTestController {
             @ApiResponse(code = 403, message = "unauthorized")
     })
     public ResponseEntity<?> getWeb3SudalsByOwner() throws Exception {
-        String contract = "0x6777F33e2B408D748FA93BeaB6B40fD732802E6a";
-        String key = "7de9b804253e76a421515313536b138ca1addd3e9aaaf07152d9155b71edaafa";
-        Web3j web3j = Web3j.build(new HttpService("http://localhost:7545"));
+        String contract = "0xB816Cb6893dB99A599896AFa400bcB2581bfd7F4";
+        String key = "2c835aeb997e4d1269513a83efadc44de96a30a56c1b58cb7f8ce8897511c79f";
+        Web3j web3j = Web3j.build(new HttpService("http://20.196.209.2:8545"));
         
 //        String contract = "0xB816Cb6893dB99A599896AFa400bcB2581bfd7F4";
 //        String key = "2c835aeb997e4d1269513a83efadc44de96a30a56c1b58cb7f8ce8897511c79f";

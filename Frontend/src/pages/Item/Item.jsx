@@ -234,15 +234,13 @@ function Item() {
                     setShowImg(true);
                   }, 4000);
                   console.log(typeof 1);
-                  try {
+               
                     axios
                       .get(apiUrl + `api/item/${1}`, {
                         headers: { Authorization: `Bearer ${token}` },
                       })
-                      .then((res) => console.log(res.data));
-                  } catch (error) {
-                    console.log(error);
-                  }
+                      .then((res) => console.log(res))
+                  
                 }}
               >
                 뽑기

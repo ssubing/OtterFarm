@@ -13,6 +13,7 @@ public class NFTDto {
     private boolean isSaled;
     private String name;
     private int likeCount;
+    private boolean isLiked;
     private String tokenURI;
     private String price;
     private Long userId;

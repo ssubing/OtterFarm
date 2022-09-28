@@ -1,0 +1,66 @@
+import React, { Component } from "react"
+import Sprite from "../base/Sprite"
+import VectorUtils from "../base/VectorUtils"
+import "./PlayerBullet.css"
+import Explosion from "./Explosion"
+import { GameGlobals } from "../helpers/GameGlobals"
+
+class PlayerBullet extends Component {
+  state = {
+    active: true,
+    position: { x: 0, y: 0 },
+    dimensions: { width: 10, height: 10 },
+    image: "attack/striker1_level2.png",
+    maxSpeed: 20,
+    turnDirection: "none"
+  }
+
+  update(gameState) {
+    let vel = { x: 0, y: -this.state.maxSpeed }
+
+    this.setState({
+      position: VectorUtils.add(this.state.position, vel)
+    })
+
+    if (this.state.position.y < -50) {
+      GameGlobals.Stage.removeSprite(this)
+    }
+  }
+
+  collidesWith(sprite) {
+    if (sprite.props.name === "Enemy") {
+      GameGlobals.Stage.addSprite(
+        <Explosion
+          name="Kaboom"
+          active={false}
+          position={this.state.position}
+        ></Explosion>
+      )
+      GameGlobals.Stage.removeSprite(sprite)
+      GameGlobals.Stage.removeSprite(this)
+
+      GameGlobals.Score.incrementScore(10)
+    }
+  }
+  constructor(props) {
+    super(props)
+    this.props = props
+    if (this.props.position) {
+      this.state.position = this.props.position
+    }
+  }
+
+  render() {
+    return (
+      <Sprite
+        name="Bullet"
+        dimensions={this.state.dimensions}
+        position={this.state.position}
+        image={this.state.image}
+        className={"player-bullet"}
+      ></Sprite>
+    )
+  }
+}
+
+export default PlayerBullet

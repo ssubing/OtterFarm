@@ -1,0 +1,16 @@
+.player-turn-right{
+    background: url('../../public/strikers/striker1_move_right.png') 0px 0px no-repeat;
+}
+
+.player-turn-left{
+    background: url('../../public/strikers/striker1_move_left.png') 0px 0px no-repeat;
+}
+
+.player-no-turn{
+    background: url('../../public/strikers/striker1.png') 0px 0px no-repeat;
+}
+
+.plyer{
+    background: url('../../public/strikers/striker1.png') 0px 0px no-repeat;
+}
+

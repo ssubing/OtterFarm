@@ -12,6 +12,7 @@ import Noti from "./pages/Noti/Noti";
 import Issue from "./pages/Issue/Issue";
 import Test from "./pages/test";
 import FallingGame from "./pages/FallingGame/FallingGame";
+import Tetris from "./pages/Tetris/Tetris";
 function App() {
   return (
     <Router>
@@ -26,6 +27,7 @@ function App() {
         <Route path="/noti" element={<Noti />}></Route>
         <Route path="/issue" element={<Issue />} />
         <Route path="/test/" element={<Test/>}/>
+        <Route path="/tetris" element={<Tetris/>}/>
       </Routes>
       <RecoilRoot>
         <Routes>

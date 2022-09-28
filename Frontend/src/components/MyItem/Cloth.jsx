@@ -5,7 +5,7 @@ import axios from "axios";
 const apiUrl = "http://j7a606.p.ssafy.io:8080/"
 
 
-function Cloth({ itemsPerPage, setUrl }) {
+function Cloth({ itemsPerPage, setUrl, setClothId }) {
   const [data, setData] = useState([]);
   const [len, setLen]=useState(0);
   const handleInfo = (data, len) => {
@@ -50,7 +50,7 @@ function Cloth({ itemsPerPage, setUrl }) {
   return (
     <div className="inventory">
       <div className="items">
-      {currentItems.map((info, idx)=> (<img className="parts" key={idx} src={`${process.env.PUBLIC_URL}/assets/images/items/Cloth/05_${info.number}_${info.rgb}_${info.rare}.png`} onClick={()=> {setUrl(`${process.env.PUBLIC_URL}/assets/images/items/Cloth/05_${info.number}_${info.rgb}_${info.rare}.png`)}}/>))}
+      {currentItems.map((info, idx)=> (<img className="parts" key={idx} src={`${process.env.PUBLIC_URL}/assets/images/items/Cloth/05_${info.number}_${info.rgb}_${info.rare}.png`} onClick={()=> {setUrl(`${process.env.PUBLIC_URL}/assets/images/items/Cloth/05_${info.number}_${info.rgb}_${info.rare}.png`); setClothId(info.itemId)}}/>))}
       </div>
       <ReactPaginate
         className="paginate"

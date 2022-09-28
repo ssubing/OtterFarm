@@ -72,11 +72,16 @@ function Item() {
   const getIndex = (imgurl) => {
     //이미지 경로를 넣으면 split해서 몇번째 아이템인지 아이디를 가져오는 함수
     if (imgurl !== null) {
-      return parseInt(imgurl.split("/")[3].split("_")[1][1], 10);
+      return parseInt(imgurl.split("/")[3].split("_")[1], 10);
     } else {
       return 0;
     }
   };
+  const [itemId, setItemId] = useState("");
+  const [eyeId, setEyeId] = useState("");
+  const [mouthId, setMouthId] = useState("");
+  const [handId, setHandId] = useState("");
+  const [clothId, setClothId] = useState("");
   const token = window.localStorage.getItem("token");
   const nftHandler = async (e) => {
     e.preventDefault();
@@ -94,11 +99,11 @@ function Item() {
       const tokenURI = `https://www.infura-ipfs.io/ipfs/${created.path}`;
       console.log(tokenURI);
       console.log(token);
-      const eyes = getIndex(eyeUrl);
-      const fashion = getIndex(clothUrl);
-      const hands = getIndex(handUrl);
-      const head = getIndex(url);
-      const mouth = getIndex(mouthUrl);
+      const eyes = eyeId;
+      const fashion = clothId;
+      const hands = handId;
+      const head = itemId;
+      const mouth = mouthId;
       const params = {
         eyes: eyes,
         fashion: fashion,
@@ -197,15 +202,15 @@ function Item() {
             ))}
           </div>
           {selected[0] ? (
-            <MyItem itemsPerPage={8} setUrl={setUrl} />
+            <MyItem itemsPerPage={8} setUrl={setUrl} setItemId={setItemId} />
           ) : selected[1] ? (
-            <Eyes itemsPerPage={8} setUrl={setEyeUrl} />
+            <Eyes itemsPerPage={8} setUrl={setEyeUrl} setEyeId ={setEyeId}/>
           ) : selected[2] ? (
-            <Mouth itemsPerPage={8} setUrl={setMouthUrl} />
+            <Mouth itemsPerPage={8} setUrl={setMouthUrl} setMouthId = {setMouthId}/>
           ) : selected[3] ? (
-            <Hands itemsPerPage={8} setUrl={setHandUrl} />
+            <Hands itemsPerPage={8} setUrl={setHandUrl} setHandId = {setHandId}/>
           ) : (
-            <Cloth itemsPerPage={8} setUrl={setClothUrl} />
+            <Cloth itemsPerPage={8} setUrl={setClothUrl} setClothId = {setClothId}/>
           )}
         </div>
 

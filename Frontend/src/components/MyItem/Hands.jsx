@@ -6,7 +6,7 @@ const apiUrl = "http://j7a606.p.ssafy.io:8080/"
 
 
 
-function Hands({ itemsPerPage,setUrl}) {
+function Hands({ itemsPerPage,setUrl, setHandId}) {
   const [data, setData] = useState([]);
   const [len, setLen]=useState(0);
   const handleInfo = (data, len) => {
@@ -52,7 +52,7 @@ function Hands({ itemsPerPage,setUrl}) {
   return (
     <div className="inventory">
       <div className="items">
-      {currentItems.map((info, idx)=> (<img className="parts" key={idx} src={`${process.env.PUBLIC_URL}/assets/images/items/Hand/03_${info.number}_${info.rgb}_${info.rare}.png`} onClick={()=> {setUrl(`${process.env.PUBLIC_URL}/assets/images/items/Hand/01_${info.number}_${info.rgb}_${info.rare}.png`)}}/>))}
+      {currentItems.map((info, idx)=> (<img className="parts" key={idx} src={`${process.env.PUBLIC_URL}/assets/images/items/Hand/03_${info.number}_${info.rgb}_${info.rare}.png`} onClick={()=> {setUrl(`${process.env.PUBLIC_URL}/assets/images/items/Hand/01_${info.number}_${info.rgb}_${info.rare}.png`); setHandId(info.itemId)}}/>))}
      </div>
       <ReactPaginate
         className="paginate"

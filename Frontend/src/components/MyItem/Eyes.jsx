@@ -4,7 +4,7 @@ import "./MyItem.css";
 import axios from "axios";
 const apiUrl = "http://j7a606.p.ssafy.io:8080/"
 
-function Eyes({ itemsPerPage, setUrl }) {
+function Eyes({ itemsPerPage, setUrl, setEyeId }) {
   const [data, setData] = useState([]);
   const [len, setLen]=useState(0);
   const handleInfo = (data, len) => {
@@ -51,7 +51,7 @@ function Eyes({ itemsPerPage, setUrl }) {
   return (
     <div className="inventory">
       <div className="items">
-      {currentItems.map((info, idx)=> (<img className="parts" key={idx} src={`${process.env.PUBLIC_URL}/assets/images/items/Eye/02_${info.number}_${info.rgb}_${info.rare}.png`} onClick={()=> {setUrl(`${process.env.PUBLIC_URL}/assets/images/items/Head/01_${info.number}_${info.rgb}_${info.rare}.png`)}}/>))}
+      {currentItems.map((info, idx)=> (<img className="parts" key={idx} src={`${process.env.PUBLIC_URL}/assets/images/items/Eye/02_${info.number}_${info.rgb}_${info.rare}.png`} onClick={()=> {setUrl(`${process.env.PUBLIC_URL}/assets/images/items/Head/01_${info.number}_${info.rgb}_${info.rare}.png`); setEyeId(info.itemId)}}/>))}
       </div>
       <ReactPaginate
         className="paginate"

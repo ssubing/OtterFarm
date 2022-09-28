@@ -26,6 +26,7 @@ public class InventoryServiceImpl implements InventoryService{
         } else {
             Inventory inventory = new Inventory();
             inventory.setUser(user);
+            inventory.setItem(item);
             inventory.setHowMany(1);
             inventoryRepository.save(inventory);
         }

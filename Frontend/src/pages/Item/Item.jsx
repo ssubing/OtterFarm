@@ -34,6 +34,14 @@ function Item() {
     newArr[idx] = true;
     setSelected(newArr);
   };
+  const [number, setNumber] = useState();
+  const [rgb, setRgb] = useState();
+  const [rare, setRare] = useState();
+  const handleInfo = (num, rgb, rare) => {
+    setNumber(num);
+    setRgb(rgb);
+    setRare(rare);
+  }
   const [showImg, setShowImg] = useState(false);
   const projectId = "2FHqbLTE55XfCP0BjQ8er0prKtE";
   const projectSecret = "0291ff7b1c1bd3704962f9cd27e9fba8";
@@ -189,7 +197,7 @@ function Item() {
             ))}
           </div>
           {selected[0] ? (
-            <MyItem itemsPerPage={4} setUrl={setUrl} />
+            <MyItem itemsPerPage={8} setUrl={setUrl} />
           ) : selected[1] ? (
             <Eyes itemsPerPage={8} setUrl={setEyeUrl} />
           ) : selected[2] ? (
@@ -210,6 +218,9 @@ function Item() {
               part={part}
               showImg={showImg}
               setShowImg={setShowImg}
+              num={number}
+              rgb={rgb}
+              rare={rare}
             />
             <div
               className="giftDiv"
@@ -239,7 +250,7 @@ function Item() {
                       .get(apiUrl + `api/item/${1}`, {
                         headers: { Authorization: `Bearer ${token}` },
                       })
-                      .then((res) => console.log(res))
+                      .then((res) => handleInfo(res.data.number, res.data.rgb, res.data.rare))
                   
                 }}
               >
@@ -268,6 +279,11 @@ function Item() {
                   setTimeout(() => {
                     setShowImg(true);
                   }, 4000);
+                  axios
+                      .get(apiUrl + `api/item/${2}`, {
+                        headers: { Authorization: `Bearer ${token}` },
+                      })
+                      .then((res) => handleInfo(res.data.number, res.data.rgb, res.data.rare))
                 }}
               >
                 뽑기
@@ -295,6 +311,11 @@ function Item() {
                   setTimeout(() => {
                     setShowImg(true);
                   }, 4000);
+                  axios
+                      .get(apiUrl + `api/item/${3}`, {
+                        headers: { Authorization: `Bearer ${token}` },
+                      })
+                      .then((res) => handleInfo(res.data.number, res.data.rgb, res.data.rare))
                 }}
               >
                 뽑기
@@ -322,6 +343,11 @@ function Item() {
                   setTimeout(() => {
                     setShowImg(true);
                   }, 4000);
+                  axios
+                      .get(apiUrl + `api/item/${4}`, {
+                        headers: { Authorization: `Bearer ${token}` },
+                      })
+                      .then((res) => handleInfo(res.data.number, res.data.rgb, res.data.rare))
                 }}
               >
                 뽑기
@@ -349,6 +375,11 @@ function Item() {
                   setTimeout(() => {
                     setShowImg(true);
                   }, 4000);
+                  axios
+                      .get(apiUrl + `api/item/${5}`, {
+                        headers: { Authorization: `Bearer ${token}` },
+                      })
+                      .then((res) => handleInfo(res.data.number, res.data.rgb, res.data.rare))
                 }}
               >
                 뽑기

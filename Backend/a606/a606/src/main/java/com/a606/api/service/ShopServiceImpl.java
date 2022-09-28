@@ -67,6 +67,7 @@ public class ShopServiceImpl implements ShopService{
 //            inventoryRepository.save(inventory);
 //            stringBuilder.append(String.format("%02d", item.getNumber())).append(String.format("%02d", item.getRgb()));
 //        }
+        stringBuilder.append("010101"); // 테스트 용 코드
         String tokenId = contractService.createNFT(user.getWallet(), stringBuilder.toString(), tokenURI);
         if (tokenId.equals("")) {
             return null;

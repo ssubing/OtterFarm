@@ -1,27 +1,24 @@
-import React, { Component } from "react"
+import React, { useState } from "react"
 import "./Aircraft.css"
 import Game from "./base/Game"
 import Level1 from "./levels/Level1"
-import { GameGlobals } from "./helpers/GameGlobals"
+// import { GameGlobals } from "./helpers/GameGlobals"
 import Score from "./actors/Score"
 
-class Aircraft extends Component {
-  state = {
-    gameStarted: false
-  }
 
-  constructor(props) {
-    super(props)
-    Aircraft.Instance = this
-  }
-  gameStart() {
-    this.setState({ gameStarted: true })
-  }
-  gameRestart() {
-    this.setState({ gameStarted: false })
-  }
+function Aircraft(props) {
+  
+  let [scoreVal, setScoreVal] = useState(0)
+  let [gameStarted, setGameStarted] = useState(false)
 
-  render() {
+//   constructor(props) {
+//     super(props)
+//     Aircraft.Instance = this
+//   }
+  const gameStart = () => { setGameStarted(gameStarted=true) }
+  const gameRestart = () => { setGameStarted(gameStarted=false) }
+
+
     const style = {
       marginLeft: 0,
       marginTop: 0,
@@ -33,21 +30,22 @@ class Aircraft extends Component {
     let start
     let scorePosition = "top"
 
-    if (this.state.gameStarted) {
+    if (gameStarted) {
       scorePosition = "top"
       game = <Level1></Level1>
-    } else if (GameGlobals.ScoreVal > 0) {
+    } else if (scoreVal > 0) {
+        /* 13행에 의해 GameGlobal.jsx 삭제해도 됨 */
       scorePosition = "center"
     } else {
       scorePosition = "hidden"
     }
 
-    if (!this.state.gameStarted) {
+    if (!gameStarted) {
       start = (
         <button
           name="Start"
           className={"startButton"}
-          onClick={this.gameStart.bind(this)}
+          onClick={gameStart}
         >
           Start
         </button>
@@ -63,7 +61,6 @@ class Aircraft extends Component {
         <Score position={scorePosition}></Score>
       </div>
     )
-  }
 }
 
 export default Aircraft

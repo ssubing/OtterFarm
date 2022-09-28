@@ -93,6 +93,35 @@ function Shop() {
 
   const handleTab = (event, newValue) => {
     setValue(newValue);
+    // console.log(newValue);
+    const params = {
+      isDesc: false,
+      order: "id",
+      pageNo: 1,
+      pageSize: 15,
+      tab: "",
+    };
+    switch (newValue) {
+      case 0:
+        params.tab = "all";
+        break;
+      case 1:
+        params.tab = "saled";
+        break;
+      case 2:
+        params.tab = "unsaled";
+        break;
+      default:
+        break;
+    }
+    shop
+      .nftList(params)
+      .then((result) => {
+        dispatch(setNftList(result.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   useEffect(() => {
@@ -157,52 +186,56 @@ function Shop() {
           </div>
         </div>
         {/* NFT 카드 */}
-        <Link to="/detail">
-          <div className={classes.gridRoot}>
-            <ImageList
-              cellHeight={200}
-              className={classes.gridList}
-              spacing={10}
-            >
-              {nftList.map((data) => (
-                <ImageListItem
-                  cols={1}
-                  style={{
-                    height: "auto",
-                    width: "450px",
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Card className={classes.root}>
-                    <CardActionArea>
-                      <CardMedia
-                        className={classes.media}
-                        image={data.tokenURI}
-                        title="avatar sample"
-                      />
-                      <CardContent className="card">
-                        <div className="card-header">
-                          <ShowSale isOnSale={data.saled}></ShowSale>
-                          <Like likeCnt={data.likeCount}></Like>
-                        </div>
-                        <div className="card-body">
-                          <div>{data.name}</div>
-                          <div>{data.price} SSF ~</div>
-                          <div className="line"></div>
-                          <div className="owner">
-                            <div>소유자</div>
-                            <div>{data.userNickname}</div>
+        {nftList.length > 0 ? (
+          <Link to="/detail">
+            <div className={classes.gridRoot}>
+              <ImageList
+                cellHeight={200}
+                className={classes.gridList}
+                spacing={10}
+              >
+                {nftList.map((data) => (
+                  <ImageListItem
+                    cols={1}
+                    style={{
+                      height: "auto",
+                      width: "450px",
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Card className={classes.root}>
+                      <CardActionArea>
+                        <CardMedia
+                          className={classes.media}
+                          image={data.tokenURI}
+                          title="avatar sample"
+                        />
+                        <CardContent className="card">
+                          <div className="card-header">
+                            <ShowSale isOnSale={data.saled}></ShowSale>
+                            <Like likeCnt={data.likeCount}></Like>
                           </div>
-                        </div>
-                      </CardContent>
-                    </CardActionArea>
-                  </Card>
-                </ImageListItem>
-              ))}
-            </ImageList>
-          </div>
-        </Link>
+                          <div className="card-body">
+                            <div>{data.name}</div>
+                            <div>{data.price} SSF ~</div>
+                            <div className="line"></div>
+                            <div className="owner">
+                              <div>소유자</div>
+                              <div>{data.userNickname}</div>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </CardActionArea>
+                    </Card>
+                  </ImageListItem>
+                ))}
+              </ImageList>
+            </div>
+          </Link>
+        ) : (
+          <div style={{ fontSize: "35px" }}>목록이 비었습니다.</div>
+        )}
       </div>
     </div>
   );

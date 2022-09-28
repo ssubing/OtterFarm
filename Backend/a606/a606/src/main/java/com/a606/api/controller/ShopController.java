@@ -40,7 +40,6 @@ public class ShopController {
     public ResponseEntity<?> myPage(@ApiIgnore Authentication authentication,
                                     @RequestBody @ApiParam(value = "입고 있는 아이템", required = true) AvatarDto avatarDto) throws Exception {
         if (authentication == null) return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-        System.out.println("test");
         User user = ((SudalUserDetails) authentication.getDetails()).getUser();
 
         // 중복 체크

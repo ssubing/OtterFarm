@@ -1,13 +1,11 @@
 package com.a606.api.service;
 
+import com.a606.api.dto.AppealDto;
 import com.a606.api.dto.BidBoardDto;
 import com.a606.api.dto.LogsDto;
 import com.a606.api.dto.NFTDto;
 import com.a606.db.entity.*;
-import com.a606.db.repository.AppealRepository;
-import com.a606.db.repository.BoardRepository;
-import com.a606.db.repository.NFTRepository;
-import com.a606.db.repository.UserRepository;
+import com.a606.db.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -35,10 +33,13 @@ public class BoardServiceImpl implements BoardService{
     UserRepository userRepository;
 
     @Autowired
+    LikesRepository likesRepository;
+
+    @Autowired
     ContractService contractService;
 
     @Override
-    public List<NFTDto> getNFTList(String tab, String order, boolean isDesc, int pageNo, int pageSize) throws Exception {
+    public List<NFTDto> getNFTList(User user, String tab, String order, boolean isDesc, int pageNo, int pageSize) throws Exception {
         String properties = "";
         switch (order) {
             case "likeCount":
@@ -78,15 +79,22 @@ public class BoardServiceImpl implements BoardService{
             nftDto.setName(nft.getName());
             nftDto.setLikeCount(nft.getLikeCount());
             nftDto.setTokenURI(contractService.getTokenURIbyTokenId(nft.getTokenId()));
+
+            if (user == null || !likesRepository.findByUserAndNft(user, nft).isPresent()){
+                nftDto.setLiked(false);
+            } else {
+                nftDto.setLiked(true);
+            }
+
             if (nftDto.isSaled()) {
                 // 가격 찾기
                 nftDto.setPrice("10000");
             }
             Optional<User> oUser = userRepository.findByWallet(contractService.getAddressbyTokenId(nft.getTokenId()));
             if (oUser.isPresent()) {
-                User user = oUser.get();
-                nftDto.setUserId(user.getId());
-                nftDto.setUserNickname(user.getNickname());
+                User wUser = oUser.get();
+                nftDto.setUserId(wUser.getId());
+                nftDto.setUserNickname(wUser.getNickname());
             } else {    // 유저 정보가 없을 떄
                 nftDto.setUserId(0l);
                 nftDto.setUserNickname("guest");
@@ -97,7 +105,7 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public NFTDto getNFTDetail(Long nftId) throws Exception {
+    public NFTDto getNFTDetail(User user, Long nftId) throws Exception {
         Optional<NFT> oNfts = nftRepository.findById(nftId);
         if (!oNfts.isPresent()) { return null; }
         NFT nft = oNfts.get();
@@ -108,15 +116,22 @@ public class BoardServiceImpl implements BoardService{
         nftDto.setName(nft.getName());
         nftDto.setLikeCount(nft.getLikeCount());
         nftDto.setTokenURI(contractService.getTokenURIbyTokenId(nft.getTokenId()));
+
+        if (user == null || !likesRepository.findByUserAndNft(user, nft).isPresent()){
+            nftDto.setLiked(false);
+        } else {
+            nftDto.setLiked(true);
+        }
+
         if (nftDto.isSaled()) {
             // 가격 찾기
             nftDto.setPrice("10000");
         }
         Optional<User> oUser = userRepository.findByWallet(contractService.getAddressbyTokenId(nft.getTokenId()));
         if (oUser.isPresent()) {
-            User user = oUser.get();
-            nftDto.setUserId(user.getId());
-            nftDto.setUserNickname(user.getNickname());
+            User wUser = oUser.get();
+            nftDto.setUserId(wUser.getId());
+            nftDto.setUserNickname(wUser.getNickname());
         } else {    // 유저 정보가 없을 떄
             nftDto.setUserId(0l);
             nftDto.setUserNickname("guest");
@@ -156,5 +171,36 @@ public class BoardServiceImpl implements BoardService{
             logsDtos.add(new LogsDto(appeal.getDate(), appeal.getPrice()));
         }
         return logsDtos;
+    }
+
+    @Override
+    public Appeal createAppeals(User user, AppealDto appealDto) {
+        Appeal appeal = new Appeal();
+        appeal.setUser(user);
+        appeal.setNft(nftRepository.findById(appealDto.getNftId()).get());
+        appeal.setPrice(appealDto.getPrice());
+        appeal.setDate(LocalDateTime.now());
+        Appeal newAppeal = new Appeal();
+        newAppeal = appealRepository.save(appeal);
+        return newAppeal;
+    }
+
+    @Override
+    public Boolean clickLikes(User user, Long nftId) {
+        Optional<NFT> oNft = nftRepository.findById(nftId);
+        if (!oNft.isPresent()) {
+            return false;
+        }
+        NFT nft = oNft.get();
+        Optional<Likes> oLikes = likesRepository.findByUserAndNft(user, nft);
+        if (oLikes.isPresent()) {
+            likesRepository.delete(oLikes.get());
+        } else {
+            Likes likes = new Likes();
+            likes.setUser(user);
+            likes.setNft(nft);
+            likesRepository.save(likes);
+        }
+        return null;
     }
 }

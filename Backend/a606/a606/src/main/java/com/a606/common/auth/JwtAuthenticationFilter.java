@@ -2,6 +2,7 @@ package com.a606.common.auth;
 
 import com.a606.api.service.UserService;
 import com.a606.common.util.JwtTokenUtil;
+import com.a606.common.util.ResponseBodyWriteUtil;
 import com.a606.common.util.SudalUserDetails;
 import com.a606.db.entity.User;
 import com.auth0.jwt.JWTVerifier;
@@ -48,7 +49,7 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
             // jwt 토큰으로 부터 획득한 인증 정보(authentication) 설정.
             SecurityContextHolder.getContext().setAuthentication(authentication);
         } catch (Exception ex) {
-//            ResponseBodyWriteUtil.sendError(request, response, ex);
+            ResponseBodyWriteUtil.sendError(request, response, ex);
             return;
         }
         

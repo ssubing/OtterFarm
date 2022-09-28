@@ -30,76 +30,6 @@ public class ShopServiceImpl implements ShopService{
     ContractService contractService;
 
     @Override
-    public List<InventoryDto> getInventory(long userId) {
-        List<Inventory> list = inventoryRepository.findAll();
-        List<InventoryDto> result = new ArrayList<>();
-        for(int i = 0; i < list.size(); i++) {
-            if(list.get(i).getId() == userId) {
-                InventoryDto inventoryDto = new InventoryDto();
-                inventoryDto.setId(list.get(i).getId());
-                inventoryDto.setItem(list.get(i).getItem());
-                inventoryDto.setNumber(list.get(i).getNumber());
-                inventoryDto.setUserId(userId);
-
-                result.add(inventoryDto);
-            }
-        }
-        return result;
-    }
-
-    @Override
-    public ItemDto getRandomItem() {
-        List<Item> list = itemRepository.findAll();
-        int size = list.size();
-        Random rd = new Random();
-        int randomId = rd.nextInt(size);
-
-        Item item = itemRepository.findById((long) randomId).get();
-        ItemDto itemDto = new ItemDto();
-        itemDto.setId(item.getId());
-        itemDto.setType(item.getType());
-        itemDto.setNumber(item.getNumber());
-        itemDto.setRgb(item.getRgb());
-
-
-        return itemDto;
-    }
-
-    @Override
-    public List<InventoryDto> updateInventory(long userId, ItemDto itemDto) {
-        List<Inventory> list = inventoryRepository.findAll();
-        Item item = itemRepository.findById(itemDto.getId()).get();
-        boolean isInInventory = false;
-        List<InventoryDto> result = new ArrayList<>();
-        for(int i = 0; i < list.size(); i++) {
-            if(list.get(i).getId() == userId) {
-                if(list.get(i).getItem().equals(item)) {
-                    list.get(i).setNumber(list.get(i).getNumber()+1);
-                    inventoryRepository.save(list.get(i));
-                    isInInventory = true;
-                }
-                InventoryDto inventoryDto = new InventoryDto();
-                inventoryDto.setId(list.get(i).getId());
-                inventoryDto.setItem(list.get(i).getItem());
-                inventoryDto.setNumber(list.get(i).getNumber());
-                inventoryDto.setUserId(userId);
-
-
-                result.add(inventoryDto);
-            }
-        }
-        if(isInInventory) return result;
-        else {
-            Inventory inventory = new Inventory();
-            inventory.setUser(userRepository.findById(userId).get());
-            inventory.setItem(item);
-            inventory.setNumber(1);
-            inventoryRepository.save(inventory);
-        }
-        return result;
-    }
-
-    @Override
     public Long checkDuplicated(long head, long eyes, long mouth, long hands, long fashion) {
         Optional<IssuedAvatar> issuedAvatar = issuedAvatarRepository.findByHeadAndEyesAndMouthAndHandsAndFashion(head, eyes, mouth, hands, fashion);
         if(issuedAvatar.isPresent()){
@@ -120,7 +50,7 @@ public class ShopServiceImpl implements ShopService{
 
             // item을 보유하고 있지 않은 경우
             Optional<Inventory> inventory = inventoryRepository.findByUserAndItem(user, item.get());
-            if(!inventory.isPresent() || inventory.get().getNumber() < 1){ return false; }
+            if(!inventory.isPresent() || inventory.get().getHowMany() < 1){ return false; }
             System.out.println(type + " clear");
         }
         return true;
@@ -129,14 +59,15 @@ public class ShopServiceImpl implements ShopService{
     @Override
     public Long createNFT(User user, List<Long> itemIds, String tokenURI, String name) throws Exception {
         StringBuilder stringBuilder = new StringBuilder();
-        for(Long itemId : itemIds){
-            Item item = itemRepository.findById(itemId).get();
-            Inventory inventory = inventoryRepository.findByUserAndItem(user, item).get();
-            inventory.setNumber(inventory.getNumber() - 1);
-            inventoryRepository.save(inventory);
-            stringBuilder.append(String.format("%02d", item.getNumber())).append(String.format("%02d", item.getRgb()));
-        }
-        System.out.println("dna : " + stringBuilder.toString());
+        // 테스트 동안 주석
+//        for(Long itemId : itemIds){
+//            Item item = itemRepository.findById(itemId).get();
+//            Inventory inventory = inventoryRepository.findByUserAndItem(user, item).get();
+//            inventory.setHowMany(inventory.getHowMany() - 1);
+//            inventoryRepository.save(inventory);
+//            stringBuilder.append(String.format("%02d", item.getNumber())).append(String.format("%02d", item.getRgb()));
+//        }
+        stringBuilder.append("010101"); // 테스트 용 코드
         String tokenId = contractService.createNFT(user.getWallet(), stringBuilder.toString(), tokenURI);
         if (tokenId.equals("")) {
             return null;

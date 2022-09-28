@@ -104,6 +104,7 @@ public class ContractServiceImpl implements ContractService{
         FastRawTransactionManager manager = new FastRawTransactionManager(web3j, credentials,
                 new PollingTransactionReceiptProcessor(web3j, 3000, 3));
 
+
         SudalFarm sudalFarm = SudalFarm.load(contract, web3j, manager, gasProvider);
 
         TransactionReceipt transactionReceipt = sudalFarm.createSudal(toAddress, new BigInteger(sudalDNA), tokenURI).send();

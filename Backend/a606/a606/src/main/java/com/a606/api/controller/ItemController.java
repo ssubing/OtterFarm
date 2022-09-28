@@ -1,8 +1,12 @@
 package com.a606.api.controller;
 
+import com.a606.api.dto.InventoryDto;
 import com.a606.api.dto.ItemDto;
+import com.a606.api.service.InventoryService;
 import com.a606.api.service.ItemService;
+import com.a606.common.util.SudalUserDetails;
 import com.a606.db.entity.Item;
+import com.a606.db.entity.User;
 import com.a606.db.repository.ItemRepository;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +14,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
 
@@ -22,6 +28,8 @@ import java.util.List;
 public class ItemController {
     @Autowired
     private final ItemService itemService;
+    @Autowired
+    private final InventoryService inventoryService;
 
     //C
     @PostMapping("item")
@@ -46,9 +54,23 @@ public class ItemController {
     }
 
     @GetMapping("item/{type}")
-    public ResponseEntity<ItemDto> getRandomItem(@PathVariable int type) {
-        return new ResponseEntity<ItemDto>(itemService.getRandomItem(type), HttpStatus.OK);
+    public ResponseEntity<ItemDto> getRandomItem(@ApiIgnore Authentication authentication, @PathVariable int type) {
+        if (authentication == null) return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+        User user = ((SudalUserDetails) authentication.getDetails()).getUser();
+        ItemDto itemDto = itemService.getRandomItem(type);
+        inventoryService.insertNewItem(user, itemService.getItem(itemDto.getId()));
+
+        return new ResponseEntity<ItemDto>(itemDto, HttpStatus.OK);
     }
+
+    @GetMapping("item/inventory")
+    public ResponseEntity<List<InventoryDto>> getInventory(@ApiIgnore Authentication authentication) {
+        if (authentication == null) return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+        User user = ((SudalUserDetails) authentication.getDetails()).getUser();
+
+        return new ResponseEntity<List<InventoryDto>>(inventoryService.getInventory(user), HttpStatus.OK);
+    }
+
 
 //    @GetMapping("item/test/inputRandom10Items")
 //    public void inputRandom10Items() {

@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Shop.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
+import shop from "../../api/shop";
+import { useDispatch, useSelector } from "react-redux";
+import { setNftList } from "../../store/modules/shop";
 
 // tab
 import AppBar from "@material-ui/core/AppBar";
@@ -19,52 +22,14 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import avatar from "../../assets/images/otter.png";
-import GridList from "@material-ui/core/GridList";
-import GridListTile from "@material-ui/core/GridListTile";
+import ImageList from "@material-ui/core/ImageList";
+import ImageListItem from "@material-ui/core/ImageListItem";
 
 // components
 import Navbar from "../../components/Navbar/Navbar";
 import ShowSale from "../../components/Card/ShowSale";
 import Like from "../../components/Card/Like";
-
-const datas = [
-  {
-    img: avatar,
-    isOnSale: true,
-    title: "벌크업 수달",
-    price: "0.04",
-    owner: "수빙수",
-  },
-  {
-    img: avatar,
-    isOnSale: false,
-    title: "벌크업 수달",
-    price: "0.04",
-    owner: "수빙수",
-  },
-  {
-    img: avatar,
-    isOnSale: true,
-    title: "벌크업 수달",
-    price: "0.04",
-    owner: "수빙수",
-  },
-  {
-    img: avatar,
-    isOnSale: true,
-    title: "벌크업 수달",
-    price: "0.04",
-    owner: "수빙수",
-  },
-  {
-    img: avatar,
-    isOnSale: true,
-    title: "벌크업 수달",
-    price: "0.04",
-    owner: "수빙수",
-  },
-];
+import { List } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -116,6 +81,9 @@ const useStyles = makeStyles((theme) => ({
 function Shop() {
   const classes = useStyles();
   const [order, setOrder] = useState("");
+  const nftList = useSelector((state: any) => state.nftList);
+  const dispatch = useDispatch();
+  // const [nftList, setNftList] = useState([]);
 
   const handleOrder = (event) => {
     setOrder(event.target.value);
@@ -125,8 +93,26 @@ function Shop() {
 
   const handleTab = (event, newValue) => {
     setValue(newValue);
-    // alert(newValue);
   };
+
+  useEffect(() => {
+    const params = {
+      isDesc: false,
+      order: "id",
+      pageNo: 1,
+      pageSize: 15,
+      tab: "all",
+    };
+    shop
+      .nftList(params)
+      .then((result) => {
+        dispatch(setNftList(result.data));
+        // setNftList(result.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <div>
@@ -173,9 +159,13 @@ function Shop() {
         {/* NFT 카드 */}
         <Link to="/detail">
           <div className={classes.gridRoot}>
-            <GridList cellHeight={200} className={classes.gridList} spacing={10}>
-              {datas.map((data) => (
-                <GridListTile
+            <ImageList
+              cellHeight={200}
+              className={classes.gridList}
+              spacing={10}
+            >
+              {nftList.map((data) => (
+                <ImageListItem
                   cols={1}
                   style={{
                     height: "auto",
@@ -188,29 +178,29 @@ function Shop() {
                     <CardActionArea>
                       <CardMedia
                         className={classes.media}
-                        image={data.img}
+                        image={data.tokenURI}
                         title="avatar sample"
                       />
                       <CardContent className="card">
                         <div className="card-header">
-                          <ShowSale isOnSale={data.isOnSale}></ShowSale>
-                          <Like likeCnt={10}></Like>
+                          <ShowSale isOnSale={data.saled}></ShowSale>
+                          <Like likeCnt={data.likeCount}></Like>
                         </div>
                         <div className="card-body">
-                          <div>{data.title}</div>
+                          <div>{data.name}</div>
                           <div>{data.price} SSF ~</div>
                           <div className="line"></div>
                           <div className="owner">
                             <div>소유자</div>
-                            <div>{data.owner}</div>
+                            <div>{data.userNickname}</div>
                           </div>
                         </div>
                       </CardContent>
                     </CardActionArea>
                   </Card>
-                </GridListTile>
+                </ImageListItem>
               ))}
-            </GridList>
+            </ImageList>
           </div>
         </Link>
       </div>

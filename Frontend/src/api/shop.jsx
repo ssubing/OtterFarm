@@ -10,6 +10,18 @@ const shop = {
       params: params,
     });
   },
+  nftDetailOne(params) {
+    return api({
+      method: "get",
+      url: `${END_POINT}/details/${params}`
+    })
+  },
+  nftUnsoldOne(params) {
+    return api({
+      method: "get",
+      url: `${END_POINT}/appeal/${params}`
+    })
+  }
 };
 
 export default shop;

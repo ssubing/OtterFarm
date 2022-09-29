@@ -9,9 +9,11 @@ import Game from "./pages/Game/Game";
 import Guide from "./pages/Guide/Guide";
 import AvatarDetail from "./pages/Avatar/AvatarDetail";
 import Noti from "./pages/Noti/Noti";
+import CardGame from "./components/CardGame/CardGame"
 import Issue from "./pages/Issue/Issue";
 import Test from "./pages/test";
 import FallingGame from "./pages/FallingGame/FallingGame";
+
 function App() {
   return (
     <Router>
@@ -24,6 +26,7 @@ function App() {
         <Route path="/guide" element={<Guide />} />
         <Route path="/detail" element={<AvatarDetail />} />
         <Route path="/noti" element={<Noti />}></Route>
+        <Route path="/cardGame" element={<CardGame />}></Route>
         <Route path="/issue" element={<Issue />} />
         <Route path="/test/" element={<Test/>}/>
       </Routes>

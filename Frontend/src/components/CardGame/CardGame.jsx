@@ -11,7 +11,6 @@ import card08 from '../../assets/images/CardGame/card08.png'
 import card09 from '../../assets/images/CardGame/card09.png'
 
 import start from '../../assets/images/CardGame/start.png'
-import end2 from '../../assets/images/CardGame/end.png'
 import comment from '../../assets/images/CardGame/comment.png'
 import back from '../../assets/images/CardGame/back.png'
 
@@ -157,7 +156,6 @@ function CardGame() {
                             <button className="card-end-btn">다시하기</button>
                         </div>
                         <img className="end-comment"src={comment} alt="끝"/>
-                        {/* <img src={end2} alt="시작전"/> */}
                     </div>
                 </div>
             )

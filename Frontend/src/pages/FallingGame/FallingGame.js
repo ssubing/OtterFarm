@@ -1,5 +1,12 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useContext,
+} from "react";
 import { useRecoilState } from "recoil";
+import { TransactionContext } from "../../context/TransactionContext";
 import {
   TYPES,
   SPEED_STEP,
@@ -18,6 +25,7 @@ import "./FallingGame.css";
 import Header from "../../components/GameHeader/GameHeader";
 import otter from "../../assets/images/otter-basket.png";
 import Button from "@material-ui/core/Button";
+import game from "../../api/game";
 
 const FallingGame = () => {
   const [dots, updateDots] = useRecoilState(dotsState);
@@ -25,6 +33,7 @@ const FallingGame = () => {
   const [time, setTime] = useRecoilState(timeState);
   const [score, setScore] = useState(0);
   const [showGuide, setGuide] = useState(false);
+  const { currentAccount } = useContext(TransactionContext);
   const intervalRef = useRef();
   const fieldRef = useRef();
   const requestRef = useRef();
@@ -144,7 +153,7 @@ const FallingGame = () => {
 
   // 1초씩 제한시간 감소
   useEffect(() => {
-    if (controlState.isRunning) {
+    if (controlState.isRunning && time > 0) {
       const interval = setInterval(() => {
         setTime(time - 1);
       }, 1000);
@@ -157,6 +166,16 @@ const FallingGame = () => {
   const handleGuide = () => {
     setGuide(true);
   };
+
+  // 게임 포인트 저장
+  useEffect(() => {
+    if (time <= 0 && currentAccount) {
+      game
+        .sendPoint(score)
+        .then((result) => console.log(result))
+        .catch((error) => console.log(error));
+    }
+  }, [time]);
 
   return (
     <div className="falling-game">

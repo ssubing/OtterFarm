@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Shop.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
+import shop from "../../api/shop";
+import { useDispatch, useSelector } from "react-redux";
+import { setNftList } from "../../store/modules/shop";
 
 // tab
 import AppBar from "@material-ui/core/AppBar";
@@ -19,52 +22,14 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import avatar from "../../assets/images/otter.png";
-import GridList from "@material-ui/core/GridList";
-import GridListTile from "@material-ui/core/GridListTile";
+import ImageList from "@material-ui/core/ImageList";
+import ImageListItem from "@material-ui/core/ImageListItem";
 
 // components
 import Navbar from "../../components/Navbar/Navbar";
 import ShowSale from "../../components/Card/ShowSale";
 import Like from "../../components/Card/Like";
-
-const datas = [
-  {
-    img: avatar,
-    isOnSale: true,
-    title: "벌크업 수달",
-    price: "0.04",
-    owner: "수빙수",
-  },
-  {
-    img: avatar,
-    isOnSale: false,
-    title: "벌크업 수달",
-    price: "0.04",
-    owner: "수빙수",
-  },
-  {
-    img: avatar,
-    isOnSale: true,
-    title: "벌크업 수달",
-    price: "0.04",
-    owner: "수빙수",
-  },
-  {
-    img: avatar,
-    isOnSale: true,
-    title: "벌크업 수달",
-    price: "0.04",
-    owner: "수빙수",
-  },
-  {
-    img: avatar,
-    isOnSale: true,
-    title: "벌크업 수달",
-    price: "0.04",
-    owner: "수빙수",
-  },
-];
+import { List } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -116,17 +81,95 @@ const useStyles = makeStyles((theme) => ({
 function Shop() {
   const classes = useStyles();
   const [order, setOrder] = useState("");
+  const nftList = useSelector((state: any) => state.nftList);
+  const dispatch = useDispatch();
+  // const [nftList, setNftList] = useState([]);
+  let currentTab = "all";
+  let currentOrder = "id";
 
   const handleOrder = (event) => {
     setOrder(event.target.value);
+    // console.log(event.target.value);
+    const params = {
+      isDesc: false,
+      order: "",
+      pageNo: 1,
+      pageSize: 15,
+      tab: currentTab,
+    };
+    switch (event.target.value) {
+      case "likeCount":
+        params.order = currentOrder = "likeCount";
+        break;
+      case "id":
+        params.order = currentOrder = "id";
+        break;
+      default:
+        break;
+    }
+    shop
+      .nftList(params)
+      .then((result) => {
+        dispatch(setNftList(result.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const [value, setValue] = useState(0);
 
   const handleTab = (event, newValue) => {
     setValue(newValue);
-    // alert(newValue);
+    // console.log(newValue);
+    const params = {
+      isDesc: false,
+      order: currentOrder,
+      pageNo: 1,
+      pageSize: 15,
+      tab: "",
+    };
+    switch (newValue) {
+      case 0:
+        params.tab = currentTab = "all";
+        break;
+      case 1:
+        params.tab = currentTab = "saled";
+        break;
+      case 2:
+        params.tab = currentTab = "unsaled";
+        break;
+      default:
+        break;
+    }
+    shop
+      .nftList(params)
+      .then((result) => {
+        dispatch(setNftList(result.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
+
+  useEffect(() => {
+    const params = {
+      isDesc: false,
+      order: currentOrder,
+      pageNo: 1,
+      pageSize: 15,
+      tab: currentTab,
+    };
+    shop
+      .nftList(params)
+      .then((result) => {
+        dispatch(setNftList(result.data));
+        // setNftList(result.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <div>
@@ -163,56 +206,63 @@ function Shop() {
                 onChange={handleOrder}
                 label="order"
               >
-                <MenuItem value={10}>좋아요순</MenuItem>
-                <MenuItem value={20}>높은 가격순</MenuItem>
-                <MenuItem value={30}>최신 등록순</MenuItem>
+                <MenuItem value={"likeCount"}>좋아요순</MenuItem>
+                <MenuItem value={"id"}>최신 등록순</MenuItem>
               </Select>
             </FormControl>
           </div>
         </div>
         {/* NFT 카드 */}
-        <Link to="/detail">
-          <div className={classes.gridRoot}>
-            <GridList cellHeight={200} className={classes.gridList} spacing={10}>
-              {datas.map((data) => (
-                <GridListTile
-                  cols={1}
-                  style={{
-                    height: "auto",
-                    width: "450px",
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Card className={classes.root}>
-                    <CardActionArea>
-                      <CardMedia
-                        className={classes.media}
-                        image={data.img}
-                        title="avatar sample"
-                      />
-                      <CardContent className="card">
-                        <div className="card-header">
-                          <ShowSale isOnSale={data.isOnSale}></ShowSale>
-                          <Like likeCnt={10}></Like>
-                        </div>
-                        <div className="card-body">
-                          <div>{data.title}</div>
-                          <div>{data.price} SSF ~</div>
-                          <div className="line"></div>
-                          <div className="owner">
-                            <div>소유자</div>
-                            <div>{data.owner}</div>
+        {nftList.length > 0 ? (
+          <Link to="/detail">
+            <div className={classes.gridRoot}>
+              <ImageList
+                cellHeight={200}
+                className={classes.gridList}
+                spacing={10}
+              >
+                {nftList.map((data) => (
+                  <ImageListItem
+                    cols={1}
+                    style={{
+                      height: "auto",
+                      width: "450px",
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Card className={classes.root}>
+                      <CardActionArea>
+                        <CardMedia
+                          className={classes.media}
+                          image={data.tokenURI}
+                          title="avatar sample"
+                        />
+                        <CardContent className="card">
+                          <div className="card-header">
+                            <ShowSale isOnSale={data.saled}></ShowSale>
+                            <Like likeCnt={data.likeCount}></Like>
                           </div>
-                        </div>
-                      </CardContent>
-                    </CardActionArea>
-                  </Card>
-                </GridListTile>
-              ))}
-            </GridList>
-          </div>
-        </Link>
+                          <div className="card-body">
+                            <div>{data.name}</div>
+                            <div>{data.price} SSF ~</div>
+                            <div className="line"></div>
+                            <div className="owner">
+                              <div>소유자</div>
+                              <div>{data.userNickname}</div>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </CardActionArea>
+                    </Card>
+                  </ImageListItem>
+                ))}
+              </ImageList>
+            </div>
+          </Link>
+        ) : (
+          <div style={{ fontSize: "35px" }}>목록이 비었습니다.</div>
+        )}
       </div>
     </div>
   );

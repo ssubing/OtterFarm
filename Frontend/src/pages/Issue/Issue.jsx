@@ -4,28 +4,28 @@ import { Buffer } from "buffer";
 import "./Issue.css";
 import { create } from "ipfs-http-client";
 
-
 // import ipfsApi from "ipfs-api";
 import html2canvas from "html2canvas";
-import { internal_processStyles } from "@mui/styled-engine";
+// import { internal_processStyles } from "@mui/styled-engine";
 function Issue() {
-
   let imgUrl = JSON.parse(window.localStorage.getItem("nft")).split(",")[1];
-  const dataURLtoFile=(dataurl, fileName)=> {
-    let arr = dataurl.split(',') ,
-    mime = arr[0].match(/:(.*?);/)[1],
-    bstr = atob(arr[1]),
-    n = bstr.length,
-    u8arr = new Uint8Array(n);
+  const dataURLtoFile = (dataurl, fileName) => {
+    let arr = dataurl.split(","),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
 
-    while(n--){
+    while (n--) {
       u8arr[n] = bstr.charCodeAt(n);
     }
-    return new File([u8arr], fileName, {type:mime});
+    return new File([u8arr], fileName, { type: mime });
+  };
+  let file = dataURLtoFile(
+    JSON.parse(window.localStorage.getItem("nft")),
+    "otterNft.png"
+  );
 
-  }
-  let file = dataURLtoFile(JSON.parse(window.localStorage.getItem("nft")),"otterNft.png");
-  
   const [disabled, setDisabled] = useState(false);
   const disableHandler = () => {
     if (disabled) {
@@ -55,30 +55,28 @@ function Issue() {
   };
   const projectId = "2FHqbLTE55XfCP0BjQ8er0prKtE";
   const projectSecret = "0291ff7b1c1bd3704962f9cd27e9fba8";
-  const auth = 'Basic ' +Buffer.from(projectId+':'+projectSecret).toString('base64')
+  const auth =
+    "Basic " + Buffer.from(projectId + ":" + projectSecret).toString("base64");
   const client = create({
-    host:"ipfs.infura.io",
-    port:5001,
-    protocol:"https",
-    apiPath:"/api/v0",
-    headers:{
-        authorization:auth,
-    }
-  })
+    host: "ipfs.infura.io",
+    port: 5001,
+    protocol: "https",
+    apiPath: "/api/v0",
+    headers: {
+      authorization: auth,
+    },
+  });
+
   const handleSubmit = async (e) => {
-  console.log(auth)
-
-      try{
-        const created = await client.add(file);
-        const url = `https://www.infura-ipfs.io/ipfs/${created.path}`;
-        console.log(url)
-      }
-      catch(error){
-        console.log(error)
-      }
-
-      
-    
+    console.log(auth);
+    console.log(name, price, date, sale);
+    try {
+      const created = await client.add(file);
+      const url = `https://www.infura-ipfs.io/ipfs/${created.path}`;
+      console.log(url);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const makenft = async () => {
     await html2canvas(document.getElementById("comp")).then((canvas) => {
@@ -99,12 +97,23 @@ function Issue() {
     });
   };
 
-  
-  
   // let ipfs = ipfsApi("localhost", "5001", { protocol: "https" });
   const [saleDisabled, setSaleDisabled] = useState(true);
   const [selected, setSelected] = useState(true);
   const [notSaleDisabled, setNotSaleDisabled] = useState(false);
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [date, setDate] = useState();
+  const [sale, setSale] = useState(true);
+  const handleName = (e) => {
+    setName(e.target.value);
+  };
+  const handelPrice = (e) => {
+    setPrice(e.target.value);
+  };
+  const handleDate = (e) => {
+    setDate(e.target.value);
+  };
   return (
     <div>
       <Navbar />
@@ -122,7 +131,7 @@ function Issue() {
           <span>컨트랙트주소</span>
         </div>
         <div className="setting">
-          <form className="forsale" onSubmit={handleSubmit()}>
+          <form className="forsale" onSubmit={handleSubmit}>
             <div className="saleornot">
               <input
                 id="ForSale"
@@ -135,6 +144,7 @@ function Issue() {
                   setSaleDisabled(!saleDisabled);
                   disableHandler();
                   setNotSaleDisabled(!notSaleDisabled);
+                  setSale(true);
                 }}
                 disabled={saleDisabled}
               />
@@ -148,11 +158,12 @@ function Issue() {
                 type="checkbox"
                 style={{ scale: "2", marginLeft: "7%", cursor: "pointer" }}
                 value="false"
-                onClick={() => {
+                onChange={() => {
                   disableHandler();
                   setSelected(!selected);
                   setSaleDisabled(!saleDisabled);
                   setNotSaleDisabled(!notSaleDisabled);
+                  setSale(false);
                 }}
                 disabled={notSaleDisabled}
                 checked={!selected}
@@ -168,7 +179,8 @@ function Issue() {
                 type="text"
                 placeholder="이름"
                 style={{ width: "50%", marginTop: "5%", height: "4vh" }}
-                disabled={disabled}
+                onChange={handleName}
+                required
               />
             </div>
             <input
@@ -178,6 +190,8 @@ function Issue() {
               placeholder="분양가(SSF)"
               style={{ width: "50%", marginTop: "5%", height: "4vh" }}
               disabled={disabled}
+              onChange={handelPrice}
+              required
             />
             <div style={{ display: "flex", alignItems: "center" }}>
               <label
@@ -199,6 +213,8 @@ function Issue() {
                   cursor: "pointer",
                 }}
                 disabled={disabled}
+                onChange={handleDate}
+                required
               />
             </div>
             <button

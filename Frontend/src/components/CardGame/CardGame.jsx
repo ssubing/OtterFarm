@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import card01 from '../../assets/images/CardGame/card01.png'
 import card02 from '../../assets/images/CardGame/card02.png'
@@ -11,14 +11,19 @@ import card08 from '../../assets/images/CardGame/card08.png'
 import card09 from '../../assets/images/CardGame/card09.png'
 
 import start from '../../assets/images/CardGame/start.png'
+import end2 from '../../assets/images/CardGame/end.png'
+import comment from '../../assets/images/CardGame/comment.png'
+import back from '../../assets/images/CardGame/back.png'
 
 import "./CardGame.css"
 
 function CardGame() {
-    //점수
+    //게임 점수
     const [score, setScore] = useState(0)
-    //맞힌 카드 개수
-    // const [cardNum, setCardNum] = useState(0)
+    //카드 개수
+    const [cardCount, setCardCount] = useState(0)
+    //수달머니
+    const [money, setMoney] = useState(0)
     //카드 목록
     const cardList = [
         card01, card01,
@@ -63,25 +68,29 @@ function CardGame() {
         }
         return result
     }
-    const cardRef = useRef()
+
     //시작할 경우 카드를 잠깐 보여줘야 한다
     function cardGameStart() {
         setStartFlag(true)
     }
 
+    let count = 0;
     let cardNum = 0;
+
     useEffect(() => {
-        if(startFlag === true) {
+        if(startFlag === true && cardCount !== 9) {
             const test = document.querySelector('.card-game-flex')
-            console.log(test.childNodes[0].childNodes[0])
             for(let i = 0; i < 18; i++) {
+                //카드를 공개(add)했다가 숨긴다(remove)
                 setTimeout(() => {
                     test.childNodes[i].childNodes[0].classList.remove("flip-front")
                 }, 2800);
                 test.childNodes[i].childNodes[0].classList.add("flip-front")
             }
         }
+        
     })
+
     //카드 클릭했을 경우
     function cardClick(e) {
         let imgClass = e.target.nextSibling.classList[1]
@@ -100,8 +109,14 @@ function CardGame() {
             if(cardSrc && cardSrc2 && cardSrc === cardSrc2) {
                 cardSrc = cardSrc2 = ''
                 cardNum += 1;
-                // setScore((prev) => prev + 50);
-                // setScore(score + 50)
+                count += 100;
+                if(cardNum === 9) {
+                    setTimeout(() => {
+                        setScore(count)
+                        setCardCount(cardNum)
+                        setMoney(count * 0.05)
+                    }, 300);
+                }
             }
             //두 카드가 같은 카드가 아닐 경우
             else if(cardSrc && cardSrc2 && cardSrc !== cardSrc2) {
@@ -111,8 +126,11 @@ function CardGame() {
                     openCard2.parentElement.classList.remove("flip-front")
                     //선택한 카드 초기화
                     //이미 선택한 카드가 뒤집어질때까지 다른 카드를 선택할 수 없게 한다
+                    
                     cardSrc = cardSrc2 = ''
                 }, 400);
+                count -= 40;
+                console.log("점수 : " + count)
             }
         }
     }
@@ -120,7 +138,7 @@ function CardGame() {
         return(
             <div>
                 <h1>같은 수달 찾기</h1>
-                <div className="card-game-before" ref={cardRef}>
+                <div className="card-game-before">
                     <button className="card-start-btn" onClick={cardGameStart}>시작하기</button>
                     <img src={start} alt="시작전"/>
                 </div>
@@ -128,17 +146,34 @@ function CardGame() {
         )
     }
     else {
-        return(
-            <div>
-                <h1>같은 수달 찾기</h1>
-                <h4>점수 : {score}</h4>
-                <div className="card-game-wrap" ref={cardRef}>
-                    <div className="card-game-flex">
-                        {cardSetting()}
+        if(cardCount === 9) {
+            return(
+                <div>
+                    <h1>같은 수달 찾기</h1>
+                    <div className="card-game-after">
+                        <div className="card-end">
+                            <p>점수 : {score}</p>
+                            <p>획득 수달머니 : {money}</p>
+                            <button className="card-end-btn">다시하기</button>
+                        </div>
+                        <img className="end-comment"src={comment} alt="끝"/>
+                        {/* <img src={end2} alt="시작전"/> */}
                     </div>
                 </div>
-            </div>
-        )
+            )
+        }
+        else {
+            return(
+                <div>
+                    <h1>같은 수달 찾기</h1>
+                    <div className="card-game-wrap">
+                        <div className="card-game-flex">
+                            {cardSetting()}
+                        </div>
+                    </div>
+                </div>
+            )
+        }
     }
 }
 

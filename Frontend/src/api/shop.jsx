@@ -15,6 +15,12 @@ const shop = {
       method: "get",
       url: `${END_POINT}/details/${params}`
     })
+  },
+  nftUnsoldOne(params) {
+    return api({
+      method: "get",
+      url: `${END_POINT}/appeal/${params}`
+    })
   }
 };
 

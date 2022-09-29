@@ -81,17 +81,19 @@ const useStyles = makeStyles((theme) => ({
 function Shop() {
   const classes = useStyles();
   const [order, setOrder] = useState("");
+  const [value, setValue] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const nftList = useSelector((state: any) => state.nftList);
-  const dispatch = useDispatch();
   // const [nftList, setNftList] = useState([]);
-  let currentTab = "all";
-  let currentOrder = "id";
+  const dispatch = useDispatch();
+  const [currentTab, setCurrentTab] = useState("all");
+  const [currentOrder, setCurrentOrder] = useState("id");
 
+  // 오른쪽 정렬 순서
   const handleOrder = (event) => {
     setOrder(event.target.value);
-    // console.log(event.target.value);
     const params = {
-      isDesc: false,
+      isDesc: true,
       order: "",
       pageNo: 1,
       pageSize: 15,
@@ -99,14 +101,17 @@ function Shop() {
     };
     switch (event.target.value) {
       case "likeCount":
-        params.order = currentOrder = "likeCount";
+        params.order = "likeCount";
+        setCurrentOrder("likeCount");
         break;
       case "id":
-        params.order = currentOrder = "id";
+        params.order = "id";
+        setCurrentOrder("id");
         break;
       default:
         break;
     }
+    console.log(currentOrder);
     shop
       .nftList(params)
       .then((result) => {
@@ -117,13 +122,12 @@ function Shop() {
       });
   };
 
-  const [value, setValue] = useState(0);
-
+  // 왼쪽 탭
   const handleTab = (event, newValue) => {
     setValue(newValue);
-    // console.log(newValue);
+    console.log(currentOrder);
     const params = {
-      isDesc: false,
+      isDesc: true,
       order: currentOrder,
       pageNo: 1,
       pageSize: 15,
@@ -131,13 +135,16 @@ function Shop() {
     };
     switch (newValue) {
       case 0:
-        params.tab = currentTab = "all";
+        params.tab = "all";
+        setCurrentTab("all");
         break;
       case 1:
-        params.tab = currentTab = "saled";
+        params.tab = "saled";
+        setCurrentTab("saled");
         break;
       case 2:
-        params.tab = currentTab = "unsaled";
+        params.tab = "unsaled";
+        setCurrentTab("unsaled");
         break;
       default:
         break;
@@ -152,9 +159,13 @@ function Shop() {
       });
   };
 
+  const handlePage = (event, value) => {
+    setCurrentPage(value);
+  };
+
   useEffect(() => {
     const params = {
-      isDesc: false,
+      isDesc: true,
       order: currentOrder,
       pageNo: 1,
       pageSize: 15,
@@ -164,7 +175,6 @@ function Shop() {
       .nftList(params)
       .then((result) => {
         dispatch(setNftList(result.data));
-        // setNftList(result.data);
       })
       .catch((error) => {
         console.log(error);

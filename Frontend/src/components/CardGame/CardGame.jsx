@@ -13,6 +13,9 @@ import card09 from '../../assets/images/CardGame/card09.png'
 import start from '../../assets/images/CardGame/start.png'
 import comment from '../../assets/images/CardGame/comment.png'
 import back from '../../assets/images/CardGame/back.png'
+import Header from "../../components/GameHeader/GameHeader";
+
+import Button from "@material-ui/core/Button";
 
 import "./CardGame.css"
 
@@ -135,10 +138,26 @@ function CardGame() {
     }
     if(!startFlag) { 
         return(
-            <div>
-                <h1>같은 수달 찾기</h1>
+            <div className="card-game-box">
+                <Header title={"같은 수달 찾기"} />
+                {/* <h1>같은 수달 찾기</h1> */}
                 <div className="card-game-before">
-                    <button className="card-start-btn" onClick={cardGameStart}>시작하기</button>
+                    <Button
+                        style={{
+                            fontFamily: "neo",
+                            fontWeight: "bold",
+                            backgroundColor: "#DAB49D",
+                            marginLeft: "10px",
+                            position: "absolute",
+                            width: "200px",
+                            height: "65px",
+                            fontSize: "28px"
+                        }}
+                        variant="contained"
+                        onClick={cardGameStart}
+                        >
+                        시작하기
+                    </Button>
                     <img src={start} alt="시작전"/>
                 </div>
             </div>
@@ -147,8 +166,8 @@ function CardGame() {
     else {
         if(cardCount === 9) {
             return(
-                <div>
-                    <h1>같은 수달 찾기</h1>
+                <div className="card-game-box">
+                    <Header title={"같은 수달 찾기"} />
                     <div className="card-game-after">
                         <div className="card-end">
                             <p>점수 : {score}</p>
@@ -162,8 +181,8 @@ function CardGame() {
         }
         else {
             return(
-                <div>
-                    <h1>같은 수달 찾기</h1>
+                <div className="card-game-box">
+                    <Header title={"같은 수달 찾기"} />
                     <div className="card-game-wrap">
                         <div className="card-game-flex">
                             {cardSetting()}

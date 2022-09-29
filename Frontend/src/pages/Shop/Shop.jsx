@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./Shop.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
+import noSudal from "../../assets/images/otter-not-found.png";
+// api
 import shop from "../../api/shop";
 import { useDispatch, useSelector } from "react-redux";
 import { setNftList } from "../../store/modules/shop";
@@ -29,7 +31,6 @@ import ImageListItem from "@material-ui/core/ImageListItem";
 import Navbar from "../../components/Navbar/Navbar";
 import ShowSale from "../../components/Card/ShowSale";
 import Like from "../../components/Card/Like";
-import { List } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -271,7 +272,10 @@ function Shop() {
             </div>
           </Link>
         ) : (
-          <div style={{ fontSize: "35px" }}>목록이 비었습니다.</div>
+          <div style={{ fontSize: "35px", textAlign: "center" }}>
+            <img style={{ height: "400px" }} src={noSudal} alt="no sudal" />
+            <div>찾고 있는 수달이 없어요</div>
+          </div>
         )}
       </div>
     </div>

@@ -196,13 +196,16 @@ public class BoardServiceImpl implements BoardService{
         if (oLikes.isPresent()) {
             likesRepository.delete(oLikes.get());
             nft.setLikeCount(nft.getLikeCount() - 1);
+            nftRepository.save(nft);
+            return false;
         } else {
             Likes likes = new Likes();
             likes.setUser(user);
             likes.setNft(nft);
             likesRepository.save(likes);
             nft.setLikeCount(nft.getLikeCount() + 1);
+            nftRepository.save(nft);
+            return true;
         }
-        return null;
     }
 }

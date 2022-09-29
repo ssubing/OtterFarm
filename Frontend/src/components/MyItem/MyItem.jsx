@@ -1,60 +1,46 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import "./MyItem.css";
+import axios from "axios";
+const apiUrl = "http://j7a606.p.ssafy.io:8080/";
 
-
-
-const items = [
-  
-  {
-    url: require("../../assets/images/items/Head/head_01.png"),
-    name: "head01"
-  },
-  {
-    url: require("../../assets/images/items/Head/head_02.png"),
-    name: "head02"
-  },
-  {
-    url: require("../../assets/images/items/Head/head_03.png"),
-    name: "head03"
-  },
-  {
-    url: require("../../assets/images/items/Head/head_04.png"),
-    name: "head04"
-  },
-  {
-    url: require("../../assets/images/items/Head/head_05.png"),
-    name: "head05"
-  },
-  {
-    url: require("../../assets/images/items/Head/head_06.png"),
-    name: "head06"
-  },
-  {
-    url: require("../../assets/images/items/Head/head_07.png"),
-    name: "head07"
-  },
-  {
-    url: require("../../assets/images/items/Head/head_08.png"),
-    name: "head08"
-  },
-];
-
-function MyItem({ itemsPerPage,setUrl}) {
-  const [currentItems, setCurrentItems] = useState(null);
+function MyItem({ itemsPerPage, setUrl, setItemId }) {
+  const [data, setData] = useState([]);
+  const [len, setLen] = useState(0);
+  const handleInfo = (data, len) => {
+    const result = [];
+    for (let i = 0; i < len; i++) {
+      if (data[i].type === 1) {
+        result.push(data[i]);
+      }
+    }
+    setData(result);
+    setLen(result.length);
+  };
+  const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    axios
+      .get(apiUrl + "api/item/inventory", {
+        headers: {
+          Authorization: "Bearer " + window.localStorage.getItem("token"),
+        },
+      })
+      .then((res) => handleInfo(res.data, res.data.length));
+  }, []);
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
     console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-    setCurrentItems(items.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(items.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage]);
+    setCurrentItems(data.slice(itemOffset, endOffset));
 
+    setPageCount(Math.ceil(data.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, data]);
 
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % items.length;
+    const newOffset = (event.selected * itemsPerPage) % data.length;
     console.log(
       `User requested page number ${event.selected}, which is offset ${newOffset}`
     );
@@ -65,14 +51,27 @@ function MyItem({ itemsPerPage,setUrl}) {
   return (
     <div className="inventory">
       <div className="items">
-     {items.map((item)=>( <img className="parts" src={item.url} onClick={() => setUrl(item.url)}/>) )}
-     </div>
+        {currentItems.map((info, idx) => (
+          <img
+            className="parts"
+            alt=""
+            key={idx}
+            src={`${process.env.PUBLIC_URL}/assets/images/items/Head/01_${info.number}_${info.rgb}_${info.rare}.png`}
+            onClick={() => {
+              setUrl(
+                `${process.env.PUBLIC_URL}/assets/images/items/Head/01_${info.number}_${info.rgb}_${info.rare}.png`
+              );
+              setItemId(info.itemId);
+            }}
+          />
+        ))}
+      </div>
       <ReactPaginate
         className="paginate"
         breakLabel="..."
         nextLabel=">"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={1}
+        pageRangeDisplayed={4}
         pageCount={pageCount}
         previousLabel="<"
         renderOnZeroPageCount={null}

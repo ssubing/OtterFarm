@@ -10,6 +10,12 @@ const shop = {
       params: params,
     });
   },
+  nftDetailOne(params) {
+    return api({
+      method: "get",
+      url: `${END_POINT}/details/${params}`
+    })
+  }
 };
 
 export default shop;

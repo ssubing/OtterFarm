@@ -81,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
 function Shop() {
   const classes = useStyles();
   const [order, setOrder] = useState("");
-  const nftList = useSelector((state: any) => state.nftList);
+  const nftList = useSelector((state) => state.nftList);
   const dispatch = useDispatch();
   // const [nftList, setNftList] = useState([]);
   let currentTab = "all";

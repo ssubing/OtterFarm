@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./Shop.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
+import noSudal from "../../assets/images/otter-not-found.png";
+// api
 import shop from "../../api/shop";
 import { useDispatch, useSelector } from "react-redux";
 import { setNftList } from "../../store/modules/shop";
@@ -29,7 +31,6 @@ import ImageListItem from "@material-ui/core/ImageListItem";
 import Navbar from "../../components/Navbar/Navbar";
 import ShowSale from "../../components/Card/ShowSale";
 import Like from "../../components/Card/Like";
-import { List } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -81,17 +82,19 @@ const useStyles = makeStyles((theme) => ({
 function Shop() {
   const classes = useStyles();
   const [order, setOrder] = useState("");
-  const nftList = useSelector((state) => state.nftList);
-  const dispatch = useDispatch();
+  const [value, setValue] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const nftList = useSelector((state: any) => state.nftList);
   // const [nftList, setNftList] = useState([]);
-  let currentTab = "all";
-  let currentOrder = "id";
+  const dispatch = useDispatch();
+  const [currentTab, setCurrentTab] = useState("all");
+  const [currentOrder, setCurrentOrder] = useState("id");
 
+  // 오른쪽 정렬 순서
   const handleOrder = (event) => {
     setOrder(event.target.value);
-    // console.log(event.target.value);
     const params = {
-      isDesc: false,
+      isDesc: true,
       order: "",
       pageNo: 1,
       pageSize: 15,
@@ -99,14 +102,17 @@ function Shop() {
     };
     switch (event.target.value) {
       case "likeCount":
-        params.order = currentOrder = "likeCount";
+        params.order = "likeCount";
+        setCurrentOrder("likeCount");
         break;
       case "id":
-        params.order = currentOrder = "id";
+        params.order = "id";
+        setCurrentOrder("id");
         break;
       default:
         break;
     }
+    console.log(currentOrder);
     shop
       .nftList(params)
       .then((result) => {
@@ -117,13 +123,12 @@ function Shop() {
       });
   };
 
-  const [value, setValue] = useState(0);
-
+  // 왼쪽 탭
   const handleTab = (event, newValue) => {
     setValue(newValue);
-    // console.log(newValue);
+    console.log(currentOrder);
     const params = {
-      isDesc: false,
+      isDesc: true,
       order: currentOrder,
       pageNo: 1,
       pageSize: 15,
@@ -131,13 +136,16 @@ function Shop() {
     };
     switch (newValue) {
       case 0:
-        params.tab = currentTab = "all";
+        params.tab = "all";
+        setCurrentTab("all");
         break;
       case 1:
-        params.tab = currentTab = "saled";
+        params.tab = "saled";
+        setCurrentTab("saled");
         break;
       case 2:
-        params.tab = currentTab = "unsaled";
+        params.tab = "unsaled";
+        setCurrentTab("unsaled");
         break;
       default:
         break;
@@ -152,9 +160,13 @@ function Shop() {
       });
   };
 
+  const handlePage = (event, value) => {
+    setCurrentPage(value);
+  };
+
   useEffect(() => {
     const params = {
-      isDesc: false,
+      isDesc: true,
       order: currentOrder,
       pageNo: 1,
       pageSize: 15,
@@ -164,7 +176,6 @@ function Shop() {
       .nftList(params)
       .then((result) => {
         dispatch(setNftList(result.data));
-        // setNftList(result.data);
       })
       .catch((error) => {
         console.log(error);
@@ -261,7 +272,10 @@ function Shop() {
             </div>
           </Link>
         ) : (
-          <div style={{ fontSize: "35px" }}>목록이 비었습니다.</div>
+          <div style={{ fontSize: "35px", textAlign: "center" }}>
+            <img style={{ height: "400px" }} src={noSudal} alt="no sudal" />
+            <div>찾고 있는 수달이 없어요</div>
+          </div>
         )}
       </div>
     </div>

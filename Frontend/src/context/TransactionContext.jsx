@@ -58,7 +58,7 @@ export const TransactionProvider = ({ children }) => {
       );
       axios
         .post(apiUrl + "api/user", { message: message, wallet: accounts[0] })
-        .then((res) => setToken(res.data));
+        .then((res) => window.localStorage.setItem("token", res.data));
     });
 
     // const message = await web3.eth.sign(

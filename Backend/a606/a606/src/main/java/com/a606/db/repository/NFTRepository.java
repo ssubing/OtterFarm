@@ -13,4 +13,6 @@ public interface NFTRepository extends JpaRepository<NFT, Long> {
     Optional<NFT> findByTokenId(String tokenId);
 
     Page<NFT> findAllByIsSaled(boolean isSaled, Pageable pageable);
+
+    long countByIsSaled(boolean isSaled);
 }

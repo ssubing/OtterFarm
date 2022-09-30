@@ -1,5 +1,6 @@
 package com.a606.api.controller;
 
+import com.a606.api.dto.LetterDto;
 import com.a606.api.service.LetterService;
 import com.a606.common.util.SudalUserDetails;
 import com.a606.db.entity.Letter;
@@ -27,11 +28,11 @@ public class LetterController {
     LetterService letterService;
 
     @GetMapping("letter")
-    public ResponseEntity<List<Letter>> getLetters(@ApiIgnore Authentication authentication) {
+    public ResponseEntity<List<LetterDto>> getLetters(@ApiIgnore Authentication authentication) {
         if (authentication == null) return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
         User user = ((SudalUserDetails) authentication.getDetails()).getUser();
 
-        return new ResponseEntity<List<Letter>>(letterService.getAllLetters(user.getId()), HttpStatus.OK);
+        return new ResponseEntity<List<LetterDto>>(letterService.getAllLetters(user), HttpStatus.OK);
     }
 
     @GetMapping("letter/{letterId}")

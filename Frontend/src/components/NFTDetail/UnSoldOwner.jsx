@@ -1,24 +1,10 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 import DateTimePicker from 'react-datetime-picker';
 
 import "./UnSoldOwner.css"
 import BidList from "./BidList.jsx"
-
-const sellRequest = [
-    {
-        time: '2022-09-01 13:15',
-        price: '520'
-    },
-    {
-        time: '2022-09-01 13:24',
-        price: '560'
-    },
-    {
-        time: '2022-09-01 13:42',
-        price: '600'
-    }
-]
 
 function UnSoldOwner() {
     const [price, setPrice] = useState(0)
@@ -29,10 +15,12 @@ function UnSoldOwner() {
         console.log(price)
     }
     const [date, setDate] = useState(new Date())
+
+    const nftUnsoldOne = useSelector((state) => state.nftUnsoldOne);
     
     return(
         <div>
-            <BidList style={{margin: "30px 0"}}title="요청 내역" date="요청 시간" price="제안가(SSF)" bidLog={sellRequest}/>
+            <BidList style={{margin: "30px 0"}}title="요청 내역" date="요청 시간" price="제안가(SSF)" bidLog={nftUnsoldOne}/>
             <hr/>
             <div className="sell-request">
                 <h3>분양하기</h3>

@@ -1,5 +1,6 @@
 package com.a606.api.service;
 
+import com.a606.api.dto.LetterDto;
 import com.a606.db.entity.Letter;
 import com.a606.db.entity.User;
 import com.a606.db.repository.LetterRepository;
@@ -31,13 +32,20 @@ public class LetterServiceImpl implements LetterService{
     }
 
     @Override
-    public List<Letter> getAllLetters(long userId) {
+    public List<LetterDto> getAllLetters(User user) {
         List<Letter> lists = letterRepository.findAll();
-        List<Letter> list = new ArrayList<>();
+        List<LetterDto> list = new ArrayList<>();
 
         for(Letter l : lists) {
-            if(userId == l.getUser().getId()) {
-                list.add(l);
+            if(user.equals(l.getUser())) {
+                LetterDto letterDto = new LetterDto();
+                letterDto.setId(l.getId());
+                letterDto.setUserId(user.getId());
+                letterDto.setMsg(l.getMsg());
+                letterDto.setDate(l.getDate());
+                letterDto.setRead(l.isRead());
+
+                list.add(letterDto);
             }
         }
 

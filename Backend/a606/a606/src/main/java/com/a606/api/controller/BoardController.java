@@ -1,9 +1,6 @@
 package com.a606.api.controller;
 
-import com.a606.api.dto.AppealDto;
-import com.a606.api.dto.BidBoardDto;
-import com.a606.api.dto.LogsDto;
-import com.a606.api.dto.NFTDto;
+import com.a606.api.dto.*;
 import com.a606.api.service.BoardService;
 import com.a606.common.util.SudalUserDetails;
 import com.a606.db.entity.User;
@@ -30,7 +27,7 @@ public class BoardController {
     @GetMapping("/list")
     @ApiOperation(value = "NFT 목록 조회",
             notes = "탭(전체(all)/분양중(saled)/미분양(unsaled)), 정렬기준(좋아요순(likeCount)/등록순(id)), 정렬순서(높은순/낮은순), 페이지 번호, 페이지 당 NFT 수 로 NFT 목록을 조회한다.")
-    public ResponseEntity<List<?>> searchList(@ApiIgnore Authentication authentication,
+    public ResponseEntity<?> searchList(@ApiIgnore Authentication authentication,
                                               @RequestParam(required = true) @ApiParam(example = "all") String tab,
                                               @RequestParam(required = true) @ApiParam(example = "id") String order,
                                               @RequestParam(required = true) @ApiParam(example = "false") boolean isDesc,
@@ -38,7 +35,7 @@ public class BoardController {
                                               @RequestParam(required = true) @ApiParam(example = "10") int pageSize) throws Exception {
         User user = null;
         if (authentication != null) user = ((SudalUserDetails) authentication.getDetails()).getUser();
-        return new ResponseEntity<>(boardService.getNFTList(user, tab, order, isDesc, pageNo, pageSize), HttpStatus.OK);
+        return new ResponseEntity<NFTListDto>(new NFTListDto(boardService.getNFTCount() , boardService.getNFTList(user, tab, order, isDesc, pageNo, pageSize)), HttpStatus.OK);
     }
 
     @GetMapping("/details/{nftId}")

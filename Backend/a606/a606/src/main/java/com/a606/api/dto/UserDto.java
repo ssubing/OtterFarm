@@ -61,6 +61,16 @@ public class UserDto implements Serializable {
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
+    public static class LoginResponse {
+        private String jwt;
+        private Long userId;
+    }
+
+    @Getter
+    @Setter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class updateProfileRequest {
         @NotNull
         @ApiModelProperty(name="nft id", example = "1")

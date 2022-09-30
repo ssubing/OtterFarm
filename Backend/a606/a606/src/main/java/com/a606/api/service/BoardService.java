@@ -22,4 +22,6 @@ public interface BoardService {
     Appeal createAppeals(User user, AppealDto appealDto);
 
     Boolean clickLikes(User user, Long nftId);
+
+    long getNFTCount();
 }

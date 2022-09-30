@@ -67,9 +67,6 @@ public class UserController {
         String message = loginInfo.getMessage();
 
 
-        System.out.println("address : " + userWallet);
-        System.out.println(message);
-
         User user = userService.getUserByWallet(userWallet);
         if (user == null){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -102,11 +99,11 @@ public class UserController {
             if(recoveredKey.equalsIgnoreCase(userWallet)) {
                 userService.setNonce(user.getId());
                 String jwtToken = JwtTokenUtil.getToken(userWallet);
-                return ResponseEntity.status(200).body(jwtToken);
+                return new ResponseEntity<UserDto.LoginResponse>(new UserDto.LoginResponse(jwtToken, user.getId()), HttpStatus.OK);
             }
         }
 
-        return ResponseEntity.status(400).body(null);
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("user/mynft")

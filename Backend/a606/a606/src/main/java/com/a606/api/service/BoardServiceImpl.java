@@ -208,4 +208,9 @@ public class BoardServiceImpl implements BoardService{
             return true;
         }
     }
+
+    @Override
+    public long getNFTCount() {
+        return nftRepository.count();
+    }
 }

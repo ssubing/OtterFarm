@@ -178,7 +178,6 @@ function Shop() {
     shop
       .nftList(params)
       .then((result) => {
-        console.log(result);
         dispatch(setNftList(result.data.nftList));
       })
       .catch((error) => {
@@ -197,7 +196,6 @@ function Shop() {
     shop
       .nftList(params)
       .then((result) => {
-        console.log(result);
         setTotalLength(result.data.count);
         dispatch(setNftList(result.data.nftList));
       })
@@ -249,14 +247,27 @@ function Shop() {
         </div>
         {/* NFT 카드 */}
         {nftList.length > 0 ? (
-          <Link to={{ pathname: "/detail" }}>
-            <div className={classes.gridRoot}>
-              <ImageList
-                cellHeight={200}
-                className={classes.gridList}
-                spacing={10}
-              >
-                {nftList.map((data) => (
+          <div className={classes.gridRoot}>
+            <ImageList
+              cellHeight={200}
+              className={classes.gridList}
+              spacing={10}
+            >
+              {nftList.map((data) => (
+                // setNftId(data.id)
+                <Link
+                  style={{
+                    width: "auto",
+                    height: "auto",
+                    textDecoration: "none",
+                    color: "black",
+                    marginBottom: "60px",
+                  }}
+                  to={"/detail"}
+                  state={{
+                    nftId: data.id,
+                  }}
+                >
                   <ImageListItem
                     cols={1}
                     style={{
@@ -280,7 +291,9 @@ function Shop() {
                           </div>
                           <div className="card-body">
                             <div>{data.name}</div>
-                            <div>{data.price} SSF ~</div>
+                            {data.price != null && (
+                              <div>{data.price} SSF ~</div>
+                            )}
                             <div className="line"></div>
                             <div className="owner">
                               <div>소유자</div>
@@ -291,19 +304,23 @@ function Shop() {
                       </CardActionArea>
                     </Card>
                   </ImageListItem>
-                ))}
-              </ImageList>
-            </div>
-          </Link>
+                </Link>
+              ))}
+            </ImageList>
+            <Stack
+              style={{ marginTop: "50px" }}
+              spacing={2}
+              alignItems="center"
+            >
+              <Pagination count={maxPage} size="large" onChange={handlePage} />
+            </Stack>
+          </div>
         ) : (
           <div style={{ fontSize: "35px", textAlign: "center" }}>
             <img style={{ height: "400px" }} src={noSudal} alt="no sudal" />
             <div>찾고 있는 수달이 없어요</div>
           </div>
         )}
-        <Stack style={{ marginTop: "50px" }} spacing={2} alignItems="center">
-          <Pagination count={maxPage} size="large" onChange={handlePage} />
-        </Stack>
       </div>
     </div>
   );

@@ -158,6 +158,7 @@ function Shop() {
     shop
       .nftList(params)
       .then((result) => {
+        setTotalLength(result.data.count);
         dispatch(setNftList(result.data.nftList));
       })
       .catch((error) => {

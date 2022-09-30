@@ -19,7 +19,7 @@ public interface BoardService {
 
     List<LogsDto> getAppeals(Long nftId);
 
-    Appeal createAppeals(User user, AppealDto appealDto);
+    void createAppeals(User user, AppealDto appealDto);
 
     Boolean clickLikes(User user, Long nftId);
 

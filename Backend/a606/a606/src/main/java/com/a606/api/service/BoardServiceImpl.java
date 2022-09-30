@@ -174,15 +174,13 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public Appeal createAppeals(User user, AppealDto appealDto) {
+    public void createAppeals(User user, AppealDto appealDto) {
         Appeal appeal = new Appeal();
         appeal.setUser(user);
         appeal.setNft(nftRepository.findById(appealDto.getNftId()).get());
         appeal.setPrice(appealDto.getPrice());
         appeal.setDate(LocalDateTime.now());
-        Appeal newAppeal = new Appeal();
-        newAppeal = appealRepository.save(appeal);
-        return newAppeal;
+        appealRepository.save(appeal);
     }
 
     @Override

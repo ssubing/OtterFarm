@@ -27,6 +27,10 @@ import CardMedia from "@material-ui/core/CardMedia";
 import ImageList from "@material-ui/core/ImageList";
 import ImageListItem from "@material-ui/core/ImageListItem";
 
+// Pagination
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+
 // components
 import Navbar from "../../components/Navbar/Navbar";
 import ShowSale from "../../components/Card/ShowSale";
@@ -84,7 +88,10 @@ function Shop() {
   const [order, setOrder] = useState("");
   const [value, setValue] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const nftList = useSelector((state: any) => state.nftList);
+  const itemsPerPage = 12;
+  const [totalListLength, setTotalLength] = useState(1);
+  const maxPage = Math.ceil(totalListLength / itemsPerPage);
+  const nftList = useSelector((state) => state.nftList);
   // const [nftList, setNftList] = useState([]);
   const dispatch = useDispatch();
   const [currentTab, setCurrentTab] = useState("all");
@@ -96,8 +103,8 @@ function Shop() {
     const params = {
       isDesc: true,
       order: "",
-      pageNo: 1,
-      pageSize: 15,
+      pageNo: currentPage,
+      pageSize: itemsPerPage,
       tab: currentTab,
     };
     switch (event.target.value) {
@@ -112,11 +119,10 @@ function Shop() {
       default:
         break;
     }
-    console.log(currentOrder);
     shop
       .nftList(params)
       .then((result) => {
-        dispatch(setNftList(result.data));
+        dispatch(setNftList(result.data.nftList));
       })
       .catch((error) => {
         console.log(error);
@@ -126,12 +132,11 @@ function Shop() {
   // 왼쪽 탭
   const handleTab = (event, newValue) => {
     setValue(newValue);
-    console.log(currentOrder);
     const params = {
       isDesc: true,
       order: currentOrder,
-      pageNo: 1,
-      pageSize: 15,
+      pageNo: currentPage,
+      pageSize: itemsPerPage,
       tab: "",
     };
     switch (newValue) {
@@ -153,29 +158,48 @@ function Shop() {
     shop
       .nftList(params)
       .then((result) => {
-        dispatch(setNftList(result.data));
+        dispatch(setNftList(result.data.nftList));
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
+  // 현재 페이지 처리
   const handlePage = (event, value) => {
     setCurrentPage(value);
+    const params = {
+      isDesc: true,
+      order: currentOrder,
+      pageNo: value,
+      pageSize: itemsPerPage,
+      tab: currentTab,
+    };
+    shop
+      .nftList(params)
+      .then((result) => {
+        console.log(result);
+        dispatch(setNftList(result.data.nftList));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   useEffect(() => {
     const params = {
       isDesc: true,
       order: currentOrder,
-      pageNo: 1,
-      pageSize: 15,
+      pageNo: currentPage,
+      pageSize: itemsPerPage,
       tab: currentTab,
     };
     shop
       .nftList(params)
       .then((result) => {
-        dispatch(setNftList(result.data));
+        console.log(result);
+        setTotalLength(result.data.count);
+        dispatch(setNftList(result.data.nftList));
       })
       .catch((error) => {
         console.log(error);
@@ -225,7 +249,7 @@ function Shop() {
         </div>
         {/* NFT 카드 */}
         {nftList.length > 0 ? (
-          <Link to="/detail">
+          <Link to={{ pathname: "/detail" }}>
             <div className={classes.gridRoot}>
               <ImageList
                 cellHeight={200}
@@ -277,6 +301,9 @@ function Shop() {
             <div>찾고 있는 수달이 없어요</div>
           </div>
         )}
+        <Stack style={{ marginTop: "50px" }} spacing={2} alignItems="center">
+          <Pagination count={maxPage} size="large" onChange={handlePage} />
+        </Stack>
       </div>
     </div>
   );

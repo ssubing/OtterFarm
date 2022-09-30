@@ -35,7 +35,7 @@ public class BoardController {
                                               @RequestParam(required = true) @ApiParam(example = "10") int pageSize) throws Exception {
         User user = null;
         if (authentication != null) user = ((SudalUserDetails) authentication.getDetails()).getUser();
-        return new ResponseEntity<NFTListDto>(new NFTListDto(boardService.getNFTCount() , boardService.getNFTList(user, tab, order, isDesc, pageNo, pageSize)), HttpStatus.OK);
+        return new ResponseEntity<NFTListDto>(new NFTListDto(boardService.getNFTCount(tab) , boardService.getNFTList(user, tab, order, isDesc, pageNo, pageSize)), HttpStatus.OK);
     }
 
     @GetMapping("/details/{nftId}")

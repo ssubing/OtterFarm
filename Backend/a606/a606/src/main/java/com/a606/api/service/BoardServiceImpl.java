@@ -208,7 +208,21 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public long getNFTCount() {
-        return nftRepository.count();
+    public long getNFTCount(String tab) {
+        long result = 0;
+        switch (tab) {
+            case "all":
+                result = nftRepository.count();
+                break;
+            case "saled":
+                result = nftRepository.countByIsSaled(true);
+                break;
+            case "unsaled":
+                result = nftRepository.countByIsSaled(false);
+                break;
+            default:
+                return 0;
+        }
+        return result;
     }
 }

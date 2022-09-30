@@ -76,6 +76,13 @@ function CardGame() {
         setStartFlag(true)
     }
 
+    //재시작
+    function cardGameRestart() {
+        setScore(0)
+        setCardCount(0)
+        setMoney(0)
+    }
+
     let count = 0;
     let cardNum = 0;
 
@@ -136,6 +143,7 @@ function CardGame() {
             }
         }
     }
+
     if(!startFlag) { 
         return(
             <div className="card-game-box">
@@ -172,7 +180,7 @@ function CardGame() {
                         <div className="card-end">
                             <p>점수 : {score}</p>
                             <p>획득 수달머니 : {money}</p>
-                            <button className="card-end-btn">다시하기</button>
+                            <button className="card-end-btn" onClick={cardGameRestart}>다시하기</button>
                         </div>
                         <img className="end-comment"src={comment} alt="끝"/>
                     </div>

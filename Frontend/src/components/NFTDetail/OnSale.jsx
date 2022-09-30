@@ -1,26 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import BidList from "./BidList.jsx"
+
+import { useDispatch, useSelector } from "react-redux";
+import shop from "../../api/shop";
+import { setNftOnsaleOne } from "../../store/modules/shop";
 
 import "./OnSale.css"
 
-//현재 가격과 입찰기록
-const auctionInfo = {
-    currentPrice: '1050',
-    bidLog: [
-      {
-        time: '2022-09-01 13:15',
-        price: '1030'
-      },
-      {
-        time: '2022-09-01 13:24',
-        price: '1042'
-      },
-      {
-        time: '2022-09-01 13:42',
-        price: '1050'
-      }
-    ]
-}
 //가격
 function Price() {
   const [price, setPrice] = useState(0)
@@ -30,11 +16,14 @@ function Price() {
   const bidClick = () => {
     console.log(price)
   }
+
+  const nftOnsaleOne = useSelector((state) => state.nftOnsaleOne);
+
     return(
       <div className="price-info">
         <div className="current">
           <span>현재가</span>
-          <span>{auctionInfo.currentPrice}SSF</span>
+          <span>{nftOnsaleOne.first_price}SSF</span>
         </div>
         <div className="bid">
           <span>입찰가</span>
@@ -46,23 +35,39 @@ function Price() {
       </div>
     )
 }
-  
 
 
-function OnSale({start, end}) {
+function OnSale() {
+  const nftOnsaleOne = useSelector((state) => state.nftOnsaleOne);
+  //분양 내역 조회
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+      const params = 11;
+      shop
+      .nftOnsaleOne(params)
+      .then((result) => {
+          dispatch(setNftOnsaleOne(result.data))
+      })
+      .catch((error) => {
+          console.log("오류")
+          console.log(error)
+      })
+  }, [])
+
     return(
         <div>
             <div className="sale-info">
                 <h3>분양 정보</h3>
                 <div className="auction-date">
                     <span>진행기간 : </span>
-                    <span>{start} ~ {end}</span>
+                    <span>{nftOnsaleOne.start} ~ {nftOnsaleOne.end}</span>
                 </div>
             </div>
             <hr/>
             <Price/>
             <hr/>
-            <BidList title="입찰 내역" date="입찰 시간" price="입찰 가격(SSF)" bidLog={auctionInfo.bidLog}/>
+            <BidList title="입찰 내역" date="입찰 시간" price="입찰 가격(SSF)" bidLog={nftOnsaleOne.bidLogs}/>
         </div>
     )
 }

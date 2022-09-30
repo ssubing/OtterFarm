@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar/Navbar";
 
 function Game() {
   const games = [
+    // 게임 추가할때마다 여기에서 추가하면 됨~~
     {
       id: 1,
       gameTitle: "수달은 아직도 배고프다",
@@ -23,20 +24,33 @@ function Game() {
   return (
     <>
       <Navbar />
-      <h1>게임목록</h1>
+      <h1 style={ {padding: "20px 0px 20px 50px" } }>게임목록</h1>
       {games.map(game => (
-        <GameItem game={game} />
+        <GameItem game={game} key={game.id} />
       ))}
     </>
   );
 }
 
+/** 각 게임 컴포넌트 */
 function GameItem({ game }) {
+  
+  // 게임 컴포넌트 스타일
+  const gameItemStyle = {
+    margin: "70px",
+    textAlign: "center",
+  }
+  const titleStyle = {
+    fontSize: "20px",
+    color: "black",
+  }
+
+  // 게임별 컴포넌트
   return (
-    <div className="gameItem">
-      <Link to="/{game.gameLink}">
+    <div style={gameItemStyle}>
+      <Link to={game.gameLink} style={{ textDecoration: "none" }}>
         <img src={game.gameImg} alt="게임" />
-        <p>{game.gameTitle}</p>
+        <p style={titleStyle}>{game.gameTitle}</p>
       </Link>
     </div>
   )

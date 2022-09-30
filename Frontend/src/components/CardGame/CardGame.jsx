@@ -12,10 +12,11 @@ import card09 from '../../assets/images/CardGame/card09.png'
 
 import start from '../../assets/images/CardGame/start.png'
 import comment from '../../assets/images/CardGame/comment.png'
-import back from '../../assets/images/CardGame/back.png'
 import Header from "../../components/GameHeader/GameHeader";
 
 import Button from "@material-ui/core/Button";
+
+import game from "../../api/game";
 
 import "./CardGame.css"
 
@@ -125,6 +126,10 @@ function CardGame() {
                         setCardCount(cardNum)
                         setMoney(count * 0.05)
                     }, 300);
+                    game
+                    .sendPoint(score)
+                    .then((result) => console.log(result))
+                    .catch((error) => console.log(error));
                 }
             }
             //두 카드가 같은 카드가 아닐 경우

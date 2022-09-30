@@ -1,21 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import BidList from "./BidList.jsx"
+import { useDispatch, useSelector } from "react-redux";
 
-const sellRequest = [
-    {
-        time: '2022-09-01 13:15',
-        price: '520'
-    },
-    {
-        time: '2022-09-01 13:24',
-        price: '560'
-    },
-    {
-        time: '2022-09-01 13:42',
-        price: '600'
-    }
-]
+import shop from "../../api/shop";
+import { setNftUnsoldOne } from "../../store/modules/shop";
 
 function UnSoldOwner() {
     const [price, setPrice] = useState(0)
@@ -25,6 +14,24 @@ function UnSoldOwner() {
     const requestClick = () => {
         console.log(price)
     }
+
+    //요청 내역 조회
+    const dispatch = useDispatch();
+    useEffect(() => {
+        const params = 11;
+        shop
+        .nftUnsoldOne(params)
+        .then((result) => {
+            dispatch(setNftUnsoldOne(result.data))
+        })
+        .catch((error) => {
+            console.log("오류")
+            console.log(error)
+        })
+    }, [])
+
+    const nftUnsoldOne = useSelector((state) => state.nftUnsoldOne);
+
     return(
         <div>
             <div className="sell-request">
@@ -38,7 +45,14 @@ function UnSoldOwner() {
                 </div>
             </div>
             <hr/>
-            <BidList title="요청 내역" date="요청 시간" price="제안가(SSF)" bidLog={sellRequest}/>
+            {nftUnsoldOne > 0 ? (
+                <BidList title="요청 내역" time="요청 시간" price="제안가(SSF)" bidLog={nftUnsoldOne}/>
+            ) : (
+                <div>
+                    <h3>요청 받은 내역이 없습니다</h3>
+                </div>
+            )}
+            
         </div>
     )
 }

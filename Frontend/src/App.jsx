@@ -10,9 +10,9 @@ import Guide from "./pages/Guide/Guide";
 import AvatarDetail from "./pages/Avatar/AvatarDetail";
 import Noti from "./pages/Noti/Noti";
 import Issue from "./pages/Issue/Issue";
-import Test from "./pages/test";
+import Tetris from "./pages/TetrisGame/Tetris";
 import FallingGame from "./pages/FallingGame/FallingGame";
-import Tetris from "./pages/Tetris/Tetris";
+
 function App() {
   return (
     <Router>
@@ -26,8 +26,7 @@ function App() {
         <Route path="/detail" element={<AvatarDetail />} />
         <Route path="/noti" element={<Noti />}></Route>
         <Route path="/issue" element={<Issue />} />
-        <Route path="/test/" element={<Test/>}/>
-        <Route path="/tetris" element={<Tetris/>}/>
+        <Route path="/Tetris" element={<Tetris />} />
       </Routes>
       <RecoilRoot>
         <Routes>

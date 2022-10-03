@@ -8,11 +8,20 @@ const backdrop = {
   hidden: { opacity: 0 },
 };
 const apiUrl = "http://j7a606.p.ssafy.io:8080/";
-const RandomBox = ({ showBox, setShowBox, part, showImg, setShowImg, num, rare, rgb }) => {
+const RandomBox = ({
+  showBox,
+  setShowBox,
+  part,
+  showImg,
+  setShowImg,
+  num,
+  rare,
+  rgb,
+}) => {
   const navigate = useNavigate();
   const handleNavigate = () => {
-    navigate("/item")
-  }
+    navigate("/item");
+  };
   return (
     <AnimatePresence exitBeforeEnter>
       {showBox && (
@@ -31,28 +40,37 @@ const RandomBox = ({ showBox, setShowBox, part, showImg, setShowImg, num, rare, 
               />
             ) : (
               <div className="gottenItem">
-                {(part === "01")?(
-                <img
-                  className="itemImg"
-                  src={`${process.env.PUBLIC_URL}/assets/images/items/Head/01_${num}_${rgb}_${rare}.png`}
-                  alt="gottenItem"
-                />): (part=== "02")? (<img
-                className="itemImg"
-                src={`${process.env.PUBLIC_URL}/assets/images/items/Eye/02_${num}_${rgb}_${rare}.png`}
-                alt="gottenItem"
-              />): (part === "03")? (<img
-              className="itemImg"
-              src={`${process.env.PUBLIC_URL}/assets/images/items/Hand/03_${num}_${rgb}_${rare}.png`}
-              alt="gottenItem"
-            />): (part === "04")? (<img
-            className="itemImg"
-            src={`${process.env.PUBLIC_URL}/assets/images/items/Mouth/04_${num}_${rgb}_${rare}.png`}
-            alt="gottenItem"
-          />):(<img
-          className="itemImg"
-          src={`${process.env.PUBLIC_URL}/assets/images/items/Cloth/05_${num}_${rgb}_${rare}.png`}
-          alt="gottenItem"
-        />)}
+                {part === "01" ? (
+                  <img
+                    className="itemImg"
+                    src={`${process.env.PUBLIC_URL}/assets/images/items/Head/01_${num}_${rgb}_${rare}.png`}
+                    alt="gottenItem"
+                  />
+                ) : part === "02" ? (
+                  <img
+                    className="itemImg"
+                    src={`${process.env.PUBLIC_URL}/assets/images/items/Eye/02_${num}_${rgb}_${rare}.png`}
+                    alt="gottenItem"
+                  />
+                ) : part === "03" ? (
+                  <img
+                    className="itemImg"
+                    src={`${process.env.PUBLIC_URL}/assets/images/items/Hand/04_${num}_${rgb}_${rare}.png`}
+                    alt="gottenItem"
+                  />
+                ) : part === "04" ? (
+                  <img
+                    className="itemImg"
+                    src={`${process.env.PUBLIC_URL}/assets/images/items/Mouth/03_${num}_${rgb}_${rare}.png`}
+                    alt="gottenItem"
+                  />
+                ) : (
+                  <img
+                    className="itemImg"
+                    src={`${process.env.PUBLIC_URL}/assets/images/items/Cloth/05_${num}_${rgb}_${rare}.png`}
+                    alt="gottenItem"
+                  />
+                )}
                 <img
                   className="lightImg"
                   src={require("../../assets/images/light.png")}
@@ -62,7 +80,7 @@ const RandomBox = ({ showBox, setShowBox, part, showImg, setShowImg, num, rare, 
                   onClick={() => {
                     setShowBox(false);
                     setShowImg(false);
-                    window.location.href="/item"
+                    window.location.href = "/item";
                   }}
                   className="btn"
                   style={{ zIndex: "3" }}

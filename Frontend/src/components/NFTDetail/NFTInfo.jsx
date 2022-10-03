@@ -1,6 +1,8 @@
 import "./NFTInfo.css"
 import { makeStyles } from "@material-ui/core/styles";
 
+import { useSelector } from "react-redux";
+
 //카드
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -10,8 +12,6 @@ import sudal from '../../assets/images/otter.png'
 //Like : 좋아요 | Sale : 분양 여부
 import Like from '../Card/Like.jsx'
 import Sale from '../Card/ShowSale.jsx'
-
-
 
 const useStyles = makeStyles({
     detailCard: {
@@ -31,30 +31,31 @@ const useStyles = makeStyles({
 })
 
 //소유자, 컨트랙트 주소, 좋아요 수, 분양 여부
-function NFTInfo({owner, address, likeCnt, isSale}) {
+function NFTInfo() {
+    const nftDetailOne = useSelector((state) => state.nftDetailOne);
     const classes = useStyles();
     return (
         <Card className={classes.detailCard}>
             <CardMedia
             className={classes.detailMedia}
             component="img"
-            image={sudal}
+            image={nftDetailOne.tokenURI}
             />
             <CardContent>
                 <div className="info">
-                    <Sale isOnSale={isSale}/>
-                    <Like likeCnt={likeCnt}></Like>
+                    <Sale isOnSale={nftDetailOne.saled}/>
+                    <Like likeCnt={nftDetailOne.likeCount}></Like>
                 </div>
                 <h5 className="auction-title">
                     수달(NFT) 정보
                 </h5>
                 <div className="auction-owner">
                     <p>소유자</p>
-                    <p>{owner}</p>
+                    <p>{nftDetailOne.userNickname}</p>
                 </div>
                 <div className="auction-address">
                     <p>컨트랙트 주소</p>
-                    <p>{address}</p>
+                    <p>{nftDetailOne.tokenId}</p>
                 </div>
             </CardContent>
         </Card>

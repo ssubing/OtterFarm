@@ -20,6 +20,7 @@ function Item() {
   useEffect(() => {
     setSelected([false, false, false, false, true]);
   }, []);
+
   const navigate = useNavigate();
   const [url, setUrl] = useState(null);
   const [eyeUrl, setEyeUrl] = useState(null);
@@ -77,6 +78,9 @@ function Item() {
       return 0;
     }
   };
+
+  const [sudalPt, setSudalPt] = useState(0);
+
   const [itemId, setItemId] = useState(0);
   const [eyeId, setEyeId] = useState(0);
   const [mouthId, setMouthId] = useState(0);
@@ -146,6 +150,16 @@ function Item() {
     setName(e.target.value);
   };
   const onSubmit = () => {};
+  const minus = -500;
+  useEffect(() => {
+    axios
+      .get(apiUrl + "api/user/point", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => setSudalPt(res.data));
+  }, [token]);
   return (
     <div className="pageBox">
       <Navbar />
@@ -232,7 +246,7 @@ function Item() {
         </div>
 
         <div className="itemShop">
-          <div className="shopName">아이템 상점</div>
+          <div className="shopName">내 수달머니: {sudalPt}</div>
           <div className="shoppart">
             <RandomBox
               showBox={showBox}
@@ -261,20 +275,30 @@ function Item() {
               />
               <button
                 onClick={() => {
-                  setShowBox(true);
-                  setPart("01");
-                  setTimeout(() => {
-                    setShowImg(true);
-                  }, 4000);
-                  console.log(typeof 1);
+                  if (sudalPt >= 500) {
+                    setShowBox(true);
+                    setPart("01");
+                    setTimeout(() => {
+                      setShowImg(true);
+                    }, 4000);
+                    console.log(typeof 1);
 
-                  axios
-                    .get(apiUrl + `api/item/${1}`, {
-                      headers: { Authorization: `Bearer ${token}` },
-                    })
-                    .then((res) =>
-                      handleInfo(res.data.number, res.data.rgb, res.data.rare)
-                    );
+                    axios
+                      .get(apiUrl + `api/item/${1}`, {
+                        headers: { Authorization: `Bearer ${token}` },
+                      })
+                      .then((res) =>
+                        handleInfo(res.data.number, res.data.rgb, res.data.rare)
+                      );
+
+                    axios.put(apiUrl + `api/game/point/${minus}`, minus, {
+                      headers: {
+                        Authorization: `Bearer ${token}`,
+                      },
+                    });
+                  } else {
+                    alert("수달머니가 부족합니다.");
+                  }
                 }}
               >
                 뽑기
@@ -297,18 +321,27 @@ function Item() {
               />
               <button
                 onClick={() => {
-                  setShowBox(true);
-                  setPart("02");
-                  setTimeout(() => {
-                    setShowImg(true);
-                  }, 4000);
-                  axios
-                    .get(apiUrl + `api/item/${2}`, {
-                      headers: { Authorization: `Bearer ${token}` },
-                    })
-                    .then((res) =>
-                      handleInfo(res.data.number, res.data.rgb, res.data.rare)
-                    );
+                  if (sudalPt >= 500) {
+                    setShowBox(true);
+                    setPart("02");
+                    setTimeout(() => {
+                      setShowImg(true);
+                    }, 4000);
+                    axios
+                      .get(apiUrl + `api/item/${2}`, {
+                        headers: { Authorization: `Bearer ${token}` },
+                      })
+                      .then((res) =>
+                        handleInfo(res.data.number, res.data.rgb, res.data.rare)
+                      );
+                    axios.put(apiUrl + `api/game/point/${-500}`, {
+                      headers: {
+                        Authorization: `Bearer ${token}`,
+                      },
+                    });
+                  } else {
+                    alert("수달머니가 부족합니다.");
+                  }
                 }}
               >
                 뽑기
@@ -331,18 +364,27 @@ function Item() {
               />
               <button
                 onClick={() => {
-                  setShowBox(true);
-                  setPart("03");
-                  setTimeout(() => {
-                    setShowImg(true);
-                  }, 4000);
-                  axios
-                    .get(apiUrl + `api/item/${3}`, {
-                      headers: { Authorization: `Bearer ${token}` },
-                    })
-                    .then((res) =>
-                      handleInfo(res.data.number, res.data.rgb, res.data.rare)
-                    );
+                  if (sudalPt >= 500) {
+                    setShowBox(true);
+                    setPart("03");
+                    setTimeout(() => {
+                      setShowImg(true);
+                    }, 4000);
+                    axios
+                      .get(apiUrl + `api/item/${3}`, {
+                        headers: { Authorization: `Bearer ${token}` },
+                      })
+                      .then((res) =>
+                        handleInfo(res.data.number, res.data.rgb, res.data.rare)
+                      );
+                    axios.put(apiUrl + `api/game/point/${-500}`, {
+                      headers: {
+                        Authorization: `Bearer ${token}`,
+                      },
+                    });
+                  } else {
+                    alert("수달머니가 부족합니다.");
+                  }
                 }}
               >
                 뽑기
@@ -365,18 +407,27 @@ function Item() {
               />
               <button
                 onClick={() => {
-                  setShowBox(true);
-                  setPart("04");
-                  setTimeout(() => {
-                    setShowImg(true);
-                  }, 4000);
-                  axios
-                    .get(apiUrl + `api/item/${4}`, {
-                      headers: { Authorization: `Bearer ${token}` },
-                    })
-                    .then((res) =>
-                      handleInfo(res.data.number, res.data.rgb, res.data.rare)
-                    );
+                  if (sudalPt >= 500) {
+                    setShowBox(true);
+                    setPart("04");
+                    setTimeout(() => {
+                      setShowImg(true);
+                    }, 4000);
+                    axios
+                      .get(apiUrl + `api/item/${4}`, {
+                        headers: { Authorization: `Bearer ${token}` },
+                      })
+                      .then((res) =>
+                        handleInfo(res.data.number, res.data.rgb, res.data.rare)
+                      );
+                    axios.put(apiUrl + `api/game/point/${-500}`, {
+                      headers: {
+                        Authorization: `Bearer ${token}`,
+                      },
+                    });
+                  } else {
+                    alert("수달머니가 부족합니다.");
+                  }
                 }}
               >
                 뽑기
@@ -399,18 +450,27 @@ function Item() {
               />
               <button
                 onClick={() => {
-                  setShowBox(true);
-                  setPart("05");
-                  setTimeout(() => {
-                    setShowImg(true);
-                  }, 4000);
-                  axios
-                    .get(apiUrl + `api/item/${5}`, {
-                      headers: { Authorization: `Bearer ${token}` },
-                    })
-                    .then((res) =>
-                      handleInfo(res.data.number, res.data.rgb, res.data.rare)
-                    );
+                  if (sudalPt >= 500) {
+                    setShowBox(true);
+                    setPart("05");
+                    setTimeout(() => {
+                      setShowImg(true);
+                    }, 4000);
+                    axios
+                      .get(apiUrl + `api/item/${5}`, {
+                        headers: { Authorization: `Bearer ${token}` },
+                      })
+                      .then((res) =>
+                        handleInfo(res.data.number, res.data.rgb, res.data.rare)
+                      );
+                    axios.put(apiUrl + `api/game/point/${-500}`, {
+                      headers: {
+                        Authorization: `Bearer ${token}`,
+                      },
+                    });
+                  } else {
+                    alert("수달머니가 부족합니다.");
+                  }
                 }}
               >
                 뽑기

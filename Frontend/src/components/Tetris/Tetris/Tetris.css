@@ -1,3 +1,4 @@
 .Tetris {
   position: relative;
+  display: flex;
 }

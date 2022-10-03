@@ -13,4 +13,6 @@
   border: none;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 60px;
   cursor: pointer;
+  font-family: "neo";
+  background-color: #f3e9dc;
 }

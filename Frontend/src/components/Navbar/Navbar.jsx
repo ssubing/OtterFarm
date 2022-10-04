@@ -4,8 +4,8 @@ import "./Navbar.css";
 import logo from "../../assets/images/logo.png";
 import { TransactionContext } from "../../context/TransactionContext";
 import Notice from "../Notice/Notice";
-
-import { useState } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import Web3 from "web3";
 import { motion } from "framer-motion";
 const Navbar = () => {
@@ -22,6 +22,9 @@ const Navbar = () => {
   //     }).then(console.log(message))
 
   // }
+  const userId = window.localStorage.getItem("userId");
+  const [nick, setNick] = useState();
+
   return (
     <nav className="navbar">
       <div className="main">
@@ -69,7 +72,7 @@ const Navbar = () => {
       ) : (
         <div className="account">
           <Link
-            to="/myPage"
+            to={`/myPage/${userId}`}
             className="myPage"
             style={{ textDecoration: "none", color: "black" }}
           >

@@ -5,6 +5,32 @@
   height: 100%;
 }
 
+.item-title {
+  padding: 20px 0px 20px 50px;
+}
+
+.item-header-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.item-modal {
+  margin-left: 15px;
+}
+
+.MuiTypography-root {
+  font-family: "neo" !important;
+}
+
+.MuiTypography-root > div > img {
+  width: 130px;
+}
+
+.epic {
+  /* background-color: lightblue; */
+  padding: 10px;
+}
+
 .itemPage {
   display: flex;
   flex-direction: row;

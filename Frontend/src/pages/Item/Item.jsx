@@ -14,6 +14,16 @@ import RandomBox from "../../components/RandomBox/RandomBox";
 import { create } from "ipfs-http-client";
 import html2canvas from "html2canvas";
 import axios from "axios";
+
+// modal
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+
+import items from "../../assets/images/items/Head/01_01_01_01.png";
+import { EPIC } from "../../components/Items/Items";
+
 function Item() {
   const parts = ["머리", "눈", "입", "손", "옷"];
   const [selected, setSelected] = useState(Array(parts.length).fill(false));
@@ -160,9 +170,73 @@ function Item() {
       })
       .then((res) => setSudalPt(res.data));
   }, [token]);
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+    console.log(EPIC.head);
+  };
+  const handleClose = () => setOpen(false);
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "60%",
+    height: "85%",
+    overflowY: "scroll",
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
+
   return (
     <div className="pageBox">
       <Navbar />
+      <div className="item-header-wrap">
+        <h1 className="item-title">수달 꾸미기</h1>
+        <div className="item-modal">
+          <Button
+            style={{ fontFamily: "neo", fontSize: "15px" }}
+            onClick={handleOpen}
+          >
+            확률보기
+          </Button>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <Typography id="modal-modal-title" variant="h4" component="h1">
+                아이템 정보
+              </Typography>
+              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                <div className="epic">
+                  <h2>Epic </h2>
+                  <div className="line"></div>
+                  <p>당첨확률 : 10%</p>
+                  <p>[ 머리 ]</p>
+                  {EPIC.head.map((item, index) => (
+                    <img src={item} alt="item" />
+                  ))}
+                  <p>[ 눈 ]</p>
+                  {EPIC.eye.map((item, index) => (
+                    <img src={item} alt="item" />
+                  ))}
+                  <p>[ 옷 ]</p>
+                  {EPIC.cloth.map((item, index) => (
+                    <img src={item} alt="item" />
+                  ))}
+                </div>
+              </Typography>
+            </Box>
+          </Modal>
+        </div>
+      </div>
       <div className="itemPage">
         <div className="myNft">
           <div className="otterNft">

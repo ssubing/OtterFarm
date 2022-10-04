@@ -44,7 +44,7 @@ function NFTInfo() {
             <CardContent>
                 <div className="info">
                     <Sale isOnSale={nftDetailOne.saled}/>
-                    <Like likeCnt={nftDetailOne.likeCount}></Like>
+                    <Like likeCnt={nftDetailOne.likeCount} liked={nftDetailOne.liked}></Like>
                 </div>
                 <h5 className="auction-title">
                     수달(NFT) 정보

@@ -52,7 +52,9 @@ function Cloth({ itemsPerPage, setUrl, setClothId }) {
       <div className="items">
         {currentItems.map((info, idx) => (
           <img
-            className="parts"
+            className={`parts ${
+              info.rare === 1 ? "normal" : info.rare === 2 ? "rare" : "epic"
+            }`}
             alt=""
             key={idx}
             src={`${process.env.PUBLIC_URL}/assets/images/items/Cloth/05_${info.number}_${info.rgb}_${info.rare}.png`}

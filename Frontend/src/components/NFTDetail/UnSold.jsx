@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import shop from "../../api/shop";
 import { setNftUnsoldOne } from "../../store/modules/shop";
 
-function UnSoldOwner() {
+function UnSold() {
     const [price, setPrice] = useState(0)
     const requestPriceChange = (e) => {
         setPrice(e.target.value)
@@ -52,4 +52,4 @@ function UnSoldOwner() {
     )
 }
 
-export default UnSoldOwner;
+export default UnSold;

@@ -25,15 +25,14 @@ const avatarInfo = {
 
 function AvatarDetail() {
   const location = useLocation();
-  console.log(location.state.nftId);
 
   const dispatch = useDispatch();
   const nftDetailOne = useSelector((state) => state.nftDetailOne);
 
+  const nftId = location.state.nftId
   useEffect(() => {
-    const params = 11;
     shop
-      .nftDetailOne(params)
+      .nftDetailOne(nftId)
       .then((result) => {
         dispatch(setNftDetailOne(result.data));
       })

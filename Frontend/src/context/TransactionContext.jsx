@@ -52,13 +52,18 @@ export const TransactionProvider = ({ children }) => {
     axios.get(apiUrl + `api/user/nonce/${accounts[0]}`).then(async (res) => {
       console.log("hi");
       console.log(typeof res.data);
+      console.log(res.data)
       message = await web3.eth.sign(
         web3.utils.sha3(res.data.toString()),
         accounts[0]
       );
       axios
         .post(apiUrl + "api/user", { message: message, wallet: accounts[0] })
-        .then((res) => window.localStorage.setItem("token", res.data));
+        .then((res) => {
+          console.log(res.data)
+          window.localStorage.setItem("token", res.data.jwt)
+          window.localStorage.setItem("userId", res.data.userId)
+        })
     });
 
     // const message = await web3.eth.sign(

@@ -334,7 +334,7 @@ function Item() {
                       .then((res) =>
                         handleInfo(res.data.number, res.data.rgb, res.data.rare)
                       );
-                    axios.put(apiUrl + `api/game/point/${-500}`, {
+                    axios.put(apiUrl + `api/game/point/${-500}`, minus, {
                       headers: {
                         Authorization: `Bearer ${token}`,
                       },
@@ -377,7 +377,7 @@ function Item() {
                       .then((res) =>
                         handleInfo(res.data.number, res.data.rgb, res.data.rare)
                       );
-                    axios.put(apiUrl + `api/game/point/${-500}`, {
+                    axios.put(apiUrl + `api/game/point/${-500}`, minus, {
                       headers: {
                         Authorization: `Bearer ${token}`,
                       },
@@ -420,7 +420,7 @@ function Item() {
                       .then((res) =>
                         handleInfo(res.data.number, res.data.rgb, res.data.rare)
                       );
-                    axios.put(apiUrl + `api/game/point/${-500}`, {
+                    axios.put(apiUrl + `api/game/point/${-500}`, minus, {
                       headers: {
                         Authorization: `Bearer ${token}`,
                       },
@@ -463,7 +463,7 @@ function Item() {
                       .then((res) =>
                         handleInfo(res.data.number, res.data.rgb, res.data.rare)
                       );
-                    axios.put(apiUrl + `api/game/point/${-500}`, {
+                    axios.put(apiUrl + `api/game/point/${-500}`, minus, {
                       headers: {
                         Authorization: `Bearer ${token}`,
                       },

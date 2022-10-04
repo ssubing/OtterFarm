@@ -8,11 +8,13 @@ function ResetGame({ onClick, gameStats }) {
   const point = points / 10;
   const token = window.localStorage.getItem("token");
   useEffect(() => {
-    axios.put(`http://j7a606.p.ssafy.io:8080/api/game/point/${point}`, point, {
-      headers: {
-        Authorization: { token },
-      },
-    });
+    axios
+      .put(`http://j7a606.p.ssafy.io:8080/api/game/point/${point}`, point, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => console.log(res));
   }, []);
   return (
     <div className="gameOver">

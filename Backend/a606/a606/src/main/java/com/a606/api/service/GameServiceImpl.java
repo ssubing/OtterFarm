@@ -10,12 +10,6 @@ public class GameServiceImpl implements GameService{
     @Autowired
     UserRepository userRepository;
 
-    @Override
-    public long getGamePointById(long userId) {
-        User user = userRepository.findById(userId).get();
-
-        return user.getGamePoint();
-    }
 
     public long updateGamePointById(long userId, long gamePoint) {
         User user = userRepository.findById(userId).get();

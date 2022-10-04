@@ -11,6 +11,7 @@ import com.a606.db.repository.BidLogRepository;
 import com.a606.db.repository.BoardRepository;
 import com.a606.db.repository.NFTRepository;
 import com.a606.db.repository.UserRepository;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -52,12 +53,15 @@ public class ContractServiceImpl implements ContractService{
     @Autowired
     BidLogRepository bidLogRepository;
 
+    //    싸피 네트워크
     @Value("${web3.sudalFarmAddress}")
-//    싸피 네트워크
-    private String sudalFarmContract = "0x9739CC7f01F5eb1FA5f2B1D4045d2153e6b44066";
-    private String sudalAuctionContract = "0xB033DBf0943B4439cE45f41C51b925F1F06C780D";
-    private String key = "2c835aeb997e4d1269513a83efadc44de96a30a56c1b58cb7f8ce8897511c79f";
-    private String url = "http://20.196.209.2:8545";
+    private String sudalFarmContract;
+    @Value("${web3.sudalAuctionAddress}")
+    private String sudalAuctionContract;
+    @Value("${web3.key}")
+    private String key;
+    @Value("${web3.network}")
+    private String url;
 
     @Override
     public List<MyNFTDto> getNFTbyAddress(String Address) throws Exception {
@@ -164,16 +168,17 @@ public class ContractServiceImpl implements ContractService{
         // 경매 진행 중이 아닐 때
         if (!tuple5.component5()){ return; }
         LocalDateTime endTime = LocalDateTime.ofInstant(Instant.ofEpochSecond(tuple5.component3().longValue()), TimeZone.getDefault().toZoneId());
-        
+
+        System.out.println("!!!  " + endTime.isBefore(LocalDateTime.now()));
         // 경매 종료 시간이 지난 경우 경매 종료 처리
-        if (endTime.isAfter(LocalDateTime.now())) {
-            sudalAuction.endAuction(new BigInteger(tokenId));
+        if (endTime.isBefore(LocalDateTime.now())) {
+            sudalAuction.endAuction(new BigInteger(tokenId)).send();
         }
 
         Optional<NFT> oNft = nftRepository.findByTokenId(tokenId);
         if (oNft.isPresent()) {
             Optional<Board> oBoard = boardRepository.findByNftAndStart(oNft.get(), LocalDateTime.ofInstant(Instant.ofEpochSecond(tuple5.component2().longValue()), TimeZone.getDefault().toZoneId()));
-            Optional<User> oUser = userRepository.findByWallet(sudalFarm.ownerOf(new BigInteger(tokenId)).send());
+            Optional<User> oUser = userRepository.findByWallet(tuple5.component1());
             // 새로운 경매일 때 경매글 추가
             if (!oBoard.isPresent() && oUser.isPresent()) {
                 Board newBoard = new Board();

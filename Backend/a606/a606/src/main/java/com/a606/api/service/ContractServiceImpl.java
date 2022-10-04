@@ -72,6 +72,7 @@ public class ContractServiceImpl implements ContractService{
                 new PollingTransactionReceiptProcessor(web3j, 3000, 3));
 
         SudalFarm sudalFarm = SudalFarm.load(sudalFarmContract, web3j, manager, gasProvider);
+        SudalAuction sudalAuction = SudalAuction.load(sudalAuctionContract, web3j, manager, gasProvider);
 
         Tuple2<List<BigInteger>, List<BigInteger>> tuple2 = sudalFarm.getSudalsByOwner(Address).send();
 
@@ -98,8 +99,8 @@ public class ContractServiceImpl implements ContractService{
         FastRawTransactionManager manager = new FastRawTransactionManager(web3j, credentials,
                 new PollingTransactionReceiptProcessor(web3j, 3000, 3));
 
-        SudalAuction sudalAuction = SudalAuction.load(sudalAuctionContract, web3j, manager, gasProvider);
         SudalFarm sudalFarm = SudalFarm.load(sudalFarmContract, web3j, manager, gasProvider);
+        SudalAuction sudalAuction = SudalAuction.load(sudalAuctionContract, web3j, manager, gasProvider);
 
         Tuple5<String, BigInteger, BigInteger, BigInteger, Boolean> tuple5 = sudalAuction.getAuctionByTokenId(new BigInteger(tokenId)).send();
 
@@ -173,24 +174,33 @@ public class ContractServiceImpl implements ContractService{
         // 입찰 정보
         Tuple3<List<String>, List<BigInteger>, List<BigInteger>> tuple3 = sudalAuction.getBidByTokenId(new BigInteger(tokenId)).send();
 
+        Optional<NFT> oNft = nftRepository.findByTokenId(tokenId);
+        // 경매 정보와 nft 테이블의 is_saled 맞추기
+        if (oNft.isPresent()) {
+            NFT nft = oNft.get();
+            if (tuple5.component5() != nft.isSaled()) {
+                nft.setSaled(tuple5.component5());
+                nftRepository.save(nft);
+            }
+        }
+
         // 경매 진행 중이 아닐 때
         if (!tuple5.component5()){ return; }
         LocalDateTime endTime = LocalDateTime.ofInstant(Instant.ofEpochSecond(tuple5.component3().longValue()), TimeZone.getDefault().toZoneId());
 
-        System.out.println("!!!  " + endTime.isBefore(LocalDateTime.now()));
         // 경매 종료 시간이 지난 경우 경매 종료 처리
         if (endTime.isBefore(LocalDateTime.now())) {
             sudalAuction.endAuction(new BigInteger(tokenId)).send();
         }
 
-        Optional<NFT> oNft = nftRepository.findByTokenId(tokenId);
         if (oNft.isPresent()) {
-            Optional<Board> oBoard = boardRepository.findByNftAndStart(oNft.get(), LocalDateTime.ofInstant(Instant.ofEpochSecond(tuple5.component2().longValue()), TimeZone.getDefault().toZoneId()));
+            NFT nft = oNft.get();
+            Optional<Board> oBoard = boardRepository.findByNftAndStart(nft, LocalDateTime.ofInstant(Instant.ofEpochSecond(tuple5.component2().longValue()), TimeZone.getDefault().toZoneId()));
             Optional<User> oUser = userRepository.findByWallet(tuple5.component1());
             // 새로운 경매일 때 경매글 추가
             if (!oBoard.isPresent() && oUser.isPresent()) {
                 Board newBoard = new Board();
-                newBoard.setNft(oNft.get());
+                newBoard.setNft(nft);
                 newBoard.setStart(LocalDateTime.ofInstant(Instant.ofEpochSecond(tuple5.component2().longValue()), TimeZone.getDefault().toZoneId()));
                 newBoard.setEnd(LocalDateTime.ofInstant(Instant.ofEpochSecond(tuple5.component3().longValue()), TimeZone.getDefault().toZoneId()));
                 newBoard.setFirst_price(tuple5.component4().doubleValue());

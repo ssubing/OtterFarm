@@ -16,4 +16,5 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 
     Optional<Board> findByNftAndStartBeforeAndEndAfter(NFT nft, LocalDateTime time1, LocalDateTime time2);
 
+    Optional<Board> findByNftAndStart(NFT nft, LocalDateTime ofInstant);
 }

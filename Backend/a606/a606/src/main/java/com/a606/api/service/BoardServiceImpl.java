@@ -88,7 +88,8 @@ public class BoardServiceImpl implements BoardService{
 
             if (nftDto.isSaled()) {
                 // 가격 찾기
-                nftDto.setPrice("10000");
+                BidLog lastBidLog = nft.getBidLogs().get(nft.getBidLogs().size() - 1);
+                nftDto.setPrice(String.valueOf(lastBidLog.getPrice()));
             }
             Optional<User> oUser = userRepository.findByWallet(contractService.getAddressbyTokenId(nft.getTokenId()));
             if (oUser.isPresent()) {
@@ -125,7 +126,8 @@ public class BoardServiceImpl implements BoardService{
 
         if (nftDto.isSaled()) {
             // 가격 찾기
-            nftDto.setPrice("10000");
+            BidLog lastBidLog = nft.getBidLogs().get(nft.getBidLogs().size() - 1);
+            nftDto.setPrice(String.valueOf(lastBidLog.getPrice()));
         }
         Optional<User> oUser = userRepository.findByWallet(contractService.getAddressbyTokenId(nft.getTokenId()));
         if (oUser.isPresent()) {

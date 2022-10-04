@@ -98,9 +98,17 @@ public class ContractServiceImpl implements ContractService{
         FastRawTransactionManager manager = new FastRawTransactionManager(web3j, credentials,
                 new PollingTransactionReceiptProcessor(web3j, 3000, 3));
 
+        SudalAuction sudalAuction = SudalAuction.load(sudalAuctionContract, web3j, manager, gasProvider);
         SudalFarm sudalFarm = SudalFarm.load(sudalFarmContract, web3j, manager, gasProvider);
 
-        String address = sudalFarm.ownerOf(new BigInteger(tokenId)).send();
+        Tuple5<String, BigInteger, BigInteger, BigInteger, Boolean> tuple5 = sudalAuction.getAuctionByTokenId(new BigInteger(tokenId)).send();
+
+        String address = "";
+        if (tuple5.component5()) {
+            address = tuple5.component1();
+        } else {
+            address = sudalFarm.ownerOf(new BigInteger(tokenId)).send();
+        }
 
         return address;
     }

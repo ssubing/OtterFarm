@@ -20,6 +20,7 @@ public class GameServiceImpl implements GameService{
     public long updateGamePointById(long userId, long gamePoint) {
         User user = userRepository.findById(userId).get();
         user.setGamePoint(user.getGamePoint() + gamePoint);
+        userRepository.save(user);
         return user.getGamePoint();
     }
 }

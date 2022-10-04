@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Tetris.css";
 import Game from "../../components/Tetris/Game/Game";
 import Menu from "../../components/Tetris/Menu/Menu";
-
+import Header from "../../components/GameHeader/GameHeader";
 //hooks
 import { useGameOver } from "../../hooks/useGameOver";
 function Tetris() {
@@ -15,6 +15,7 @@ function Tetris() {
   };
   return (
     <div className="tetris">
+      <Header title={"테트리스"} />
       {firstTime ? (
         <Menu handleStart={start} />
       ) : (

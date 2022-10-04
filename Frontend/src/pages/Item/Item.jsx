@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import "./Item.css";
-
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { Buffer } from "buffer";
 import MyItem from "../../components/MyItem/MyItem";
@@ -14,6 +14,8 @@ import RandomBox from "../../components/RandomBox/RandomBox";
 import { create } from "ipfs-http-client";
 import html2canvas from "html2canvas";
 import axios from "axios";
+import logo from "../../assets/images/logo.png";
+import { height } from "@mui/system";
 
 // modal
 import Box from "@mui/material/Box";
@@ -25,7 +27,13 @@ import items from "../../assets/images/items/Head/01_01_01_01.png";
 import { EPIC } from "../../components/Items/Items";
 
 function Item() {
-  const parts = ["머리", "눈", "입", "손", "옷"];
+  const parts = [
+    `${process.env.PUBLIC_URL}/assets/images/items/Head/01_5_5_1.png`,
+    `${process.env.PUBLIC_URL}/assets/images/items/Eye/02_1_1_1.png`,
+    `${process.env.PUBLIC_URL}/assets/images/items/Mouth/03_1_1_1.png`,
+    `${process.env.PUBLIC_URL}/assets/images/items/Hand/04_1_1_1.png`,
+    `${process.env.PUBLIC_URL}/assets/images/items/Cloth/05_1_1_1.png`,
+  ];
   const [selected, setSelected] = useState(Array(parts.length).fill(false));
   useEffect(() => {
     setSelected([false, false, false, false, true]);
@@ -249,7 +257,7 @@ function Item() {
               <img className="char head" src={url} alt="" title="head" />
               <img className="char eye" src={eyeUrl} alt="" title="eye" />
               <img className="char mouth" src={mouthUrl} alt="" title="mouth" />
-              <img className="char hand" src={handUrl} alt="" title="hand" />
+              <img className="char hand" src={handUrl} alt="" title="" />
               <img className="char cloth" src={clothUrl} alt="" title="cloth" />
             </div>
 
@@ -266,7 +274,12 @@ function Item() {
               <input
                 id="otterName"
                 placeholder="수달이름"
-                style={{ marginRight: "10%", width: "90%" }}
+                style={{
+                  marginRight: "10%",
+                  width: "90%",
+                  fontFamily: "neo",
+                  borderRadius: "10px",
+                }}
                 onChange={handleInput}
               />
               <button
@@ -280,6 +293,7 @@ function Item() {
                   backgroundColor: "#f3e9dc",
                   fontFamily: "neo",
                   cursor: "pointer",
+                  borderRadius: "20px",
                 }}
                 onClick={nftHandler}
               >
@@ -289,13 +303,15 @@ function Item() {
           </div>
           <div className="select">
             {parts.map((part, idx) => (
-              <div
+              <motion.div
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
                 className={"part " + (selected[idx] ? "chosen" : null)}
                 key={idx}
                 onClick={() => onClick(idx)}
               >
-                {part}
-              </div>
+                <img src={part} alt="" style={{ width: "40%" }} />
+              </motion.div>
             ))}
           </div>
           {selected[0] ? (
@@ -320,7 +336,10 @@ function Item() {
         </div>
 
         <div className="itemShop">
-          <div className="shopName">내 수달머니: {sudalPt}</div>
+          <div className="shopName">
+            내 수달머니 {sudalPt}{" "}
+            <img src={logo} alt="" style={{ width: "10%" }} />
+          </div>
           <div className="shoppart">
             <RandomBox
               showBox={showBox}
@@ -348,6 +367,7 @@ function Item() {
                 style={{ width: "30%" }}
               />
               <button
+                className="selectBtn"
                 onClick={() => {
                   if (sudalPt >= 500) {
                     setShowBox(true);
@@ -375,7 +395,7 @@ function Item() {
                   }
                 }}
               >
-                뽑기
+                뽑기 500 <img src={logo} style={{ width: "20%" }} alt="" />
               </button>
             </div>
             <div
@@ -394,6 +414,7 @@ function Item() {
                 style={{ width: "30%" }}
               />
               <button
+                className="selectBtn"
                 onClick={() => {
                   if (sudalPt >= 500) {
                     setShowBox(true);
@@ -408,7 +429,7 @@ function Item() {
                       .then((res) =>
                         handleInfo(res.data.number, res.data.rgb, res.data.rare)
                       );
-                    axios.put(apiUrl + `api/game/point/${-500}`, {
+                    axios.put(apiUrl + `api/game/point/${-500}`, minus, {
                       headers: {
                         Authorization: `Bearer ${token}`,
                       },
@@ -418,7 +439,7 @@ function Item() {
                   }
                 }}
               >
-                뽑기
+                뽑기 500 <img src={logo} style={{ width: "20%" }} alt="" />
               </button>
             </div>
             <div
@@ -437,6 +458,7 @@ function Item() {
                 style={{ width: "30%" }}
               />
               <button
+                className="selectBtn"
                 onClick={() => {
                   if (sudalPt >= 500) {
                     setShowBox(true);
@@ -451,7 +473,7 @@ function Item() {
                       .then((res) =>
                         handleInfo(res.data.number, res.data.rgb, res.data.rare)
                       );
-                    axios.put(apiUrl + `api/game/point/${-500}`, {
+                    axios.put(apiUrl + `api/game/point/${-500}`, minus, {
                       headers: {
                         Authorization: `Bearer ${token}`,
                       },
@@ -461,7 +483,7 @@ function Item() {
                   }
                 }}
               >
-                뽑기
+                뽑기 500 <img src={logo} style={{ width: "20%" }} alt="" />
               </button>
             </div>
             <div
@@ -480,6 +502,7 @@ function Item() {
                 style={{ width: "30%" }}
               />
               <button
+                className="selectBtn"
                 onClick={() => {
                   if (sudalPt >= 500) {
                     setShowBox(true);
@@ -494,7 +517,7 @@ function Item() {
                       .then((res) =>
                         handleInfo(res.data.number, res.data.rgb, res.data.rare)
                       );
-                    axios.put(apiUrl + `api/game/point/${-500}`, {
+                    axios.put(apiUrl + `api/game/point/${-500}`, minus, {
                       headers: {
                         Authorization: `Bearer ${token}`,
                       },
@@ -504,7 +527,7 @@ function Item() {
                   }
                 }}
               >
-                뽑기
+                뽑기 500 <img src={logo} style={{ width: "20%" }} alt="" />
               </button>
             </div>
             <div
@@ -523,6 +546,7 @@ function Item() {
                 style={{ width: "30%" }}
               />
               <button
+                className="selectBtn"
                 onClick={() => {
                   if (sudalPt >= 500) {
                     setShowBox(true);
@@ -537,7 +561,7 @@ function Item() {
                       .then((res) =>
                         handleInfo(res.data.number, res.data.rgb, res.data.rare)
                       );
-                    axios.put(apiUrl + `api/game/point/${-500}`, {
+                    axios.put(apiUrl + `api/game/point/${-500}`, minus, {
                       headers: {
                         Authorization: `Bearer ${token}`,
                       },
@@ -547,7 +571,7 @@ function Item() {
                   }
                 }}
               >
-                뽑기
+                뽑기 500 <img src={logo} style={{ width: "20%" }} alt="" />
               </button>
             </div>
           </div>

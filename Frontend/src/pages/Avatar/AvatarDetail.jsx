@@ -21,15 +21,14 @@ function AvatarDetail() {
   const nftDetailOne = useSelector((state) => state.nftDetailOne);
 
   const nftId = location.state.nftId
+  const userId = localStorage.getItem("userId")
   useEffect(() => {
     shop
       .nftDetailOne(nftId)
       .then((result) => {
-        console.log(result.data)
         dispatch(setNftDetailOne(result.data));
       })
       .catch((error) => {
-        console.log("오류");
         console.log(error);
       });
   }, []);
@@ -43,11 +42,15 @@ function AvatarDetail() {
           <div className="sale-wrap">
             <OnSale />
           </div>
-        ) : (
-          <div className="sale-wrap">
-            {/* <UnSoldOwner/> */}
-            <UnSold />
-          </div>
+        ) : ( (userId == nftDetailOne.userId ? (
+            <div className="sale-wrap">
+              <UnSoldOwner/>
+            </div>
+          ) : (
+            <div className="sale-wrap">
+              <UnSold />
+            </div>
+          ))
         )}
       </div>
     </div>

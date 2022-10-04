@@ -10,7 +10,7 @@ function Mouth({ itemsPerPage, setUrl, setMouthId }) {
   const handleInfo = (data, len) => {
     const result = [];
     for (let i = 0; i < len; i++) {
-      if (data[i].type === 4) {
+      if (data[i].type === 3) {
         result.push(data[i]);
       }
     }
@@ -53,13 +53,15 @@ function Mouth({ itemsPerPage, setUrl, setMouthId }) {
       <div className="items">
         {currentItems.map((info, idx) => (
           <img
-            className="parts"
+            className={`parts ${
+              info.rare === 1 ? "normal" : info.rare === 2 ? "rare" : "epic"
+            }`}
             key={idx}
             alt=""
-            src={`${process.env.PUBLIC_URL}/assets/images/items/Mouth/04_${info.number}_${info.rgb}_${info.rare}.png`}
+            src={`${process.env.PUBLIC_URL}/assets/images/items/Mouth/03_${info.number}_${info.rgb}_${info.rare}.png`}
             onClick={() => {
               setUrl(
-                `${process.env.PUBLIC_URL}/assets/images/items/Mouth/04_${info.number}_${info.rgb}_${info.rare}.png`
+                `${process.env.PUBLIC_URL}/assets/images/items/Mouth/03_${info.number}_${info.rgb}_${info.rare}.png`
               );
               setMouthId(info.itemId);
             }}

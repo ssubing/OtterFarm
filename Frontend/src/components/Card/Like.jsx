@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-// import { useDispatch, useSelector } from "react-redux";
 import shop from "../../api/shop";
-// import { setNftLikeOne } from "../../store/modules/shop";
 
 function Like(props) {
-  const nftId = props.nftId 
+  const nftId = props.nftId
+  console.log(nftId)
   //좋아요 클릭
   const likeClick = () => {
-    // console.log(likeFlag)
-    // console.log(props.likeCnt)
     const params = {
       nftId : nftId,
       likeCount : props.likeCnt

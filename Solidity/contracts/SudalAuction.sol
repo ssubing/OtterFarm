@@ -7,6 +7,7 @@ import "./SudalFarm.sol";
 contract SudalAuction is Ownable {
 
     event AuctionCreated(address indexed seller, uint tokenId);
+    event AuctionEnded(address indexed getter, uint tokenId);
 
     address private _erc20ContractAddress;
     address private _sudalFarmContractAddress;
@@ -158,11 +159,13 @@ contract SudalAuction is Ownable {
 
             // 구매자에게 NFT 전송
             approveAndTransfer(address(this), bidArray[bidIndex - 1].bidder, _tokenId);
+            emit AuctionEnded(bidArray[bidIndex - 1].bidder, _tokenId);
         }
         // 입찰이 없는 경우
         else {
             // 원래 주인에게 NFT 전송
             approveAndTransfer(address(this), auction.seller, _tokenId);
+            emit AuctionEnded(auction.seller, _tokenId);
         }
 
         auctions[_tokenId].isActive = false;

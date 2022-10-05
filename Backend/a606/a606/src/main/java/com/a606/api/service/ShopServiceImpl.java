@@ -43,6 +43,7 @@ public class ShopServiceImpl implements ShopService{
     public boolean checkItems(User user, List<Long> itemIds) {
         int type = 1;
         for(Long itemId : itemIds){
+            if(itemId == 0) { continue; }
             // item이 존재하지 않거나 타입에 맞지 않는 경우
             Optional<Item> item = itemRepository.findById(itemId);
             if(!item.isPresent() || item.get().getType() != type){ return false; }
@@ -59,15 +60,18 @@ public class ShopServiceImpl implements ShopService{
     @Override
     public Long createNFT(User user, List<Long> itemIds, String tokenURI, String name) throws Exception {
         StringBuilder stringBuilder = new StringBuilder();
-        // 테스트 동안 주석
-//        for(Long itemId : itemIds){
-//            Item item = itemRepository.findById(itemId).get();
-//            Inventory inventory = inventoryRepository.findByUserAndItem(user, item).get();
-//            inventory.setHowMany(inventory.getHowMany() - 1);
-//            inventoryRepository.save(inventory);
-//            stringBuilder.append(String.format("%02d", item.getNumber())).append(String.format("%02d", item.getRgb()));
-//        }
-        stringBuilder.append("010101"); // 테스트 용 코드
+        stringBuilder.append("1");
+        for(Long itemId : itemIds){
+            if(itemId == 0) {
+                stringBuilder.append(String.format("%02d", 0000));
+                continue;
+            }
+            Item item = itemRepository.findById(itemId).get();
+            Inventory inventory = inventoryRepository.findByUserAndItem(user, item).get();
+            inventory.setHowMany(inventory.getHowMany() - 1);
+            inventoryRepository.save(inventory);
+            stringBuilder.append(String.format("%02d", item.getNumber())).append(String.format("%02d", item.getRgb()));
+        }
         String tokenId = contractService.createNFT(user.getWallet(), stringBuilder.toString(), tokenURI);
         if (tokenId.equals("")) {
             return null;

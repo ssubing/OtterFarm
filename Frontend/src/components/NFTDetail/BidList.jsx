@@ -14,9 +14,13 @@ function BidList(props) {
                 <span>{props.price}</span>
             </div>
             <hr/>
-            <table>
-                <tbody>{bidLog}</tbody>
-            </table>
+            {bidLog.length > 0 ? (
+                <table>
+                    <tbody>{bidLog}</tbody>
+                </table>
+            ) : (
+                <h3 style={{textAlign: 'center'}}>{props.title}이 없습니다</h3>
+            )}
         </div>
     )
 }

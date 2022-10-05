@@ -77,7 +77,7 @@ public class BoardController {
     @ApiOperation(value = "좋아요 클릭",
             notes = "좋아요를 누른다. 이미 눌렀을 경우 취소한다.")
     public ResponseEntity<?> clickLikes(@ApiIgnore Authentication authentication,
-                                                @RequestParam @ApiParam(value = "NFT ID", required = true) Long nftId) throws Exception {
+                                                @RequestBody @ApiParam(value = "NFT ID", required = true) Long nftId) throws Exception {
         if (authentication == null) return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         User user = ((SudalUserDetails) authentication.getDetails()).getUser();
         return new ResponseEntity<Boolean>(boardService.clickLikes(user, nftId), HttpStatus.OK);

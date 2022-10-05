@@ -82,6 +82,8 @@ public class ShopServiceImpl implements ShopService{
         nft.setSaled(false);
         nft.setName(name);
         nft.setLikeCount(0);
+        nft.setTokenURI(tokenURI);
+        nft.setOwner(user.getWallet());
         nft = nftRepository.save(nft);
 
         IssuedAvatar issuedAvatar = new IssuedAvatar();

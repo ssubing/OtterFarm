@@ -8,7 +8,7 @@ import Notice from "../Notice/Notice";
 
 const MainNavbar = () => {
   const { connectWallet, currentAccount } = useContext(TransactionContext);
-  const apiUrl = "https://.p.ssafy.io:8080/";
+  const apiUrl = "https://j7a606.p.ssafy.io:8080/";
   const userId = window.localStorage.getItem("userId");
   const [nick, setNick] = useState();
   const token = window.localStorage.getItem("token");

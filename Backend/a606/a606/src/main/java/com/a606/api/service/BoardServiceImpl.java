@@ -91,12 +91,11 @@ public class BoardServiceImpl implements BoardService{
 
             if (nftDto.isSaled()) {
                 // 가격 찾기
-                if (nft.getBidLogs().size() > 0) {
+                Board lastBoard = nft.getBoards().get(nft.getBoards().size() - 1);
+                nftDto.setPrice(String.valueOf(lastBoard.getFirst_price()));
+                if (lastBoard.getBidLogs().size() > 0) {
                     BidLog lastBidLog = nft.getBidLogs().get(nft.getBidLogs().size() - 1);
                     nftDto.setPrice(String.valueOf(lastBidLog.getPrice()));
-                } else {
-                    Board lastBoard = nft.getBoards().get(nft.getBoards().size() - 1);
-                    nftDto.setPrice(String.valueOf(lastBoard.getFirst_price()));
                 }
             }
             Optional<User> oUser = userRepository.findByWallet(contractService.getAddressbyTokenId(nft.getTokenId()));
@@ -134,12 +133,11 @@ public class BoardServiceImpl implements BoardService{
 
         if (nftDto.isSaled()) {
             // 가격 찾기
-            if (nft.getBidLogs().size() > 0) {
+            Board lastBoard = nft.getBoards().get(nft.getBoards().size() - 1);
+            nftDto.setPrice(String.valueOf(lastBoard.getFirst_price()));
+            if (lastBoard.getBidLogs().size() > 0) {
                 BidLog lastBidLog = nft.getBidLogs().get(nft.getBidLogs().size() - 1);
                 nftDto.setPrice(String.valueOf(lastBidLog.getPrice()));
-            } else {
-                Board lastBoard = nft.getBoards().get(nft.getBoards().size() - 1);
-                nftDto.setPrice(String.valueOf(lastBoard.getFirst_price()));
             }
         }
         Optional<User> oUser = userRepository.findByWallet(contractService.getAddressbyTokenId(nft.getTokenId()));

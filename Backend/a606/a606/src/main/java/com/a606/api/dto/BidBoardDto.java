@@ -13,8 +13,8 @@ import java.util.List;
 public class BidBoardDto {
 
     private long id;
-    private LocalDateTime start;
-    private LocalDateTime end;
+    private String start;
+    private String end;
     private double first_price;
     private List<LogsDto> bidLogs;
 }

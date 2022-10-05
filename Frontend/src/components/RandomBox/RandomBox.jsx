@@ -7,7 +7,7 @@ const backdrop = {
   visible: { opacity: 1 },
   hidden: { opacity: 0 },
 };
-const apiUrl = "http://j7a606.p.ssafy.io:8080/";
+const apiUrl = "https://j7a606.p.ssafy.io/";
 const RandomBox = ({
   showBox,
   setShowBox,

@@ -26,14 +26,29 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { EPIC, RARE, NORMAL } from "../../components/Items/Items";
 
+// tab
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+
+const useStyles = makeStyles((theme) => ({
+  tabRoot: {
+    flexGrow: 1,
+  },
+  appbar: {
+    backgroundColor: "inherit",
+    boxShadow: "none",
+  },
+  tab: {
+    color: "black",
+    fontSize: "20px",
+    fontFamily: "neo",
+  },
+}));
+
 function Item() {
-  const parts = [
-    `${process.env.PUBLIC_URL}/assets/images/items/Head/01_5_5_1.png`,
-    `${process.env.PUBLIC_URL}/assets/images/items/Eye/02_1_1_1.png`,
-    `${process.env.PUBLIC_URL}/assets/images/items/Mouth/03_1_1_1.png`,
-    `${process.env.PUBLIC_URL}/assets/images/items/Hand/04_1_1_1.png`,
-    `${process.env.PUBLIC_URL}/assets/images/items/Cloth/05_1_1_1.png`,
-  ];
+  const parts = ["머리", "눈", "입", "손", "옷"];
   const [selected, setSelected] = useState(Array(parts.length).fill(false));
   useEffect(() => {
     setSelected([false, false, false, false, true]);
@@ -45,7 +60,7 @@ function Item() {
   const [mouthUrl, setMouthUrl] = useState(null);
   const [handUrl, setHandUrl] = useState(null);
   const [clothUrl, setClothUrl] = useState(null);
-  const apiUrl = "http://j7a606.p.ssafy.io:8080/";
+  const apiUrl = "https://j7a606.p.ssafy.io/";
   const [showBox, setShowBox] = useState(false);
   const [part, setPart] = useState("");
   const onClick = (idx) => {
@@ -152,25 +167,32 @@ function Item() {
           { withCredentials: true }
         )
         .then((res) => {
+          setLoading(false);
+
           if (res.status === 200) {
-            setLoading(false);
-            alert("발급 성공!");
-            navigate("/main");
+            if (!loading) {
+              alert("발급 성공!");
+              navigate("/myPage");
+            }
           }
         })
         .catch((e) => {
+          setLoading(false);
           if (e.response.status === 409) {
-            alert("이미 있는 NFT입니다!");
+            if (!loading) {
+              alert("이미 있는 NFT입니다!");
+            }
           }
         });
     } else {
+      setLoading(false);
       alert("수달 이름을 정해주세요");
     }
   };
   const handleInput = (e) => {
     setName(e.target.value);
-    if(e.target.value.length >=8){
-      alert("이름은 최대 7자 입니다.")
+    if (e.target.value.length >= 8) {
+      alert("이름은 최대 7자 입니다.");
     }
   };
   const onSubmit = () => {};
@@ -206,9 +228,16 @@ function Item() {
     p: 4,
   };
 
+  // tab
+  const classes = useStyles();
+  const [value, setValue] = useState(0);
+  const handleTab = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <div className="pageBox">
-      {loading ? <BasicModal open={loading} /> : null}
+      <BasicModal open={loading} />
       <Navbar />
       <div className="item-header-wrap">
         <h1 className="item-title">수달 꾸미기</h1>
@@ -230,57 +259,103 @@ function Item() {
                 아이템 정보
               </Typography>
               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                <div className="epic">
-                  <h2>Epic </h2>
-                  <div className="line"></div>
-                  <p>당첨확률 : 10%</p>
-                  <p>[ 머리 ]</p>
-                  {EPIC.head.map((item, index) => (
-                    <img src={item} alt="item" />
-                  ))}
-                  <p>[ 눈 ]</p>
-                  {EPIC.eye.map((item, index) => (
-                    <img src={item} alt="item" />
-                  ))}
-                  <p>[ 옷 ]</p>
-                  {EPIC.cloth.map((item, index) => (
-                    <img src={item} alt="item" />
-                  ))}
+                <div className={classes.tabRoot}>
+                  <AppBar position="static" className={classes.appbar}>
+                    <Tabs
+                      value={value}
+                      onChange={handleTab}
+                      aria-label="simple tabs example"
+                      TabIndicatorProps={{
+                        style: { backgroundColor: "#C08552" },
+                      }}
+                    >
+                      <Tab className={classes.tab} label="Epic" />
+                      <Tab className={classes.tab} label="Rare" />
+                      <Tab className={classes.tab} label="Normal" />
+                    </Tabs>
+                  </AppBar>
                 </div>
-                <div className="rare">
-                  <h2>Rare </h2>
-                  <div className="line"></div>
-                  <p>당첨확률 : 40%</p>
-                  <p>[ 머리 ]</p>
-                  {RARE.head.map((item, index) => (
-                    <img src={item} alt="item" />
-                  ))}
-                  <p>[ 눈 ]</p>
-                  {RARE.eye.map((item, index) => (
-                    <img src={item} alt="item" />
-                  ))}
-                  <p>[ 옷 ]</p>
-                  {RARE.cloth.map((item, index) => (
-                    <img src={item} alt="item" />
-                  ))}
-                </div>
-                <div className="normal">
-                  <h2>Normal </h2>
-                  <div className="line"></div>
-                  <p>당첨확률 : 50%</p>
-                  <p>[ 머리 ]</p>
-                  {NORMAL.head.map((item, index) => (
-                    <img src={item} alt="item" />
-                  ))}
-                  <p>[ 눈 ]</p>
-                  {NORMAL.eye.map((item, index) => (
-                    <img src={item} alt="item" />
-                  ))}
-                  <p>[ 옷 ]</p>
-                  {NORMAL.cloth.map((item, index) => (
-                    <img src={item} alt="item" />
-                  ))}
-                </div>
+                {value == 0 && (
+                  <div className="epic">
+                    <h2>Epic </h2>
+                    <div className="line"></div>
+                    <p>당첨확률 : 10%</p>
+                    <p>[ 머리 ]</p>
+                    {EPIC.head.map((item, index) => (
+                      <img src={item} alt="item" />
+                    ))}
+                    <p>[ 눈 ]</p>
+                    {EPIC.eye.map((item, index) => (
+                      <img src={item} alt="item" />
+                    ))}
+                    <p>[ 입 ]</p>
+                    {EPIC.mouth.map((item, index) => (
+                      <img src={item} alt="item" />
+                    ))}
+                    <p>[ 손 ]</p>
+                    {EPIC.hand.map((item, index) => (
+                      <img src={item} alt="item" />
+                    ))}
+                    <p>[ 옷 ]</p>
+                    {EPIC.cloth.map((item, index) => (
+                      <img src={item} alt="item" />
+                    ))}
+                  </div>
+                )}
+                {value == 1 && (
+                  <div className="rare">
+                    <h2>Rare </h2>
+                    <div className="line"></div>
+                    <p>당첨확률 : 40%</p>
+                    <p>[ 머리 ]</p>
+                    {RARE.head.map((item, index) => (
+                      <img src={item} alt="item" />
+                    ))}
+                    <p>[ 눈 ]</p>
+                    {RARE.eye.map((item, index) => (
+                      <img src={item} alt="item" />
+                    ))}
+                    <p>[ 입 ]</p>
+                    {RARE.mouth.map((item, index) => (
+                      <img src={item} alt="item" />
+                    ))}
+                    <p>[ 손 ]</p>
+                    {RARE.hand.map((item, index) => (
+                      <img src={item} alt="item" />
+                    ))}
+                    <p>[ 옷 ]</p>
+                    {RARE.cloth.map((item, index) => (
+                      <img src={item} alt="item" />
+                    ))}
+                  </div>
+                )}
+                {value == 2 && (
+                  <div className="normal">
+                    <h2>Normal </h2>
+                    <div className="line"></div>
+                    <p>당첨확률 : 50%</p>
+                    <p>[ 머리 ]</p>
+                    {NORMAL.head.map((item, index) => (
+                      <img src={item} alt="item" />
+                    ))}
+                    <p>[ 눈 ]</p>
+                    {NORMAL.eye.map((item, index) => (
+                      <img src={item} alt="item" />
+                    ))}
+                    <p>[ 입 ]</p>
+                    {NORMAL.mouth.map((item, index) => (
+                      <img src={item} alt="item" />
+                    ))}
+                    <p>[ 손 ]</p>
+                    {NORMAL.hand.map((item, index) => (
+                      <img src={item} alt="item" />
+                    ))}
+                    <p>[ 옷 ]</p>
+                    {NORMAL.cloth.map((item, index) => (
+                      <img src={item} alt="item" />
+                    ))}
+                  </div>
+                )}
               </Typography>
             </Box>
           </Modal>
@@ -381,7 +456,7 @@ function Item() {
                 key={idx}
                 onClick={() => onClick(idx)}
               >
-                <img src={part} alt="" style={{ width: "40%" }} />
+                <div>{part}</div>
               </motion.div>
             ))}
           </div>

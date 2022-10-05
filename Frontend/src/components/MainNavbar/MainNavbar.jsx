@@ -6,6 +6,7 @@ import { TransactionContext } from "../../context/TransactionContext";
 import Notice from "../Notice/Notice";
 const MainNavbar = () => {
   const { connectWallet, currentAccount } = useContext(TransactionContext);
+  const userId = window.localStorage.getItem("userId");
   return (
     <nav className="mainNavbar">
       <div className="main">
@@ -21,7 +22,7 @@ const MainNavbar = () => {
       ) : (
         <div className="account">
           <Link
-            to="/myPage"
+            to={`/myPage/${userId}`}
             className="myPage"
             style={{ textDecoration: "none", color: "black" }}
           >

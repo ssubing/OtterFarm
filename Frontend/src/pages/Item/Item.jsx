@@ -45,7 +45,7 @@ function Item() {
   const [mouthUrl, setMouthUrl] = useState(null);
   const [handUrl, setHandUrl] = useState(null);
   const [clothUrl, setClothUrl] = useState(null);
-  const apiUrl = "http://j7a606.p.ssafy.io:8080/";
+  const apiUrl = "https://j7a606.p.ssafy.io:8080/";
   const [showBox, setShowBox] = useState(false);
   const [part, setPart] = useState("");
   const onClick = (idx) => {
@@ -152,10 +152,12 @@ function Item() {
           { withCredentials: true }
         )
         .then((res) => {
+         setLoading(false)
+       
           if (res.status === 200) {
-            setLoading(false);
+            if(!loading){
             alert("발급 성공!");
-            navigate("/main");
+            navigate("/myPage");}
           }
         })
         .catch((e) => {
@@ -169,8 +171,8 @@ function Item() {
   };
   const handleInput = (e) => {
     setName(e.target.value);
-    if(e.target.value.length >=8){
-      alert("이름은 최대 7자 입니다.")
+    if (e.target.value.length >= 8) {
+      alert("이름은 최대 7자 입니다.");
     }
   };
   const onSubmit = () => {};
@@ -208,7 +210,7 @@ function Item() {
 
   return (
     <div className="pageBox">
-      {loading ? <BasicModal open={loading} /> : null}
+       <BasicModal open={loading} />
       <Navbar />
       <div className="item-header-wrap">
         <h1 className="item-title">수달 꾸미기</h1>

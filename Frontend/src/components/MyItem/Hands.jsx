@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import "./MyItem.css";
 import axios from "axios";
-const apiUrl = "http://j7a606.p.ssafy.io:8080/";
+const apiUrl = "https://j7a606.p.ssafy.io:8080/";
 
 function Hands({ itemsPerPage, setUrl, setHandId }) {
   const [data, setData] = useState([]);
@@ -51,26 +51,29 @@ function Hands({ itemsPerPage, setUrl, setHandId }) {
   return (
     <div className="inventory">
       <div className="items">
-        {currentItems.map((info, idx) => (
-          info.howMany >0?(
-          <div style={{position:"relative",marginRight:"3%"}}>
-          <img
-            className={`parts ${
-              info.rare === 1 ? "normal" : info.rare === 2 ? "rare" : "epic"
-            }`}
-            key={idx}
-            alt=""
-            src={`${process.env.PUBLIC_URL}/assets/images/items/Hand/04_${info.number}_${info.rgb}_${info.rare}.png`}
-            onClick={() => {
-              setUrl(
-                `${process.env.PUBLIC_URL}/assets/images/items/Hand/04_${info.number}_${info.rgb}_${info.rare}.png`
-              );
-              setHandId(info.itemId);
-            }}
-          />
-          <span style={{position:"absolute", top:"75%", left:"90%"}}>{info.howMany}</span>
-          </div>):null
-        ))}
+        {currentItems.map((info, idx) =>
+          info.howMany > 0 ? (
+            <div style={{ position: "relative", marginRight: "3%" }}>
+              <img
+                className={`parts ${
+                  info.rare === 1 ? "normal" : info.rare === 2 ? "rare" : "epic"
+                }`}
+                key={idx}
+                alt=""
+                src={`${process.env.PUBLIC_URL}/assets/images/items/Hand/04_${info.number}_${info.rgb}_${info.rare}.png`}
+                onClick={() => {
+                  setUrl(
+                    `${process.env.PUBLIC_URL}/assets/images/items/Hand/04_${info.number}_${info.rgb}_${info.rare}.png`
+                  );
+                  setHandId(info.itemId);
+                }}
+              />
+              <span style={{ position: "absolute", top: "75%", left: "90%" }}>
+                {info.howMany}
+              </span>
+            </div>
+          ) : null
+        )}
       </div>
       <ReactPaginate
         className="paginate"

@@ -169,6 +169,9 @@ function Item() {
   };
   const handleInput = (e) => {
     setName(e.target.value);
+    if(e.target.value.length >=8){
+      alert("이름은 최대 7자 입니다.")
+    }
   };
   const onSubmit = () => {};
   const minus = -500;
@@ -312,6 +315,7 @@ function Item() {
               <input
                 id="otterName"
                 placeholder="수달이름"
+                maxLength={7}
                 style={{
                   marginTop: "10px",
                   marginRight: "10%",

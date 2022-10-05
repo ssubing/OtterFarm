@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import "./MyItem.css";
 import axios from "axios";
-const apiUrl = "https://j7a606.p.ssafy.io:8080/";
+const apiUrl = "https://j7a606.p.ssafy.io/";
 
 function Cloth({ itemsPerPage, setUrl, setClothId }) {
   const [data, setData] = useState([]);

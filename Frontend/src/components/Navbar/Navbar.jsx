@@ -22,7 +22,7 @@ const Navbar = () => {
   //     }).then(console.log(message))
 
   // }
-  const apiUrl = "http://j7a606.p.ssafy.io:8080/";
+  const apiUrl = "https://j7a606.p.ssafy.io/";
   const userId = window.localStorage.getItem("userId");
   const [nick, setNick] = useState();
   const token = window.localStorage.getItem("token");

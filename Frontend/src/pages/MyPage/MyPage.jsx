@@ -206,7 +206,7 @@ function MyPage() {
                       alignItems: "center",
                     }}
                   >
-                    {otters.saled ? (
+                    {otter.saled ? (
                       <div className="issaled">분양중</div>
                     ) : (
                       <div className="issaled">미분양</div>

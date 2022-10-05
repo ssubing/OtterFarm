@@ -1,46 +1,67 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import BidList from "./BidList.jsx"
+import { useDispatch, useSelector } from "react-redux";
 
-const sellRequest = [
-    {
-        time: '2022-09-01 13:15',
-        price: '520'
-    },
-    {
-        time: '2022-09-01 13:24',
-        price: '560'
-    },
-    {
-        time: '2022-09-01 13:42',
-        price: '600'
-    }
-]
+import shop from "../../api/shop";
+import { setNftUnsoldOne } from "../../store/modules/shop";
 
-function UnSoldOwner() {
+function UnSold() {
+    const nftDetailOne = useSelector((state) => state.nftDetailOne);
+    
+    //nft 판매 요청하는 값
     const [price, setPrice] = useState(0)
     const requestPriceChange = (e) => {
         setPrice(e.target.value)
     }
+    //요청하기 클릭했을 경우
     const requestClick = () => {
-        console.log(price)
+        const id = nftDetailOne.id
+        const params = {
+            nftId: id,
+            price : price
+        }
+        shop
+        .nftReqSale(params)
+        .then((result) => {
+            window.location.reload()
+            console.log(result)
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     }
-    return(
+    //요청 내역 조회
+    const dispatch = useDispatch();
+    useEffect(() => {
+        const params = nftDetailOne.id;
+        shop
+        .nftUnsoldOne(params)
+        .then((result) => {
+            dispatch(setNftUnsoldOne(result.data))
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }, [nftDetailOne])
+    const nftUnsoldOne = useSelector((state) => state.nftUnsoldOne);
+    return( 
         <div>
             <div className="sell-request">
                 <h3>분양 요청</h3>
                 <div className="bid">
                     <span>요청가</span>
                     <div>
-                        <input onChange={requestPriceChange}className="bid-input"/>
+                        <input type="number" onChange={requestPriceChange}className="bid-input"
+                        style={{marginRight: "10px", textAlign: "right", fontFamily: 'neo', fontSize: '20px', width: '205px'}}/>
                         <button className="bid-btn" onClick={requestClick}>요청</button>
                     </div>
                 </div>
             </div>
             <hr/>
-            <BidList title="요청 내역" date="요청 시간" price="제안가(SSF)" bidLog={sellRequest}/>
+            <BidList title="요청 내역" time="요청 시간" price="제안가(SSF)" bidLog={nftUnsoldOne}/>
         </div>
     )
 }
 
-export default UnSoldOwner;
+export default UnSold;

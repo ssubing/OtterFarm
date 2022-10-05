@@ -1,29 +1,46 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import "./MyItem.css";
+import axios from "axios";
+const apiUrl = "http://j7a606.p.ssafy.io:8080/";
 
-
-
-const items = [
-
- 
-];
-
-function Hands({ itemsPerPage,setUrl}) {
-  const [currentItems, setCurrentItems] = useState(null);
+function Hands({ itemsPerPage, setUrl, setHandId }) {
+  const [data, setData] = useState([]);
+  const [len, setLen] = useState(0);
+  const handleInfo = (data, len) => {
+    const result = [];
+    for (let i = 0; i < len; i++) {
+      if (data[i].type === 4) {
+        result.push(data[i]);
+      }
+    }
+    setData(result);
+    setLen(result.length);
+  };
+  const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    axios
+      .get(apiUrl + "api/item/inventory", {
+        headers: {
+          Authorization: "Bearer " + window.localStorage.getItem("token"),
+        },
+      })
+      .then((res) => handleInfo(res.data, res.data.length));
+  }, []);
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
     console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-    setCurrentItems(items.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(items.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage]);
+    setCurrentItems(data.slice(itemOffset, endOffset));
 
+    setPageCount(Math.ceil(data.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, data]);
 
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % items.length;
+    const newOffset = (event.selected * itemsPerPage) % data.length;
     console.log(
       `User requested page number ${event.selected}, which is offset ${newOffset}`
     );
@@ -34,8 +51,27 @@ function Hands({ itemsPerPage,setUrl}) {
   return (
     <div className="inventory">
       <div className="items">
-     {items.map((item)=>( <img className="parts" src={item.url} onClick={() => setUrl(item.url)}/>) )}
-     </div>
+        {currentItems.map((info, idx) => (
+          info.howMany >0?(
+          <div style={{position:"relative",marginRight:"3%"}}>
+          <img
+            className={`parts ${
+              info.rare === 1 ? "normal" : info.rare === 2 ? "rare" : "epic"
+            }`}
+            key={idx}
+            alt=""
+            src={`${process.env.PUBLIC_URL}/assets/images/items/Hand/04_${info.number}_${info.rgb}_${info.rare}.png`}
+            onClick={() => {
+              setUrl(
+                `${process.env.PUBLIC_URL}/assets/images/items/Hand/04_${info.number}_${info.rgb}_${info.rare}.png`
+              );
+              setHandId(info.itemId);
+            }}
+          />
+          <span style={{position:"absolute", top:"75%", left:"90%"}}>{info.howMany}</span>
+          </div>):null
+        ))}
+      </div>
       <ReactPaginate
         className="paginate"
         breakLabel="..."

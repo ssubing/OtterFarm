@@ -1,7 +1,9 @@
 import Navbar from "../../components/Navbar/Navbar";
 import "./Guide.css";
 import Button from "@material-ui/core/Button";
-import game from "../../assets/images/game.png";
+import fallingGame from "../../assets/images/falling-game-thumbnail.png";
+import cardGame from "../../assets/images/CardGame/card-guide.PNG"
+import { Link } from "react-router-dom";
 const Guide = () => {
   return (
     <div className="guide">
@@ -37,11 +39,31 @@ const Guide = () => {
         </div>
         <div className="line"></div>
         <div className="game">
-          <img src={game} alt="game" className="game-thumbnail"></img>
+          <Link to="/fallingGame">
+            <img src={fallingGame} alt="game" className="game-thumbnail"></img>
+          </Link>
           <p className="content">
-            뿌슝빠슝
+            <strong>수달은 아직도 배고프다</strong>
             <br />
-            <br />이 게임은 뿌슝빠슝 합니다 😎
+            <br />
+            먹어도 먹어도 배가 고픈 수달은 열심히 먹이(🦞🐟🐚)를 찾아다니고 있습니다
+            <br/>
+            <br/>
+            하늘에서 떨어지는 먹이를 받아 수달을 배부르게 해주세요🍴
+          </p>
+        </div>
+        <div className="game">
+          <Link to="/cardGame">
+            <img src={cardGame} alt="game" className="game-thumbnail"></img>
+          </Link>
+          <p className="content">
+            <strong>같은 수달 찾기</strong>
+            <br />
+            <br />
+            패션에 대해 관심이 많은 수달은 다양하게 스타일을 추구합니다
+            <br/>
+            <br/>
+            그 중에 똑같이 입은 수달을 찾아 맞춰보세요👕👖🧦
           </p>
         </div>
       </div>

@@ -10,7 +10,7 @@ import ChangeButton from "../../components/ChangeButton/ChangeButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { Link } from "react-router-dom";
 function MyPage() {
-  const apiUrl = "https://j7a606.p.ssafy.io:8080/";
+  const apiUrl = "https://j7a606.p.ssafy.io/";
   const token = window.localStorage.getItem("token");
   const [sudalPt, setSudalPt] = useState(0);
   const [userNick, setUserNick] = useState("");
@@ -221,7 +221,7 @@ function MyPage() {
                       alignItems: "center",
                     }}
                   >
-                    {otter.saled ? (
+                    {otters.saled ? (
                       <div className="issaled">분양중</div>
                     ) : (
                       <div className="issaled">미분양</div>

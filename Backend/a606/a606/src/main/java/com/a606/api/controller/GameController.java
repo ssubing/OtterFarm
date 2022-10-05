@@ -23,15 +23,7 @@ public class GameController {
     @Autowired
     private final GameService gameService;
 
-    @GetMapping("game/point")
-    public ResponseEntity<Long> getGamePoint(@ApiIgnore Authentication authentication) {
-        if (authentication == null) return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
-        User user = ((SudalUserDetails) authentication.getDetails()).getUser();
-
-        return new ResponseEntity<Long>(gameService.getGamePointById(user.getId()), HttpStatus.OK);
-    }
-
-    @PutMapping("game/point/{point}")
+    @PutMapping("game/point")
     public ResponseEntity<Long> updateGamePoint(@ApiIgnore Authentication authentication, @PathVariable long point) {
         if (authentication == null) return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
         User user = ((SudalUserDetails) authentication.getDetails()).getUser();

@@ -38,6 +38,9 @@ public class BoardServiceImpl implements BoardService{
     @Autowired
     ContractService contractService;
 
+    @Autowired
+    LetterService letterService;
+
     @Override
     public List<NFTDto> getNFTList(User user, String tab, String order, boolean isDesc, int pageNo, int pageSize) throws Exception {
         String properties = "";
@@ -88,7 +91,8 @@ public class BoardServiceImpl implements BoardService{
 
             if (nftDto.isSaled()) {
                 // 가격 찾기
-                nftDto.setPrice("10000");
+                BidLog lastBidLog = nft.getBidLogs().get(nft.getBidLogs().size() - 1);
+                nftDto.setPrice(String.valueOf(lastBidLog.getPrice()));
             }
             Optional<User> oUser = userRepository.findByWallet(contractService.getAddressbyTokenId(nft.getTokenId()));
             if (oUser.isPresent()) {
@@ -125,7 +129,8 @@ public class BoardServiceImpl implements BoardService{
 
         if (nftDto.isSaled()) {
             // 가격 찾기
-            nftDto.setPrice("10000");
+            BidLog lastBidLog = nft.getBidLogs().get(nft.getBidLogs().size() - 1);
+            nftDto.setPrice(String.valueOf(lastBidLog.getPrice()));
         }
         Optional<User> oUser = userRepository.findByWallet(contractService.getAddressbyTokenId(nft.getTokenId()));
         if (oUser.isPresent()) {
@@ -174,15 +179,18 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public Appeal createAppeals(User user, AppealDto appealDto) {
+    public void createAppeals(User user, AppealDto appealDto) throws Exception {
         Appeal appeal = new Appeal();
+        NFT nft = nftRepository.findById(appealDto.getNftId()).get();
         appeal.setUser(user);
-        appeal.setNft(nftRepository.findById(appealDto.getNftId()).get());
+        appeal.setNft(nft);
         appeal.setPrice(appealDto.getPrice());
         appeal.setDate(LocalDateTime.now());
-        Appeal newAppeal = new Appeal();
-        newAppeal = appealRepository.save(appeal);
-        return newAppeal;
+        appealRepository.save(appeal);
+        //
+        User seller = userRepository.findByWallet(contractService.getAddressbyTokenId(nft.getTokenId())).get();
+        String msg = user.getNickname() + "님이 해당 NFT의 판매를 요청하였습니다.";
+        letterService.createLetter(seller, msg);
     }
 
     @Override
@@ -210,7 +218,21 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public long getNFTCount() {
-        return nftRepository.count();
+    public long getNFTCount(String tab) {
+        long result = 0;
+        switch (tab) {
+            case "all":
+                result = nftRepository.count();
+                break;
+            case "saled":
+                result = nftRepository.countByIsSaled(true);
+                break;
+            case "unsaled":
+                result = nftRepository.countByIsSaled(false);
+                break;
+            default:
+                return 0;
+        }
+        return result;
     }
 }

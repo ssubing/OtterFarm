@@ -9,6 +9,7 @@ import com.a606.db.entity.Item;
 import com.a606.db.entity.User;
 import com.a606.db.repository.ItemRepository;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,7 @@ public class ItemController {
     }
 
     @GetMapping("item/{type}")
+    @ApiOperation(value = "아이템 랜덤 뽑기", notes = "레어도 1: 50% 2: 40% 3. 10%")
     public ResponseEntity<ItemDto> getRandomItem(@ApiIgnore Authentication authentication, @PathVariable int type) {
         if (authentication == null) return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
         User user = ((SudalUserDetails) authentication.getDetails()).getUser();

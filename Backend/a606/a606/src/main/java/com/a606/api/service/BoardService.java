@@ -4,7 +4,6 @@ import com.a606.api.dto.AppealDto;
 import com.a606.api.dto.BidBoardDto;
 import com.a606.api.dto.LogsDto;
 import com.a606.api.dto.NFTDto;
-import com.a606.db.entity.Appeal;
 import com.a606.db.entity.User;
 
 import java.util.List;
@@ -19,9 +18,9 @@ public interface BoardService {
 
     List<LogsDto> getAppeals(Long nftId);
 
-    Appeal createAppeals(User user, AppealDto appealDto);
+    void createAppeals(User user, AppealDto appealDto) throws Exception;
 
     Boolean clickLikes(User user, Long nftId);
 
-    long getNFTCount();
+    long getNFTCount(String tab);
 }

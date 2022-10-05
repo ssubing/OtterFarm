@@ -66,7 +66,7 @@ public class BoardController {
     @ApiOperation(value = "NFT 판매 요청",
             notes = "NFT 판매 요청을 한다.")
     public ResponseEntity<?> newAppeals(@ApiIgnore Authentication authentication,
-                                        @RequestBody @ApiParam(value = "판매 요청 정보", required = true) AppealDto appealDto) {
+                                        @RequestBody @ApiParam(value = "판매 요청 정보", required = true) AppealDto appealDto) throws Exception {
         if (authentication == null) return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         User user = ((SudalUserDetails) authentication.getDetails()).getUser();
         boardService.createAppeals(user, appealDto);

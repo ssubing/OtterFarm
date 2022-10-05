@@ -38,6 +38,9 @@ public class BoardServiceImpl implements BoardService{
     @Autowired
     ContractService contractService;
 
+    @Autowired
+    LetterService letterService;
+
     @Override
     public List<NFTDto> getNFTList(User user, String tab, String order, boolean isDesc, int pageNo, int pageSize) throws Exception {
         String properties = "";
@@ -176,13 +179,18 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public void createAppeals(User user, AppealDto appealDto) {
+    public void createAppeals(User user, AppealDto appealDto) throws Exception {
         Appeal appeal = new Appeal();
+        NFT nft = nftRepository.findById(appealDto.getNftId()).get();
         appeal.setUser(user);
-        appeal.setNft(nftRepository.findById(appealDto.getNftId()).get());
+        appeal.setNft(nft);
         appeal.setPrice(appealDto.getPrice());
         appeal.setDate(LocalDateTime.now());
         appealRepository.save(appeal);
+        //
+        User seller = userRepository.findByWallet(contractService.getAddressbyTokenId(nft.getTokenId())).get();
+        String msg = user.getNickname() + "님이 해당 NFT의 판매를 요청하였습니다.";
+        letterService.createLetter(seller, msg);
     }
 
     @Override

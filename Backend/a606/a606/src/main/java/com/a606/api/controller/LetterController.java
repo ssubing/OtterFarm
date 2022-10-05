@@ -27,7 +27,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class LetterController {
     @Autowired
-    private final LetterService letterService;
+    LetterService letterService;
 
     @GetMapping("letter")
     public ResponseEntity<List<LetterDto>> getLetters(@ApiIgnore Authentication authentication) {

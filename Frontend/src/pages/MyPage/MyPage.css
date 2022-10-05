@@ -47,8 +47,9 @@
 }
 .sudalInfo {
   display: flex;
-  width: 70%;
+  width: 90%;
   flex-direction: column;
+  margin-left:"10%"
 }
 
 .issaled {

@@ -67,6 +67,10 @@ function MyPage() {
       modiNick();
     }
   };
+  const handleTokenId = (id) =>{
+    window.localStorage.setItem("tokenId",id)
+  }
+  
   return (
     <div className="myPage">
       <Navbar />
@@ -194,7 +198,7 @@ function MyPage() {
         <div className="myOtterNfts">
           {otters &&
             otters.map((otter, idx) => (
-              <div className="myOtterNft" key={idx}>
+              <Link className="myOtterNft"style={{textDecoration:"none"}}state={{nftId:otter.id}}to ="/detail" onClick={()=>{handleTokenId(otter.tokenId)}}><div clssName="myOtterNft" key={idx}>
                 <img
                   src={otter.tokenURI}
                   alt=""
@@ -217,11 +221,11 @@ function MyPage() {
                     {otters.saled ? (
                       <div className="issaled">분양중</div>
                     ) : (
-                      <div className="issaled"><Link style={{textDecoration:"none",color:"white", cursor:"pointer"}}state={{nftId:otter.id}}to ="/detail" >미분양</Link></div>
+                      <div className="issaled">미분양</div>
                     )}
                     <div style={{ display: "flex", marginTop: "8%" }}>
                       <FavoriteIcon color="secondary" />
-                      <span style={{ fontSize: "1.5em", marginLeft: "10%" }}>
+                      <span style={{ fontSize: "1.5em", marginLeft: "10%" ,color:"black"}}>
                         {otter.likeCount}
                       </span>
                     </div>
@@ -230,11 +234,12 @@ function MyPage() {
                     style={{
                       display: "flex",
                       justifyContent: "space-between",
+                      width:"100%",
                       alignItems: "center",
                       marginTop: "10%",
                     }}
                   >
-                    <div style={{ fontSize: "16px", fontWeight: "bold" }}>
+                    <div style={{ fontSize: "16px", fontWeight: "bold", color:"black"}}>
                       {otter.name}
                     </div>
                     {params.username === userId ? (
@@ -261,8 +266,11 @@ function MyPage() {
                       />
                     ) : null}
                   </div>
+                  
                 </div>
+                
               </div>
+              </Link>
             ))}
         </div>
       </div>

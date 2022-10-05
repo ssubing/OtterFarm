@@ -58,37 +58,37 @@
 }
 
 .normal {
-  background-color: rgb(213, 240, 245);
+  background-color: #ffffffd1;
   border: 8px solid transparent;
   border-radius: 10px;
   border-image: linear-gradient(
     to right,
-    rgb(0, 0, 0) 0%,
-    rgb(57, 77, 45) 100%
+    #ccccc5 0%, 
+    #757575 100%
   );
   border-image-slice: 1;
 }
 
 .rare {
-  background-color: rgb(213, 240, 245);
+  background-color: #ffffffd1;
   border: 8px solid transparent;
   border-radius: 10px;
   border-image: linear-gradient(
     to right,
-    rgb(86, 6, 156) 0%,
-    rgb(120, 160, 218) 100%
+    #a9d4ff 0%, 
+    #76baff 100%
   );
   border-image-slice: 1;
 }
 
 .epic {
-  background-color: rgb(213, 240, 245);
+  background-color: #ffffffd1;
   border: 8px solid transparent;
   border-radius: 10px;
   border-image: linear-gradient(
     to right,
-    rgb(180, 154, 4) 0%,
-    rgb(97, 213, 8) 100%
+    #f5ffa9 0%, 
+    #ffe77d 100%
   );
   border-image-slice: 1;
 }

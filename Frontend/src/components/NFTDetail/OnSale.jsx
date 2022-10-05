@@ -25,6 +25,8 @@ function Price(props) {
   }
 
   const tokenId = localStorage.getItem("tokenId");
+  const userId = localStorage.getItem("userId")
+  const id = props.id
 
   const bidTest = async () => {
     let web3 = new Web3(window.ethereum);
@@ -54,35 +56,34 @@ function Price(props) {
           <span>현재가</span>
           <span>{props.price}SSF</span>
         </div>
-        <div className="bid">
-          <span>입찰가</span>
-          <div>
-            <input type="number" min={props.price} defaultValue={props.price} onChange={bidPriceChange} className="bid-input"
-            style={{marginRight: "10px", textAlign: "right", fontFamily: 'neo', fontSize: '20px', width: '205px'}}/>
-            <button className="bid-btn" onClick={bidClick}>입찰</button>
-          </div>
-        </div>
+        
+          {id != userId ? (
+              <div className="bid">
+                <span>입찰가</span>
+                <div>
+                  <input type="number" min={props.price} defaultValue={props.price} onChange={bidPriceChange} className="bid-input"
+                  style={{marginRight: "10px", textAlign: "right", fontFamily: 'neo', fontSize: '20px', width: '205px'}}/>
+                  <button className="bid-btn" onClick={bidClick}>입찰</button>
+                </div>
+              </div>
+          ) : (<div></div>)}
       </div>
     )
 }
 
-
 function OnSale(props) {
   //분양 내역 조회
-  // const dispatch = useDispatch();
   const [dealInfo, setDealInfo] = useState(null);
 
   useEffect(() => {
-    const params = props.nftId
+    const params = props.nftInfo.id
     shop
       .nftOnsaleOne(params)
       .then((result) => {
         setDealInfo(result.data)
-          // dispatch(setNftOnsaleOne(result.data))
       })
       .catch((error) => {
-          console.log("오류")
-          console.log(error)
+        console.log(error)
       })
   }, [])
 
@@ -97,7 +98,7 @@ function OnSale(props) {
               </div>
           </div>
           <hr/>
-          <Price price={dealInfo.first_price}/>
+          <Price price={dealInfo.first_price} id={props.nftInfo.userId}/>
           <hr/>
           <BidList title="입찰 내역" date="입찰 시간" price="입찰 가격(SSF)" bidLog={dealInfo.bidLogs}/>
       </div>

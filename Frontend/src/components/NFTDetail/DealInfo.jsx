@@ -11,7 +11,7 @@ function DealInfo(props) {
             <div>
                 {nftInfo.saled ? (
                     <div className="sale-wrap">
-                        <OnSale nftId={nftInfo.id}/>
+                        <OnSale nftInfo={nftInfo}/>
                     </div>
                 ) : userId == nftInfo.userId ? (
                     <div className="sale-wrap">

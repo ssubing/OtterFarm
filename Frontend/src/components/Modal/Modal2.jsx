@@ -4,6 +4,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import otter from "../../assets/images/logo.png"
+import {useState} from "react";
+import { useNavigate } from 'react-router-dom';
 import "./Modal2.css"
 const style = {
   position: 'absolute',
@@ -20,17 +22,21 @@ const style = {
   justifyContent :"center"
 };
 
-export default function BasicModal({open}) {
-//   const [open, setOpen] = React.useState(false);
-//   const handleOpen = () => setOpen(true);
-//   const handleClose = () => setOpen(false);
 
+export default function BasicModal({open}) {
+  const navigate = useNavigate();
+  const [open2, setOpen2] =useState(false);
+//   const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen2(true);
+  const handleNavi = () => {
+    navigate("/myPage")
+  }
   return (
     <div>
      
       <Modal
         open={open}
-        // onClose={handleClose}
+        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -42,6 +48,7 @@ export default function BasicModal({open}) {
       
         </Box>
       </Modal>
+
     </div>
   );
 }

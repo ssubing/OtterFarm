@@ -9,7 +9,7 @@ function ResetGame({ onClick, gameStats }) {
   const token = window.localStorage.getItem("token");
   useEffect(() => {
     axios
-      .put(`http://j7a606.p.ssafy.io:8080/api/game/point/${point}`, point, {
+      .put(`https://j7a606.p.ssafy.io:8080/api/game/point/${point}`, point, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

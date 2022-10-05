@@ -194,7 +194,7 @@ function MyPage() {
         )}
       </div>
       <div className="myOtters">
-        <h1 style={{ marginLeft: "10%", marginTop: "5%" }}>내 수달들</h1>
+        <h1 style={{ marginLeft: "10%", marginTop: "5%" }}>{userNick}님의 수달들</h1>
         <div className="myOtterNfts">
           {otters &&
             otters.map((otter, idx) => (

@@ -22,9 +22,13 @@ const Navbar = () => {
   //     }).then(console.log(message))
 
   // }
+  const apiUrl = "http://j7a606.p.ssafy.io:8080/"
   const userId = window.localStorage.getItem("userId");
   const [nick, setNick] = useState();
-
+  const token = window.localStorage.getItem("token");
+  useEffect(()=>{
+    axios.get(apiUrl + "api/user/nickname", {headers : {Authorization : `Bearer ${token}`}}).then(res=> setNick(res.data))
+  },[])
   return (
     <nav className="navbar">
       <div className="main">
@@ -76,11 +80,11 @@ const Navbar = () => {
             className="myPage"
             style={{ textDecoration: "none", color: "black" }}
           >
-            unknown 님의 수달하우스
+            {nick} 님의 수달하우스
           </Link>
-          <Link to="/noti" className="noti-icon">
+          {/* <Link to="/noti" className="noti-icon">
             <Notice />
-          </Link>
+          </Link> */}
         </div>
       )}
     </nav>

@@ -1,8 +1,11 @@
 import React from "react";
 import Modal from "../Modal/Modal";
 import { motion } from "framer-motion";
-function ChangeButton({ handleUrl, url, issaled }) {
-  const uri = url;
+import {useNavigate } from "react-router-dom"
+function ChangeButton({ handleId, id, issaled,param}) {
+  const ids = id;
+  const navigate = useNavigate();
+
   return (
     <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
       <button
@@ -15,12 +18,15 @@ function ChangeButton({ handleUrl, url, issaled }) {
           marginTop: "10%",
           marginBottom: "5%",
           cursor: "pointer",
+          zIndex:"100"
         }}
-        onClick={() => {
+        onClick={(e) => {
+          
           if (issaled) {
             alert("판매중인 상품입니다.");
           } else {
-            handleUrl(uri);
+            handleId(ids);
+            window.location.reload();
           }
         }}
       >

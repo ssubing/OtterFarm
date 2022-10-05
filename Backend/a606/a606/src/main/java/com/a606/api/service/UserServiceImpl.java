@@ -90,15 +90,16 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Long getProfileById(long userId) throws Exception {
+    public String getProfileById(long userId) throws Exception {
         User user = userRepository.findById(userId).get();
         Optional<NFT> nft = nftRepository.findById(user.getProfile());
         if (!nft.isPresent()) {
             return null;
         }
         String address = contractService.getAddressbyTokenId(nft.get().getTokenId());
+        // 토큰을 보유중일 경우
         if(address.equalsIgnoreCase(user.getWallet())){
-            return user.getProfile();
+            return contractService.getTokenURIbyTokenId(nft.get().getTokenId());
         }
         return null;
     }

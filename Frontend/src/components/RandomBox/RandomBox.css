@@ -15,6 +15,9 @@
 .giftBox {
   animation: swing 0.2s forwards infinite;
   animation-delay: 1.5s;
+  position: absolute;
+  top: 13%;
+  left: 38%;
 }
 
 @keyframes swing {
@@ -58,4 +61,3 @@
 
   background-color: #f3e9dc;
 }
-

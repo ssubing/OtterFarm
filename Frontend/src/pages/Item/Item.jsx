@@ -315,7 +315,7 @@ function Item() {
                 style={{
                   marginTop: "10px",
                   marginRight: "10%",
-                  width: "90%",
+                  width: "96%",
                   fontFamily: "neo",
                   borderRadius: "10px",
                   height: "100%",
@@ -327,32 +327,7 @@ function Item() {
                   style={{
                     zIndex: "5",
                     // marginLeft: "80%",
-                    // // height: "10%",
-                    width: "30%",
-                    // marginTop: "90%",
-                    backgroundColor: "#f3e9dc",
-                    fontFamily: "neo",
-                    cursor: "pointer",
-                    borderRadius: "20px",
-                    marginRight: "5%",
-                  }}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setUrl("");
-                    setEyeUrl("");
-                    setMouthUrl("");
-                    setHandUrl("");
-                    setClothUrl("");
-                  }}
-                >
-                  초기화
-                </button>
-
-                <button
-                  style={{
-                    zIndex: "5",
-                    // marginLeft: "80%",
-                    // // height: "10%",
+                    height: "100%",
                     width: "30%",
                     marginTop: "10px",
                     backgroundColor: "#f3e9dc",

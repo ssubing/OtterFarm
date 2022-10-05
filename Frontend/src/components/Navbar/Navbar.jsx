@@ -76,7 +76,7 @@ const Navbar = () => {
       ) : (
         <div className="account">
           <Link
-            to={`/myPage/${userId}`}
+            to={"/myPage"}
             className="myPage"
             style={{ textDecoration: "none", color: "black" }}
           >

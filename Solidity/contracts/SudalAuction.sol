@@ -6,7 +6,9 @@ import "./SudalFarm.sol";
 
 contract SudalAuction is Ownable {
 
-    address private _erc20ContractAddress = address(0x0c54E456CE9E4501D2c43C38796ce3F06846C966);
+    event AuctionCreated(address indexed seller, uint tokenId);
+
+    address private _erc20ContractAddress;
     address private _sudalFarmContractAddress;
 
     // 토큰 id와 경매 매핑
@@ -43,6 +45,11 @@ contract SudalAuction is Ownable {
         return IERC721Receiver.onERC721Received.selector;
     }
 
+    function setErc20(address _contractAddress) public onlyOwner {
+        // erc20 토큰 contract 연결
+        _erc20ContractAddress = _contractAddress;
+    }
+
     function setSudalFarm(address _contractAddress) public onlyOwner {
         // 수달 농장 contract 연결
         _sudalFarmContractAddress = _contractAddress;
@@ -64,7 +71,7 @@ contract SudalAuction is Ownable {
         auctions[_tokenId] = newAuction;
         bidIndexes[_tokenId] = 0;
 
-        // emit AuctionCreated(msg.sender, _tokenId);
+        emit AuctionCreated(msg.sender, _tokenId);
         return true;
     }
 

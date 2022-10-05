@@ -42,31 +42,41 @@ const RandomBox = ({
               <div className="gottenItem">
                 {part === "01" ? (
                   <img
-                    className="itemImg"
+                    className={`itemImg ${
+                      rare === 1 ? "normal" : rare === 2 ? "rare" : "epic"
+                    }`}
                     src={`${process.env.PUBLIC_URL}/assets/images/items/Head/01_${num}_${rgb}_${rare}.png`}
                     alt="gottenItem"
                   />
                 ) : part === "02" ? (
                   <img
-                    className="itemImg"
+                    className={`itemImg ${
+                      rare === 1 ? "normal" : rare === 2 ? "rare" : "epic"
+                    }`}
                     src={`${process.env.PUBLIC_URL}/assets/images/items/Eye/02_${num}_${rgb}_${rare}.png`}
                     alt="gottenItem"
                   />
                 ) : part === "03" ? (
                   <img
-                    className="itemImg"
-                    src={`${process.env.PUBLIC_URL}/assets/images/items/Hand/04_${num}_${rgb}_${rare}.png`}
+                    className={`itemImg ${
+                      rare === 1 ? "normal" : rare === 2 ? "rare" : "epic"
+                    }`}
+                    src={`${process.env.PUBLIC_URL}/assets/images/items/Mouth/03_${num}_${rgb}_${rare}.png`}
                     alt="gottenItem"
                   />
                 ) : part === "04" ? (
                   <img
-                    className="itemImg"
-                    src={`${process.env.PUBLIC_URL}/assets/images/items/Mouth/03_${num}_${rgb}_${rare}.png`}
+                    className={`itemImg ${
+                      rare === 1 ? "normal" : rare === 2 ? "rare" : "epic"
+                    }`}
+                    src={`${process.env.PUBLIC_URL}/assets/images/items/Hand/04_${num}_${rgb}_${rare}.png`}
                     alt="gottenItem"
                   />
                 ) : (
                   <img
-                    className="itemImg"
+                    className={`itemImg ${
+                      rare === 1 ? "normal" : rare === 2 ? "rare" : "epic"
+                    }`}
                     src={`${process.env.PUBLIC_URL}/assets/images/items/Cloth/05_${num}_${rgb}_${rare}.png`}
                     alt="gottenItem"
                   />
@@ -83,7 +93,7 @@ const RandomBox = ({
                     window.location.href = "/item";
                   }}
                   className="btn"
-                  style={{ zIndex: "3" }}
+                  style={{ zIndex: "3", cursor: "pointer" }}
                 >
                   확인
                 </button>

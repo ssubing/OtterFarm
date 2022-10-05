@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Web3 from "web3";
 import {
-  ERC20ABI,
-  ERC20Address,
   SudalAuctionABI,
   SudalAuctionAddress,
   SudalFarmABI,
@@ -52,7 +50,6 @@ function UnSoldOwner() {
   const auctionTest = async () => {
     let web3 = new Web3(window.ethereum);
     const accounts = await web3.eth.requestAccounts();
-    console.log(accounts[0]);
     const SudalFarmContract = new web3.eth.Contract(
       SudalFarmABI,
       SudalFarmAddress

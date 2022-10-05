@@ -275,6 +275,7 @@ function Item() {
                 id="otterName"
                 placeholder="수달이름"
                 style={{
+                  marginTop: "10px",
                   marginRight: "10%",
                   width: "90%",
                   fontFamily: "neo",
@@ -337,8 +338,8 @@ function Item() {
 
         <div className="itemShop">
           <div className="shopName">
-            내 수달머니 {sudalPt}{" "}
-            <img src={logo} alt="" style={{ width: "10%" }} />
+            <img src={logo} alt="" style={{ width: "10%" }} /> 내 수달머니{" "}
+            {sudalPt}P
           </div>
           <div className="shoppart">
             <RandomBox

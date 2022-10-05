@@ -76,7 +76,7 @@ function OnSale() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-      const params = 11;
+      const params = nftOnsaleOne.id;
       shop
       .nftOnsaleOne(params)
       .then((result) => {

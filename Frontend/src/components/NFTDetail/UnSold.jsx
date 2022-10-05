@@ -7,6 +7,7 @@ import shop from "../../api/shop";
 import { setNftUnsoldOne } from "../../store/modules/shop";
 
 function UnSold() {
+    const nftDetailOne = useSelector((state) => state.nftDetailOne);
     const [price, setPrice] = useState(0)
     const requestPriceChange = (e) => {
         setPrice(e.target.value)
@@ -19,7 +20,7 @@ function UnSold() {
     //요청 내역 조회
     const dispatch = useDispatch();
     useEffect(() => {
-        const params = 11;
+        const params = nftDetailOne.id;
         shop
         .nftUnsoldOne(params)
         .then((result) => {

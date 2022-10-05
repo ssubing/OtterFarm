@@ -19,6 +19,13 @@ import { height } from "@mui/system";
 import TransitionsModal from "../../components/Modal/Modal";
 import BasicModal from "../../components/Modal/Modal2";
 
+// modal
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+import { EPIC, RARE, NORMAL } from "../../components/Items/Items";
+
 function Item() {
   const parts = [
     `${process.env.PUBLIC_URL}/assets/images/items/Head/01_5_5_1.png`,
@@ -99,7 +106,7 @@ function Item() {
   const [clothId, setClothId] = useState(0);
   const token = window.localStorage.getItem("token");
   const [response, setResponse] = useState();
-  const [loading, setLoading] =useState(false);
+  const [loading, setLoading] = useState(false);
   const nftHandler = async (e) => {
     setLoading(true);
     e.preventDefault();
@@ -174,10 +181,108 @@ function Item() {
       })
       .then((res) => setSudalPt(res.data));
   }, [token]);
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+    console.log(EPIC.head);
+  };
+  const handleClose = () => setOpen(false);
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "60%",
+    height: "85%",
+    overflowY: "scroll",
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
+
   return (
     <div className="pageBox">
-      {loading?<BasicModal open={loading}/>:null}
+      {loading ? <BasicModal open={loading} /> : null}
       <Navbar />
+      <div className="item-header-wrap">
+        <h1 className="item-title">수달 꾸미기</h1>
+        <div className="item-modal">
+          <Button
+            style={{ fontFamily: "neo", fontSize: "15px" }}
+            onClick={handleOpen}
+          >
+            확률보기
+          </Button>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <Typography id="modal-modal-title" variant="h4" component="h1">
+                아이템 정보
+              </Typography>
+              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                <div className="epic">
+                  <h2>Epic </h2>
+                  <div className="line"></div>
+                  <p>당첨확률 : 10%</p>
+                  <p>[ 머리 ]</p>
+                  {EPIC.head.map((item, index) => (
+                    <img src={item} alt="item" />
+                  ))}
+                  <p>[ 눈 ]</p>
+                  {EPIC.eye.map((item, index) => (
+                    <img src={item} alt="item" />
+                  ))}
+                  <p>[ 옷 ]</p>
+                  {EPIC.cloth.map((item, index) => (
+                    <img src={item} alt="item" />
+                  ))}
+                </div>
+                <div className="rare">
+                  <h2>Rare </h2>
+                  <div className="line"></div>
+                  <p>당첨확률 : 40%</p>
+                  <p>[ 머리 ]</p>
+                  {RARE.head.map((item, index) => (
+                    <img src={item} alt="item" />
+                  ))}
+                  <p>[ 눈 ]</p>
+                  {RARE.eye.map((item, index) => (
+                    <img src={item} alt="item" />
+                  ))}
+                  <p>[ 옷 ]</p>
+                  {RARE.cloth.map((item, index) => (
+                    <img src={item} alt="item" />
+                  ))}
+                </div>
+                <div className="normal">
+                  <h2>Normal </h2>
+                  <div className="line"></div>
+                  <p>당첨확률 : 50%</p>
+                  <p>[ 머리 ]</p>
+                  {NORMAL.head.map((item, index) => (
+                    <img src={item} alt="item" />
+                  ))}
+                  <p>[ 눈 ]</p>
+                  {NORMAL.eye.map((item, index) => (
+                    <img src={item} alt="item" />
+                  ))}
+                  <p>[ 옷 ]</p>
+                  {NORMAL.cloth.map((item, index) => (
+                    <img src={item} alt="item" />
+                  ))}
+                </div>
+              </Typography>
+            </Box>
+          </Modal>
+        </div>
+      </div>
       <div className="itemPage">
         <div className="myNft">
           <div className="otterNft">
@@ -208,49 +313,60 @@ function Item() {
                 id="otterName"
                 placeholder="수달이름"
                 style={{
-                  marginRight: "5%",
-                  width: "90%",
+                  marginTop: "10px",
+                  marginRight: "10%",
+                  width: "96%",
                   fontFamily: "neo",
                   borderRadius: "10px",
+                  height: "100%",
                 }}
                 onChange={handleInput}
               />
-              <div style={{width:"100%", display:"flex"}}>
-                <button style={{
-                  zIndex: "5",
-                  // marginLeft: "80%",
-                  // // height: "10%",
-                  width: "30%",
-                  // marginTop: "90%",
-                  backgroundColor: "#f3e9dc",
-                  fontFamily: "neo",
-                  cursor: "pointer",
-                  borderRadius: "20px",
-                  marginRight:"5%",   
-                 
-                }}onClick={(e) =>{e.preventDefault();setUrl(""); setEyeUrl(""); setMouthUrl(""); setHandUrl(""); setClothUrl("")}}>초기화</button>
-                
-              <button
-                type="submit"
-                style={{
-                  zIndex: "5",
-                  // marginLeft: "80%",
-                  // // height: "10%",
-                  width: "30%",
-                  // marginTop: "90%",
-                  backgroundColor: "#f3e9dc",
-                  fontFamily: "neo",
-                  cursor: "pointer",
-                  borderRadius: "20px",
-                
-                }}
-                onClick={nftHandler}
-              >
-                발급하기
-              </button>
-            </div>
+              <div style={{ width: "100%", display: "flex" }}>
+                <button
+                  style={{
+                    zIndex: "5",
+                    // marginLeft: "80%",
+                    height: "100%",
+                    width: "30%",
+                    marginTop: "10px",
+                    backgroundColor: "#f3e9dc",
+                    fontFamily: "neo",
+                    cursor: "pointer",
+                    borderRadius: "20px",
+                    marginRight: "5%",
+                  }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setUrl("");
+                    setEyeUrl("");
+                    setMouthUrl("");
+                    setHandUrl("");
+                    setClothUrl("");
+                  }}
+                >
+                  초기화
+                </button>
+
+                <button
+                  type="submit"
+                  style={{
+                    zIndex: "5",
+                    // marginLeft: "80%",
+                    height: "100%",
+                    width: "30%",
+                    marginTop: "10px",
+                    backgroundColor: "#f3e9dc",
+                    fontFamily: "neo",
+                    cursor: "pointer",
+                    borderRadius: "20px",
+                  }}
+                  onClick={nftHandler}
+                >
+                  발급하기
+                </button>
+              </div>
             </form>
-      
           </div>
           <div className="select">
             {parts.map((part, idx) => (
@@ -288,8 +404,8 @@ function Item() {
 
         <div className="itemShop">
           <div className="shopName">
-            내 수달머니 {sudalPt}{" "}
-            <img src={logo} alt="" style={{ width: "10%" }} />
+            <img src={logo} alt="" style={{ width: "10%" }} /> 내 수달머니{" "}
+            {sudalPt}P
           </div>
           <div className="shoppart">
             <RandomBox

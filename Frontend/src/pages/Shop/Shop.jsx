@@ -61,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: "wrap",
     justifyContent: "space-around",
     overflow: "hidden",
+    flexDirection: "column",
   },
   gridList: {
     // width: 500,

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import "./MyItem.css";
 import axios from "axios";
-const apiUrl = "://j7a606.p.ssafy.io/";
+const apiUrl = "https://j7a606.p.ssafy.io/";
 
 function MyItem({ itemsPerPage, setUrl, setItemId }) {
   const [data, setData] = useState([]);

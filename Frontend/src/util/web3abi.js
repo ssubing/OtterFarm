@@ -760,6 +760,25 @@ export const SudalAuctionABI = [
       {
         indexed: true,
         internalType: "address",
+        name: "seller",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
+      },
+    ],
+    name: "AuctionCreated",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
         name: "previousOwner",
         type: "address",
       },
@@ -945,6 +964,19 @@ export const SudalAuctionABI = [
         type: "address",
       },
     ],
+    name: "setErc20",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_contractAddress",
+        type: "address",
+      },
+    ],
     name: "setSudalFarm",
     outputs: [],
     stateMutability: "nonpayable",
@@ -1084,5 +1116,5 @@ export const SudalAuctionABI = [
 ];
 
 export const ERC20Address = "0x0c54E456CE9E4501D2c43C38796ce3F06846C966";
-export const SudalFarmAddress = "0x9739CC7f01F5eb1FA5f2B1D4045d2153e6b44066";
-export const SudalAuctionAddress = "0xB033DBf0943B4439cE45f41C51b925F1F06C780D";
+export const SudalFarmAddress = "0x0391ffCbbCc893cbe67bC146e3ca1f6769e050D7";
+export const SudalAuctionAddress = "0x2E2a169Cd15C16E8e36e948c38972274f4E247Ce";

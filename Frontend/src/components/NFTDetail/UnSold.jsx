@@ -24,6 +24,7 @@ function UnSold() {
         shop
         .nftReqSale(params)
         .then((result) => {
+            window.location.reload()
             console.log(result)
         })
         .catch((error) => {

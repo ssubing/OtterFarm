@@ -36,7 +36,7 @@ const useStyles = makeStyles({
 function NFTInfo() {
     const nftDetailOne = useSelector((state) => state.nftDetailOne);
     const classes = useStyles();
-
+    console.log(nftDetailOne)
     return (
         <Card className={classes.detailCard}>
             <CardMedia
@@ -54,11 +54,11 @@ function NFTInfo() {
                 </h5>
                 <div className="auction-owner">
                     <p>소유자</p>
-                    <p>{nftDetailOne.userNickname}</p>
+                    <p style={{fontWeight: "bold"}}>{nftDetailOne.userNickname}</p>
                 </div>
                 <div className="auction-address">
-                    <p>컨트랙트 주소</p>
-                    <p>{nftDetailOne.tokenId}</p>
+                    <p>수달 이름</p>
+                    <p style={{fontWeight: "bold"}}>{nftDetailOne.name}</p>
                 </div>
             </CardContent>
         </Card>

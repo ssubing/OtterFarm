@@ -7,11 +7,13 @@ import { useSelector } from "react-redux";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import sudal from '../../assets/images/otter.png'
 
 //Like : 좋아요 | Sale : 분양 여부
 import Like from '../Card/Like.jsx'
 import Sale from '../Card/ShowSale.jsx'
+
+import shop from "../../api/shop";
+import { setNftDetailOne } from "../../store/modules/shop";
 
 const useStyles = makeStyles({
     detailCard: {
@@ -34,6 +36,7 @@ const useStyles = makeStyles({
 function NFTInfo() {
     const nftDetailOne = useSelector((state) => state.nftDetailOne);
     const classes = useStyles();
+
     return (
         <Card className={classes.detailCard}>
             <CardMedia
@@ -44,7 +47,7 @@ function NFTInfo() {
             <CardContent>
                 <div className="info">
                     <Sale isOnSale={nftDetailOne.saled}/>
-                    <Like likeCnt={nftDetailOne.likeCount}></Like>
+                    <Like likeCnt={nftDetailOne.likeCount} liked={nftDetailOne.liked} nftId={nftDetailOne.id} ></Like>
                 </div>
                 <h5 className="auction-title">
                     수달(NFT) 정보

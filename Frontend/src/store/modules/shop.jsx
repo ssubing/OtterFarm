@@ -40,7 +40,19 @@ export const nftOnsaleOne = createSlice({
   },
 })
 
+export const nftLikeOne = createSlice({
+  name: "nftLikeOne",
+  initialState: [],
+  reducers: {
+    setNftLikeOne(state, action) {
+      console.log(action.payload)
+      return action.payload;
+    },
+  }
+})
+
 export const { setNftList } = nftList.actions;
 export const { setNftDetailOne } = nftDetailOne.actions;
 export const { setNftUnsoldOne } = nftUnsoldOne.actions;
 export const { setNftOnsaleOne } = nftOnsaleOne.actions;
+export const { setNftLikeOne } = nftLikeOne.actions;

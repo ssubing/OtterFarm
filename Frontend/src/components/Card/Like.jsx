@@ -19,6 +19,7 @@ function Like(props) {
       .nftLikeOne(params)
       .then((result) => {
           // dispatch(setNftLikeOne(result.data))
+          window.location.reload()
           console.log(result)
       })
       .catch((error) => {

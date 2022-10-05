@@ -92,17 +92,11 @@ function OnSale() {
     return(
         <div>
             <div className="sale-info">
-                <h3>분양 정보</h3>
-                {nftOnsaleOne.length > 0 ? (
-                  <div className="auction-date">
-                    <span>진행기간 : </span>
-                    <span>{nftOnsaleOne.start} ~ {nftOnsaleOne.end}</span>
-                  </div>
-                ) : (
-                  <div className="auction-date">
-                    <h3>분양 요청 내역이 없습니다</h3>
-                  </div>
-                )}
+              <h3>분양 정보</h3>
+                <div className="auction-date">
+                  <p>진행기간</p>
+                  <p>{nftOnsaleOne.start.substring(0, 19)} ~ {nftOnsaleOne.end.substring(0, 19)}</p>
+                </div>
             </div>
             <hr/>
             <Price/>

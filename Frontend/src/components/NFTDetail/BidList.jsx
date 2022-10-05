@@ -4,7 +4,7 @@ function BidList(props) {
     if(props.bidLog !== undefined) {
         bidLog = props.bidLog.map((bid) =>
             <tr className="bid-tr" key={bid}>
-                <td>{bid.date}</td>
+                <td>{bid.date.substring(0, 19)}</td>
                 <td>{bid.price}</td>
             </tr>
         )

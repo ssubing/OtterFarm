@@ -152,10 +152,12 @@ function Item() {
           { withCredentials: true }
         )
         .then((res) => {
+         setLoading(false)
+       
           if (res.status === 200) {
-            setLoading(false);
+            if(!loading){
             alert("발급 성공!");
-            navigate("/main");
+            navigate("/myPage");}
           }
         })
         .catch((e) => {
@@ -208,7 +210,7 @@ function Item() {
 
   return (
     <div className="pageBox">
-      {loading ? <BasicModal open={loading} /> : null}
+       <BasicModal open={loading} />
       <Navbar />
       <div className="item-header-wrap">
         <h1 className="item-title">수달 꾸미기</h1>

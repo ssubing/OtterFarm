@@ -40,9 +40,9 @@ function MyPage() {
   const [changed, setChanged] = useState(false);
   //바꿀경우의 바뀌는 url
   const [url, setUrl] = useState();
-  const handleUrl = (uri) => {
-    setChanged(true);
-    setUrl(uri);
+  const handleId = (id) => {
+   window.localStorage.setItem('nftId', id)
+   axios.post(apiUrl+"api/user/change/profile", {nftId:id}, {headers : {Authorization: `Bearer ${token}`}} )
   };
   const modiNick = () => {
     axios
@@ -68,22 +68,28 @@ function MyPage() {
     }
   };
   const handleTokenId = (id) =>{
-    window.localStorage.setItem("tokenId",id)
+    window.localStorage.setItem("tokenId",id);
+   
   }
+  const [rest, setRes] = useState(-1);
+  useEffect(()=> {
+    axios.get(apiUrl+"api/user/profile/", {headers : {Authorization : `Bearer ${token}`}}).then(res=> {if(res.status===204) {setRes(null)}else {setRes(res.data)}})
+    
+  },[rest])
   
   return (
     <div className="myPage">
       <Navbar />
       <div className="profile">
         <div>
-          {changed ? (
-            <img className="profileImg" src={url} alt="" />
-          ) : (
+          {rest === null ? (
             <img className="profileImg" src={otter} alt="" />
+          ) : (
+          <img className="profileImg" src={rest} alt="" />
           )}
         </div>
 
-        {params.username === userId ? (
+      
           <div className="profileInfo">
             <div
               style={{
@@ -171,34 +177,15 @@ function MyPage() {
               {sudalPt}
             </h1>
           </div>
-        ) : (
-          <div className="profileInfo2">
-            <div
-              style={{
-                backgroundColor: "#F3E9DC",
-                width: "20%",
-                height: "15%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: "20px",
-              }}
-            >
-              닉네임
-            </div>
-
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <h2>{userNick}</h2>
-            </div>
-          </div>
-        )}
+        
       </div>
       <div className="myOtters">
         <h1 style={{ marginLeft: "10%", marginTop: "5%" }}>{userNick}님의 수달들</h1>
         <div className="myOtterNfts">
           {otters &&
             otters.map((otter, idx) => (
-              <Link className="myOtterNft"style={{textDecoration:"none"}}state={{nftId:otter.id}}to ="/detail" onClick={()=>{handleTokenId(otter.tokenId)}}><div clssName="myOtterNft" key={idx}>
+              <div className="myOtterNft" key={idx}>
+                  <Link style={{textDecoration:"none"}}state={{nftId:otter.id}}to ="/detail" onClick={()=>{handleTokenId(otter.tokenId)}}>
                 <img
                   src={otter.tokenURI}
                   alt=""
@@ -210,6 +197,7 @@ function MyPage() {
                     marginTop: "10%",
                   }}
                 />
+                </Link>
                 <div className="sudalInfo">
                   <div
                     style={{
@@ -242,7 +230,7 @@ function MyPage() {
                     <div style={{ fontSize: "16px", fontWeight: "bold", color:"black"}}>
                       {otter.name}
                     </div>
-                    {params.username === userId ? (
+                    {/* {params.username === userId ? (
                       //   <button
                       //     style={{
                       //       backgroundColor: "#DAB49D",
@@ -258,19 +246,19 @@ function MyPage() {
                       //   >
                       //     대표수달지정
                       //   </button>
-                      <ChangeButton
-                        handleUrl={handleUrl}
-                        url={otter.tokenURI}
-                        issaled={otter.saled}
-                        eh
-                      />
-                    ) : null}
+                    ) : null} */}
+                    <ChangeButton
+                      handleId={handleId}
+                      id={otter.id}
+                      issaled={otter.saled}
+                  
+                    />
                   </div>
                   
                 </div>
                 
               </div>
-              </Link>
+              
             ))}
         </div>
       </div>

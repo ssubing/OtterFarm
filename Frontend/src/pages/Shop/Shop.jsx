@@ -205,7 +205,10 @@ function Shop() {
         console.log(error);
       });
   }, []);
-
+  const [isLoading, setIsLoading] = useState(false);
+  useEffect(()=>{
+    setTimeout(()=> setIsLoading(true), 4000)
+  },[])
   return (
     <div>
       <Navbar></Navbar>
@@ -248,7 +251,7 @@ function Shop() {
           </div>
         </div>
         {/* NFT 카드 */}
-        {nftList.length > 0 ? (
+        {isLoading && nftList.length > 0 ? (
           <div className={classes.gridRoot}>
             <ImageList
               cellHeight={200}
@@ -322,8 +325,8 @@ function Shop() {
           </div>
         ) : (
           <div style={{ fontSize: "35px", textAlign: "center" }}>
-            <img style={{ height: "400px" }} src={noSudal} alt="no sudal" />
-            <div>찾고 있는 수달이 없어요</div>
+            <img className="otterSpin" style={{ height: "400px" }} src={noSudal} alt="no sudal" />
+            <div>로딩중이달</div>
           </div>
         )}
       </div>

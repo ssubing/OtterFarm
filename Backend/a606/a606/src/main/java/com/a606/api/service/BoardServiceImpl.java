@@ -13,6 +13,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -162,12 +165,13 @@ public class BoardServiceImpl implements BoardService{
         Board board = oBoard.get();
         BidBoardDto bidBoardDto = new BidBoardDto();
         bidBoardDto.setId(board.getId());
-        bidBoardDto.setStart(board.getStart());
-        bidBoardDto.setEnd(board.getEnd());
+        bidBoardDto.setStart(ZonedDateTime.of(board.getStart(), ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")));
+        bidBoardDto.setEnd(ZonedDateTime.of(board.getEnd(), ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")));
         bidBoardDto.setFirst_price(board.getFirst_price());
         List<LogsDto> bidLogsDtos = new ArrayList<>();
         for (BidLog log : board.getBidLogs()) {
-            bidLogsDtos.add(new LogsDto(log.getDate(), log.getPrice()));
+            String dateString = ZonedDateTime.of(log.getDate(), ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
+            bidLogsDtos.add(new LogsDto(dateString, log.getPrice()));
         }
         bidBoardDto.setBidLogs(bidLogsDtos);
 
@@ -181,7 +185,8 @@ public class BoardServiceImpl implements BoardService{
         List<Appeal> appeals = appealRepository.findAllByNft(oNft.get());
         List<LogsDto> logsDtos = new ArrayList<>();
         for (Appeal appeal : appeals) {
-            logsDtos.add(new LogsDto(appeal.getDate(), appeal.getPrice()));
+            String dateString = ZonedDateTime.of(appeal.getDate(), ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
+            logsDtos.add(new LogsDto(dateString, appeal.getPrice()));
         }
         return logsDtos;
     }

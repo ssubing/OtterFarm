@@ -779,6 +779,25 @@ export const SudalAuctionABI = [
       {
         indexed: true,
         internalType: "address",
+        name: "getter",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
+      },
+    ],
+    name: "AuctionEnded",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
         name: "previousOwner",
         type: "address",
       },
@@ -830,7 +849,6 @@ export const SudalAuctionABI = [
     ],
     stateMutability: "view",
     type: "function",
-    constant: true,
   },
   {
     inputs: [
@@ -850,7 +868,6 @@ export const SudalAuctionABI = [
     ],
     stateMutability: "view",
     type: "function",
-    constant: true,
   },
   {
     inputs: [
@@ -885,7 +902,6 @@ export const SudalAuctionABI = [
     ],
     stateMutability: "view",
     type: "function",
-    constant: true,
   },
   {
     inputs: [],
@@ -899,7 +915,6 @@ export const SudalAuctionABI = [
     ],
     stateMutability: "view",
     type: "function",
-    constant: true,
   },
   {
     inputs: [],
@@ -954,7 +969,6 @@ export const SudalAuctionABI = [
     ],
     stateMutability: "pure",
     type: "function",
-    constant: true,
   },
   {
     inputs: [
@@ -1049,7 +1063,6 @@ export const SudalAuctionABI = [
     ],
     stateMutability: "view",
     type: "function",
-    constant: true,
   },
   {
     inputs: [
@@ -1068,7 +1081,6 @@ export const SudalAuctionABI = [
     outputs: [],
     stateMutability: "payable",
     type: "function",
-    payable: true,
   },
   {
     inputs: [
@@ -1098,7 +1110,6 @@ export const SudalAuctionABI = [
     ],
     stateMutability: "view",
     type: "function",
-    constant: true,
   },
   {
     inputs: [
@@ -1116,5 +1127,5 @@ export const SudalAuctionABI = [
 ];
 
 export const ERC20Address = "0x0c54E456CE9E4501D2c43C38796ce3F06846C966";
-export const SudalFarmAddress = "0x0391ffCbbCc893cbe67bC146e3ca1f6769e050D7";
-export const SudalAuctionAddress = "0x2E2a169Cd15C16E8e36e948c38972274f4E247Ce";
+export const SudalFarmAddress = "0x860D6799DC290A1b0cD833E4A80806f65c07CFA0";
+export const SudalAuctionAddress = "0x8fa432Ed2BF338364fa60d07F66B6fC684E508b7";

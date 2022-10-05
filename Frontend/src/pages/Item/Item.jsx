@@ -186,6 +186,9 @@ function Item() {
   };
   const handleInput = (e) => {
     setName(e.target.value);
+    if(e.target.value.length >=8){
+      alert("이름은 최대 7자 입니다.")
+    }
   };
   const onSubmit = () => {};
   const minus = -500;
@@ -362,11 +365,11 @@ function Item() {
                 src={require("../../assets/images/otter.png")}
                 alt="base"
               />
-              <img className="char head" src={url} alt="" title="head" />
-              <img className="char eye" src={eyeUrl} alt="" title="eye" />
-              <img className="char mouth" src={mouthUrl} alt="" title="mouth" />
+              <img className="char head" src={url} alt="" title="" />
+              <img className="char eye" src={eyeUrl} alt="" title="" />
+              <img className="char mouth" src={mouthUrl} alt="" title="" />
               <img className="char hand" src={handUrl} alt="" title="" />
-              <img className="char cloth" src={clothUrl} alt="" title="cloth" />
+              <img className="char cloth" src={clothUrl} alt="" title="" />
             </div>
 
             <form
@@ -382,6 +385,7 @@ function Item() {
               <input
                 id="otterName"
                 placeholder="수달이름"
+                maxLength={7}
                 style={{
                   marginTop: "10px",
                   marginRight: "10%",
@@ -408,11 +412,11 @@ function Item() {
                   }}
                   onClick={(e) => {
                     e.preventDefault();
-                    setUrl("");
-                    setEyeUrl("");
-                    setMouthUrl("");
-                    setHandUrl("");
-                    setClothUrl("");
+                    setUrl(null);
+                    setEyeUrl(null);
+                    setMouthUrl(null);
+                    setHandUrl(null);
+                    setClothUrl(null);
                   }}
                 >
                   초기화

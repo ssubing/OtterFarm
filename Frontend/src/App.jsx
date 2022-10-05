@@ -29,7 +29,7 @@ function App() {
         <Route path="/cardGame" element={<CardGame />}></Route>
         <Route path="/issue" element={<Issue />} />
         <Route path="/tetris" element={<Tetris />} />
-        <Route path="/myPage/:username" element={<MyPage />} />
+        <Route path="/myPage" element={<MyPage />} />
       </Routes>
       <RecoilRoot>
         <Routes>

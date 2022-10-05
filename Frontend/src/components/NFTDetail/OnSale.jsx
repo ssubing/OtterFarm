@@ -72,11 +72,12 @@ function Price() {
 
 function OnSale() {
   const nftOnsaleOne = useSelector((state) => state.nftOnsaleOne);
+  const nftDetailOne = useSelector((state) => state.nftDetailOne);
   //분양 내역 조회
   const dispatch = useDispatch();
 
   useEffect(() => {
-      const params = 11;
+      const params = nftDetailOne.id;
       shop
       .nftOnsaleOne(params)
       .then((result) => {
@@ -86,16 +87,22 @@ function OnSale() {
           console.log("오류")
           console.log(error)
       })
-  }, [])
+  }, [nftDetailOne])
 
     return(
         <div>
             <div className="sale-info">
                 <h3>분양 정보</h3>
-                <div className="auction-date">
+                {nftOnsaleOne.length > 0 ? (
+                  <div className="auction-date">
                     <span>진행기간 : </span>
                     <span>{nftOnsaleOne.start} ~ {nftOnsaleOne.end}</span>
-                </div>
+                  </div>
+                ) : (
+                  <div className="auction-date">
+                    <h3>분양 요청 내역이 없습니다</h3>
+                  </div>
+                )}
             </div>
             <hr/>
             <Price/>

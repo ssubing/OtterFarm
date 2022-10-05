@@ -7,32 +7,43 @@ import shop from "../../api/shop";
 import { setNftUnsoldOne } from "../../store/modules/shop";
 
 function UnSold() {
+    const nftDetailOne = useSelector((state) => state.nftDetailOne);
+    
+    //nft 판매 요청하는 값
     const [price, setPrice] = useState(0)
     const requestPriceChange = (e) => {
         setPrice(e.target.value)
     }
+    //요청하기 클릭했을 경우
     const requestClick = () => {
-        console.log(price)
-        console.log(nftUnsoldOne.id)
+        const id = nftDetailOne.id
+        const params = {
+            nftId: id,
+            price : price
+        }
+        shop
+        .nftReqSale(params)
+        .then((result) => {
+            console.log(result)
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     }
-
     //요청 내역 조회
     const dispatch = useDispatch();
     useEffect(() => {
-        const params = 11;
+        const params = nftDetailOne.id;
         shop
         .nftUnsoldOne(params)
         .then((result) => {
             dispatch(setNftUnsoldOne(result.data))
         })
         .catch((error) => {
-            console.log("오류")
             console.log(error)
         })
-    }, [])
-
+    }, [nftDetailOne])
     const nftUnsoldOne = useSelector((state) => state.nftUnsoldOne);
-
     return( 
         <div>
             <div className="sell-request">

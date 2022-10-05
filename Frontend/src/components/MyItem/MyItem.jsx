@@ -52,6 +52,7 @@ function MyItem({ itemsPerPage, setUrl, setItemId }) {
     <div className="inventory">
       <div className="items">
         {currentItems.map((info, idx) => (
+          <div style={{position:"relative",marginRight:"3%"}}>
           <img
             className={`parts ${
               info.rare === 1 ? "normal" : info.rare === 2 ? "rare" : "epic"
@@ -66,6 +67,9 @@ function MyItem({ itemsPerPage, setUrl, setItemId }) {
               setItemId(info.itemId);
             }}
           />
+          <span style={{position:"absolute", top:"75%", left:"90%"}}>{info.howMany}</span>
+          </div>
+          
         ))}
       </div>
       <ReactPaginate

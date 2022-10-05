@@ -25,7 +25,7 @@ public interface UserService {
     List<MyNFTDto> getUserPageById(long userId) throws Exception;
 
     @Transactional
-    Long getProfileById(long userId) throws Exception;
+    String getProfileById(long userId) throws Exception;
 
     @Transactional
     User updateProfile(long userId, long nftTokenId) throws Exception;

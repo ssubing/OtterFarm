@@ -119,16 +119,16 @@ public class UserController {
     //blockchain - 소유 아니면 defalut로 변경
     @GetMapping("user/profile/")
     @ApiOperation(value = "프로필 조회", notes = "로그인 한 계정의 프로필인 NFT id 리턴")
-    public ResponseEntity<Long> getProfile(@ApiIgnore Authentication authentication) throws Exception {
+    public ResponseEntity<?> getProfile(@ApiIgnore Authentication authentication) throws Exception {
         if (authentication == null) return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
         User user = ((SudalUserDetails) authentication.getDetails()).getUser();
-        Long profile = userService.getProfileById(user.getId());
+        String profile = userService.getProfileById(user.getId());
         // profile이 보유한 nft가 아닐 때
         if(profile == null){
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }
 
-        return new ResponseEntity<>(profile, HttpStatus.OK);
+        return new ResponseEntity<String>(profile, HttpStatus.OK);
     }
 
     //updateProfile - blockchain

@@ -37,7 +37,7 @@ public class ShopController {
             @ApiResponse(code = 403, message = "해당 아이템을 갖고 있지 않음"),
             @ApiResponse(code = 409, message = "이미 같은 상태로 발급된 nft가 존재", response = Long.class)
     })
-    public ResponseEntity<?> myPage(@ApiIgnore Authentication authentication,
+    public ResponseEntity<?> mintNFT(@ApiIgnore Authentication authentication,
                                     @RequestBody @ApiParam(value = "입고 있는 아이템", required = true) AvatarDto avatarDto) throws Exception {
         if (authentication == null) return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         User user = ((SudalUserDetails) authentication.getDetails()).getUser();
@@ -54,8 +54,7 @@ public class ShopController {
         itemIds.add(avatarDto.getHands());
         itemIds.add(avatarDto.getFashion());
         if (!shopService.checkItems(user, itemIds)) {
-            // 테스트 동안 주석
-//            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
         Long nftId = shopService.createNFT(user, itemIds, avatarDto.getTokenURI(), avatarDto.getName());
 

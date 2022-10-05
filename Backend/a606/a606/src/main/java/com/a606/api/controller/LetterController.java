@@ -8,6 +8,7 @@ import com.a606.db.entity.User;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -25,7 +26,8 @@ import java.util.List;
 @RequestMapping("api/")
 @RequiredArgsConstructor
 public class LetterController {
-    LetterService letterService;
+    @Autowired
+    private final LetterService letterService;
 
     @GetMapping("letter")
     public ResponseEntity<List<LetterDto>> getLetters(@ApiIgnore Authentication authentication) {

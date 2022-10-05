@@ -7,8 +7,5 @@ import org.springframework.transaction.annotation.Transactional;
 public interface GameService {
 
     @Transactional
-    long getGamePointById(long userId);
-
-    @Transactional
     long updateGamePointById(long userId, long gamePoint);
 }

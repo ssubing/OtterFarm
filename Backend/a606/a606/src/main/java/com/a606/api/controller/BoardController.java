@@ -35,7 +35,7 @@ public class BoardController {
                                               @RequestParam(required = true) @ApiParam(example = "10") int pageSize) throws Exception {
         User user = null;
         if (authentication != null) user = ((SudalUserDetails) authentication.getDetails()).getUser();
-        return new ResponseEntity<NFTListDto>(new NFTListDto(boardService.getNFTCount() , boardService.getNFTList(user, tab, order, isDesc, pageNo, pageSize)), HttpStatus.OK);
+        return new ResponseEntity<NFTListDto>(new NFTListDto(boardService.getNFTCount(tab) , boardService.getNFTList(user, tab, order, isDesc, pageNo, pageSize)), HttpStatus.OK);
     }
 
     @GetMapping("/details/{nftId}")
@@ -69,7 +69,8 @@ public class BoardController {
                                         @RequestBody @ApiParam(value = "판매 요청 정보", required = true) AppealDto appealDto) {
         if (authentication == null) return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         User user = ((SudalUserDetails) authentication.getDetails()).getUser();
-        return new ResponseEntity<>(boardService.createAppeals(user, appealDto), HttpStatus.OK);
+        boardService.createAppeals(user, appealDto);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/likes")

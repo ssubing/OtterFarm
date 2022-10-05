@@ -25,6 +25,13 @@ const shop = {
       url: `${END_POINT}/appeal/${params}`
     })
   },
+  //분양중인 nft 경매 내역 정보 조회
+  nftOnsaleOne(params) {
+    return api({
+      method: "get",
+      url: `${END_POINT}/bid/${params}`
+    })
+  },
   //좋아요 클릭
   nftLikeOne(params) {
     console.log(params)

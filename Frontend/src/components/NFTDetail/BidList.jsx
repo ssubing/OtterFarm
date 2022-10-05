@@ -2,7 +2,7 @@
 function BidList(props) {
     let bidLog = ''
     if(props.bidLog.length > 0) {
-        let bidLog = props.bidLog.map((bid) =>
+        bidLog = props.bidLog.map((bid) =>
             <tr className="bid-tr" key={bid}>
                 <td>{bid.date}</td>
                 <td>{bid.price}</td>

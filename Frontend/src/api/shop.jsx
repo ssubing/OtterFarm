@@ -35,7 +35,15 @@ const shop = {
       url: `${END_POINT}/likes`,
       data: formData
     })
-  }
+  },
+  //nft 판매 요청
+  nftReqSale(params) {
+    return api({
+      method: "post",
+      url: `${END_POINT}/appeal`,
+      body: params
+    })
+  },
 };
 
 export default shop;

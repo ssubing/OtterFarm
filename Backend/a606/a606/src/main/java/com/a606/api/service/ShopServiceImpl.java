@@ -41,13 +41,13 @@ public class ShopServiceImpl implements ShopService{
 
     @Override
     public boolean checkItems(User user, List<Long> itemIds) {
-        int type = 1;
+        int type = 0;
         for(Long itemId : itemIds){
+            type++;
             if(itemId == 0) { continue; }
             // item이 존재하지 않거나 타입에 맞지 않는 경우
             Optional<Item> item = itemRepository.findById(itemId);
             if(!item.isPresent() || item.get().getType() != type){ return false; }
-            type++;
 
             // item을 보유하고 있지 않은 경우
             Optional<Inventory> inventory = inventoryRepository.findByUserAndItem(user, item.get());

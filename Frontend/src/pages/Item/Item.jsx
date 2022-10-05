@@ -22,9 +22,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-
-import items from "../../assets/images/items/Head/01_01_01_01.png";
-import { EPIC } from "../../components/Items/Items";
+import { EPIC, RARE, NORMAL } from "../../components/Items/Items";
 
 function Item() {
   const parts = [
@@ -237,6 +235,40 @@ function Item() {
                   ))}
                   <p>[ 옷 ]</p>
                   {EPIC.cloth.map((item, index) => (
+                    <img src={item} alt="item" />
+                  ))}
+                </div>
+                <div className="rare">
+                  <h2>Rare </h2>
+                  <div className="line"></div>
+                  <p>당첨확률 : 40%</p>
+                  <p>[ 머리 ]</p>
+                  {RARE.head.map((item, index) => (
+                    <img src={item} alt="item" />
+                  ))}
+                  <p>[ 눈 ]</p>
+                  {RARE.eye.map((item, index) => (
+                    <img src={item} alt="item" />
+                  ))}
+                  <p>[ 옷 ]</p>
+                  {RARE.cloth.map((item, index) => (
+                    <img src={item} alt="item" />
+                  ))}
+                </div>
+                <div className="normal">
+                  <h2>Normal </h2>
+                  <div className="line"></div>
+                  <p>당첨확률 : 50%</p>
+                  <p>[ 머리 ]</p>
+                  {NORMAL.head.map((item, index) => (
+                    <img src={item} alt="item" />
+                  ))}
+                  <p>[ 눈 ]</p>
+                  {NORMAL.eye.map((item, index) => (
+                    <img src={item} alt="item" />
+                  ))}
+                  <p>[ 옷 ]</p>
+                  {NORMAL.cloth.map((item, index) => (
                     <img src={item} alt="item" />
                   ))}
                 </div>

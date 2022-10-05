@@ -18,8 +18,14 @@
   margin-left: 15px;
 }
 
+/* Typography */
 .MuiTypography-root {
   font-family: "neo" !important;
+}
+
+.MuiTypography-root > div {
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
 .MuiTypography-root > div > img {
@@ -28,7 +34,7 @@
 
 .epic {
   /* background-color: lightblue; */
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 .itemPage {

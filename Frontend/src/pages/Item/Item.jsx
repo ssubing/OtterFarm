@@ -280,6 +280,7 @@ function Item() {
                   width: "90%",
                   fontFamily: "neo",
                   borderRadius: "10px",
+                  height: "100%",
                 }}
                 onChange={handleInput}
               />
@@ -288,9 +289,9 @@ function Item() {
                 style={{
                   zIndex: "5",
                   // marginLeft: "80%",
-                  // // height: "10%",
+                  height: "100%",
                   width: "30%",
-                  // marginTop: "90%",
+                  marginTop: "10px",
                   backgroundColor: "#f3e9dc",
                   fontFamily: "neo",
                   cursor: "pointer",

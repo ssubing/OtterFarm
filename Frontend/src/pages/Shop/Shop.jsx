@@ -268,6 +268,9 @@ function Shop() {
                   state={{
                     nftId: data.id,
                   }}
+                  onClick={() => {
+                    localStorage.setItem("tokenId", data.tokenId);
+                  }}
                 >
                   <ImageListItem
                     cols={1}

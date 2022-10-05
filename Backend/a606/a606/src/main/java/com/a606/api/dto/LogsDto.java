@@ -10,6 +10,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LogsDto {
-    private LocalDateTime date;
+    private String date;
     private double price;
 }

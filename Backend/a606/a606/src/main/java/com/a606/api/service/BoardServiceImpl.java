@@ -81,7 +81,7 @@ public class BoardServiceImpl implements BoardService{
             nftDto.setSaled(nft.isSaled());
             nftDto.setName(nft.getName());
             nftDto.setLikeCount(nft.getLikeCount());
-            nftDto.setTokenURI(contractService.getTokenURIbyTokenId(nft.getTokenId()));
+            nftDto.setTokenURI(nft.getTokenURI());
 
             if (user == null || !likesRepository.findByUserAndNft(user, nft).isPresent()){
                 nftDto.setLiked(false);
@@ -98,7 +98,7 @@ public class BoardServiceImpl implements BoardService{
                     nftDto.setPrice(String.valueOf(lastBidLog.getPrice()));
                 }
             }
-            Optional<User> oUser = userRepository.findByWallet(contractService.getAddressbyTokenId(nft.getTokenId()));
+            Optional<User> oUser = userRepository.findByWallet(nft.getOwner());
             if (oUser.isPresent()) {
                 User wUser = oUser.get();
                 nftDto.setUserId(wUser.getId());
@@ -123,7 +123,7 @@ public class BoardServiceImpl implements BoardService{
         nftDto.setSaled(nft.isSaled());
         nftDto.setName(nft.getName());
         nftDto.setLikeCount(nft.getLikeCount());
-        nftDto.setTokenURI(contractService.getTokenURIbyTokenId(nft.getTokenId()));
+        nftDto.setTokenURI(nft.getTokenURI());
 
         if (user == null || !likesRepository.findByUserAndNft(user, nft).isPresent()){
             nftDto.setLiked(false);
@@ -140,7 +140,7 @@ public class BoardServiceImpl implements BoardService{
                 nftDto.setPrice(String.valueOf(lastBidLog.getPrice()));
             }
         }
-        Optional<User> oUser = userRepository.findByWallet(contractService.getAddressbyTokenId(nft.getTokenId()));
+        Optional<User> oUser = userRepository.findByWallet(nft.getOwner());
         if (oUser.isPresent()) {
             User wUser = oUser.get();
             nftDto.setUserId(wUser.getId());

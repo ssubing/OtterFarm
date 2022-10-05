@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Web3 from "web3";
 import {
   SudalAuctionABI,
@@ -13,10 +13,26 @@ import DateTimePicker from "react-datetime-picker";
 import "./UnSoldOwner.css";
 import BidList from "./BidList.jsx";
 
-function UnSoldOwner() {
-  //nft 상세 정보
-  const nftUnsoldOne = useSelector((state) => state.nftUnsoldOne);
+import shop from "../../api/shop";
+import { setNftUnsoldOne } from "../../store/modules/shop";
 
+function UnSoldOwner() {
+  const nftDetailOne = useSelector((state) => state.nftDetailOne);
+  //nft 상세 정보
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const params = nftDetailOne.id;
+    shop
+    .nftUnsoldOne(params)
+    .then((result) => {
+        dispatch(setNftUnsoldOne(result.data))
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+}, [nftDetailOne])
+  const nftUnsoldOne = useSelector((state) => state.nftUnsoldOne);  
+  console.log(nftUnsoldOne)
   //가격
   const [price, setPrice] = useState(0);
   const sellPriceChange = (e) => {

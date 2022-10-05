@@ -52,6 +52,7 @@ function Eyes({ itemsPerPage, setUrl, setEyeId }) {
     <div className="inventory">
       <div className="items">
         {currentItems.map((info, idx) => (
+          info.howMany >0 ?(
            <div style={{position:"relative",marginRight:"3%"}}>
           <img
             className={`parts ${
@@ -68,7 +69,7 @@ function Eyes({ itemsPerPage, setUrl, setEyeId }) {
             }}
           />
           <span style={{position:"absolute", top:"75%", left:"90%"}}>{info.howMany}</span>
-          </div>
+          </div>):null
         ))}
       </div>
       <ReactPaginate

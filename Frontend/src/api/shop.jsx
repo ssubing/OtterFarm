@@ -48,7 +48,7 @@ const shop = {
     return api({
       method: "post",
       url: `${END_POINT}/appeal`,
-      body: params
+      data: params
     })
   },
 };

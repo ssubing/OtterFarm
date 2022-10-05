@@ -207,7 +207,7 @@ function Shop() {
   }, []);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(()=>{
-    setTimeout(()=> setIsLoading(true), 4000)
+    setTimeout(()=> setIsLoading(true), 1000)
   },[])
   return (
     <div>

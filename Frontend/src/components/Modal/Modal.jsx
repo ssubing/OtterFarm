@@ -59,6 +59,7 @@ export default function TransitionsModal() {
               100포인트는 10수달머니로 교환된다~
               <br />
               그럼 즐거운 시간 보내!
+              <br />* 혹시 블럭이 움직이지 않는다면 tab키를 눌러봐라!
             </p>
           </div>
         </Fade>

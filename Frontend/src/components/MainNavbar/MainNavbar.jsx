@@ -1,6 +1,6 @@
-import { useContext,useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from 'axios'
+import axios from "axios";
 import "./MainNavbar.css";
 import logo from "../../assets/images/logo.png";
 import { TransactionContext } from "../../context/TransactionContext";
@@ -8,13 +8,17 @@ import Notice from "../Notice/Notice";
 
 const MainNavbar = () => {
   const { connectWallet, currentAccount } = useContext(TransactionContext);
-  const apiUrl = "http://j7a606.p.ssafy.io:8080/"
+  const apiUrl = "https://j7a606.p.ssafy.io/";
   const userId = window.localStorage.getItem("userId");
   const [nick, setNick] = useState();
   const token = window.localStorage.getItem("token");
-  useEffect(()=>{
-    axios.get(apiUrl + "api/user/nickname", {headers : {Authorization : `Bearer ${token}`}}).then(res=> setNick(res.data))
-  },[])
+  useEffect(() => {
+    axios
+      .get(apiUrl + "api/user/nickname", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => setNick(res.data));
+  }, []);
   return (
     <nav className="mainNavbar">
       <div className="main">

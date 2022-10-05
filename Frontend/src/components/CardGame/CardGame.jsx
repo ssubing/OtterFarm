@@ -121,15 +121,17 @@ function CardGame() {
                 cardNum += 1;
                 count += 100;
                 if(cardNum === 9) {
+                    console.log(count * 0.9)
+                    game
+                    .sendPoint(count * 0.9)
+                    .then((result) => console.log(result))
+                    .catch((error) => console.log(error));
                     setTimeout(() => {
                         setScore(count)
                         setCardCount(cardNum)
-                        setMoney(count * 0.05)
+                        setMoney(count * 0.9)
+                        console.log(money)
                     }, 300);
-                    game
-                    .sendPoint(score)
-                    .then((result) => console.log(result))
-                    .catch((error) => console.log(error));
                 }
             }
             //두 카드가 같은 카드가 아닐 경우
@@ -143,7 +145,7 @@ function CardGame() {
                     
                     cardSrc = cardSrc2 = ''
                 }, 400);
-                count -= 40;
+                if(count - 40 > 0) count -= 40;
                 console.log("점수 : " + count)
             }
         }

@@ -1,32 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 
-import OnSale from "../../components/NFTDetail/OnSale";
+// import OnSale from "../../components/NFTDetail/OnSale";
 import NFTInfo from "../../components/NFTDetail/NFTInfo";
-import UnSoldOwner from "../../components/NFTDetail/UnSoldOwner";
-import UnSold from "../../components/NFTDetail/UnSold";
+import DealInfo from "../../components/NFTDetail/DealInfo";
+// import UnSoldOwner from "../../components/NFTDetail/UnSoldOwner";
+// import UnSold from "../../components/NFTDetail/UnSold";
 
 import "./AvatarDetail.css";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 import shop from "../../api/shop";
-import { setNftDetailOne } from "../../store/modules/shop";
 
 function AvatarDetail() {
   const location = useLocation();
-
-  const dispatch = useDispatch();
-  const nftDetailOne = useSelector((state) => state.nftDetailOne);
+  const [nftInfo, setNftInfo] = useState('');
 
   const nftId = location.state.nftId;
-  const userId = localStorage.getItem("userId");
   useEffect(() => {
     shop
       .nftDetailOne(nftId)
       .then((result) => {
-        dispatch(setNftDetailOne(result.data));
+        setNftInfo(result.data)
       })
       .catch((error) => {
         console.log(error);
@@ -37,12 +33,13 @@ function AvatarDetail() {
     <div className="avatar-wrap">
       <Navbar />
       <div className="detail-content">
-        <NFTInfo />
-        {nftDetailOne.saled ? (
+        <NFTInfo nftInfo={nftInfo}/>
+        <DealInfo dealInfo={nftInfo}/>
+        {/* {nftInfo.saled ? (
           <div className="sale-wrap">
             <OnSale />
           </div>
-        ) : userId == nftDetailOne.userId ? (
+        ) : userId == nftInfo.userId ? (
           <div className="sale-wrap">
             <UnSoldOwner />
           </div>
@@ -50,7 +47,7 @@ function AvatarDetail() {
           <div className="sale-wrap">
             <UnSold />
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

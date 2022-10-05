@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import Web3 from "web3";
 import {
   SudalAuctionABI,
@@ -14,25 +13,20 @@ import "./UnSoldOwner.css";
 import BidList from "./BidList.jsx";
 
 import shop from "../../api/shop";
-import { setNftUnsoldOne } from "../../store/modules/shop";
 
-function UnSoldOwner() {
-  const nftDetailOne = useSelector((state) => state.nftDetailOne);
-  //nft 상세 정보
-  const dispatch = useDispatch();
+function UnSoldOwner(props) {
+  const [resInfo, setResInfo] = useState(null);
   useEffect(() => {
-    const params = nftDetailOne.id;
+    const params = props.nftId
     shop
-    .nftUnsoldOne(params)
-    .then((result) => {
-        dispatch(setNftUnsoldOne(result.data))
-    })
-    .catch((error) => {
-        console.log(error)
-    })
-}, [nftDetailOne])
-  const nftUnsoldOne = useSelector((state) => state.nftUnsoldOne);  
-  console.log(nftUnsoldOne)
+      .nftUnsoldOne(params)
+      .then((result) => {
+        setResInfo(result.data)
+      })
+      .catch((error) => {
+          console.log(error)
+      })
+  }, [])
   //가격
   const [price, setPrice] = useState(0);
   const sellPriceChange = (e) => {
@@ -42,9 +36,6 @@ function UnSoldOwner() {
   //분양하기 클릭할 경우
   const auctionClick = () => {
     if (price >= 0) {
-      console.log("분양한다");
-      console.log("마감일 : " + auctionTime);
-      console.log("가격 : " + price);
       auctionTest();
     } else {
       alert("가격을 제대로 입력해주세요.");
@@ -86,58 +77,60 @@ function UnSoldOwner() {
           Math.floor((auctionTime.getTime() - new Date().getTime()) / 1000),
           price
         )
-        .send({ from: accounts[0] });
+      .send({ from: accounts[0] });
     }
   };
-
-  return (
-    <div>
-      <BidList
-        style={{ margin: "30px 0" }}
-        title="요청 내역"
-        date="요청 시간"
-        price="제안가(SSF)"
-        bidLog={nftUnsoldOne}
-      />
-      <hr />
-      <div className="sell-request">
-        <h3>분양하기</h3>
-        <div className="bid">
-          <span>분양가</span>
-          <div>
-            <input
-              type="number"
-              min={0}
-              onChange={sellPriceChange}
-              className="bid-input"
-              style={{
-                margin: "0",
-                textAlign: "right",
-                fontFamily: "neo",
-                fontSize: "20px",
-                width: "205px",
-              }}
+  if(resInfo !== null) {
+    return (
+      <div>
+        <BidList
+          style={{ margin: "30px 0" }}
+          title="요청 내역"
+          date="요청 시간"
+          price="제안가(SSF)"
+          bidLog={resInfo}
+        />
+        <hr />
+        <div className="sell-request">
+          <h3>분양하기</h3>
+          <div className="bid">
+            <span>분양가</span>
+            <div>
+              <input
+                type="number"
+                min={0}
+                onChange={sellPriceChange}
+                className="bid-input"
+                style={{
+                  margin: "0",
+                  textAlign: "right",
+                  fontFamily: "neo",
+                  fontSize: "20px",
+                  width: "205px",
+                }}
+              />
+              <span> SSF</span>
+            </div>
+          </div>
+          <div className="sell-end-date">
+            <span>분양 마감일</span>
+            <DateTimePicker
+              format="yyyy-MM-dd HH:mm"
+              minDate={currentDate}
+              onChange={handleDateChange}
+              value={auctionTime}
             />
-            <span> SSF</span>
+          </div>
+          <div className="request-btn-wrap">
+            <button className="request-btn" onClick={auctionClick}>
+              분양하기
+            </button>
           </div>
         </div>
-        <div className="sell-end-date">
-          <span>분양 마감일</span>
-          <DateTimePicker
-            format="yyyy-MM-dd HH:mm"
-            minDate={currentDate}
-            onChange={handleDateChange}
-            value={auctionTime}
-          />
-        </div>
-        <div className="request-btn-wrap">
-          <button className="request-btn" onClick={auctionClick}>
-            분양하기
-          </button>
-        </div>
       </div>
-    </div>
-  );
+    );
+  }
+  
 }
 
 export default UnSoldOwner;

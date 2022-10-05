@@ -20,8 +20,8 @@ function AvatarDetail() {
   const dispatch = useDispatch();
   const nftDetailOne = useSelector((state) => state.nftDetailOne);
 
-  const nftId = location.state.nftId
-  const userId = localStorage.getItem("userId")
+  const nftId = location.state.nftId;
+  const userId = localStorage.getItem("userId");
   useEffect(() => {
     shop
       .nftDetailOne(nftId)
@@ -42,15 +42,14 @@ function AvatarDetail() {
           <div className="sale-wrap">
             <OnSale />
           </div>
-        ) : ( (userId == nftDetailOne.userId ? (
-            <div className="sale-wrap">
-              <UnSoldOwner/>
-            </div>
-          ) : (
-            <div className="sale-wrap">
-              <UnSold />
-            </div>
-          ))
+        ) : userId == nftDetailOne.userId ? (
+          <div className="sale-wrap">
+            <UnSoldOwner />
+          </div>
+        ) : (
+          <div className="sale-wrap">
+            <UnSold />
+          </div>
         )}
       </div>
     </div>

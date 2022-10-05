@@ -89,7 +89,7 @@ function MyPage() {
           )}
         </div>
 
-        {params.username === userId ? (
+      
           <div className="profileInfo">
             <div
               style={{
@@ -177,27 +177,7 @@ function MyPage() {
               {sudalPt}
             </h1>
           </div>
-        ) : (
-          <div className="profileInfo2">
-            <div
-              style={{
-                backgroundColor: "#F3E9DC",
-                width: "20%",
-                height: "15%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: "20px",
-              }}
-            >
-              닉네임
-            </div>
-
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <h2>{userNick}</h2>
-            </div>
-          </div>
-        )}
+        
       </div>
       <div className="myOtters">
         <h1 style={{ marginLeft: "10%", marginTop: "5%" }}>{userNick}님의 수달들</h1>

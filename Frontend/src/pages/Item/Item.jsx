@@ -292,11 +292,11 @@ function Item() {
                 src={require("../../assets/images/otter.png")}
                 alt="base"
               />
-              <img className="char head" src={url} alt="" title="head" />
-              <img className="char eye" src={eyeUrl} alt="" title="eye" />
-              <img className="char mouth" src={mouthUrl} alt="" title="mouth" />
+              <img className="char head" src={url} alt="" title="" />
+              <img className="char eye" src={eyeUrl} alt="" title="" />
+              <img className="char mouth" src={mouthUrl} alt="" title="" />
               <img className="char hand" src={handUrl} alt="" title="" />
-              <img className="char cloth" src={clothUrl} alt="" title="cloth" />
+              <img className="char cloth" src={clothUrl} alt="" title="" />
             </div>
 
             <form
@@ -338,11 +338,11 @@ function Item() {
                   }}
                   onClick={(e) => {
                     e.preventDefault();
-                    setUrl("");
-                    setEyeUrl("");
-                    setMouthUrl("");
-                    setHandUrl("");
-                    setClothUrl("");
+                    setUrl(null);
+                    setEyeUrl(null);
+                    setMouthUrl(null);
+                    setHandUrl(null);
+                    setClothUrl(null);
                   }}
                 >
                   초기화

@@ -16,6 +16,8 @@ import html2canvas from "html2canvas";
 import axios from "axios";
 import logo from "../../assets/images/logo.png";
 import { height } from "@mui/system";
+import TransitionsModal from "../../components/Modal/Modal";
+import BasicModal from "../../components/Modal/Modal2";
 
 // modal
 import Box from "@mui/material/Box";
@@ -104,7 +106,9 @@ function Item() {
   const [clothId, setClothId] = useState(0);
   const token = window.localStorage.getItem("token");
   const [response, setResponse] = useState();
+  const [loading, setLoading] = useState(false);
   const nftHandler = async (e) => {
+    setLoading(true);
     e.preventDefault();
     let file = "";
     if (name.length !== 0) {
@@ -149,6 +153,7 @@ function Item() {
         )
         .then((res) => {
           if (res.status === 200) {
+            setLoading(false);
             alert("발급 성공!");
             navigate("/main");
           }
@@ -200,6 +205,7 @@ function Item() {
 
   return (
     <div className="pageBox">
+      {loading ? <BasicModal open={loading} /> : null}
       <Navbar />
       <div className="item-header-wrap">
         <h1 className="item-title">수달 꾸미기</h1>
@@ -297,7 +303,7 @@ function Item() {
               style={{
                 height: "10%",
                 marginTop: "90%",
-                width: "100%",
+                width: "150%",
                 display: "flex",
                 justifyContent: "space-between",
               }}
@@ -316,23 +322,75 @@ function Item() {
                 }}
                 onChange={handleInput}
               />
-              <button
-                type="submit"
-                style={{
-                  zIndex: "5",
-                  // marginLeft: "80%",
-                  height: "100%",
-                  width: "30%",
-                  marginTop: "10px",
-                  backgroundColor: "#f3e9dc",
-                  fontFamily: "neo",
-                  cursor: "pointer",
-                  borderRadius: "20px",
-                }}
-                onClick={nftHandler}
-              >
-                발급하기
-              </button>
+              <div style={{ width: "100%", display: "flex" }}>
+                <button
+                  style={{
+                    zIndex: "5",
+                    // marginLeft: "80%",
+                    // // height: "10%",
+                    width: "30%",
+                    // marginTop: "90%",
+                    backgroundColor: "#f3e9dc",
+                    fontFamily: "neo",
+                    cursor: "pointer",
+                    borderRadius: "20px",
+                    marginRight: "5%",
+                  }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setUrl("");
+                    setEyeUrl("");
+                    setMouthUrl("");
+                    setHandUrl("");
+                    setClothUrl("");
+                  }}
+                >
+                  초기화
+                </button>
+
+                <button
+                  style={{
+                    zIndex: "5",
+                    // marginLeft: "80%",
+                    // // height: "10%",
+                    width: "30%",
+                    marginTop: "10px",
+                    backgroundColor: "#f3e9dc",
+                    fontFamily: "neo",
+                    cursor: "pointer",
+                    borderRadius: "20px",
+                    marginRight: "5%",
+                  }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setUrl("");
+                    setEyeUrl("");
+                    setMouthUrl("");
+                    setHandUrl("");
+                    setClothUrl("");
+                  }}
+                >
+                  초기화
+                </button>
+
+                <button
+                  type="submit"
+                  style={{
+                    zIndex: "5",
+                    // marginLeft: "80%",
+                    height: "100%",
+                    width: "30%",
+                    marginTop: "10px",
+                    backgroundColor: "#f3e9dc",
+                    fontFamily: "neo",
+                    cursor: "pointer",
+                    borderRadius: "20px",
+                  }}
+                  onClick={nftHandler}
+                >
+                  발급하기
+                </button>
+              </div>
             </form>
           </div>
           <div className="select">

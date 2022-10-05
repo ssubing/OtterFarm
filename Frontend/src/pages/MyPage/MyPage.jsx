@@ -8,6 +8,7 @@ import logo from "../../assets/images/logo.png";
 import { parseTransaction } from "ethers/lib/utils";
 import ChangeButton from "../../components/ChangeButton/ChangeButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import {Link} from "react-router-dom"
 function MyPage() {
   const apiUrl = "http://j7a606.p.ssafy.io:8080/";
   const token = window.localStorage.getItem("token");
@@ -216,7 +217,7 @@ function MyPage() {
                     {otters.saled ? (
                       <div className="issaled">분양중</div>
                     ) : (
-                      <div className="issaled">미분양</div>
+                      <div className="issaled"><Link style={{textDecoration:"none",color:"white", cursor:"pointer"}}state={{nftId:otter.id}}to ="/detail" >미분양</Link></div>
                     )}
                     <div style={{ display: "flex", marginTop: "8%" }}>
                       <FavoriteIcon color="secondary" />

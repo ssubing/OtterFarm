@@ -165,12 +165,15 @@ public class BoardServiceImpl implements BoardService{
         Board board = oBoard.get();
         BidBoardDto bidBoardDto = new BidBoardDto();
         bidBoardDto.setId(board.getId());
-        bidBoardDto.setStart(ZonedDateTime.of(board.getStart(), ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")));
-        bidBoardDto.setEnd(ZonedDateTime.of(board.getEnd(), ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")));
+        ZonedDateTime zdtStart = board.getStart().atZone(ZoneId.systemDefault());
+        ZonedDateTime zdtEnd = board.getEnd().atZone(ZoneId.systemDefault());
+        bidBoardDto.setStart(zdtStart.withZoneSameInstant(ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")));
+        bidBoardDto.setEnd(zdtEnd.withZoneSameInstant(ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")));
         bidBoardDto.setFirst_price(board.getFirst_price());
         List<LogsDto> bidLogsDtos = new ArrayList<>();
         for (BidLog log : board.getBidLogs()) {
-            String dateString = ZonedDateTime.of(log.getDate(), ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
+            ZonedDateTime zdt = log.getDate().atZone(ZoneId.systemDefault());
+            String dateString = zdt.withZoneSameInstant(ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
             bidLogsDtos.add(new LogsDto(dateString, log.getPrice()));
         }
         bidBoardDto.setBidLogs(bidLogsDtos);
@@ -185,7 +188,8 @@ public class BoardServiceImpl implements BoardService{
         List<Appeal> appeals = appealRepository.findAllByNft(oNft.get());
         List<LogsDto> logsDtos = new ArrayList<>();
         for (Appeal appeal : appeals) {
-            String dateString = ZonedDateTime.of(appeal.getDate(), ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
+            ZonedDateTime zdt = appeal.getDate().atZone(ZoneId.systemDefault());
+            String dateString = zdt.withZoneSameInstant(ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
             logsDtos.add(new LogsDto(dateString, appeal.getPrice()));
         }
         return logsDtos;

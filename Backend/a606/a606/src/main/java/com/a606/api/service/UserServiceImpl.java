@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,28 +63,17 @@ public class UserServiceImpl implements UserService{
         User user = userRepository.findById(userId).get();
         // web3를 통해서 solidity랑 통신해서 보유한 NFT의 tokenID를 얻어서
         // DB에서 tokenID로 검색한 NFT들을 List에 담아서 반환
-        List<MyNFTDto> nfts = contractService.getNFTbyAddress(user.getWallet());
-        for (MyNFTDto myNFT : nfts) {
-            Optional<NFT> oNft = nftRepository.findByTokenId(myNFT.getTokenId());
-            if (!oNft.isPresent()) { continue; }
-            NFT nft = oNft.get();
-            myNFT.setId(nft.getId());
-            myNFT.setLikeCount(nft.getLikeCount());
-            myNFT.setName(nft.getName());
-            myNFT.setSaled(nft.isSaled());
-        }
-
-        List<Board> boards = boardRepository.findByUserAndStartBeforeAndEndAfter(user, LocalDateTime.now(), LocalDateTime.now());
-        for (Board board : boards) {
-            MyNFTDto myNFT = new MyNFTDto();
-            NFT nft = board.getNft();
-            myNFT.setId(nft.getId());
-            myNFT.setTokenId(nft.getTokenId());
-            myNFT.setTokenURI(contractService.getTokenURIbyTokenId(nft.getTokenId()));
-            myNFT.setLikeCount(nft.getLikeCount());
-            myNFT.setName(nft.getName());
-            myNFT.setSaled(nft.isSaled());
-            nfts.add(myNFT);
+        List<NFT> nftList = nftRepository.findAllByOwner(user.getWallet());
+        List<MyNFTDto> nfts = new ArrayList<>();
+        for (NFT nft : nftList) {
+            MyNFTDto myNFTDto = new MyNFTDto();
+            myNFTDto.setId(nft.getId());
+            myNFTDto.setTokenId(nft.getTokenId());
+            myNFTDto.setTokenURI(nft.getTokenURI());
+            myNFTDto.setSaled(nft.isSaled());
+            myNFTDto.setLikeCount(nft.getLikeCount());
+            myNFTDto.setName(nft.getName());
+            nfts.add(myNFTDto);
         }
 
         return nfts;
@@ -96,10 +86,10 @@ public class UserServiceImpl implements UserService{
         if (!nft.isPresent()) {
             return null;
         }
-        String address = contractService.getAddressbyTokenId(nft.get().getTokenId());
+        String address = nft.get().getOwner();
         // 토큰을 보유중일 경우
         if(address.equalsIgnoreCase(user.getWallet())){
-            return contractService.getTokenURIbyTokenId(nft.get().getTokenId());
+            return nft.get().getTokenURI();
         }
         return null;
     }
@@ -118,7 +108,7 @@ public class UserServiceImpl implements UserService{
             return null;
         }
         NFT nft = oNft.get();
-        String address = contractService.getAddressbyTokenId(nft.getTokenId());
+        String address = nft.getOwner();
         if (!address.equalsIgnoreCase(user.getWallet())) {
             return null;
         }

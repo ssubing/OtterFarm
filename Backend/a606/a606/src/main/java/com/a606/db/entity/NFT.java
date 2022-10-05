@@ -33,6 +33,12 @@ public class NFT {
     @Column(nullable = false)
     private int likeCount;
 
+    @Column(nullable = false)
+    private String tokenURI;
+
+    @Column(nullable = false)
+    private String owner;
+
     //OneToMany
     //Likes
     @OneToMany(mappedBy = "nft")

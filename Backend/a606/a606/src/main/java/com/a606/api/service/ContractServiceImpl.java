@@ -190,7 +190,22 @@ public class ContractServiceImpl implements ContractService{
 
         // 경매 종료 시간이 지난 경우 경매 종료 처리
         if (endTime.isBefore(LocalDateTime.now())) {
-            sudalAuction.endAuction(new BigInteger(tokenId)).send();
+            TransactionReceipt transactionReceipt = sudalAuction.endAuction(new BigInteger(tokenId)).send();
+            List<Log> logs =  transactionReceipt.getLogs();
+            Event auctionEnded = new Event("AuctionEnded", Arrays.<TypeReference<?>>asList(new TypeReference<Address>(true) {}, new TypeReference<Uint>(false) {}));
+            String auctionEndedHash = EventEncoder.encode(auctionEnded);
+            for(Log log : logs) {
+                if (auctionEndedHash.equals(log.getTopics().get(0))) {
+                    String address = FunctionReturnDecoder.decodeIndexedValue(log.getTopics().get(1), new TypeReference<Address>() {}).toString();
+                    List<Type> datas = FunctionReturnDecoder.decode(log.getData(), auctionEnded.getNonIndexedParameters());
+                    tokenId = String.valueOf(datas.get(0).getValue());
+                    if (oNft.isPresent()) {
+                        NFT nft = oNft.get();
+                        nft.setOwner(address);
+                        nftRepository.save(nft);
+                    }
+                }
+            }
         }
 
         if (oNft.isPresent()) {

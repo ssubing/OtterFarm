@@ -303,7 +303,7 @@ function Shop() {
                           <div className="card-body">
                             <div>{data.name}</div>
                             {data.price != null && (
-                              <div>{data.price} SSF ~</div>
+                              <div>{Math.floor(data.price)} SSF ~</div>
                             )}
                             <div className="line"></div>
                             <div className="owner">

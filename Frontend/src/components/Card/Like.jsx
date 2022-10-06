@@ -40,7 +40,12 @@ function Like(props) {
 
   return (
     <div
-      style={{ display: "flex", alignItems: "center", fontSize: "20px" }}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        fontSize: "20px",
+        cursor: "pointer",
+      }}
       onClick={likeClick}
     >
       {liked ? (

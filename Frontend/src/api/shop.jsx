@@ -15,41 +15,38 @@ const shop = {
   nftDetailOne(params) {
     return api({
       method: "get",
-      url: `${END_POINT}/details/${params}`
-    })
+      url: `${END_POINT}/details/${params}`,
+    });
   },
   //미분양 nft 요청 내역 정보 조회
   nftUnsoldOne(params) {
     return api({
       method: "get",
-      url: `${END_POINT}/appeal/${params}`
-    })
+      url: `${END_POINT}/appeal/${params}`,
+    });
   },
   //분양중인 nft 경매 내역 정보 조회
   nftOnsaleOne(params) {
     return api({
       method: "get",
-      url: `${END_POINT}/bid/${params}`
-    })
+      url: `${END_POINT}/bid/${params}`,
+    });
   },
   //좋아요 클릭
   nftLikeOne(params) {
-    console.log(params)
-    const formData = new FormData()
-    formData.append('nftId', params.nftId)
     return api({
       method: "post",
       url: `${END_POINT}/likes`,
-      data: formData
-    })
+      data: params,
+    });
   },
   //nft 판매 요청
   nftReqSale(params) {
     return api({
       method: "post",
       url: `${END_POINT}/appeal`,
-      data: params
-    })
+      data: params,
+    });
   },
 };
 

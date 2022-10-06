@@ -17,16 +17,16 @@ import shop from "../../api/shop";
 function UnSoldOwner(props) {
   const [resInfo, setResInfo] = useState(null);
   useEffect(() => {
-    const params = props.nftId
+    const params = props.nftId;
     shop
       .nftUnsoldOne(params)
       .then((result) => {
-        setResInfo(result.data)
+        setResInfo(result.data);
       })
       .catch((error) => {
-          console.log(error)
-      })
-  }, [])
+        console.log(error);
+      });
+  }, []);
   //가격
   const [price, setPrice] = useState(0);
   const sellPriceChange = (e) => {
@@ -65,6 +65,7 @@ function UnSoldOwner(props) {
     const approval = await SudalFarmContract.methods
       .approve(SudalAuctionAddress, tokenId)
       .send({ from: accounts[0] });
+      alert("분양 완료");
     if (approval.status) {
       // 경매 시작
       const SudalAuctionContract = new web3.eth.Contract(
@@ -77,10 +78,10 @@ function UnSoldOwner(props) {
           Math.floor((auctionTime.getTime() - new Date().getTime()) / 1000),
           price
         )
-      .send({ from: accounts[0] });
+        .send({ from: accounts[0] });
     }
   };
-  if(resInfo !== null) {
+  if (resInfo !== null) {
     return (
       <div>
         <BidList
@@ -130,7 +131,6 @@ function UnSoldOwner(props) {
       </div>
     );
   }
-  
 }
 
 export default UnSoldOwner;

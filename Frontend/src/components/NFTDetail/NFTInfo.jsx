@@ -1,8 +1,6 @@
 import "./NFTInfo.css"
 import { makeStyles } from "@material-ui/core/styles";
 
-import { useSelector } from "react-redux";
-
 //카드
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -11,9 +9,6 @@ import CardMedia from "@material-ui/core/CardMedia";
 //Like : 좋아요 | Sale : 분양 여부
 import Like from '../Card/Like.jsx'
 import Sale from '../Card/ShowSale.jsx'
-
-import shop from "../../api/shop";
-import { setNftDetailOne } from "../../store/modules/shop";
 
 const useStyles = makeStyles({
     detailCard: {
@@ -33,10 +28,9 @@ const useStyles = makeStyles({
 })
 
 //소유자, 컨트랙트 주소, 좋아요 수, 분양 여부
-function NFTInfo() {
-    const nftDetailOne = useSelector((state) => state.nftDetailOne);
+function NFTInfo(props) {
+    const nftDetailOne = props.nftInfo
     const classes = useStyles();
-    console.log(nftDetailOne)
     return (
         <Card className={classes.detailCard}>
             <CardMedia

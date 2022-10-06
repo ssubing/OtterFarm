@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import BidList from "./BidList.jsx"
+import BidList from "./BidList.jsx";
 
 import shop from "../../api/shop";
 
-import "./OnSale.css"
+import "./OnSale.css";
 
 import Web3 from "web3";
 import {
@@ -13,27 +13,28 @@ import {
   SudalAuctionAddress,
 } from "../../util/web3abi";
 
+import Modal from "../Modal/BidModal";
 //가격
 function Price(props) {
-  const [price, setPrice] = useState(0)
+  const [price, setPrice] = useState(0);
   const bidPriceChange = (e) => {
-    setPrice(e.target.value)
-  }
+    setPrice(e.target.value);
+  };
   //입찰 버튼 클릭
   const bidClick = () => {
-    if(props.price > price) {
-      alert("현재 가격보다 더 높은 가격으로 입찰해주세요")
+    if (props.price > price) {
+      alert("현재 가격보다 더 높은 가격으로 입찰해주세요");
+    } else {
+      bidTest();
     }
-    else {
-      bidTest()
-    }
-  }
+  };
 
   const tokenId = localStorage.getItem("tokenId");
-  const userId = localStorage.getItem("userId")
-  const id = props.id
-
+  const userId = localStorage.getItem("userId");
+  const id = props.id;
+  const [loading, setLoading] = useState(false);
   const bidTest = async () => {
+    setLoading(true);
     let web3 = new Web3(window.ethereum);
     const accounts = await web3.eth.requestAccounts();
     const ERC20Contract = new web3.eth.Contract(ERC20ABI, ERC20Address);
@@ -53,62 +54,88 @@ function Price(props) {
         .send({ from: accounts[0] });
       console.log(bid);
     }
+    await setLoading(false);
+    alert("입찰을 완료했달! 반영은 조금 걸릴 수 있달!");
   };
 
-    return(
-      <div className="price-info">
-        <div className="current">
-          <span>현재가</span>
-          <span>{props.price} SSF</span>
-        </div>
-        
-          {id != userId ? (
-              <div className="bid">
-                <span>입찰가</span>
-                <div>
-                  <input type="number" min={props.price + 1} defaultValue={props.price + 1} onChange={bidPriceChange} className="bid-input"
-                  style={{marginRight: "10px", textAlign: "right", fontFamily: 'neo', fontSize: '20px', width: '205px'}}/>
-                  <button className="bid-btn" onClick={bidClick}>입찰</button>
-                </div>
-              </div>
-          ) : (<div></div>)}
+  return (
+    <div className="price-info">
+      <div className="current">
+        <span>현재가</span>
+        <span>{props.price} SSF</span>
       </div>
-    )
+      <Modal open={loading} />
+      {id != userId ? (
+        <div className="bid">
+          <span>입찰가</span>
+          <div>
+            <input
+              type="number"
+              min={props.price + 1}
+              defaultValue={props.price + 1}
+              onChange={bidPriceChange}
+              className="bid-input"
+              style={{
+                marginRight: "10px",
+                textAlign: "right",
+                fontFamily: "neo",
+                fontSize: "20px",
+                width: "205px",
+              }}
+            />
+            <button className="bid-btn" onClick={bidClick}>
+              입찰
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div></div>
+      )}
+    </div>
+  );
 }
 
 function OnSale(props) {
-  console.log(props)
+  console.log(props);
   //분양 내역 조회
   const [dealInfo, setDealInfo] = useState(null);
 
   useEffect(() => {
-    const params = props.nftInfo.id
+    const params = props.nftInfo.id;
     shop
       .nftOnsaleOne(params)
       .then((result) => {
-        setDealInfo(result.data)
+        setDealInfo(result.data);
       })
       .catch((error) => {
-        console.log(error)
-      })
-  }, [])
-  if(dealInfo !== null) {
-    console.log(dealInfo)
-    return(
+        console.log(error);
+      });
+  }, []);
+  if (dealInfo !== null) {
+    console.log(dealInfo);
+    return (
       <div>
-          <div className="sale-info">
-            <h3>분양 정보</h3>
-              <div className="auction-date">
-                <p>진행기간</p>
-                <p>{dealInfo.start.substring(0, 19)} ~ {dealInfo.end.substring(0, 19)}</p>
-              </div>
+        <div className="sale-info">
+          <h3>분양 정보</h3>
+          <div className="auction-date">
+            <p>진행기간</p>
+            <p>
+              {dealInfo.start.substring(0, 19)} ~{" "}
+              {dealInfo.end.substring(0, 19)}
+            </p>
           </div>
-          <hr/>
-          <Price price={props.nftInfo.price} id={props.nftInfo.userId}/>
-          <hr/>
-          <BidList title="입찰 내역" date="입찰 시간" price="입찰 가격(SSF)" bidLog={dealInfo.bidLogs}/>
+        </div>
+        <hr />
+        <Price price={props.nftInfo.price} id={props.nftInfo.userId} />
+        <hr />
+        <BidList
+          title="입찰 내역"
+          date="입찰 시간"
+          price="입찰 가격(SSF)"
+          bidLog={dealInfo.bidLogs}
+        />
       </div>
-    )
+    );
   }
 }
 

@@ -16,8 +16,8 @@ const getEthereumContract = () => {
     signer,
   });
 };
-let web3 = new Web3(window.ethereum);
-web3 = new Web3(window.web3.currentProvider);
+// let web3 = new Web3(window.ethereum);
+// web3 = new Web3(window.web3.currentProvider);
 const apiUrl = "https://j7a606.p.ssafy.io/";
 
 export const TransactionProvider = ({ children }) => {
@@ -28,7 +28,7 @@ export const TransactionProvider = ({ children }) => {
 
   const checkIfWalletIsConnected = async () => {
     try {
-      if (!ethereum) return alert("메타마스크를 설치해 주세요!");
+      // if (!ethereum) return alert("메타마스크를 설치해 주세요!");
 
       const accounts = await ethereum.request({ method: "eth_accounts" });
       if (accounts.length) {
@@ -44,6 +44,7 @@ export const TransactionProvider = ({ children }) => {
   };
 
   const connectWallet = async () => {
+    if (!ethereum) return alert("메타마스크를 설치해 주세요!");
     let message = "";
     let web3 = new Web3(window.ethereum);
     web3 = new Web3(window.web3.currentProvider);
@@ -52,7 +53,7 @@ export const TransactionProvider = ({ children }) => {
     axios.get(apiUrl + `api/user/nonce/${accounts[0]}`).then(async (res) => {
       console.log("hi");
       console.log(typeof res.data);
-      console.log(res.data)
+      console.log(res.data);
       message = await web3.eth.sign(
         web3.utils.sha3(res.data.toString()),
         accounts[0]
@@ -60,10 +61,10 @@ export const TransactionProvider = ({ children }) => {
       axios
         .post(apiUrl + "api/user", { message: message, wallet: accounts[0] })
         .then((res) => {
-          console.log(res.data)
-          window.localStorage.setItem("token", res.data.jwt)
-          window.localStorage.setItem("userId", res.data.userId)
-        })
+          console.log(res.data);
+          window.localStorage.setItem("token", res.data.jwt);
+          window.localStorage.setItem("userId", res.data.userId);
+        });
     });
 
     // const message = await web3.eth.sign(

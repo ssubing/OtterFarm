@@ -7,6 +7,7 @@ import Item from "./pages/Item/Item";
 import Shop from "./pages/Shop/Shop";
 import Game from "./pages/Game/Game";
 import Guide from "./pages/Guide/Guide";
+import MetaGuide from "./pages/Guide/MetaGuide";
 import AvatarDetail from "./pages/Avatar/AvatarDetail";
 import Noti from "./pages/Noti/Noti";
 import CardGame from "./components/CardGame/CardGame";
@@ -30,6 +31,7 @@ function App() {
         <Route path="/issue" element={<Issue />} />
         <Route path="/tetris" element={<Tetris />} />
         <Route path="/myPage" element={<MyPage />} />
+        <Route path="/metaGuide" element={<MetaGuide />} />
       </Routes>
       <RecoilRoot>
         <Routes>

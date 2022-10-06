@@ -206,9 +206,9 @@ function Shop() {
       });
   }, []);
   const [isLoading, setIsLoading] = useState(false);
-  useEffect(()=>{
-    setTimeout(()=> setIsLoading(true), 1000)
-  },[])
+  useEffect(() => {
+    setTimeout(() => setIsLoading(true), 1000);
+  }, []);
   return (
     <div>
       <Navbar></Navbar>
@@ -295,7 +295,10 @@ function Shop() {
                         <CardContent className="card">
                           <div className="card-header">
                             <ShowSale isOnSale={data.saled}></ShowSale>
-                            <Like likeCnt={data.likeCount}></Like>
+                            <Like
+                              liked={data.liked}
+                              likeCnt={data.likeCount}
+                            ></Like>
                           </div>
                           <div className="card-body">
                             <div>{data.name}</div>
@@ -325,7 +328,12 @@ function Shop() {
           </div>
         ) : (
           <div style={{ fontSize: "35px", textAlign: "center" }}>
-            <img className="otterSpin" style={{ height: "400px" }} src={noSudal} alt="no sudal" />
+            <img
+              className="otterSpin"
+              style={{ height: "400px" }}
+              src={noSudal}
+              alt="no sudal"
+            />
             <div>로딩중이달</div>
           </div>
         )}

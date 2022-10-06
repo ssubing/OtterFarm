@@ -28,17 +28,27 @@ function UnSoldOwner(props) {
       })
   }, [])
   //가격
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState(1);
   const sellPriceChange = (e) => {
     setPrice(e.target.value);
   };
 
   //분양하기 클릭할 경우
   const auctionClick = () => {
-    if (price >= 0) {
+    if (price > 0) {
+      for(let i = 0; i < price.length; i++) {
+        if(price.slice(i, i+1) === '.') {
+            alert("소수점 값은 입력 불가능합니다")
+            return
+        }
+      }
       auctionTest();
-    } else {
-      alert("가격을 제대로 입력해주세요.");
+    }
+    else if(price < 0) {
+      alert("음수는 입력 불가능합니다")
+    }
+    else {
+      alert("1 이상의 숫자 값만 입력해주세요")
     }
   };
 
@@ -98,7 +108,8 @@ function UnSoldOwner(props) {
             <div>
               <input
                 type="number"
-                min={0}
+                min={1}
+                defaultValue={1}
                 onChange={sellPriceChange}
                 className="bid-input"
                 style={{
@@ -111,6 +122,7 @@ function UnSoldOwner(props) {
               />
               <span> SSF</span>
             </div>
+            <span style={{color: "red", fontSize: "15px", marginLeft: "336px"}}>소수점 입력 불가</span>
           </div>
           <div className="sell-end-date">
             <span>분양 마감일</span>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+// import NumberFormat from 'react-number-format';
 
 import BidList from "./BidList.jsx"
 
@@ -14,19 +15,44 @@ function UnSold(props) {
     const [reqInfo, setReqInfo] = useState(null);
     //요청하기 클릭했을 경우
     const requestClick = () => {
-        const params = {
-            nftId: nftId,
-            price : price
+        if (price > 0) {
+            for(let i = 0; i < price.length; i++) {
+                if(price.slice(i, i+1) === '.') {
+                    alert("소수점 값은 입력 불가능합니다")
+                    return
+                }
+            }
+            const params = {
+                nftId: nftId,
+                price : price
+            }
+            shop
+            .nftReqSale(params)
+            .then((result) => {
+                window.location.reload()
+                console.log(result)
+            })
+            .catch((error) => {
+                console.log(error);
+            });
         }
-        shop
-        .nftReqSale(params)
-        .then((result) => {
-            window.location.reload()
-            console.log(result)
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+        else if(price < 0) {
+            alert("음수는 입력 불가능합니다")
+        }
+        else {
+            alert("1 이상의 숫자 값만 입력해주세요")
+        }
+        console.log(price)
+        // for(let i = 0; i < price.length; i++) {
+        //     if(price.slice(i, i+1) === '.') {
+        //         alert("소수점 값은 입력 불가능합니다")
+        //         return
+        //     }
+        // }
+        // if(price < 0) {
+        //     alert()
+        // }
+        
     }
     //요청 내역 조회
     useEffect(() => {
@@ -40,6 +66,8 @@ function UnSold(props) {
             console.log(error)
         })
     }, [])
+
+
     if(reqInfo !== null) {
         return( 
             <div>
@@ -48,10 +76,12 @@ function UnSold(props) {
                     <div className="bid">
                         <span>요청가</span>
                         <div>
-                            <input type="number" onChange={requestPriceChange}className="bid-input"
+                            <input type="number" onChange={requestPriceChange} className="bid-input"
+                            min={1} defaultValue={1}
                             style={{marginRight: "10px", textAlign: "right", fontFamily: 'neo', fontSize: '20px', width: '205px'}}/>
                             <button className="bid-btn" onClick={requestClick}>요청</button>
                         </div>
+                        <span style={{color: "red", fontSize: "15px", marginLeft: "336px"}}>소수점 입력 불가</span>
                     </div>
                 </div>
                 <hr/>

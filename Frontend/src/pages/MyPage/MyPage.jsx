@@ -14,8 +14,8 @@ function MyPage() {
   const token = window.localStorage.getItem("token");
   const [sudalPt, setSudalPt] = useState(0);
   const [userNick, setUserNick] = useState("");
-  const userId = window.localStorage.getItem("userId");
-  const params = useParams();
+
+  const nftId = window.localStorage.getItem("nftId");
   const [otters, setOtters] = useState();
   useEffect(() => {
     axios
@@ -36,10 +36,7 @@ function MyPage() {
       })
       .then((res) => setUserNick(res.data));
   }, []);
-  //프로필 사진 바꿨는지 확인용
-  const [changed, setChanged] = useState(false);
-  //바꿀경우의 바뀌는 url
-  const [url, setUrl] = useState();
+
   const handleId = (id) => {
     window.localStorage.setItem("nftId", id);
     axios.post(
@@ -221,7 +218,7 @@ function MyPage() {
                       alignItems: "center",
                     }}
                   >
-                    {otters.saled ? (
+                    {otter.saled ? (
                       <div className="issaled">분양중</div>
                     ) : (
                       <div className="issaled">미분양</div>
@@ -274,11 +271,13 @@ function MyPage() {
                       //     대표수달지정
                       //   </button>
                     ) : null} */}
-                    <ChangeButton
-                      handleId={handleId}
-                      id={otter.id}
-                      issaled={otter.saled}
-                    />
+                    {otter.id != nftId ? (
+                      <ChangeButton
+                        handleId={handleId}
+                        id={otter.id}
+                        issaled={otter.saled}
+                      />
+                    ) : null}
                   </div>
                 </div>
               </div>

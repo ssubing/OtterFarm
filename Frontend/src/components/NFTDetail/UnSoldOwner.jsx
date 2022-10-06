@@ -85,7 +85,7 @@ function UnSoldOwner(props) {
         .send({ from: accounts[0] });
     }
     await setLoading(false);
-    alert("분양완료을 완료했달! 확인을 누르면 마이페이지로 넘어간달!");
+    alert("분양을 완료했달! 확인을 누르면 마이페이지로 넘어간달!");
     navigate("/myPage");
   };
   if (resInfo !== null) {

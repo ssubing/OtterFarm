@@ -1,38 +1,54 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import shop from "../../api/shop";
 
 function Like(props) {
-  const nftId = props.nftId
-  console.log(nftId)
+  const nftId = props.nftId;
+
+  const [liked, setLiked] = useState(false);
+  const [likeCnt, setLikeCnt] = useState(0);
+
+  useEffect(() => {
+    setLiked(props.liked);
+    setLikeCnt(props.likeCnt);
+  }, [props]);
+
+  const handleLike = (value) => {
+    setLiked(value);
+    if (value) {
+      setLikeCnt(likeCnt + 1);
+    } else {
+      setLikeCnt(likeCnt - 1);
+    }
+  };
+
   //좋아요 클릭
   const likeClick = () => {
     const params = {
-      nftId : nftId,
-      likeCount : props.likeCnt
-    }
-      shop
+      nftId: nftId,
+    };
+    shop
       .nftLikeOne(params)
       .then((result) => {
-          // dispatch(setNftLikeOne(result.data))
-          window.location.reload()
-          console.log(result)
+        handleLike(result.data);
       })
       .catch((error) => {
-          console.log(error);
+        console.log(error);
       });
-    
-  }
-  
+  };
+
   return (
-    <div style={{ display: "flex", alignItems: "center", fontSize: "20px" }} onClick={likeClick}>
-      {props.liked ? (
+    <div
+      style={{ display: "flex", alignItems: "center", fontSize: "20px" }}
+      onClick={likeClick}
+    >
+      {liked ? (
         <FavoriteIcon style={{ color: "red", marginRight: "5px" }} />
       ) : (
         <FavoriteBorderIcon style={{ color: "red", marginRight: "5px" }} />
       )}
-      {props.likeCnt}
+      {likeCnt}
     </div>
   );
 }

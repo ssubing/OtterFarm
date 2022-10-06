@@ -1,7 +1,10 @@
 import axios from "axios";
 
 const HOST = "https://j7a606.p.ssafy.io/api/";
-const token = window.localStorage.getItem("token");
+var token = window.localStorage.getItem("token");
+if (token == null) {
+  token = "";
+}
 axios.defaults.withCredentials = true;
 const api = axios.create({
   baseURL: HOST,

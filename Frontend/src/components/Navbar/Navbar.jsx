@@ -12,8 +12,8 @@ const Navbar = () => {
   const { connectWallet, currentAccount } = useContext(TransactionContext);
   const [res, setRes] = useState();
   const [message, setMessage] = useState("");
-  let web3 = new Web3(window.ethereum);
-  web3 = new Web3(window.web3.currentProvider);
+  // let web3 = new Web3(window.ethereum);
+  // web3 = new Web3(window.web3.currentProvider);
 
   // const handleLogin=() =>{
 

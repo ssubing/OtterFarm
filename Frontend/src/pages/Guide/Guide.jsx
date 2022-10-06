@@ -3,6 +3,7 @@ import "./Guide.css";
 import Button from "@material-ui/core/Button";
 import fallingGame from "../../assets/images/falling-game-thumbnail.png";
 import cardGame from "../../assets/images/CardGame/card-guide.PNG"
+import tetrisGame from "../../assets/images/tetris-guide.png";
 import { Link } from "react-router-dom";
 const Guide = () => {
   return (
@@ -46,7 +47,7 @@ const Guide = () => {
             <strong>수달은 아직도 배고프다</strong>
             <br />
             <br />
-            먹어도 먹어도 배가 고픈 수달은 열심히 먹이(🦞🐟🐚)를 찾아다니고 있습니다
+            먹어도 먹어도 배가 고픈 수달은 오늘도 열심히 먹이(🦞🐟🐚)를 찾아다니고 있어요
             <br/>
             <br/>
             하늘에서 떨어지는 먹이를 받아 수달을 배부르게 해주세요🍴
@@ -60,10 +61,27 @@ const Guide = () => {
             <strong>같은 수달 찾기</strong>
             <br />
             <br />
-            패션에 대해 관심이 많은 수달은 다양하게 스타일을 추구합니다
+            패션에 대해 관심이 많은 수달은 다양한 스타일👕👖🧦을 추구하고 있어요
             <br/>
             <br/>
-            그 중에 똑같이 입은 수달을 찾아 맞춰보세요👕👖🧦
+            그 중에 똑같이 입은 수달을 찾아 맞춰보세요🔍
+          </p>
+        </div>
+        <div className="game">
+          <Link to="/tetris">
+            <img src={tetrisGame} alt="game" className="game-thumbnail"></img>
+          </Link>
+          <p className="content">
+            <strong>테트리스</strong>
+            <br />
+            <br />
+            하늘에서 떨어지는 블록을 바닥에서부터 쌓아갈 수 있습니다
+            <br />
+            <br />
+            한 줄을 꽉 채운다면 그 줄의 블록이 사라지고 점수를 얻을 수 있어요
+            <br/>
+            <br/>
+            점수를 쌓을수록 블록이 떨어지는 속도가 빨라지니 주의하면서 블록이 맨 위까지 닿지 않도록 열심히 해주세요!🎮
           </p>
         </div>
       </div>

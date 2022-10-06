@@ -121,15 +121,15 @@ function CardGame() {
                 cardNum += 1;
                 count += 100;
                 if(cardNum === 9) {
-                    console.log(count * 0.9)
+                    console.log(count * 1.3)
                     game
-                    .sendPoint(count * 0.9)
+                    .sendPoint(count * 1.3)
                     .then((result) => console.log(result))
                     .catch((error) => console.log(error));
                     setTimeout(() => {
                         setScore(count)
                         setCardCount(cardNum)
-                        setMoney(count * 0.9)
+                        setMoney(count * 1.3)
                         console.log(money)
                     }, 300);
                 }
@@ -142,7 +142,6 @@ function CardGame() {
                     openCard2.parentElement.classList.remove("flip-front")
                     //선택한 카드 초기화
                     //이미 선택한 카드가 뒤집어질때까지 다른 카드를 선택할 수 없게 한다
-                    
                     cardSrc = cardSrc2 = ''
                 }, 400);
                 if(count - 40 > 0) count -= 40;
@@ -185,8 +184,7 @@ function CardGame() {
                     <Header title={"같은 수달 찾기"} />
                     <div className="card-game-after">
                         <div className="card-end">
-                            <p>점수 : {score}</p>
-                            <p>획득 수달머니 : {money}</p>
+                            <p>{money} 수달머니 획득!</p>
                             <button className="card-end-btn" onClick={cardGameRestart}>다시하기</button>
                         </div>
                         <img className="end-comment"src={comment} alt="끝"/>

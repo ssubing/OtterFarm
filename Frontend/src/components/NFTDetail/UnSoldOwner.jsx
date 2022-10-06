@@ -6,27 +6,28 @@ import {
   SudalFarmABI,
   SudalFarmAddress,
 } from "../../util/web3abi";
-
+import Modal from "../Modal/LoadingModal";
 import DateTimePicker from "react-datetime-picker";
 
 import "./UnSoldOwner.css";
 import BidList from "./BidList.jsx";
 
 import shop from "../../api/shop";
-
+import { Navigate, useNavigate } from "react-router-dom";
 function UnSoldOwner(props) {
+  const navigate = useNavigate();
   const [resInfo, setResInfo] = useState(null);
   useEffect(() => {
-    const params = props.nftId
+    const params = props.nftId;
     shop
       .nftUnsoldOne(params)
       .then((result) => {
-        setResInfo(result.data)
+        setResInfo(result.data);
       })
       .catch((error) => {
-          console.log(error)
-      })
-  }, [])
+        console.log(error);
+      });
+  }, []);
   //가격
   const [price, setPrice] = useState(0);
   const sellPriceChange = (e) => {
@@ -53,6 +54,7 @@ function UnSoldOwner(props) {
 
   const tokenId = localStorage.getItem("tokenId");
   // const [account, setAccount] = useState()
+  const [loading, setLoading] = useState(false);
 
   const auctionTest = async () => {
     let web3 = new Web3(window.ethereum);
@@ -61,10 +63,13 @@ function UnSoldOwner(props) {
       SudalFarmABI,
       SudalFarmAddress
     );
+    //모달 띄우기
+    setLoading(true);
     // nft 권한 허용
     const approval = await SudalFarmContract.methods
       .approve(SudalAuctionAddress, tokenId)
       .send({ from: accounts[0] });
+
     if (approval.status) {
       // 경매 시작
       const SudalAuctionContract = new web3.eth.Contract(
@@ -77,12 +82,16 @@ function UnSoldOwner(props) {
           Math.floor((auctionTime.getTime() - new Date().getTime()) / 1000),
           price
         )
-      .send({ from: accounts[0] });
+        .send({ from: accounts[0] });
     }
+    await setLoading(false);
+    alert("분양완료을 완료했달! 확인을 누르면 마이페이지로 넘어간달!");
+    navigate("/myPage");
   };
-  if(resInfo !== null) {
+  if (resInfo !== null) {
     return (
       <div>
+        <Modal open={loading} setLoading={setLoading} />
         <BidList
           style={{ margin: "30px 0" }}
           title="요청 내역"
@@ -130,7 +139,6 @@ function UnSoldOwner(props) {
       </div>
     );
   }
-  
 }
 
 export default UnSoldOwner;

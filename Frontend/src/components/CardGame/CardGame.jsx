@@ -121,7 +121,6 @@ function CardGame() {
                 cardNum += 1;
                 count += 100;
                 if(cardNum === 9) {
-                    console.log(count * 1.3)
                     game
                     .sendPoint(count * 1.3)
                     .then((result) => console.log(result))
@@ -130,7 +129,6 @@ function CardGame() {
                         setScore(count)
                         setCardCount(cardNum)
                         setMoney(count * 1.3)
-                        console.log(money)
                     }, 300);
                 }
             }
@@ -145,7 +143,6 @@ function CardGame() {
                     cardSrc = cardSrc2 = ''
                 }, 400);
                 if(count - 40 > 0) count -= 40;
-                console.log("점수 : " + count)
             }
         }
     }

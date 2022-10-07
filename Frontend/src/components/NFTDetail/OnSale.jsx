@@ -18,11 +18,11 @@ import Modal from "../Modal/BidModal";
 function Price(props) {
   const [price, setPrice] = useState(0);
   const bidPriceChange = (e) => {
-    setPrice(e.target.value)
+    const changePrice = e.target.value
+    setPrice(changePrice)
   }
   //입찰 버튼 클릭
   const bidClick = () => {
-    console.log(price)
     if(currentPrice >= price) {
       alert("현재 가격보다 더 높은 가격으로 입찰해주세요")
     }
@@ -39,8 +39,10 @@ function Price(props) {
 
   let currentPrice = Math.floor(props.price)
   useEffect(() => {
-    currentPrice = Math.floor(props.price)
-    setPrice(currentPrice + 1)
+    if(price === 0) {
+      currentPrice = Math.floor(props.price)
+      setPrice(currentPrice + 1)
+    }
   })
 
   const tokenId = localStorage.getItem("tokenId");
@@ -56,7 +58,6 @@ function Price(props) {
     const approval = await ERC20Contract.methods
       .approve(SudalAuctionAddress, price)
       .send({ from: accounts[0] });
-    console.log(approval);
     if (approval.status) {
       // 입찰
       const SudalAuctionContract = new web3.eth.Contract(
@@ -66,7 +67,6 @@ function Price(props) {
       let bid = await SudalAuctionContract.methods
         .bidOnAuction(tokenId, price)
         .send({ from: accounts[0] });
-      console.log(bid);
     }
     await setLoading(false);
     alert("입찰을 완료했달! 반영은 조금 걸릴 수 있달!");
@@ -95,7 +95,6 @@ function Price(props) {
 }
 
 function OnSale(props) {
-  console.log(props);
   //분양 내역 조회
   const [dealInfo, setDealInfo] = useState(null);
 
@@ -111,7 +110,6 @@ function OnSale(props) {
       });
   }, []);
   if (dealInfo !== null) {
-    console.log(dealInfo);
     return (
       <div>
         <div className="sale-info">

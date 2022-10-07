@@ -30,7 +30,6 @@ function UnSold(props) {
             .nftReqSale(params)
             .then((result) => {
                 window.location.reload()
-                console.log(result)
             })
             .catch((error) => {
                 console.log(error);
@@ -42,17 +41,6 @@ function UnSold(props) {
         else {
             alert("1 이상의 숫자 값만 입력해주세요")
         }
-        console.log(price)
-        // for(let i = 0; i < price.length; i++) {
-        //     if(price.slice(i, i+1) === '.') {
-        //         alert("소수점 값은 입력 불가능합니다")
-        //         return
-        //     }
-        // }
-        // if(price < 0) {
-        //     alert()
-        // }
-        
     }
     //요청 내역 조회
     useEffect(() => {
